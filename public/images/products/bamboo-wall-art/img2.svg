@@ -1,0 +1,32 @@
+<svg width="500" height="400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="bambooTexture2" x="0" y="0" width="25" height="25" patternUnits="userSpaceOnUse">
+      <rect width="25" height="25" fill="#DEB887"/>
+      <line x1="0" y1="12.5" x2="25" y2="12.5" stroke="#8B4513" stroke-width="2"/>
+      <line x1="12.5" y1="0" x2="12.5" y2="25" stroke="#CD853F" stroke-width="1"/>
+    </pattern>
+  </defs>
+  
+  <rect width="500" height="400" fill="#FFF8DC"/>
+  
+  <!-- Close-up view of bamboo weave detail -->
+  <rect x="100" y="100" width="300" height="200" fill="url(#bambooTexture2)" stroke="#654321" stroke-width="3"/>
+  
+  <!-- Detailed geometric pattern -->
+  <circle cx="250" cy="200" r="40" fill="#8B4513" opacity="0.6"/>
+  <polygon points="250,160 280,200 250,240 220,200" fill="#CD853F" opacity="0.8"/>
+  <circle cx="250" cy="200" r="20" fill="#F5DEB3"/>
+  
+  <!-- Natural bamboo grain lines -->
+  <g opacity="0.4">
+    <line x1="120" y1="120" x2="380" y2="120" stroke="#8B4513" stroke-width="1"/>
+    <line x1="120" y1="140" x2="380" y2="140" stroke="#654321" stroke-width="1"/>
+    <line x1="120" y1="160" x2="380" y2="160" stroke="#8B4513" stroke-width="1"/>
+    <line x1="120" y1="180" x2="380" y2="180" stroke="#654321" stroke-width="1"/>
+    <line x1="120" y1="200" x2="380" y2="200" stroke="#8B4513" stroke-width="1"/>
+    <line x1="120" y1="220" x2="380" y2="220" stroke="#654321" stroke-width="1"/>
+    <line x1="120" y1="240" x2="380" y2="240" stroke="#8B4513" stroke-width="1"/>
+    <line x1="120" y1="260" x2="380" y2="260" stroke="#654321" stroke-width="1"/>
+    <line x1="120" y1="280" x2="380" y2="280" stroke="#8B4513" stroke-width="1"/>
+  </g>
+</svg>

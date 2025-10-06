@@ -1,0 +1,30 @@
+<svg width="500" height="400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="500" height="400" fill="#F5F5DC"/>
+  
+  <!-- Living room setting with bamboo wall art -->
+  <!-- Wall -->
+  <rect x="0" y="0" width="500" height="300" fill="#F0F0F0"/>
+  
+  <!-- Floor -->
+  <rect x="0" y="300" width="500" height="100" fill="#8B4513"/>
+  
+  <!-- Bamboo wall art mounted on wall -->
+  <rect x="150" y="80" width="200" height="140" fill="#8B4513" stroke="#654321" stroke-width="2"/>
+  <rect x="165" y="95" width="170" height="110" fill="#DEB887"/>
+  
+  <!-- Pattern on the wall art -->
+  <circle cx="250" cy="150" r="25" fill="#CD853F"/>
+  <polygon points="250,125 270,150 250,175 230,150" fill="#8B4513"/>
+  
+  <!-- Sofa in front -->
+  <rect x="80" y="250" width="140" height="60" fill="#654321" rx="10"/>
+  <rect x="85" y="240" width="130" height="20" fill="#8B4513" rx="10"/>
+  
+  <!-- Coffee table -->
+  <rect x="250" y="280" width="80" height="30" fill="#D2691E" rx="5"/>
+  
+  <!-- Plant pot -->
+  <circle cx="400" cy="290" r="15" fill="#8B4513"/>
+  <rect x="395" y="275" width="10" height="15" fill="#32CD32"/>
+  <circle cx="400" cy="270" r="8" fill="#228B22"/>
+</svg>

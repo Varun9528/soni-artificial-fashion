@@ -1,0 +1,481 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id              String   @id @default(cuid())
+  email           String   @unique
+  name            String
+  phone           String?
+  password        String
+  role            Role     @default(USER)
+  isActive        Boolean  @default(true)
+  emailVerified   Boolean  @default(false)
+  phoneVerified   Boolean  @default(false)
+  avatar          String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  // Relations
+  addresses       Address[]
+  orders          Order[]
+  cartItems       CartItem[]
+  wishlistItems   WishlistItem[]
+  reviews         Review[]
+  sessions        Session[]
+  notifications   Notification[]
+  userCoupons     UserCoupon[]
+
+  @@map("users")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  userId       String
+  refreshToken String   @unique
+  accessToken  String
+  deviceInfo   String?
+  ipAddress    String?
+  expiresAt    DateTime
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model Category {
+  id            String    @id @default(cuid())
+  name          Json      // {"en": "Jewelry", "hi": "आभूषण"}
+  slug          String    @unique
+  description   Json      // {"en": "Traditional jewelry", "hi": "पारंपरिक आभूषण"}
+  image         String?
+  featured      Boolean   @default(false)
+  isActive      Boolean   @default(true)
+  productCount  Int       @default(0)
+  sortOrder     Int       @default(0)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  // Relations
+  products      Product[]
+
+  @@map("categories")
+}
+
+model Artisan {
+  id            String   @id @default(cuid())
+  name          String
+  slug          String   @unique
+  bio           Json     // {"en": "Master craftsman", "hi": "कुशल कारीगर"}
+  village       String
+  district      String
+  state         String
+  photo         String?
+  experience    Int      // Years of experience
+  rating        Float    @default(0)
+  totalProducts Int      @default(0)
+  isActive      Boolean  @default(true)
+  joinedAt      DateTime @default(now())
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  // Relations
+  products      Product[]
+  artisanSkills ArtisanSkill[]
+
+  @@map("artisans")
+}
+
+model ArtisanSkill {
+  id        String   @id @default(cuid())
+  artisanId String
+  skill     String
+  createdAt DateTime @default(now())
+
+  artisan   Artisan  @relation(fields: [artisanId], references: [id], onDelete: Cascade)
+
+  @@map("artisan_skills")
+}
+
+model Product {
+  id            String    @id @default(cuid())
+  title         Json      // {"en": "Bamboo Wall Art", "hi": "बांस की दीवार कला"}
+  slug          String    @unique
+  description   Json      // {"en": "Beautiful wall art", "hi": "सुंदर दीवार कला"}
+  shortDesc     Json?     // Short description for cards
+  price         Float
+  originalPrice Float?    // For discounts
+  sku           String    @unique
+  stock         Int       @default(0)
+  weight        Float?    // In grams
+  dimensions    Json?     // {"length": 10, "width": 5, "height": 2}
+  tags          String?   // SEO tags (comma-separated)
+  isActive      Boolean   @default(true)
+  
+  // Status flags
+  inStock       Boolean   @default(true)
+  featured      Boolean   @default(false)
+  bestSeller    Boolean   @default(false)
+  newArrival    Boolean   @default(false)
+  trending      Boolean   @default(false)
+  
+  // SEO
+  metaTitle     String?
+  metaDesc      String?
+  
+  // Stats
+  rating        Float     @default(0)
+  reviewCount   Int       @default(0)
+  viewCount     Int       @default(0)
+  saleCount     Int       @default(0)
+  
+  // Relations
+  categoryId    String
+  artisanId     String
+  
+  category      Category  @relation(fields: [categoryId], references: [id])
+  artisan       Artisan   @relation(fields: [artisanId], references: [id])
+  
+  cartItems     CartItem[]
+  wishlistItems WishlistItem[]
+  orderItems    OrderItem[]
+  reviews       Review[]
+  productImages ProductImage[]
+  productMaterials ProductMaterial[]
+  productColors ProductColor[]
+  
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  @@map("products")
+}
+
+model ProductImage {
+  id        String   @id @default(cuid())
+  productId String
+  url       String
+  isPrimary Boolean  @default(false)
+  sortOrder Int      @default(0)
+  createdAt DateTime @default(now())
+
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@map("product_images")
+}
+
+model ProductMaterial {
+  id        String   @id @default(cuid())
+  productId String
+  material  String
+  createdAt DateTime @default(now())
+
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@map("product_materials")
+}
+
+model ProductColor {
+  id        String   @id @default(cuid())
+  productId String
+  color     String
+  createdAt DateTime @default(now())
+
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@map("product_colors")
+}
+
+model CartItem {
+  id        String   @id @default(cuid())
+  userId    String
+  productId String
+  quantity  Int      @default(1)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, productId])
+  @@map("cart_items")
+}
+
+model WishlistItem {
+  id        String   @id @default(cuid())
+  userId    String
+  productId String
+  createdAt DateTime @default(now())
+
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, productId])
+  @@map("wishlist_items")
+}
+
+model Address {
+  id          String      @id @default(cuid())
+  userId      String
+  name        String
+  phone       String
+  address     String
+  city        String
+  state       String
+  pincode     String
+  landmark    String?
+  type        AddressType @default(HOME)
+  isDefault   Boolean     @default(false)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  orders      Order[]
+
+  @@map("addresses")
+}
+
+model Order {
+  id             String      @id @default(cuid())
+  orderNumber    String      @unique
+  userId         String
+  addressId      String
+  
+  // Order totals
+  subtotal       Float
+  shippingFee    Float       @default(0)
+  tax            Float       @default(0)
+  discount       Float       @default(0)
+  totalAmount    Float
+  
+  // Order status
+  status         OrderStatus @default(PENDING)
+  paymentStatus  PaymentStatus @default(PENDING)
+  paymentMethod  String?
+  paymentId      String?     // Razorpay/Stripe payment ID
+  
+  // Shipping
+  shippingOptionId String?   // Reference to selected shipping option
+  trackingNumber String?
+  shippingPartner String?
+  estimatedDelivery DateTime?
+  deliveredAt    DateTime?
+  
+  // Timestamps
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
+
+  // Relations
+  user           User        @relation(fields: [userId], references: [id])
+  address        Address     @relation(fields: [addressId], references: [id])
+  shippingOption ShippingOption? @relation(fields: [shippingOptionId], references: [id])
+  items          OrderItem[]
+  statusHistory  OrderStatusHistory[]
+  userCoupons    UserCoupon[]
+
+  @@map("orders")
+}
+
+model OrderItem {
+  id        String  @id @default(cuid())
+  orderId   String
+  productId String
+  quantity  Int
+  price     Float   // Price at time of purchase
+  
+  order     Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product   Product @relation(fields: [productId], references: [id])
+
+  @@map("order_items")
+}
+
+model OrderStatusHistory {
+  id        String      @id @default(cuid())
+  orderId   String
+  status    OrderStatus
+  note      String?
+  createdAt DateTime    @default(now())
+
+  order     Order       @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  @@map("order_status_history")
+}
+
+model Review {
+  id        String   @id @default(cuid())
+  userId    String
+  productId String
+  rating    Int      // 1-5 stars
+  title     String?
+  comment   String?
+  isVerified Boolean @default(false) // Verified purchase
+  isVisible Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user      User     @relation(fields: [userId], references: [id])
+  product   Product  @relation(fields: [productId], references: [id])
+  reviewImages ReviewImage[]
+
+  @@unique([userId, productId])
+  @@map("reviews")
+}
+
+model ReviewImage {
+  id        String   @id @default(cuid())
+  reviewId  String
+  url       String
+  createdAt DateTime @default(now())
+
+  review    Review   @relation(fields: [reviewId], references: [id], onDelete: Cascade)
+
+  @@map("review_images")
+}
+
+model Banner {
+  id          String     @id @default(cuid())
+  title       Json       // {"en": "Sale Banner", "hi": "सेल बैनर"}
+  subtitle    Json?
+  image       String
+  link        String?
+  buttonText  Json?      // {"en": "Shop Now", "hi": "अभी खरीदें"}
+  type        BannerType @default(HERO)
+  isActive    Boolean    @default(true)
+  sortOrder   Int        @default(0)
+  startDate   DateTime?
+  endDate     DateTime?
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  @@map("banners")
+}
+
+model Coupon {
+  id            String     @id @default(cuid())
+  code          String     @unique
+  title         String
+  description   String?
+  type          CouponType @default(PERCENTAGE)
+  value         Float      // Percentage or fixed amount
+  minOrderValue Float?     // Minimum order value required
+  maxDiscount   Float?     // Maximum discount amount
+  usageLimit    Int?       // Total usage limit
+  usedCount     Int        @default(0)
+  userLimit     Int        @default(1) // Per user limit
+  isActive      Boolean    @default(true)
+  startDate     DateTime
+  endDate       DateTime
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+
+  // Relations
+  userCoupons   UserCoupon[]
+
+  @@map("coupons")
+}
+
+model UserCoupon {
+  id        String   @id @default(cuid())
+  userId    String
+  couponId  String
+  usedAt    DateTime?
+  orderId   String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  coupon    Coupon   @relation(fields: [couponId], references: [id], onDelete: Cascade)
+  order     Order?   @relation(fields: [orderId], references: [id])
+
+  @@map("user_coupons")
+}
+
+model Notification {
+  id          String     @id @default(cuid())
+  userId      String
+  title       String
+  message     String
+  type        String     @default("info") // info, success, warning, error
+  read        Boolean    @default(false)
+  referenceId String?    // ID of the related entity (order, product, etc.)
+  referenceType String?  // Type of the related entity (order, product, etc.)
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("notifications")
+}
+
+model ShippingOption {
+  id          String   @id @default(cuid())
+  name        Json     // {"en": "Standard Delivery", "hi": "मानक डिलीवरी"}
+  description Json     // {"en": "Delivery within 5-7 business days", "hi": "5-7 व्यावसायिक दिनों के भीतर डिलीवरी"}
+  cost        Float
+  minOrderValue Float? // Minimum order value for free shipping
+  estimatedDays Int     // Estimated delivery days
+  isActive    Boolean @default(true)
+  sortOrder   Int     @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  orders      Order[]
+
+  @@map("shipping_options")
+}
+
+// Enums
+enum Role {
+  USER
+  ADMIN
+  SUPER_ADMIN
+}
+
+enum AddressType {
+  HOME
+  OFFICE
+  OTHER
+}
+
+enum OrderStatus {
+  PENDING
+  CONFIRMED
+  PROCESSING
+  SHIPPED
+  OUT_FOR_DELIVERY
+  DELIVERED
+  CANCELLED
+  RETURNED
+  REFUNDED
+}
+
+enum PaymentStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+  REFUNDED
+}
+
+enum BannerType {
+  HERO
+  CATEGORY
+  PROMOTIONAL
+  FOOTER
+}
+
+enum CouponType {
+  PERCENTAGE
+  FIXED
+  FREE_SHIPPING
+}

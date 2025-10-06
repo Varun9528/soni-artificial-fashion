@@ -1,0 +1,50 @@
+{
+  "payment": {
+    "sectionTitle": "Pay securely via Razorpay / Stripe",
+    "supportedMethods": "Supported methods: UPI, Credit/Debit Cards, Netbanking, Wallets",
+    "security": "100% Secure & PCI-DSS Compliant",
+    "confirmation": "Instant payment confirmation & invoice",
+    "success": "Payment successful – Your order is confirmed!",
+    "failed": "Payment failed – Please try again or use another method.",
+    "pending": "Payment pending – Waiting for bank confirmation."
+  },
+  "email": {
+    "orderConfirmation": {
+      "subject": "Order Confirmation – Pachmarhi Tribal Art Marketplace",
+      "greeting": "Hello {name},",
+      "message": "Thank you for your order #{orderId}. Your tribal art product(s) will be shipped soon.",
+      "tracking": "Track your order here: {trackingLink}"
+    }
+  },
+  "policy": {
+    "refund": {
+      "title": "Refund & Cancellation Policy",
+      "refundTime": "Refunds will be processed within 7 working days after return approval.",
+      "cancellation": "Cancellations allowed before shipment dispatch.",
+      "damaged": "For damaged/defective items, full refund or replacement will be provided."
+    }
+  },
+  "admin": {
+    "notifications": {
+      "lowStock": "Low Stock Alert: Product {name} stock below 5.",
+      "newOrder": "New Order: Order #{orderId} placed by {customerName}.",
+      "returnRequest": "Return Request: Customer requested return for #{orderId}.",
+      "revenueReport": "Revenue Report: Daily revenue ₹{amount}, New customers: {count}."
+    }
+  },
+  "mobile": {
+    "nav": {
+      "home": "Home",
+      "categories": "Categories",
+      "wishlist": "Wishlist",
+      "cart": "Cart",
+      "orders": "Orders",
+      "profile": "Profile",
+      "logout": "Logout"
+    }
+  },
+  "auth": {
+    "loginSuccess": "Welcome back, {name}! Your session is secured.",
+    "invalidToken": "Session expired, please login again."
+  }
+}

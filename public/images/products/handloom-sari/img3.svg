@@ -1,0 +1,28 @@
+<svg width="500" height="600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="500" height="600" fill="#FFF8DC"/>
+  
+  <!-- Woman wearing the sari (silhouette style) -->
+  <!-- Body -->
+  <ellipse cx="250" cy="180" rx="60" ry="100" fill="#DC143C"/>
+  
+  <!-- Sari draping -->
+  <path d="M190 180 Q160 200 180 240 Q200 280 250 300 Q300 280 320 240 Q340 200 310 180" fill="#FFD700"/>
+  <path d="M200 160 Q180 140 200 120 Q250 100 300 120 Q320 140 300 160" fill="#DC143C"/>
+  
+  <!-- Border on sari -->
+  <rect x="190" y="280" width="120" height="8" fill="#8B0000"/>
+  <rect x="200" y="120" width="100" height="6" fill="#8B0000"/>
+  
+  <!-- Traditional motifs on worn sari -->
+  <circle cx="220" cy="200" r="8" fill="#8B0000"/>
+  <circle cx="280" cy="220" r="6" fill="#FFD700"/>
+  <circle cx="240" cy="250" r="5" fill="#8B0000"/>
+  
+  <!-- Background pattern -->
+  <g opacity="0.2">
+    <circle cx="100" cy="100" r="20" fill="#FFD700"/>
+    <circle cx="400" cy="150" r="15" fill="#DC143C"/>
+    <circle cx="80" cy="300" r="18" fill="#8B0000"/>
+    <circle cx="420" cy="400" r="12" fill="#FFD700"/>
+  </g>
+</svg>

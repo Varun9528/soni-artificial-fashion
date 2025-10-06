@@ -1,0 +1,56 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bagGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B4513;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D2691E;stop-opacity:1" />
+    </linearGradient>
+    <pattern id="accessoryPattern" x="0" y="0" width="25" height="25" patternUnits="userSpaceOnUse">
+      <rect width="25" height="25" fill="#F4E5D3"/>
+      <circle cx="12.5" cy="12.5" r="6" fill="#8B4513" opacity="0.3"/>
+      <rect x="8" y="8" width="9" height="9" fill="#D2691E" opacity="0.4"/>
+    </pattern>
+  </defs>
+  
+  <rect width="400" height="300" fill="#FFF8DC"/>
+  
+  <!-- Handbag -->
+  <path d="M100 140 Q100 120 120 120 L200 120 Q220 120 220 140 L220 200 Q220 220 200 220 L120 220 Q100 220 100 200 Z" fill="url(#bagGrad)"/>
+  <path d="M130 120 Q130 100 150 100 Q170 100 170 120" fill="none" stroke="#8B4513" stroke-width="4"/>
+  <circle cx="160" cy="160" r="4" fill="#FFD700"/>
+  
+  <!-- Scarf -->
+  <path d="M250 100 Q280 90 310 100 Q340 110 350 140 Q340 170 310 160 Q280 150 250 160 Q220 150 210 120 Q220 90 250 100" fill="url(#accessoryPattern)" stroke="#8B4513" stroke-width="1"/>
+  
+  <!-- Belt -->
+  <rect x="80" y="180" width="240" height="15" fill="#8B4513"/>
+  <rect x="300" y="175" width="25" height="25" fill="#D2691E"/>
+  <circle cx="312.5" cy="187.5" r="8" fill="#8B4513"/>
+  <circle cx="312.5" cy="187.5" r="4" fill="#F4E5D3"/>
+  
+  <!-- Hat -->
+  <ellipse cx="160" cy="80" rx="40" ry="15" fill="#8B4513"/>
+  <path d="M120 80 Q120 50 160 50 Q200 50 200 80" fill="#D2691E"/>
+  <rect x="155" y="45" width="10" height="15" fill="#8B4513"/>
+  
+  <!-- Beaded necklace -->
+  <circle cx="280" cy="50" r="4" fill="#FF6347"/>
+  <circle cx="290" cy="55" r="4" fill="#FFD700"/>
+  <circle cx="300" cy="60" r="4" fill="#32CD32"/>
+  <circle cx="310" cy="65" r="4" fill="#FF6347"/>
+  <circle cx="320" cy="70" r="4" fill="#FFD700"/>
+  <path d="M280 50 Q290 55 300 60 Q310 65 320 70" fill="none" stroke="#8B4513" stroke-width="1"/>
+  
+  <!-- Wallet -->
+  <rect x="50" y="240" width="40" height="25" fill="#8B4513" rx="2"/>
+  <rect x="52" y="242" width="36" height="21" fill="#D2691E"/>
+  <line x1="52" y1="252" x2="88" y2="252" stroke="#8B4513" stroke-width="1"/>
+  
+  <!-- Decorative tribal elements -->
+  <polygon points="350,200 360,220 340,220" fill="#8B4513" opacity="0.6"/>
+  <circle cx="50" cy="120" r="6" fill="#D2691E" opacity="0.7"/>
+  <circle cx="370" cy="160" r="8" fill="#8B4513" opacity="0.5"/>
+  
+  <!-- Text -->
+  <text x="200" y="280" text-anchor="middle" font-family="serif" font-size="18" font-weight="bold" fill="#8B4513">Accessories</text>
+  <text x="200" y="295" text-anchor="middle" font-family="serif" font-size="14" fill="#654321">एक्सेसरीज़</text>
+</svg>

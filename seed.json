@@ -1,0 +1,76 @@
+{
+  "banners": [
+    {
+      "id": "banner-1",
+      "title": {"en": "Handmade Bamboo Crafts", "hi": "हस्तनिर्मित बाँस शिल्प"},
+      "image": "/images/hero/hero1.jpg",
+      "active": true,
+      "order": 1
+    },
+    {
+      "id": "banner-2", 
+      "title": {"en": "Exquisite Tribal Jewelry", "hi": "उत्कृष्ट जनजातीय आभूषण"},
+      "image": "/images/hero/hero2.jpg",
+      "active": true,
+      "order": 2
+    },
+    {
+      "id": "banner-3",
+      "title": {"en": "Handloom Textiles", "hi": "हैंडलूम वस्त्र"},
+      "image": "/images/hero/hero3.jpg",
+      "active": true,
+      "order": 3
+    },
+    {
+      "id": "banner-4",
+      "title": {"en": "Home Decor Collection", "hi": "घर की सजावट संग्रह"},
+      "image": "/images/hero/hero4.jpg",
+      "active": true,
+      "order": 4
+    },
+    {
+      "id": "banner-5",
+      "title": {"en": "Festival Special", "hi": "त्योहार विशेष"},
+      "image": "/images/hero/hero5.jpg",
+      "active": true,
+      "order": 5
+    }
+  ],
+  "categories": [
+    {"id": "cat-1", "name": {"en": "Tribal Shirts", "hi": "जनजातीय शर्ट"}, "slug": "tribal-shirts", "image": "/images/categories/cat-tribal-shirts.jpg"},
+    {"id": "cat-2", "name": {"en": "Jewelry", "hi": "आभूषण"}, "slug": "jewelry", "image": "/images/categories/cat-jewelry.jpg"},
+    {"id": "cat-3", "name": {"en": "Handloom Textiles", "hi": "हैंडलूम वस्त्र"}, "slug": "handloom-textiles", "image": "/images/categories/cat-handloom-textiles.jpg"},
+    {"id": "cat-4", "name": {"en": "Home Decor", "hi": "घर की सजावट"}, "slug": "home-decor", "image": "/images/categories/cat-home-decor.jpg"},
+    {"id": "cat-5", "name": {"en": "Accessories", "hi": "सहायक उपकरण"}, "slug": "accessories", "image": "/images/categories/cat-accessories.jpg"},
+    {"id": "cat-6", "name": {"en": "Gifts & Souvenirs", "hi": "उपहार"}, "slug": "gifts-souvenirs", "image": "/images/categories/cat-gifts-souvenirs.jpg"}
+  ],
+  "artisans": [
+    {"id": "artisan-1", "name": "Sarla Bai", "slug": "sarla-bai", "village": "Pachmarhi", "photo": "/images/artisans/arti-sarla.jpg", "experience": 25},
+    {"id": "artisan-2", "name": "Ramesh Uikey", "slug": "ramesh-uikey", "village": "Bori", "photo": "/images/artisans/arti-ramesh.jpg", "experience": 18},
+    {"id": "artisan-3", "name": "Meera Gond", "slug": "meera-gond", "village": "Satpura", "photo": "/images/artisans/arti-meera.jpg", "experience": 22},
+    {"id": "artisan-4", "name": "Raj Kumar", "slug": "raj-kumar", "village": "Pachmarhi", "photo": "/images/artisans/arti-raj.jpg", "experience": 20}
+  ],
+  "products": [
+    {"id": "prod-1", "title": {"en": "Bamboo Wall Art", "hi": "बांस की दीवार कला"}, "slug": "bamboo-wall-art", "price": 1699, "images": ["/images/products/bamboo-wall-art/img1.jpg", "/images/products/bamboo-wall-art/img2.jpg", "/images/products/bamboo-wall-art/img3.jpg"], "categoryId": "cat-4", "artisanId": "artisan-4", "stock": 12},
+    {"id": "prod-2", "title": {"en": "Handloom Sari", "hi": "हैंडलूम साड़ी"}, "slug": "handloom-sari", "price": 2999, "images": ["/images/products/handloom-sari/img1.jpg", "/images/products/handloom-sari/img2.jpg", "/images/products/handloom-sari/img3.jpg"], "categoryId": "cat-3", "artisanId": "artisan-1", "stock": 8},
+    {"id": "prod-3", "title": {"en": "Terracotta Necklace", "hi": "टेराकोटा हार"}, "slug": "terracotta-necklace", "price": 899, "images": ["/images/products/terracotta-necklace/img1.jpg", "/images/products/terracotta-necklace/img2.jpg", "/images/products/terracotta-necklace/img3.jpg"], "categoryId": "cat-2", "artisanId": "artisan-2", "stock": 15},
+    {"id": "prod-4", "title": {"en": "Dokra Figurine", "hi": "डोकरा मूर्ति"}, "slug": "dokra-figurine", "price": 1299, "images": ["/images/products/dokra-figurine/img1.jpg", "/images/products/dokra-figurine/img2.jpg", "/images/products/dokra-figurine/img3.jpg"], "categoryId": "cat-4", "artisanId": "artisan-2", "stock": 10},
+    {"id": "prod-5", "title": {"en": "Tribal Printed Shirt", "hi": "जनजातीय शर्ट"}, "slug": "tribal-printed-shirt", "price": 699, "images": ["/images/products/tribal-printed-shirt/img1.jpg", "/images/products/tribal-printed-shirt/img2.jpg", "/images/products/tribal-printed-shirt/img3.jpg"], "categoryId": "cat-1", "artisanId": "artisan-1", "stock": 20},
+    {"id": "prod-6", "title": {"en": "Cane Basket", "hi": "बेंत की टोकरी"}, "slug": "cane-basket", "price": 599, "images": ["/images/products/cane-basket/img1.jpg", "/images/products/cane-basket/img2.jpg", "/images/products/cane-basket/img3.jpg"], "categoryId": "cat-4", "artisanId": "artisan-4", "stock": 18},
+    {"id": "prod-7", "title": {"en": "Gond Painting", "hi": "गोंड चित्रकारी"}, "slug": "gond-painting", "price": 1999, "images": ["/images/products/gond-painting/img1.jpg", "/images/products/gond-painting/img2.jpg", "/images/products/gond-painting/img3.jpg"], "categoryId": "cat-4", "artisanId": "artisan-3", "stock": 6},
+    {"id": "prod-8", "title": {"en": "Brass Earrings", "hi": "पीतल की बालियां"}, "slug": "brass-earrings", "price": 399, "images": ["/images/products/brass-earrings/img1.jpg", "/images/products/brass-earrings/img2.jpg", "/images/products/brass-earrings/img3.jpg"], "categoryId": "cat-2", "artisanId": "artisan-2", "stock": 25},
+    {"id": "prod-9", "title": {"en": "Hand Carved Plate", "hi": "हस्त नक्काशीदार प्लेट"}, "slug": "hand-carved-plate", "price": 799, "images": ["/images/products/hand-carved-plate/img1.jpg", "/images/products/hand-carved-plate/img2.jpg", "/images/products/hand-carved-plate/img3.jpg"], "categoryId": "cat-4", "artisanId": "artisan-4", "stock": 14},
+    {"id": "prod-10", "title": {"en": "Tribal Cushion", "hi": "जनजातीय कुशन"}, "slug": "tribal-cushion", "price": 899, "images": ["/images/products/tribal-cushion/img1.jpg", "/images/products/tribal-cushion/img2.jpg", "/images/products/tribal-cushion/img3.jpg"], "categoryId": "cat-5", "artisanId": "artisan-1", "stock": 16},
+    {"id": "prod-11", "title": {"en": "Bamboo Lamp", "hi": "बांस का दीपक"}, "slug": "bamboo-lamp", "price": 1199, "images": ["/images/products/bamboo-lamp/img1.jpg", "/images/products/bamboo-lamp/img2.jpg", "/images/products/bamboo-lamp/img3.jpg"], "categoryId": "cat-4", "artisanId": "artisan-4", "stock": 9},
+    {"id": "prod-12", "title": {"en": "Folk Doll", "hi": "लोक गुड़िया"}, "slug": "folk-doll", "price": 499, "images": ["/images/products/folk-doll/img1.jpg", "/images/products/folk-doll/img2.jpg", "/images/products/folk-doll/img3.jpg"], "categoryId": "cat-6", "artisanId": "artisan-3", "stock": 22}
+  ],
+  "users": [
+    {"email": "admin@pachmarhi.com", "name": "Admin User", "password": "admin123", "role": "super_admin"},
+    {"email": "user@pachmarhi.com", "name": "Demo User", "password": "user123", "role": "customer"}
+  ],
+  "coupons": [
+    {"code": "WELCOME10", "title": "Welcome Discount", "value": 10, "type": "percentage"},
+    {"code": "FESTIVE50", "title": "Festival Discount", "value": 50, "type": "fixed"},
+    {"code": "FREESHIP", "title": "Free Shipping", "value": 0, "type": "free_shipping"}
+  ]
+}

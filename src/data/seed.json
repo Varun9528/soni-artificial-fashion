@@ -1,0 +1,600 @@
+{
+  "banners": [
+    {
+      "id": 1,
+      "title": {
+        "en": "Handmade Bamboo Crafts — Sustainable & Beautiful",
+        "hi": "हस्तनिर्मित बाँस शिल्प — टिकाऊ और सुंदर"
+      },
+      "image": "/images/hero/hero1.jpg",
+      "link": "/category/home-decor",
+      "active": true,
+      "order": 1
+    },
+    {
+      "id": 2,
+      "title": {
+        "en": "Traditional Gond Paintings — Colors of Pachmarhi",
+        "hi": "पारंपरिक गोंड चित्रकला — पचमढ़ी के रंग"
+      },
+      "image": "/images/hero/hero2.jpg",
+      "link": "/category/home-decor",
+      "active": true,
+      "order": 2
+    },
+    {
+      "id": 3,
+      "title": {
+        "en": "Authentic Tribal Jewelry — Unique Handcrafted Pieces",
+        "hi": "प्रामाणिक जनजातीय आभूषण — अनोखे हस्तनिर्मित टुकड़े"
+      },
+      "image": "/images/hero/hero3.jpg",
+      "link": "/category/jewelry",
+      "active": true,
+      "order": 3
+    },
+    {
+      "id": 4,
+      "title": {
+        "en": "Eco-Friendly Cane Products — Style Meets Nature",
+        "hi": "पर्यावरण-अनुकूल बेंत उत्पाद — शैली और प्रकृति"
+      },
+      "image": "/images/hero/hero4.jpg",
+      "link": "/category/accessories",
+      "active": true,
+      "order": 4
+    },
+    {
+      "id": 5,
+      "title": {
+        "en": "Handloom Sarees — Weaves from Local Artisans",
+        "hi": "हैंडलूम साड़ियाँ — स्थानीय कारीगरों के बुनकर"
+      },
+      "image": "/images/hero/hero5.jpg",
+      "link": "/category/handloom-textiles",
+      "active": true,
+      "order": 5
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "slug": "tribal-shirts",
+      "name": {
+        "en": "Tribal Shirts",
+        "hi": "जनजातीय शर्ट"
+      },
+      "description": {
+        "en": "Traditional tribal printed shirts with authentic designs",
+        "hi": "प्रामाणिक डिजाइन के साथ पारंपरिक जनजातीय प्रिंट शर्ट"
+      },
+      "image": "/images/categories/cat-tribal-shirts.jpg",
+      "active": true,
+      "featured": true,
+      "order": 1
+    },
+    {
+      "id": 2,
+      "slug": "jewelry",
+      "name": {
+        "en": "Jewelry",
+        "hi": "आभूषण"
+      },
+      "description": {
+        "en": "Handcrafted tribal jewelry with traditional motifs",
+        "hi": "पारंपरिक रूपांकनों के साथ हस्तनिर्मित जनजातीय आभूषण"
+      },
+      "image": "/images/categories/cat-jewelry.jpg",
+      "active": true,
+      "featured": true,
+      "order": 2
+    },
+    {
+      "id": 3,
+      "slug": "handloom-textiles",
+      "name": {
+        "en": "Handloom Textiles",
+        "hi": "हैंडलूम वस्त्र"
+      },
+      "description": {
+        "en": "Traditional handwoven textiles and fabrics",
+        "hi": "पारंपरिक हाथ से बुने गए वस्त्र और कपड़े"
+      },
+      "image": "/images/categories/cat-handloom-textiles.jpg",
+      "active": true,
+      "featured": true,
+      "order": 3
+    },
+    {
+      "id": 4,
+      "slug": "home-decor",
+      "name": {
+        "en": "Home Décor",
+        "hi": "होम डेकोर"
+      },
+      "description": {
+        "en": "Tribal art and handicrafts for home decoration",
+        "hi": "घर की सजावट के लिए जनजातीय कला और हस्तशिल्प"
+      },
+      "image": "/images/categories/cat-home-decor.jpg",
+      "active": true,
+      "featured": true,
+      "order": 4
+    },
+    {
+      "id": 5,
+      "slug": "accessories",
+      "name": {
+        "en": "Accessories",
+        "hi": "एक्सेसरीज़"
+      },
+      "description": {
+        "en": "Tribal accessories and lifestyle products",
+        "hi": "जनजातीय एक्सेसरीज़ और जीवनशैली उत्पाद"
+      },
+      "image": "/images/categories/cat-accessories.jpg",
+      "active": true,
+      "featured": true,
+      "order": 5
+    },
+    {
+      "id": 6,
+      "slug": "gifts-souvenirs",
+      "name": {
+        "en": "Gifts & Souvenirs",
+        "hi": "उपहार और स्मृति चिन्ह"
+      },
+      "description": {
+        "en": "Perfect gifts and souvenirs from Pachmarhi",
+        "hi": "पचमढ़ी से बेहतरीन उपहार और स्मृति चिन्ह"
+      },
+      "image": "/images/categories/cat-gifts-souvenirs.jpg",
+      "active": true,
+      "featured": true,
+      "order": 6
+    }
+  ],
+  "artisans": [
+    {
+      "id": 1,
+      "slug": "sarla-bai",
+      "name": {
+        "en": "Sarla Bai",
+        "hi": "सारला बाई"
+      },
+      "village": "Pachmarhi",
+      "specialization": {
+        "en": "Handloom Weaving",
+        "hi": "हैंडलूम बुनाई"
+      },
+      "bio": {
+        "en": "Sarla Bai is a master weaver from Pachmarhi, creating vibrant handloom sarees and textiles passed down through generations.",
+        "hi": "सारला बाई पचमढ़ी की एक कुशल बुनकर हैं, जो पीढ़ियों से चले आ रहे जीवंत हैंडलूम साड़ियाँ और वस्त्र बनाती हैं।"
+      },
+      "image": "/images/artisans/arti-sarla.jpg",
+      "experience_years": 25,
+      "awards": [
+        {
+          "en": "State Handicraft Award 2020",
+          "hi": "राज्य हस्तशिल्प पुरस्कार 2020"
+        }
+      ],
+      "contact": {
+        "phone": "+91-9876543210",
+        "email": "sarla.bai@pachmarhi.com"
+      },
+      "active": true,
+      "featured": true
+    },
+    {
+      "id": 2,
+      "slug": "ramesh-uikey",
+      "name": {
+        "en": "Ramesh Uikey",
+        "hi": "रमेश उइके"
+      },
+      "village": "Tamia",
+      "specialization": {
+        "en": "Terracotta & Clay Art",
+        "hi": "टेराकोटा और मिट्टी कला"
+      },
+      "bio": {
+        "en": "Ramesh specializes in terracotta and clay figurines inspired by tribal motifs and rituals.",
+        "hi": "रमेश आदिवासी रूपांकनों और रीति-रिवाजों से प्रेरित टेराकोटा और मिट्टी के प्रतिमाओं में माहिर हैं।"
+      },
+      "image": "/images/artisans/arti-ramesh.jpg",
+      "experience_years": 18,
+      "awards": [
+        {
+          "en": "National Crafts Award 2019",
+          "hi": "राष्ट्रीय शिल्प पुरस्कार 2019"
+        }
+      ],
+      "contact": {
+        "phone": "+91-9876543211",
+        "email": "ramesh.uikey@pachmarhi.com"
+      },
+      "active": true,
+      "featured": true
+    },
+    {
+      "id": 3,
+      "slug": "meera-gond",
+      "name": {
+        "en": "Meera Gond",
+        "hi": "मीरा गोंड"
+      },
+      "village": "Pipariya",
+      "specialization": {
+        "en": "Gond Painting",
+        "hi": "गोंड चित्रकला"
+      },
+      "bio": {
+        "en": "Meera paints traditional Gond artworks and collaborates with local cooperatives to promote tribal art.",
+        "hi": "मीरा पारंपरिक गोंड चित्रकला बनाती हैं और आदिवासी कला को आगे बढ़ाने के लिए स्थानीय सहकारी संस्थाओं के साथ काम करती हैं।"
+      },
+      "image": "/images/artisans/arti-meera.jpg",
+      "experience_years": 22,
+      "awards": [
+        {
+          "en": "Tribal Art Excellence Award 2021",
+          "hi": "जनजातीय कला उत्कृष्टता पुरस्कार 2021"
+        }
+      ],
+      "contact": {
+        "phone": "+91-9876543212",
+        "email": "meera.gond@pachmarhi.com"
+      },
+      "active": true,
+      "featured": true
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "slug": "bamboo-wall-art",
+      "name": {
+        "en": "Bamboo Wall Art — Geometric Weave",
+        "hi": "बाँस दीवार कला — ज्यामितीय बुनावट"
+      },
+      "description": {
+        "en": "Handwoven bamboo wall panel, perfect for contemporary and ethnic interiors.",
+        "hi": "हाथ से बुना गया बाँस दीवार पैनल, समकालीन और पारंपरिक अंदरूनी सज्जा के लिए उपयुक्त।"
+      },
+      "price": 1699,
+      "discount_price": 1529,
+      "discount_percentage": 10,
+      "stock": 12,
+      "category_id": 4,
+      "category_slug": "home-decor",
+      "artisan_id": 1,
+      "artisan_slug": "sarla-bai",
+      "material": "Bamboo, Natural Fiber",
+      "dimensions": "40 x 60 cm",
+      "weight": "800g",
+      "colors": ["Natural", "Brown"],
+      "images": [
+        "/images/products/bamboo-wall-art/img1.jpg",
+        "/images/products/bamboo-wall-art/img2.jpg",
+        "/images/products/bamboo-wall-art/img3.jpg"
+      ],
+      "tags": ["handmade", "bamboo", "wall-art", "home-decor", "sustainable"],
+      "featured": true,
+      "active": true,
+      "created_at": "2024-01-15",
+      "rating": 4.5,
+      "reviews_count": 23
+    },
+    {
+      "id": 2,
+      "slug": "handloom-sari",
+      "name": {
+        "en": "Handloom Sari — Natural Dye",
+        "hi": "हैंडलूम साड़ी — प्राकृतिक रंग"
+      },
+      "description": {
+        "en": "Lightweight handloom sari woven using natural dyes from local plants.",
+        "hi": "स्थानीय पौधों से प्राकृतिक रंगों का उपयोग करके बुनी गई हल्की हैंडलूम साड़ी।"
+      },
+      "price": 3499,
+      "discount_price": 2974,
+      "discount_percentage": 15,
+      "stock": 7,
+      "category_id": 3,
+      "category_slug": "handloom-textiles",
+      "artisan_id": 1,
+      "artisan_slug": "sarla-bai",
+      "material": "Cotton Silk",
+      "dimensions": "Standard saree length",
+      "weight": "600g",
+      "colors": ["Red", "Yellow", "Blue"],
+      "images": [
+        "/images/products/handloom-sari/img1.jpg",
+        "/images/products/handloom-sari/img2.jpg",
+        "/images/products/handloom-sari/img3.jpg"
+      ],
+      "tags": ["handloom", "sari", "natural-dye", "cotton-silk", "traditional"],
+      "featured": true,
+      "active": true,
+      "created_at": "2024-01-20",
+      "rating": 4.8,
+      "reviews_count": 31
+    },
+    {
+      "id": 3,
+      "slug": "terracotta-necklace",
+      "name": {
+        "en": "Terracotta Necklace — Tribal Motif",
+        "hi": "टेराकोटा नेकलेस — जनजातीय रूपांक"
+      },
+      "description": {
+        "en": "Light terracotta necklace hand-painted with tribal patterns.",
+        "hi": "हल्का टेराकोटा नेकलेस, आदिवासी डिजाइन से हाथ से रंगा हुआ।"
+      },
+      "price": 899,
+      "discount_price": 899,
+      "discount_percentage": 0,
+      "stock": 25,
+      "category_id": 2,
+      "category_slug": "jewelry",
+      "artisan_id": 2,
+      "artisan_slug": "ramesh-uikey",
+      "material": "Terracotta, Brass clasp",
+      "dimensions": "45 cm length",
+      "weight": "150g",
+      "colors": ["Natural", "Red", "Brown"],
+      "images": [
+        "/images/products/terracotta-necklace/img1.jpg",
+        "/images/products/terracotta-necklace/img2.jpg",
+        "/images/products/terracotta-necklace/img3.jpg"
+      ],
+      "tags": ["terracotta", "necklace", "tribal", "jewelry", "handpainted"],
+      "featured": true,
+      "active": true,
+      "created_at": "2024-01-25",
+      "rating": 4.3,
+      "reviews_count": 18
+    },
+    {
+      "id": 4,
+      "slug": "dokra-figurine",
+      "name": {
+        "en": "Dokra Figurine — Tribal Horse",
+        "hi": "डोकरा मूर्ति — जनजातीय घोड़ा"
+      },
+      "description": {
+        "en": "Hand-cast Dokra metal figurine with rustic finish.",
+        "hi": "हाथ से ढाली गई डोकरा धातु की मूर्ति, देहाती फिनिश के साथ।"
+      },
+      "price": 2299,
+      "discount_price": 2184,
+      "discount_percentage": 5,
+      "stock": 5,
+      "category_id": 4,
+      "category_slug": "home-decor",
+      "artisan_id": 3,
+      "artisan_slug": "meera-gond",
+      "material": "Dokra metal alloy",
+      "dimensions": "20 x 15 cm",
+      "weight": "1.2kg",
+      "colors": ["Bronze", "Antique"],
+      "images": [
+        "/images/products/dokra-figurine/img1.jpg",
+        "/images/products/dokra-figurine/img2.jpg",
+        "/images/products/dokra-figurine/img3.jpg"
+      ],
+      "tags": ["dokra", "figurine", "metal", "tribal", "collectible"],
+      "featured": true,
+      "active": true,
+      "created_at": "2024-02-01",
+      "rating": 4.7,
+      "reviews_count": 12
+    },
+    {
+      "id": 5,
+      "slug": "tribal-printed-shirt",
+      "name": {
+        "en": "Tribal Printed Shirt — Cotton",
+        "hi": "जनजातीय प्रिंट शर्ट — कपास"
+      },
+      "description": {
+        "en": "Comfortable cotton shirt with traditional tribal prints.",
+        "hi": "पारंपरिक जनजातीय प्रिंट के साथ आरामदायक कपास शर्ट।"
+      },
+      "price": 1199,
+      "discount_price": 1079,
+      "discount_percentage": 10,
+      "stock": 20,
+      "category_id": 1,
+      "category_slug": "tribal-shirts",
+      "artisan_id": 3,
+      "artisan_slug": "meera-gond",
+      "material": "Cotton",
+      "dimensions": "Various sizes",
+      "weight": "300g",
+      "colors": ["Blue", "Green", "Red", "Black"],
+      "sizes": ["S", "M", "L", "XL"],
+      "images": [
+        "/images/products/tribal-printed-shirt/img1.jpg",
+        "/images/products/tribal-printed-shirt/img2.jpg",
+        "/images/products/tribal-printed-shirt/img3.jpg"
+      ],
+      "tags": ["shirt", "tribal-print", "cotton", "casual", "comfortable"],
+      "featured": true,
+      "active": true,
+      "created_at": "2024-02-05",
+      "rating": 4.4,
+      "reviews_count": 27
+    },
+    {
+      "id": 6,
+      "slug": "cane-basket",
+      "name": {
+        "en": "Cane Basket — Handwoven Storage",
+        "hi": "बेंत टोकरा — हस्तनिर्मित भंडारण"
+      },
+      "description": {
+        "en": "Durable handwoven cane basket for storage and decor.",
+        "hi": "भंडारण और सजावट के लिए टिकाऊ हाथ से बुना हुआ बेंत टोकरा।"
+      },
+      "price": 749,
+      "discount_price": 749,
+      "discount_percentage": 0,
+      "stock": 30,
+      "category_id": 5,
+      "category_slug": "accessories",
+      "artisan_id": 2,
+      "artisan_slug": "ramesh-uikey",
+      "material": "Cane, Natural fiber",
+      "dimensions": "30 x 25 cm",
+      "weight": "400g",
+      "colors": ["Natural", "Brown"],
+      "images": [
+        "/images/products/cane-basket/img1.jpg",
+        "/images/products/cane-basket/img2.jpg",
+        "/images/products/cane-basket/img3.jpg"
+      ],
+      "tags": ["cane", "basket", "storage", "handwoven", "eco-friendly"],
+      "featured": false,
+      "active": true,
+      "created_at": "2024-02-10",
+      "rating": 4.2,
+      "reviews_count": 15
+    },
+    {
+      "id": 7,
+      "slug": "gond-painting",
+      "name": {
+        "en": "Traditional Gond Painting — Forest Life",
+        "hi": "पारंपरिक गोंड चित्रकला — वन जीवन"
+      },
+      "description": {
+        "en": "Authentic Gond painting depicting forest animals and tribal mythology.",
+        "hi": "वन पशुओं और जनजातीय पुराणों को दर्शाने वाली प्रामाणिक गोंड चित्रकला।"
+      },
+      "price": 3999,
+      "discount_price": 3199,
+      "discount_percentage": 20,
+      "stock": 8,
+      "category_id": 4,
+      "category_slug": "home-decor",
+      "artisan_id": 3,
+      "artisan_slug": "meera-gond",
+      "material": "Canvas, Natural Pigments",
+      "dimensions": "50 x 40 cm",
+      "weight": "500g",
+      "colors": ["Multicolor"],
+      "images": [
+        "/images/products/gond-painting/img1.jpg",
+        "/images/products/gond-painting/img2.jpg",
+        "/images/products/gond-painting/img3.jpg"
+      ],
+      "tags": ["gond-art", "painting", "traditional", "canvas", "wall-art"],
+      "featured": true,
+      "active": true,
+      "created_at": "2024-02-12",
+      "rating": 4.9,
+      "reviews_count": 8
+    },
+    {
+      "id": 8,
+      "slug": "brass-earrings",
+      "name": {
+        "en": "Brass Earrings — Tribal Design",
+        "hi": "पीतल की बालियाँ — जनजातीय डिजाइन"
+      },
+      "description": {
+        "en": "Elegant brass earrings with traditional tribal motifs and patterns.",
+        "hi": "पारंपरिक जनजातीय रूपांकनों और पैटर्न के साथ सुरुचिपूर्ण पीतल की बालियाँ।"
+      },
+      "price": 1199,
+      "discount_price": 959,
+      "discount_percentage": 20,
+      "stock": 40,
+      "category_id": 2,
+      "category_slug": "jewelry",
+      "artisan_id": 2,
+      "artisan_slug": "ramesh-uikey",
+      "material": "Brass, Silver plating",
+      "dimensions": "6 cm length",
+      "weight": "25g",
+      "colors": ["Gold", "Silver"],
+      "images": [
+        "/images/products/brass-earrings/img1.jpg",
+        "/images/products/brass-earrings/img2.jpg",
+        "/images/products/brass-earrings/img3.jpg"
+      ],
+      "tags": ["brass", "earrings", "jewelry", "tribal", "traditional"],
+      "featured": true,
+      "active": true,
+      "created_at": "2024-02-14",
+      "rating": 4.6,
+      "reviews_count": 22
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "order_number": "ORD-2024-001",
+      "customer": {
+        "name": "Priya Sharma",
+        "email": "priya.sharma@email.com",
+        "phone": "+91-9876543213"
+      },
+      "items": [
+        {
+          "product_id": 1,
+          "product_slug": "bamboo-wall-art",
+          "quantity": 1,
+          "price": 1529
+        }
+      ],
+      "total": 1529,
+      "status": "delivered",
+      "payment_status": "paid",
+      "payment_method": "upi",
+      "shipping_address": {
+        "street": "123 Main Street",
+        "city": "Bhopal",
+        "state": "Madhya Pradesh",
+        "pincode": "462001"
+      },
+      "created_at": "2024-02-15",
+      "delivered_at": "2024-02-18"
+    },
+    {
+      "id": 2,
+      "order_number": "ORD-2024-002",
+      "customer": {
+        "name": "Rajesh Kumar",
+        "email": "rajesh.kumar@email.com",
+        "phone": "+91-9876543214"
+      },
+      "items": [
+        {
+          "product_id": 2,
+          "product_slug": "handloom-sari",
+          "quantity": 1,
+          "price": 2974
+        },
+        {
+          "product_id": 3,
+          "product_slug": "terracotta-necklace",
+          "quantity": 2,
+          "price": 1798
+        }
+      ],
+      "total": 4772,
+      "status": "processing",
+      "payment_status": "paid",
+      "payment_method": "card",
+      "shipping_address": {
+        "street": "456 Park Avenue",
+        "city": "Indore",
+        "state": "Madhya Pradesh",
+        "pincode": "452001"
+      },
+      "created_at": "2024-02-20"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+<svg width="400" height="500" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="500" fill="#F5F5DC"/>
+  
+  <!-- Person wearing the necklace (neck and shoulders) -->
+  <!-- Skin tone -->
+  <ellipse cx="200" cy="400" rx="80" ry="50" fill="#D2B48C"/>
+  
+  <!-- Neck -->
+  <ellipse cx="200" cy="350" rx="25" ry="40" fill="#D2B48C"/>
+  
+  <!-- Necklace worn -->
+  <ellipse cx="200" cy="320" rx="60" ry="30" fill="none" stroke="#B8860B" stroke-width="3"/>
+  
+  <!-- Pendant hanging -->
+  <circle cx="200" cy="350" r="20" fill="#DEB887" stroke="#8B4513" stroke-width="2"/>
+  <circle cx="200" cy="350" r="12" fill="#8B4513"/>
+  <polygon points="200,338 208,350 200,362 192,350" fill="#8B0000"/>
+  <circle cx="200" cy="350" r="4" fill="#FFD700"/>
+  
+  <!-- Side beads visible -->
+  <circle cx="150" cy="310" r="8" fill="#CD853F"/>
+  <circle cx="250" cy="310" r="8" fill="#CD853F"/>
+  <circle cx="130" cy="320" r="6" fill="#CD853F"/>
+  <circle cx="270" cy="320" r="6" fill="#CD853F"/>
+  
+  <!-- Clothing -->
+  <rect x="140" y="380" width="120" height="120" fill="#8B4513"/>
+  
+  <!-- Subtle background -->
+  <g opacity="0.1">
+    <circle cx="80" cy="150" r="30" fill="#CD853F"/>
+    <circle cx="320" cy="200" r="25" fill="#8B4513"/>
+    <circle cx="100" cy="300" r="20" fill="#DEB887"/>
+    <circle cx="300" cy="350" r="15" fill="#CD853F"/>
+  </g>
+</svg>
