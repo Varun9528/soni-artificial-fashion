@@ -1,0 +1,32 @@
+CSS NOT WORKING - TROUBLESHOOTING GUIDE
+
+1. STOP THE SERVER (Ctrl+C)
+
+2. CLEAR CACHE:
+   rm -rf .next
+
+3. RESTART SERVER:
+   npm run dev
+
+4. VISIT TEST PAGE:
+   http://localhost:3004/test-css
+
+5. CHECK BROWSER CONSOLE FOR ERRORS (F12)
+
+6. IF STILL NOT WORKING, TRY MANUAL CSS:
+
+   Create src/app/manual-styles.css:
+   .red-box { background-color: red; color: white; padding: 20px; margin: 10px; border-radius: 10px; }
+   .blue-box { background-color: blue; color: white; padding: 20px; margin: 10px; border-radius: 10px; }
+
+   Import in layout.tsx:
+   import './manual-styles.css';
+
+   Use in components:
+   <div className="red-box">RED BOX</div>
+   <div className="blue-box">BLUE BOX</div>
+
+7. CHECK package.json for missing dependencies:
+   npm install tailwindcss@latest
+
+If none of these work, there may be a deeper configuration issue.

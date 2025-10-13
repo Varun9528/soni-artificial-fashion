@@ -51,7 +51,7 @@ export const defaultSecurityConfig: SecurityHeadersConfig = {
       'style-src': ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com'],
       'font-src': ["'self'", 'https://fonts.gstatic.com'],
       'img-src': ["'self'", 'data:', 'https:', 'blob:'],
-      'connect-src': ["'self'", 'https://api.pachmarhi-art.com'],
+      'connect-src': ["'self'", 'https://api.lettex-wellness.com'],
       'frame-ancestors': ["'none'"],
       'base-uri': ["'self'"],
       'form-action': ["'self'"],

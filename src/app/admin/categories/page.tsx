@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useAuth } from '@/context/AuthContext';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
@@ -16,45 +17,54 @@ interface Category {
 }
 
 export default function AdminCategoriesPage() {
+  const { user } = useAuth();
   const router = useRouter();
   const [categories, setCategories] = useState<Category[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Check admin auth
-    const token = localStorage.getItem('token');
-    const userData = localStorage.getItem('user');
-    
-    if (!token || !userData) {
-      router.push('/login');
-      return;
-    }
-
-    try {
-      const user = JSON.parse(userData);
-      if (user.role !== 'admin' && user.role !== 'super_admin') {
-        router.push('/');
-        return;
-      }
-    } catch (error) {
+    if (!user || (user.role !== 'ADMIN' && user.role !== 'SUPER_ADMIN')) {
       router.push('/login');
       return;
     }
 
     loadCategories();
-  }, [router]);
+  }, [user, router]);
 
   const loadCategories = async () => {
     try {
-      const response = await fetch('/api/categories');
-      if (response.ok) {
-        const data = await response.json();
+      const response = await fetch('/api/admin/categories');
+      const data = await response.json();
+      if (data.success) {
         setCategories(data.categories || []);
       }
     } catch (error) {
       console.error('Error loading categories:', error);
     }
     setLoading(false);
+  };
+
+  const handleDeleteCategory = async (categoryId: string, categoryName: string) => {
+    if (!confirm(`Are you sure you want to delete the category "${categoryName}"?`)) {
+      return;
+    }
+
+    try {
+      const response = await fetch(`/api/admin/categories/${categoryId}`, {
+        method: 'DELETE',
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        setCategories(categories.filter(category => category.id !== categoryId));
+        alert('Category deleted successfully!');
+      } else {
+        alert('Failed to delete category: ' + data.error);
+      }
+    } catch (error) {
+      console.error('Error deleting category:', error);
+      alert('Failed to delete category');
+    }
   };
 
   if (loading) {
@@ -83,7 +93,7 @@ export default function AdminCategoriesPage() {
               </p>
             </div>
             <Link
-              href="/admin/categories/new"
+              href="/admin/categories/add"
               className="px-6 py-3 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition-colors font-medium"
             >
               + Add New Category
@@ -129,13 +139,16 @@ export default function AdminCategoriesPage() {
                   
                   <div className="flex space-x-2">
                     <Link
-                      href={`/admin/categories/${category.id}/edit`}
+                      href={`/admin/categories/edit/${category.id}`}
                       className="flex-1 text-center px-3 py-2 bg-amber-600 text-white rounded hover:bg-amber-700 transition-colors"
                     >
                       Edit
                     </Link>
-                    <button className="flex-1 px-3 py-2 border border-gray-300 text-gray-700 dark:text-gray-300 rounded hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
-                      {category.isActive ? 'Deactivate' : 'Activate'}
+                    <button 
+                      onClick={() => handleDeleteCategory(category.id, category.name.en)}
+                      className="flex-1 px-3 py-2 border border-red-300 text-red-700 dark:text-red-300 rounded hover:bg-red-50 dark:hover:bg-red-700 transition-colors"
+                    >
+                      Delete
                     </button>
                   </div>
                 </div>

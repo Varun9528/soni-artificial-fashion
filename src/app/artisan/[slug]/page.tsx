@@ -23,6 +23,8 @@ export default function ArtisanPage() {
       </div>
     );
   }
+  
+  // Removed SVG check to prevent optimization issues
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -34,6 +36,7 @@ export default function ArtisanPage() {
             width={500}
             height={600}
             className="w-full h-auto rounded-lg shadow-lg"
+            // Removed unoptimized prop for SVG files
           />
         </div>
         

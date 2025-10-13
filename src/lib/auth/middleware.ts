@@ -19,9 +19,18 @@ export async function authenticateRequest(
   request: NextRequest
 ): Promise<{ success: boolean; user?: any; error?: string }> {
   try {
-    // Get token from Authorization header
+    let token = '';
+    
+    // Get token from Authorization header first
     const authHeader = request.headers.get('Authorization');
-    const token = jwtService.extractTokenFromHeader(authHeader || '');
+    if (authHeader) {
+      token = jwtService.extractTokenFromHeader(authHeader || '');
+    }
+    
+    // If no token in header, check cookies
+    if (!token) {
+      token = request.cookies.get('token')?.value || '';
+    }
     
     if (!token) {
       return { success: false, error: 'No access token provided' };
@@ -31,6 +40,7 @@ export async function authenticateRequest(
     const payload = jwtService.verifyAccessToken(token);
     if (!payload) {
       return { success: false, error: 'Invalid or expired access token' };
+      
     }
 
     // Check if token is blacklisted

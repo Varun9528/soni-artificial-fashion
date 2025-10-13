@@ -1,162 +1,104 @@
 {
-  "common": {
-    "loading": "Loading...",
-    "error": "Error",
-    "success": "Success",
-    "save": "Save",
-    "cancel": "Cancel",
-    "delete": "Delete",
-    "edit": "Edit",
-    "add": "Add",
-    "search": "Search",
-    "filter": "Filter",
-    "sort": "Sort",
-    "reset": "Reset",
-    "submit": "Submit",
-    "close": "Close",
-    "view": "View",
-    "back": "Back",
-    "next": "Next",
-    "previous": "Previous",
-    "home": "Home",
-    "about": "About",
-    "contact": "Contact",
-    "support": "Support",
-    "privacy": "Privacy Policy",
-    "terms": "Terms & Conditions",
-    "shipping": "Shipping Policy"
+  "home": {
+    "hero": {
+      "title": "Discover Authentic Ayurvedic Wellness",
+      "subtitle": "Experience the natural healing power of traditional Ayurvedic remedies and organic wellness products.",
+      "cta": "Shop Now"
+    },
+    "featured": {
+      "title": "Featured Products",
+      "viewAll": "View All Products"
+    },
+    "categories": {
+      "title": "Shop by Category",
+      "viewAll": "View All Categories"
+    },
+    "artisans": {
+      "title": "Meet Our Wellness Experts",
+      "viewAll": "View All Experts"
+    },
+    "testimonials": {
+      "title": "Customer Testimonials"
+    }
   },
   "header": {
-    "welcome": "Welcome to Pachmarhi Tribal Art",
-    "search_placeholder": "Search for tribal arts...",
-    "cart": "Cart",
-    "wishlist": "Wishlist",
-    "compare": "Compare",
-    "login": "Login",
-    "register": "Register",
-    "profile": "Profile",
-    "logout": "Logout",
-    "admin": "Admin Panel",
-    "dark_mode": "Dark Mode",
-    "light_mode": "Light Mode",
-    "language": "Language"
-  },
-  "navigation": {
-    "categories": "Categories",
-    "artisans": "Artisans",
-    "new_arrivals": "New Arrivals",
-    "featured": "Featured",
-    "offers": "Special Offers",
-    "tribal_shirts": "Tribal Shirts",
-    "jewelry": "Jewelry",
-    "handloom_textiles": "Handloom Textiles",
-    "home_decor": "Home Decor",
-    "accessories": "Accessories",
-    "gifts_souvenirs": "Gifts & Souvenirs"
-  },
-  "product": {
-    "add_to_cart": "Add to Cart",
-    "add_to_wishlist": "Add to Wishlist",
-    "remove_from_wishlist": "Remove from Wishlist",
-    "add_to_compare": "Add to Compare",
-    "quick_view": "Quick View",
-    "out_of_stock": "Out of Stock",
-    "in_stock": "In Stock",
-    "price": "Price",
-    "original_price": "Original Price",
-    "discount": "Discount",
-    "rating": "Rating",
-    "reviews": "Reviews",
-    "description": "Description",
-    "specifications": "Specifications",
-    "materials": "Materials",
-    "dimensions": "Dimensions",
-    "weight": "Weight",
-    "artisan": "Artisan",
-    "category": "Category",
-    "tags": "Tags",
-    "sku": "SKU",
-    "availability": "Availability",
-    "quantity": "Quantity",
-    "size": "Size",
-    "color": "Color",
-    "variant": "Variant"
-  },
-  "cart": {
-    "shopping_cart": "Shopping Cart",
-    "empty_cart": "Your cart is empty",
-    "continue_shopping": "Continue Shopping",
-    "update_cart": "Update Cart",
-    "remove_item": "Remove Item",
-    "subtotal": "Subtotal",
-    "shipping": "Shipping",
-    "tax": "Tax",
-    "total": "Total",
-    "proceed_to_checkout": "Proceed to Checkout",
-    "free_shipping": "Free Shipping",
-    "shipping_calculated": "Shipping calculated at checkout"
-  },
-  "checkout": {
-    "checkout": "Checkout",
-    "billing_address": "Billing Address",
-    "shipping_address": "Shipping Address",
-    "payment_method": "Payment Method",
-    "order_summary": "Order Summary",
-    "place_order": "Place Order",
-    "full_name": "Full Name",
-    "email": "Email",
-    "phone": "Phone",
-    "address": "Address",
-    "city": "City",
-    "state": "State",
-    "pincode": "Pincode",
-    "country": "Country",
-    "cash_on_delivery": "Cash on Delivery",
-    "online_payment": "Online Payment",
-    "card_payment": "Card Payment",
-    "order_placed": "Order Placed Successfully",
-    "invalid_pincode": "Delivery not available at this PIN code"
-  },
-  "account": {
-    "my_account": "My Account",
-    "profile": "Profile",
-    "orders": "Orders",
-    "addresses": "Addresses",
-    "wishlist": "Wishlist",
-    "settings": "Settings",
-    "order_history": "Order History",
-    "order_details": "Order Details",
-    "order_status": "Order Status",
-    "tracking": "Tracking",
-    "cancel_order": "Cancel Order",
-    "return_order": "Return Order",
-    "reorder": "Reorder"
-  },
-  "admin": {
-    "dashboard": "Dashboard",
+    "home": "Home",
     "products": "Products",
-    "orders": "Orders",
     "categories": "Categories",
-    "artisans": "Artisans",
-    "banners": "Banners",
-    "users": "Users",
-    "analytics": "Analytics",
-    "settings": "Settings",
-    "create_product": "Create Product",
-    "edit_product": "Edit Product",
-    "product_list": "Product List",
-    "order_management": "Order Management",
-    "user_management": "User Management"
+    "about": "About",
+    "contact": "Contact"
   },
   "footer": {
-    "about_us": "About Us",
-    "quick_links": "Quick Links",
-    "customer_service": "Customer Service",
-    "follow_us": "Follow Us",
-    "newsletter": "Newsletter",
-    "subscribe": "Subscribe",
-    "email_placeholder": "Enter your email",
-    "copyright": "© 2024 Pachmarhi Tribal Art Marketplace. All rights reserved.",
-    "made_with_love": "Made with ❤️ for preserving tribal arts"
-  }
+    "about": "About Lettex",
+    "quickLinks": "Quick Links",
+    "customerService": "Customer Service",
+    "policies": "Policies & Info",
+    "contact": "Contact Us",
+    "email": "support@lettex.com",
+    "phone": "+91 9876543210",
+    "address": "Mumbai, Maharashtra, India",
+    "rights": "All rights reserved.",
+    "newsletter": {
+      "title": "Stay Updated",
+      "placeholder": "Enter your email",
+      "subscribe": "Subscribe"
+    }
+  },
+  "mobile": {
+    "nav": {
+      "home": "Home",
+      "categories": "Categories",
+      "wishlist": "Wishlist",
+      "cart": "Cart",
+      "orders": "Orders",
+      "profile": "Profile",
+      "logout": "Logout"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Welcome Back",
+      "subtitle": "Sign in to your Lettex account",
+      "email": "Email address",
+      "password": "Password",
+      "remember": "Remember me",
+      "forgot": "Forgot password?",
+      "cta": "Sign in",
+      "noAccount": "Don't have an account?",
+      "signup": "Sign up"
+    },
+    "signup": {
+      "title": "Create Account",
+      "subtitle": "Join Lettex to discover authentic wellness products",
+      "name": "Full name",
+      "email": "Email address",
+      "password": "Password",
+      "confirmPassword": "Confirm password",
+      "cta": "Create account",
+      "hasAccount": "Already have an account?",
+      "signin": "Sign in"
+    }
+  },
+  "cart": {
+    "title": "Your Shopping Cart",
+    "empty": "Your cart is empty",
+    "continue": "Continue Shopping",
+    "checkout": "Proceed to Checkout"
+  },
+  "checkout": {
+    "title": "Checkout",
+    "shipping": "Shipping Information",
+    "payment": "Payment Method",
+    "order": "Order Summary",
+    "placeOrder": "Place Order"
+  },
+  "profile": {
+    "title": "My Profile",
+    "orders": "My Orders",
+    "wishlist": "My Wishlist",
+    "addresses": "My Addresses",
+    "settings": "Account Settings"
+  },
+  "welcome": "Welcome to Lettex Ayurvedic Wellness",
+  "copyright": "© 2024 Lettex Ayurvedic Wellness Marketplace. All rights reserved."
 }

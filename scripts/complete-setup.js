@@ -26,11 +26,11 @@ try {
 
 // 2. Create comprehensive .env.local
 const envContent = `# Database Configuration
-DATABASE_URL="mysql://root:password@localhost:3306/pachmarhi_db"
+DATABASE_URL="mysql://root:password@localhost:3306/pachmarhi"
 DB_HOST="localhost"
 DB_USER="root"
 DB_PASSWORD=""
-DB_NAME="pachmarhi_db"
+DB_NAME="pachmarhi"
 DB_PORT="3306"
 
 # JWT Configuration

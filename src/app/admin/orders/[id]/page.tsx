@@ -58,35 +58,24 @@ export default function OrderDetailPage({ params }: { params: { id: string } }) 
   useEffect(() => {
     // In a real implementation, fetch order details from API
     // For now, we'll use mock data
-    const mockOrder: Order = {
-      id: params.id,
-      orderNumber: 'ORD-2024-001',
-      user: {
-        name: 'John Doe',
-        email: 'john@example.com',
+    const mockOrder = {
+      id: 'ORD-2024-001',
+      date: '2024-01-15',
+      status: 'Delivered',
+      total: 4297,
+      customer: {
+        name: 'Amit Sharma',
+        email: 'amit.sharma@example.com',
         phone: '+91 9876543210'
       },
-      address: {
-        name: 'John Doe',
-        address: '123 Main Street',
-        city: 'Pachmarhi',
-        state: 'Madhya Pradesh',
-        pincode: '461881',
-        phone: '+91 9876543210'
+      shippingAddress: {
+        name: 'Amit Sharma',
+        street: '123 Main Street',
+        city: 'Mumbai',
+        state: 'Maharashtra',
+        zipCode: '400001',
+        country: 'India'
       },
-      totalAmount: 2500,
-      subtotal: 2300,
-      shippingFee: 100,
-      tax: 100,
-      discount: 0,
-      paymentStatus: 'COMPLETED',
-      status: 'DELIVERED',
-      paymentMethod: 'Credit Card',
-      trackingNumber: 'TN123456789IN',
-      shippingPartner: 'India Post',
-      estimatedDelivery: '2024-01-20',
-      createdAt: '2024-01-15T10:30:00Z',
-      updatedAt: '2024-01-20T15:45:00Z',
       items: [
         {
           id: '1',
@@ -106,41 +95,9 @@ export default function OrderDetailPage({ params }: { params: { id: string } }) 
           quantity: 1,
           price: 1000
         }
-      ],
-      statusHistory: [
-        {
-          status: 'PENDING',
-          note: 'Order placed',
-          createdAt: '2024-01-15T10:30:00Z'
-        },
-        {
-          status: 'CONFIRMED',
-          note: 'Order confirmed by admin',
-          createdAt: '2024-01-15T12:00:00Z'
-        },
-        {
-          status: 'PROCESSING',
-          note: 'Order is being processed',
-          createdAt: '2024-01-16T09:00:00Z'
-        },
-        {
-          status: 'SHIPPED',
-          note: 'Order shipped via India Post',
-          createdAt: '2024-01-17T14:00:00Z'
-        },
-        {
-          status: 'OUT_FOR_DELIVERY',
-          note: 'Out for delivery',
-          createdAt: '2024-01-19T08:00:00Z'
-        },
-        {
-          status: 'DELIVERED',
-          note: 'Order delivered successfully',
-          createdAt: '2024-01-20T15:45:00Z'
-        }
       ]
     };
-    
+
     setOrder(mockOrder);
     setLoading(false);
   }, [params.id]);

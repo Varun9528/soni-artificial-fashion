@@ -1,298 +1,261 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useAuth } from '@/context/AuthContext';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
-interface Product {
-  id: string;
-  title: { en: string; hi: string };
-  description: { en: string; hi: string };
-  price: number;
-  stock: number;
-  category: { name: { en: string; hi: string } };
-  status: 'active' | 'inactive';
-  images: { url: string }[];
-  sku: string;
-  createdAt: string;
-}
-
-export default function AdminProductManagement() {
-  const [products, setProducts] = useState<Product[]>([]);
+export default function AdminProducts() {
+  const { user } = useAuth();
+  const router = useRouter();
+  const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [filterStatus, setFilterStatus] = useState('all');
-  const [language, setLanguage] = useState('en');
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
-    fetchProducts();
-  }, []);
-
-  const fetchProducts = async () => {
-    try {
-      const response = await fetch('/api/admin/products');
-      const data = await response.json();
-      
-      if (data.success) {
-        setProducts(data.products);
-      }
-    } catch (error) {
-      console.error('Error fetching products:', error);
-    } finally {
-      setLoading(false);
+    if (!user || (user.role !== 'ADMIN' && user.role !== 'SUPER_ADMIN')) {
+      router.push('/login');
+      return;
     }
-  };
 
-  // Mock localization function
-  const t = (key: string) => {
-    const translations: any = {
-      en: {
-        title: "Product Management",
-        addNewProduct: "Add New Product",
-        searchPlaceholder: "Search products...",
-        filterByStatus: "Filter by Status",
-        all: "All",
-        active: "Active",
-        inactive: "Inactive",
-        productImage: "Product Image",
-        productName: "Product Name",
-        category: "Category",
-        price: "Price",
-        stock: "Stock",
-        status: "Status",
-        actions: "Actions",
-        edit: "Edit",
-        delete: "Delete",
-        view: "View",
-        approve: "Approve",
-        reject: "Reject",
-        noProducts: "No products found matching your criteria.",
-        sku: "SKU",
-        date: "Date Added",
-        // New translations for admin panel
-        addProduct: "Add Product",
-        updateProduct: "Update Product",
-        deleteProduct: "Delete Product",
-        productAddedSuccess: "Product added successfully!",
-        productUpdatedSuccess: "Product updated successfully!"
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch('/api/admin/products');
+        const data = await response.json();
+        if (data.success) {
+          setProducts(data.products);
+        }
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      } finally {
+        setLoading(false);
       }
     };
-    
-    return translations[language][key] || key;
-  };
 
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case 'active': return 'bg-green-100 text-green-800';
-      case 'inactive': return 'bg-red-100 text-red-800';
-      default: return 'bg-gray-100 text-gray-800';
-    }
-  };
-
-  const filteredProducts = products.filter(product => {
-    const productName = product.title.en.toLowerCase();
-    const productDescription = product.description.en.toLowerCase();
-    const matchesSearch = productName.includes(searchTerm.toLowerCase()) || 
-                          productDescription.includes(searchTerm.toLowerCase());
-    const matchesStatus = filterStatus === 'all' || product.status === filterStatus;
-    return matchesSearch && matchesStatus;
-  });
+    fetchProducts();
+  }, [user, router]);
 
   const handleDeleteProduct = async (productId: string) => {
-    if (confirm('Are you sure you want to delete this product?')) {
-      try {
-        // In a real implementation, you would call an API to delete the product
-        // For now, we'll just remove it from the local state
-        setProducts(products.filter(product => product.id !== productId));
-      } catch (error) {
-        console.error('Error deleting product:', error);
-        alert('Failed to delete product');
-      }
+    if (!confirm('Are you sure you want to delete this product?')) {
+      return;
     }
-  };
 
-  const handleToggleStatus = async (productId: string) => {
     try {
-      // In a real implementation, you would call an API to update the product status
-      // For now, we'll just update the local state
-      setProducts(products.map(product => 
-        product.id === productId 
-          ? { ...product, status: product.status === 'active' ? 'inactive' : 'active' } 
-          : product
-      ));
+      const response = await fetch(`/api/admin/products/${productId}`, {
+        method: 'DELETE',
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        setProducts(products.filter((product: any) => product.id !== productId));
+        alert('Product deleted successfully!');
+      } else {
+        alert('Failed to delete product: ' + data.error);
+      }
     } catch (error) {
-      console.error('Error updating product status:', error);
-      alert('Failed to update product status');
+      console.error('Error deleting product:', error);
+      alert('Failed to delete product');
     }
   };
 
-  if (loading) {
+  const filteredProducts = products.filter((product: any) =>
+    product.title?.en?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    product.category?.name?.en?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    product.artisan?.name?.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  if (!user) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-amber-600 mx-auto"></div>
-          <p className="mt-4 text-gray-600">Loading products...</p>
-        </div>
+      <div className="min-h-screen flex items-center justify-center">
+        <p>Loading...</p>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-8">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-            <div>
-              <h1 className="text-2xl font-bold text-gray-900">{t('title')}</h1>
-              <p className="mt-1 text-sm text-gray-600">
-                Manage all products in your marketplace
-              </p>
-            </div>
-            <div className="mt-4 md:mt-0">
-              <Link
-                href="/admin/products/new"
-                className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-amber-600 hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500"
-              >
-                <svg className="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clipRule="evenodd" />
-                </svg>
-                {t('addNewProduct')}
-              </Link>
-            </div>
+    <div className="min-h-screen bg-gray-50">
+      <div className="container mx-auto px-4 py-8">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+          <div>
+            <h1 className="text-2xl font-bold text-gray-900">Products Management</h1>
+            <p className="text-gray-600 mt-1">Manage all products in your marketplace</p>
+          </div>
+          <div className="mt-4 md:mt-0">
+            <Link
+              href="/admin/products/add"
+              className="px-4 py-2 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition-colors font-medium"
+            >
+              Add New Product
+            </Link>
           </div>
         </div>
 
-        {/* Filters */}
-        <div className="mb-6 bg-white rounded-lg shadow-sm p-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div>
-              <input
-                type="text"
-                placeholder={t('searchPlaceholder')}
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-amber-500 focus:border-amber-500"
+        {/* Search Bar */}
+        <div className="mb-6">
+          <div className="relative">
+            <input
+              type="text"
+              placeholder="Search products..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
+            />
+            <svg
+              className="absolute right-3 top-2.5 w-5 h-5 text-gray-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
               />
-            </div>
-            <div>
-              <select
-                value={filterStatus}
-                onChange={(e) => setFilterStatus(e.target.value)}
-                className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-amber-500 focus:border-amber-500"
-              >
-                <option value="all">{t('all')}</option>
-                <option value="active">{t('active')}</option>
-                <option value="inactive">{t('inactive')}</option>
-              </select>
-            </div>
+            </svg>
           </div>
         </div>
 
         {/* Products Table */}
-        <div className="bg-white shadow-sm rounded-lg overflow-hidden">
+        <div className="bg-white rounded-lg shadow overflow-hidden">
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
                 <tr>
-                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    {t('productImage')}
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Product
                   </th>
-                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    {t('productName')}
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Category
                   </th>
-                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    {t('category')}
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Artisan
                   </th>
-                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    {t('sku')}
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Price
                   </th>
-                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    {t('price')}
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Stock
                   </th>
-                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    {t('stock')}
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Status
                   </th>
-                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    {t('date')}
-                  </th>
-                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    {t('status')}
-                  </th>
-                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    {t('actions')}
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Actions
                   </th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
-                {filteredProducts.length > 0 ? (
-                  filteredProducts.map((product) => (
+                {loading ? (
+                  <tr>
+                    <td colSpan={7} className="px-6 py-4 text-center text-gray-500">
+                      Loading products...
+                    </td>
+                  </tr>
+                ) : filteredProducts.length === 0 ? (
+                  <tr>
+                    <td colSpan={7} className="px-6 py-4 text-center text-gray-500">
+                      No products found
+                    </td>
+                  </tr>
+                ) : (
+                  filteredProducts.map((product: any) => (
                     <tr key={product.id} className="hover:bg-gray-50">
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="flex-shrink-0 h-10 w-10">
-                          <img
-                            className="h-10 w-10 rounded-md object-cover"
-                            src={product.images[0]?.url || '/images/products/placeholder.jpg'}
-                            alt={product.title.en}
-                            onError={(e: any) => {
-                              const target = e.target as HTMLImageElement;
-                              target.src = '/images/products/placeholder.jpg';
-                            }}
-                          />
+                        <div className="flex items-center">
+                          <div className="flex-shrink-0 h-10 w-10">
+                            {product.productImages?.[0] ? (
+                              <img
+                                className="h-10 w-10 rounded-md object-cover"
+                                src={product.productImages[0].url}
+                                alt={product.title?.en}
+                              />
+                            ) : (
+                              <div className="h-10 w-10 bg-gray-200 rounded-md flex items-center justify-center">
+                                <svg
+                                  className="h-6 w-6 text-gray-400"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                                  />
+                                </svg>
+                              </div>
+                            )}
+                          </div>
+                          <div className="ml-4">
+                            <div className="text-sm font-medium text-gray-900">
+                              {product.title?.en}
+                            </div>
+                            <div className="text-sm text-gray-500">
+                              ID: {product.id.slice(0, 8)}
+                            </div>
+                          </div>
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm font-medium text-gray-900">{product.title.en}</div>
-                        <div className="text-sm text-gray-500 line-clamp-1">{product.description.en}</div>
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        {product.category.name.en}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        {product.sku}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        ₹{product.price.toLocaleString()}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        {product.stock > 0 ? product.stock : <span className="text-red-600">Out of Stock</span>}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        {new Date(product.createdAt).toLocaleDateString()}
+                        <div className="text-sm text-gray-900">
+                          {product.category?.name?.en}
+                        </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${getStatusColor(product.status)}`}>
-                          {product.status.charAt(0).toUpperCase() + product.status.slice(1)}
+                        <div className="text-sm text-gray-900">
+                          {product.artisan?.name}
+                        </div>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <div className="text-sm text-gray-900">
+                          ₹{product.price}
+                        </div>
+                        {product.originalPrice && product.originalPrice > product.price && (
+                          <div className="text-sm text-gray-500 line-through">
+                            ₹{product.originalPrice}
+                          </div>
+                        )}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <span
+                          className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
+                            product.stock > 0
+                              ? 'bg-green-100 text-green-800'
+                              : 'bg-red-100 text-red-800'
+                          }`}
+                        >
+                          {product.stock > 0 ? `${product.stock} in stock` : 'Out of stock'}
+                        </span>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <span
+                          className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
+                            product.isActive
+                              ? 'bg-green-100 text-green-800'
+                              : 'bg-gray-100 text-gray-800'
+                          }`}
+                        >
+                          {product.isActive ? 'Active' : 'Inactive'}
                         </span>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                        <div className="flex space-x-2">
-                          <Link
-                            href={`/admin/products/${product.id}/edit`}
-                            className="text-amber-600 hover:text-amber-900"
-                          >
-                            {t('edit')}
-                          </Link>
-                          <button
-                            onClick={() => handleToggleStatus(product.id)}
-                            className="text-blue-600 hover:text-blue-900"
-                          >
-                            {product.status === 'active' ? t('reject') : t('approve')}
-                          </button>
-                          <button
-                            onClick={() => handleDeleteProduct(product.id)}
-                            className="text-red-600 hover:text-red-900"
-                          >
-                            {t('delete')}
-                          </button>
-                        </div>
+                        <Link
+                          href={`/admin/products/edit/${product.id}`}
+                          className="text-amber-600 hover:text-amber-900 mr-3"
+                        >
+                          Edit
+                        </Link>
+                        <button
+                          onClick={() => handleDeleteProduct(product.id)}
+                          className="text-red-600 hover:text-red-900"
+                        >
+                          Delete
+                        </button>
                       </td>
                     </tr>
                   ))
-                ) : (
-                  <tr>
-                    <td colSpan={9} className="px-6 py-4 text-center text-sm text-gray-500">
-                      {t('noProducts')}
-                    </td>
-                  </tr>
                 )}
               </tbody>
             </table>

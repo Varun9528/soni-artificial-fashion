@@ -161,25 +161,19 @@ function generateInsertSQL(tableName, data) {
     return `(${rowValues.join(', ')})`;
   });
   
-  return `INSERT INTO ${tableName} (${columns.join(', ')}) VALUES
-${values.join(',
-')};
-
-`;
+  return `INSERT INTO ${tableName} (${columns.join(', ')}) VALUES\n${values.join(',\n')};\n`;
 }
 
 // Create the seed SQL file
 function createSeedFile() {
-  let sql = `-- Pachmarhi Tribal Art Marketplace Seed Data
--- Generated on ${new Date().toISOString()}
-
--- Clear existing data (in reverse order of dependencies)
-DELETE FROM coupon_usage;
-DELETE FROM coupons;
-DELETE FROM banners;
-DELETE FROM artisans;
-
-`;
+  let sql = `-- Pachmarhi Tribal Art Marketplace Seed Data\n`;
+  sql += `-- Generated on ${new Date().toISOString()}\n\n`;
+  
+  sql += `-- Clear existing data (in reverse order of dependencies)\n`;
+  sql += `DELETE FROM coupon_usage;\n`;
+  sql += `DELETE FROM coupons;\n`;
+  sql += `DELETE FROM banners;\n`;
+  sql += `DELETE FROM artisans;\n\n`;
 
   // Add INSERT statements
   sql += generateInsertSQL('artisans', seedData.artisans);
@@ -187,26 +181,26 @@ DELETE FROM artisans;
   sql += generateInsertSQL('coupons', seedData.coupons);
 
   // Add some sample orders for demo
-  sql += `-- Sample orders for demo
-INSERT INTO orders (id, order_number, user_id, status, payment_method, subtotal, total_amount, shipping_address, created_at) VALUES
-('order-001', 'ORD2024001', 'admin-001', 'delivered', 'cod', 2499.00, 2499.00, '{"fullName": "John Doe", "phone": "9876543210", "addressLine1": "123 Main St", "city": "Bhopal", "state": "Madhya Pradesh", "pincode": "462001"}', '2024-09-25 10:30:00'),
-('order-002', 'ORD2024002', 'admin-001', 'shipped', 'online', 1299.00, 1299.00, '{"fullName": "Jane Smith", "phone": "9876543211", "addressLine1": "456 Oak Ave", "city": "Indore", "state": "Madhya Pradesh", "pincode": "452001"}', '2024-09-28 14:15:00'),
-('order-003', 'ORD2024003', 'admin-001', 'processing', 'cod', 899.00, 939.00, '{"fullName": "Mike Johnson", "phone": "9876543212", "addressLine1": "789 Pine St", "city": "Jabalpur", "state": "Madhya Pradesh", "pincode": "482001"}', '2024-09-30 09:45:00');
+  sql += `-- Sample orders for demo\n`;
+  sql += `INSERT INTO orders (id, order_number, user_id, status, payment_method, subtotal, total_amount, shipping_address, created_at) VALUES\n`;
+  sql += `('order-001', 'ORD2024001', 'admin-001', 'delivered', 'cod', 2499.00, 2499.00, '{"fullName": "John Doe", "phone": "9876543210", "addressLine1": "123 Main St", "city": "Bhopal", "state": "Madhya Pradesh", "pincode": "462001"}', '2024-09-25 10:30:00'),\n`;
+  sql += `('order-002', 'ORD2024002', 'admin-001', 'shipped', 'online', 1299.00, 1299.00, '{"fullName": "Jane Smith", "phone": "9876543211", "addressLine1": "456 Oak Ave", "city": "Indore", "state": "Madhya Pradesh", "pincode": "452001"}', '2024-09-28 14:15:00'),\n`;
+  sql += `('order-003', 'ORD2024003', 'admin-001', 'processing', 'cod', 899.00, 939.00, '{"fullName": "Mike Johnson", "phone": "9876543212", "addressLine1": "789 Pine St", "city": "Jabalpur", "state": "Madhya Pradesh", "pincode": "482001"}', '2024-09-30 09:45:00');\n\n`;
 
--- Sample returns for demo
-INSERT INTO returns (id, order_id, order_item_id, user_id, reason, description, status, created_at) VALUES
-('return-001', 'order-001', 'item-001', 'admin-001', 'Damaged during shipping', 'Product arrived with scratches on the surface', 'requested', '2024-09-29 16:20:00'),
-('return-002', 'order-002', 'item-002', 'admin-001', 'Size issue', 'Product size is different from description', 'approved', '2024-09-29 11:30:00');
+  // Sample returns for demo
+  sql += `-- Sample returns for demo\n`;
+  sql += `INSERT INTO returns (id, order_id, order_item_id, user_id, reason, description, status, created_at) VALUES\n`;
+  sql += `('return-001', 'order-001', 'item-001', 'admin-001', 'Damaged during shipping', 'Product arrived with scratches on the surface', 'requested', '2024-09-29 16:20:00'),\n`;
+  sql += `('return-002', 'order-002', 'item-002', 'admin-001', 'Size issue', 'Product size is different from description', 'approved', '2024-09-29 11:30:00');\n\n`;
 
--- Update product counts and ratings
-UPDATE products SET 
-  review_count = FLOOR(RAND() * 50) + 5,
-  rating = ROUND(4.0 + (RAND() * 1.0), 1),
-  view_count = FLOOR(RAND() * 500) + 50,
-  sales_count = FLOOR(RAND() * 100) + 10
-WHERE id IN (SELECT id FROM products LIMIT 10);
-
-`;
+  // Update product counts and ratings
+  sql += `-- Update product counts and ratings\n`;
+  sql += `UPDATE products SET \n`;
+  sql += `  review_count = FLOOR(RAND() * 50) + 5,\n`;
+  sql += `  rating = ROUND(4.0 + (RAND() * 1.0), 1),\n`;
+  sql += `  view_count = FLOOR(RAND() * 500) + 50,\n`;
+  sql += `  sales_count = FLOOR(RAND() * 100) + 10\n`;
+  sql += `WHERE id IN (SELECT id FROM products LIMIT 10);\n\n`;
 
   return sql;
 }

@@ -1,32 +1,24 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { getServerSession } from '@/lib/auth/session';
+import { withAuth } from '@/lib/auth/middleware';
 
-export async function GET(request: NextRequest) {
+export const GET = withAuth(async (request: NextRequest, authContext: any) => {
   try {
-    const session = await getServerSession(request);
-    
-    if (!session) {
-      return NextResponse.json(
-        { error: 'Unauthorized' },
-        { status: 401 }
-      );
-    }
-
     const { searchParams } = new URL(request.url);
     const limit = parseInt(searchParams.get('limit') || '10');
     const offset = parseInt(searchParams.get('offset') || '0');
     const unreadOnly = searchParams.get('unreadOnly') === 'true';
 
-    const whereClause = {
-      userId: session.user.id,
-      ...(unreadOnly && { read: false })
+    const whereClause: any = {
+      user_id: authContext.user.id,
+      ...(unreadOnly && { read_at: null })
     };
 
     const notifications = await prisma.notification.findMany({
       where: whereClause,
       orderBy: {
-        createdAt: 'desc'
+        created_at: 'desc'
       },
       take: limit,
       skip: offset
@@ -50,19 +42,11 @@ export async function GET(request: NextRequest) {
       { status: 500 }
     );
   }
-}
+});
 
-export async function PUT(request: NextRequest) {
+
+export const PUT = withAuth(async (request: NextRequest, authContext: any) => {
   try {
-    const session = await getServerSession(request);
-    
-    if (!session) {
-      return NextResponse.json(
-        { error: 'Unauthorized' },
-        { status: 401 }
-      );
-    }
-
     const body = await request.json();
     const { notificationIds, read } = body;
 
@@ -79,10 +63,10 @@ export async function PUT(request: NextRequest) {
         id: {
           in: notificationIds
         },
-        userId: session.user.id
+        user_id: authContext.user.id
       },
       data: {
-        read
+        read_at: read ? new Date() : null
       }
     });
 
@@ -98,19 +82,11 @@ export async function PUT(request: NextRequest) {
       { status: 500 }
     );
   }
-}
+});
 
-export async function DELETE(request: NextRequest) {
+
+export const DELETE = withAuth(async (request: NextRequest, authContext: any) => {
   try {
-    const session = await getServerSession(request);
-    
-    if (!session) {
-      return NextResponse.json(
-        { error: 'Unauthorized' },
-        { status: 401 }
-      );
-    }
-
     const body = await request.json();
     const { notificationIds } = body;
 
@@ -127,7 +103,7 @@ export async function DELETE(request: NextRequest) {
         id: {
           in: notificationIds
         },
-        userId: session.user.id
+        user_id: authContext.user.id
       }
     });
 
@@ -143,20 +119,12 @@ export async function DELETE(request: NextRequest) {
       { status: 500 }
     );
   }
-}
+});
+
 
 // Create a new notification
-export async function POST(request: NextRequest) {
+export const POST = withAuth(async (request: NextRequest, authContext: any) => {
   try {
-    const session = await getServerSession(request);
-    
-    if (!session) {
-      return NextResponse.json(
-        { error: 'Unauthorized' },
-        { status: 401 }
-      );
-    }
-
     const body = await request.json();
     const { title, message, type, referenceId, referenceType } = body;
 
@@ -171,12 +139,10 @@ export async function POST(request: NextRequest) {
     // Create notification
     const notification = await prisma.notification.create({
       data: {
-        userId: session.user.id,
+        user_id: authContext.user.id,
         title,
         message,
-        type: type || 'info',
-        referenceId,
-        referenceType,
+        type,
       }
     });
 
@@ -193,4 +159,4 @@ export async function POST(request: NextRequest) {
       { status: 500 }
     );
   }
-}
+});

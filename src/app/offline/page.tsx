@@ -69,7 +69,7 @@ export default function OfflinePage() {
         </div>
 
         <div className="mt-8 text-sm text-gray-500">
-          <p>Pachmarhi Tribal Art Marketplace</p>
+          <p>Lettex Ayurvedic Wellness Marketplace</p>
           <p>PWA • Offline Mode</p>
         </div>
       </div>

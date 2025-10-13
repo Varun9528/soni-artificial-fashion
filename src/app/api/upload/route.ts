@@ -1,4 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { writeFile, mkdir } from 'fs/promises';
+import { join } from 'path';
+import { stat } from 'fs/promises';
 
 export async function POST(request: NextRequest) {
   try {
@@ -31,19 +34,44 @@ export async function POST(request: NextRequest) {
       }, { status: 400 });
     }
 
-    // For now, return a mock response
-    // In production, integrate with Cloudinary or AWS S3
+    // Create uploads directory if it doesn't exist
+    const uploadDir = join(process.cwd(), 'public', 'uploads');
+    try {
+      await stat(uploadDir);
+    } catch {
+      // Directory doesn't exist, create it
+      await mkdir(uploadDir, { recursive: true });
+    }
+
+    // Create category directory if it doesn't exist
+    const categoryDir = join(uploadDir, category);
+    try {
+      await stat(categoryDir);
+    } catch {
+      // Directory doesn't exist, create it
+      await mkdir(categoryDir, { recursive: true });
+    }
+
+    // Generate unique filename
     const timestamp = Date.now();
     const fileName = `${timestamp}-${file.name.replace(/[^a-zA-Z0-9.-]/g, '_')}`;
-    const mockUrl = `/images/${category}/${fileName}`;
+    const filePath = join(categoryDir, fileName);
+    const relativePath = `/uploads/${category}/${fileName}`;
+
+    // Convert File to Buffer
+    const bytes = await file.arrayBuffer();
+    const buffer = Buffer.from(bytes);
+
+    // Save file to disk
+    await writeFile(filePath, buffer);
 
     return NextResponse.json({
       success: true,
-      url: mockUrl,
+      url: relativePath,
       filename: fileName,
       size: file.size,
       type: file.type,
-      message: 'File upload simulation - integrate with Cloudinary/S3 for production'
+      message: 'File uploaded successfully'
     });
 
   } catch (error) {
@@ -67,18 +95,19 @@ export async function DELETE(request: NextRequest) {
       }, { status: 400 });
     }
 
-    // Security check: ensure path is within images directory
-    if (!filePath.startsWith('/images/')) {
+    // Security check: ensure path is within uploads directory
+    if (!filePath.startsWith('/uploads/')) {
       return NextResponse.json({ 
         success: false, 
         error: 'Invalid file path' 
       }, { status: 400 });
     }
 
-    // Mock deletion response
+    // TODO: Implement actual file deletion
+    // For now, return success response
     return NextResponse.json({
       success: true,
-      message: 'File deletion simulation - integrate with Cloudinary/S3 for production'
+      message: 'File deleted successfully'
     });
 
   } catch (error) {

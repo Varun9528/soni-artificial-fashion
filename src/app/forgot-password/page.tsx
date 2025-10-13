@@ -39,14 +39,14 @@ export default function ForgotPasswordPage() {
           <Link href="/" className="flex justify-center">
             <div className="flex items-center space-x-3">
               <div className="w-12 h-12 bg-amber-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">P</span>
+                <span className="text-white font-bold text-xl">L</span>
               </div>
               <div>
                 <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
-                  Pachmarhi
+                  Lettex
                 </h1>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
-                  Tribal Art Marketplace
+                  Ayurvedic Wellness Marketplace
                 </p>
               </div>
             </div>
@@ -132,12 +132,12 @@ export default function ForgotPasswordPage() {
         <div className="mt-8">
           <div className="text-center">
             <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">
-              Why Choose Pachmarhi?
+              Why Choose Lettex?
             </h3>
             <div className="grid grid-cols-1 gap-4 text-sm text-gray-600 dark:text-gray-400">
               <div className="flex items-center justify-center space-x-2">
-                <span>🎨</span>
-                <span>Authentic tribal art</span>
+                <span>🌿</span>
+                <span>Authentic Ayurvedic products</span>
               </div>
               <div className="flex items-center justify-center space-x-2">
                 <span>🚚</span>

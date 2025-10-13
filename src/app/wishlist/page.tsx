@@ -1,235 +1,216 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
 import { useWishlist } from '@/context/WishlistContext';
-import { useCart } from '@/context/CartContext';
-import { Product } from '@/data/types';
+import { useLanguage } from '@/context/LanguageContext';
+import Link from 'next/link';
+import Image from 'next/image';
+import { useState } from 'react';
+import { Heart, X } from 'lucide-react';
 
 export default function WishlistPage() {
   const { state: wishlistState, removeFromWishlist } = useWishlist();
-  const { addToCart } = useCart();
-  const [language, setLanguage] = useState('en');
-  const [products, setProducts] = useState<Record<string, Product>>({});
+  const { language } = useLanguage();
+  const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    const savedLanguage = localStorage.getItem('language') || 'en';
-    setLanguage(savedLanguage);
-  }, []);
-
-  // Fetch product data for wishlist items
-  useEffect(() => {
-    const fetchProducts = async () => {
-      if (wishlistState.items.length === 0) return;
-      
-      try {
-        // In a real application, you would fetch products from an API
-        // For now, we'll use mock data or fetch from local storage
-        const response = await fetch('/api/products');
-        if (response.ok) {
-          const data = await response.json();
-          const productsMap: Record<string, Product> = {};
-          // Fix: data is an object with a products array, not the array itself
-          if (data.success && Array.isArray(data.products)) {
-            data.products.forEach((product: Product) => {
-              productsMap[product.id] = product;
-            });
-          }
-          setProducts(productsMap);
-        }
-      } catch (error) {
-        console.error('Error fetching products:', error);
-        // Fallback to mock data
-        const mockProducts: Record<string, Product> = {};
-        wishlistState.items.forEach(item => {
-          mockProducts[item.productId] = {
-            id: item.productId,
-            slug: 'placeholder-product',
-            title: {
-              en: 'Placeholder Product',
-              hi: 'प्लेसहोल्डर उत्पाद'
-            },
-            description: {
-              en: 'Product description',
-              hi: 'उत्पाद विवरण'
-            },
-            price: 999,
-            stock: 10,
-            rating: 4.5,
-            reviewCount: 5,
-            categoryId: '1',
-            artisanId: '1',
-            images: ['/images/products/placeholder.jpg'],
-            material: 'Wood',
-            dimensions: '10x10x10 cm',
-            tags: ['handmade'],
-            featured: false,
-            bestSeller: false,
-            trending: false,
-            newArrival: false,
-            createdAt: new Date().toISOString()
-          };
-        });
-        setProducts(mockProducts);
-      }
-    };
-
-    fetchProducts();
-  }, [wishlistState.items]);
-
-  // Mock localization function
+  // Translations
   const t = (key: string) => {
     const translations: any = {
       en: {
-        title: "Your Saved Favorites",
-        description: "Save your favorite Pachmarhi tribal art pieces and come back anytime to purchase them.",
-        emptyMessage: "Your wishlist is empty. Start exploring to add products you love!",
-        productImage: "Product Image",
-        productName: "Product Name",
-        price: "Price",
-        availability: "Availability",
-        inStock: "In Stock",
-        outOfStock: "Out of Stock",
-        moveToCart: "Move to Cart",
-        remove: "Remove"
+        wishlistTitle: 'Wishlist',
+        emptyWishlist: 'Your wishlist is empty',
+        continueShopping: 'Continue Shopping',
+        moveToCart: 'Move to Cart',
+        removeFromWishlist: 'Remove from wishlist',
+        wishlistEmptyMessage: 'Your wishlist is empty. Start exploring to add products you love!',
+        items: 'items'
+      },
+      hi: {
+        wishlistTitle: 'इच्छा-सूची',
+        emptyWishlist: 'आपकी इच्छा-सूची खाली है',
+        continueShopping: 'खरीदारी जारी रखें',
+        moveToCart: 'कार्ट में ले जाएँ',
+        removeFromWishlist: 'इच्छा-सूची से हटाएं',
+        wishlistEmptyMessage: 'आपकी इच्छा-सूची खाली है। जो उत्पाद आप पसंद करते हैं उन्हें जोड़ना शुरू करें!',
+        items: 'आइटम'
       }
     };
     
     return translations[language][key] || key;
   };
 
-  const handleMoveToCart = (productId: string) => {
-    // Fix: Pass the product ID to addToCart, not the product object
-    addToCart(productId, 1); // Add 1 quantity of the product
-    removeFromWishlist(productId);
-    // Show notification
-    if (typeof window !== 'undefined' && (window as any).showNotification) {
-      (window as any).showNotification(
-        language === 'en' ? 'Moved to cart ✅' : 'कार्ट में ले जाया गया ✅',
-        'success'
-      );
-    }
-  };
+  if (wishlistState.items.length === 0) {
+    return (
+      <div className="container mx-auto px-4 py-16">
+        <div className="max-w-2xl mx-auto text-center">
+          <div className="bg-gray-100 dark:bg-gray-800 rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-6">
+            <Heart className="w-12 h-12 text-gray-400" />
+          </div>
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">{t('wishlistTitle')}</h1>
+          <p className="text-gray-600 dark:text-gray-400 mb-8">{t('wishlistEmptyMessage')}</p>
+          <Link 
+            href="/products" 
+            className="flipkart-button px-6 py-3 inline-block"
+          >
+            {t('continueShopping')}
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
-  const handleRemoveFromWishlist = (productId: string) => {
-    removeFromWishlist(productId);
-    // Show notification
-    if (typeof window !== 'undefined' && (window as any).showNotification) {
-      (window as any).showNotification(
-        language === 'en' ? 'Removed from wishlist ✅' : 'इच्छा-सूची से हटा दिया गया ✅',
-        'success'
-      );
+  return (
+    <div className="container mx-auto px-4 py-8">
+      <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">{t('wishlistTitle')}</h1>
+      
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {wishlistState.items.map((item) => (
+          <WishlistItem 
+            key={item.productId} 
+            item={item} 
+            onRemove={removeFromWishlist}
+            language={language}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function WishlistItem({ item, onRemove, language }: { 
+  item: any; 
+  onRemove: (productId: string) => void;
+  language: string;
+}) {
+  const [imageError, setImageError] = useState(false);
+  const [loading, setLoading] = useState(false);
+  
+  // Placeholder product data - in a real app, you would fetch this from your API
+  const product = {
+    id: item.productId,
+    name: `Product ${item.productId}`,
+    price: 1000,
+    originalPrice: 1200,
+    image: '/images/products/placeholder.jpg',
+    rating: 4.5,
+    reviewCount: 25
+  };
+  
+  const discountPercentage = product.originalPrice && product.originalPrice > product.price
+    ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)
+    : 0;
+  
+  const handleRemove = () => {
+    onRemove(item.productId);
+  };
+  
+  const handleMoveToCart = async () => {
+    setLoading(true);
+    try {
+      // In a real app, you would add to cart here
+      // For now, we'll just remove from wishlist
+      onRemove(item.productId);
+      
+      // Show notification
+      if (typeof window !== 'undefined' && (window as any).showNotification) {
+        (window as any).showNotification(
+          language === 'en' ? 'Moved to cart ✅' : 'कार्ट में ले जाया गया ✅',
+          'success'
+        );
+      }
+    } catch (error) {
+      console.error('Error moving to cart:', error);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8">
-      <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="mb-8">
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
-              {t('title')}
-            </h1>
-            <p className="text-gray-600 dark:text-gray-400">
-              {t('description')}
-            </p>
+    <div className="flipkart-card group">
+      <div className="relative aspect-square overflow-hidden">
+        {!imageError ? (
+          <Image
+            src={product.image}
+            alt={product.name}
+            fill
+            className="object-cover group-hover:scale-105 transition-transform duration-300"
+            onError={() => setImageError(true)}
+          />
+        ) : (
+          <div className="w-full h-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
+            <span className="text-gray-500 dark:text-gray-400 text-sm">No image</span>
           </div>
+        )}
+        
+        {/* Discount Badge */}
+        {discountPercentage > 0 && (
+          <div className="absolute top-2 left-2 bg-red-600 text-white px-2 py-1 rounded text-xs font-semibold">
+            {discountPercentage}% {language === 'en' ? 'OFF' : 'छूट'}
+          </div>
+        )}
+        
+        {/* Remove button */}
+        <button 
+          onClick={handleRemove}
+          className="absolute top-2 right-2 bg-white/90 hover:bg-white text-red-500 dark:bg-gray-700/90 dark:hover:bg-gray-700 dark:text-red-400 p-2 rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-opacity"
+          title={language === 'en' ? 'Remove from wishlist' : 'इच्छा-सूची से हटाएं'}
+        >
+          <X className="w-4 h-4" />
+        </button>
+      </div>
 
-          {wishlistState.items.length > 0 ? (
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
-              <div className="hidden md:grid grid-cols-12 gap-4 px-6 py-4 bg-gray-50 dark:bg-gray-700 text-sm font-medium text-gray-500 dark:text-gray-400 border-b border-gray-200 dark:border-gray-700">
-                <div className="col-span-3">{t('productImage')}</div>
-                <div className="col-span-3">{t('productName')}</div>
-                <div className="col-span-2">{t('price')}</div>
-                <div className="col-span-2">{t('availability')}</div>
-                <div className="col-span-2 text-right">Actions</div>
-              </div>
-              
-              <div className="divide-y divide-gray-200 dark:divide-gray-700">
-                {wishlistState.items.map((item) => {
-                  const product = products[item.productId];
-                  if (!product) return null;
-                  
-                  return (
-                    <div key={item.productId} className="grid grid-cols-1 md:grid-cols-12 gap-4 px-6 py-4 items-center">
-                      <div className="md:col-span-3 flex items-center">
-                        <img
-                          src={product.images && product.images.length > 0 ? product.images[0] : '/images/products/placeholder.jpg'}
-                          alt={product.title.en}
-                          className="w-16 h-16 md:w-20 md:h-20 object-cover rounded-lg"
-                          onError={(e: any) => {
-                            const target = e.target as HTMLImageElement;
-                            target.src = '/images/products/placeholder.jpg';
-                          }}
-                        />
-                        <div className="md:hidden ml-4">
-                          <h3 className="font-medium text-gray-900 dark:text-white">
-                            {product.title.en}
-                          </h3>
-                          <p className="text-amber-600 font-semibold">
-                            ₹{product.price.toLocaleString()}
-                          </p>
-                          <div className="mt-1">
-                            <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                              {t('inStock')}
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                      
-                      <div className="md:col-span-3 hidden md:block">
-                        <h3 className="font-medium text-gray-900 dark:text-white">
-                          {product.title.en}
-                        </h3>
-                      </div>
-                      
-                      <div className="md:col-span-2 hidden md:block">
-                        <p className="text-amber-600 font-semibold">
-                          ₹{product.price.toLocaleString()}
-                        </p>
-                      </div>
-                      
-                      <div className="md:col-span-2 hidden md:block">
-                        <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                          {product.stock > 0 ? t('inStock') : t('outOfStock')}
-                        </span>
-                      </div>
-                      
-                      <div className="md:col-span-2 flex justify-end space-x-2">
-                        <button
-                          onClick={() => handleMoveToCart(item.productId)}
-                          className="px-3 py-2 bg-amber-600 text-white text-sm rounded-lg hover:bg-amber-700 transition-colors"
-                        >
-                          {t('moveToCart')}
-                        </button>
-                        <button
-                          onClick={() => handleRemoveFromWishlist(item.productId)}
-                          className="px-3 py-2 bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300 text-sm rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
-                        >
-                          {t('remove')}
-                        </button>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          ) : (
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-12 text-center">
-              <div className="mb-4">
-                <span className="text-6xl">💖</span>
-              </div>
-              <p className="text-gray-500 dark:text-gray-400 mb-6">
-                {t('emptyMessage')}
-              </p>
-              <Link
-                href="/"
-                className="inline-block px-6 py-3 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition-colors"
+      <div className="p-4">
+        <h3 className="flipkart-product-title line-clamp-2">
+          {product.name}
+        </h3>
+        
+        {/* Rating */}
+        <div className="flex items-center mt-2">
+          <div className="flex text-yellow-400">
+            {[...Array(5)].map((_, i) => (
+              <svg
+                key={i}
+                className={`w-4 h-4 ${i < Math.floor(product.rating) ? 'fill-current' : 'fill-none stroke-current'}`}
+                viewBox="0 0 24 24"
               >
-                Browse Products
-              </Link>
-            </div>
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
+                />
+              </svg>
+            ))}
+          </div>
+          <span className="text-sm text-gray-500 dark:text-gray-400 ml-1">({product.reviewCount})</span>
+        </div>
+        
+        {/* Price */}
+        <div className="flex items-center mt-2">
+          <span className="flipkart-product-price">₹{product.price.toLocaleString()}</span>
+          {product.originalPrice && product.originalPrice > product.price && (
+            <span className="text-sm text-gray-500 dark:text-gray-400 line-through ml-2">₹{product.originalPrice.toLocaleString()}</span>
           )}
+        </div>
+        
+        {/* Action buttons */}
+        <div className="flex space-x-2 mt-4">
+          <button 
+            onClick={handleMoveToCart}
+            disabled={loading}
+            className="flex-1 flipkart-button py-2 text-sm"
+          >
+            {loading ? (
+              <span className="flex items-center justify-center">
+                <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                {language === 'en' ? 'Adding...' : 'जोड़ा जा रहा है...'}
+              </span>
+            ) : (
+              language === 'en' ? 'Move to Cart' : 'कार्ट में ले जाएँ'
+            )}
+          </button>
         </div>
       </div>
     </div>

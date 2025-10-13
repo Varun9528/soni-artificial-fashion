@@ -1,54 +1,54 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { products } from '@/data/products';
+import { db } from '@/lib/database/connection';
 
 export async function GET(request: NextRequest) {
   try {
-    const { searchParams } = new URL(request.url);
-    const limit = parseInt(searchParams.get('limit') || '20');
-    const offset = parseInt(searchParams.get('offset') || '0');
-    const category = searchParams.get('category');
-    const featured = searchParams.get('featured');
-    const bestSeller = searchParams.get('bestSeller');
-    const newArrival = searchParams.get('newArrival');
-    const trending = searchParams.get('trending');
-
-    // Filter products based on query parameters
-    let filteredProducts = [...products];
-
-    if (category) {
-      filteredProducts = filteredProducts.filter(p => p.categoryId === category);
-    }
-
-    if (featured === 'true') {
-      filteredProducts = filteredProducts.filter(p => p.featured);
-    }
-
-    if (bestSeller === 'true') {
-      filteredProducts = filteredProducts.filter(p => p.bestSeller);
-    }
-
-    if (newArrival === 'true') {
-      filteredProducts = filteredProducts.filter(p => p.newArrival);
-    }
-
-    if (trending === 'true') {
-      filteredProducts = filteredProducts.filter(p => p.trending);
-    }
-
-    // Apply pagination
-    const paginatedProducts = filteredProducts.slice(offset, offset + limit);
-
+    // Get all products from the database
+    const products = await db.getAllProducts();
+    
+    // Format products for frontend
+    const formattedProducts = products.map((product: any) => {
+      // Get the primary image if available
+      const primaryImage = product.productImages && product.productImages.length > 0 
+        ? product.productImages.find((img: any) => img.isPrimary) || product.productImages[0]
+        : null;
+      
+      return {
+        id: product.id,
+        slug: product.slug,
+        title_en: product.title?.en || product.title_en,
+        title_hi: product.title?.hi || product.title_hi,
+        description_en: product.description?.en || product.description_en,
+        description_hi: product.description?.hi || product.description_hi,
+        price: product.price,
+        original_price: product.originalPrice,
+        stock: product.stock,
+        rating: product.rating,
+        review_count: product.reviewCount,
+        category: product.category,
+        images: primaryImage ? [primaryImage.url] : [],
+        productImages: product.productImages,
+        featured: product.featured,
+        best_seller: product.bestSeller,
+        is_active: product.isActive,
+        created_at: product.createdAt
+      };
+    });
+    
     return NextResponse.json({
       success: true,
-      products: paginatedProducts,
-      total: filteredProducts.length
+      products: formattedProducts,
+      count: formattedProducts.length
     });
-
   } catch (error) {
     console.error('Error fetching products:', error);
-    return NextResponse.json({
-      success: false,
-      error: 'Failed to fetch products'
-    }, { status: 500 });
+    return NextResponse.json(
+      { 
+        success: false, 
+        error: 'Failed to fetch products',
+        products: []
+      },
+      { status: 500 }
+    );
   }
 }

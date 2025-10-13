@@ -6,6 +6,8 @@ import { useCart } from '@/context/CartContext';
 import { useWishlist } from '@/context/WishlistContext';
 import { useState } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
+import { useRouter } from 'next/navigation';
+import { Heart, ShoppingCart, CreditCard, Star } from 'lucide-react';
 
 interface ProductCardProps {
   product: any;
@@ -13,27 +15,62 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: ProductCardProps) {
   const { addToCart } = useCart();
-  const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist();
+  const { addToWishlist, removeFromWishlist, state: wishlistState } = useWishlist();
   const { language } = useLanguage();
+  const router = useRouter();
   const [imageError, setImageError] = useState(false);
   
   // Handle both static data and API data formats
   const productId = product.id;
-  const productSlug = product.slug;
-  const productTitle = product.title?.[language] || product.name || 'Product';
+  const productSlug = product.slug || product.id;
+  // Use safe access pattern for product title
+  const productTitle = 
+    product.title?.[language] || 
+    product.title?.en ||
+    product.title_en || 
+    product.name || 
+    'Product';
   const productPrice = product.price || 0;
-  const productOriginalPrice = product.originalPrice || product.price;
-  const productImages = product.images || (product.productImages || []).map((img: any) => img.url);
+  const productOriginalPrice = product.original_price || product.originalPrice || product.price;
+  const productImages = product.images || (product.productImages || []).map((img: any) => img.url) || [product.image_path];
   const productRating = product.rating || 0;
-  const productReviewCount = product.reviewCount || 0;
-  const productStock = product.stock || 0;
-  const artisanName = product.artisan?.name || product.artisanName || 'Artisan';
+  const productReviewCount = product.review_count || product.reviewCount || 0;
+  const productStock = product.stock || product.inStock || 0;
+  const categoryName = product.category?.name?.[language] || product.category?.name?.en || product.categoryName || 'Category';
+  
+  // Check if the first image is an SVG
+  const firstImage = productImages && productImages.length > 0 ? productImages[0] : null;
   
   const discountPercentage = productOriginalPrice && productOriginalPrice > productPrice
     ? Math.round(((productOriginalPrice - productPrice) / productOriginalPrice) * 100)
     : 0;
 
-  const inWishlist = isInWishlist(productId);
+  // Check if product is in wishlist
+  const inWishlist = wishlistState.items.some((item: any) => item.productId === productId);
+
+  // Translations
+  const t = (key: string) => {
+    const translations: any = {
+      en: {
+        addToCart: 'Add to Cart',
+        buyNow: 'Buy Now',
+        addToWishlist: 'Add to Wishlist',
+        removeFromWishlist: 'Remove from Wishlist',
+        outOfStock: 'Out of Stock',
+        onlyLeft: 'Only {{count}} left in stock!'
+      },
+      hi: {
+        addToCart: 'कार्ट में डालें',
+        buyNow: 'अभी खरीदें',
+        addToWishlist: 'पसंद में जोड़ें',
+        removeFromWishlist: 'पसंद से हटाएं',
+        outOfStock: 'स्टॉक समाप्त',
+        onlyLeft: 'केवल {{count}} स्टॉक में बचे हैं!'
+      }
+    };
+    
+    return translations[language][key] || key;
+  };
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -49,6 +86,7 @@ export default function ProductCard({ product }: ProductCardProps) {
 
   const handleWishlistToggle = (e: React.MouseEvent) => {
     e.preventDefault();
+    e.stopPropagation();
     if (inWishlist) {
       removeFromWishlist(productId);
       if (typeof window !== 'undefined' && (window as any).showNotification) {
@@ -72,83 +110,91 @@ export default function ProductCard({ product }: ProductCardProps) {
     e.preventDefault();
     addToCart(productId, 1);
     // Redirect to checkout
-    window.location.href = '/checkout';
+    router.push('/checkout');
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-soft hover:shadow-medium transition-shadow duration-300 overflow-hidden group">
-      <div className="relative aspect-square overflow-hidden">
-        {!imageError && (productImages && productImages.length > 0) ? (
-          <Image
-            src={productImages[0]}
-            alt={productTitle}
-            fill
-            className="object-cover group-hover:scale-105 transition-transform duration-300"
-            onError={() => setImageError(true)}
-          />
-        ) : (
-          <div className="w-full h-full bg-gradient-to-br from-primary-100 to-accent-100 flex items-center justify-center">
-            <span className="text-primary-600 text-sm text-center px-4">
-              {productTitle}<br />
-              <span className="text-xs opacity-75">Product Image</span>
-            </span>
-          </div>
-        )}
-        
-        {/* Discount Badge */}
-        {discountPercentage > 0 && (
-          <div className="absolute top-2 left-2 bg-red-600 text-white px-2 py-1 rounded text-xs font-semibold">
-            {discountPercentage}% OFF
-          </div>
-        )}
+    <div className="flipkart-card group hover:scale-105 transition-transform shadow-lg">
+      <Link href={`/product/${productSlug}`}>
+        <div className="relative aspect-square overflow-hidden">
+          {!imageError && (firstImage || (productImages && productImages.length > 0)) ? (
+            <Image
+              src={firstImage || productImages[0] || '/images/products/placeholder.jpg'}
+              alt={productTitle}
+              fill
+              className="object-cover group-hover:scale-105 transition-transform duration-300"
+              onError={(e) => {
+                setImageError(true);
+                const target = e.target as HTMLImageElement;
+                target.src = '/images/products/placeholder.jpg';
+              }}
+            />
+          ) : (
+            <div className="w-full h-full bg-gradient-to-br from-[#5C4033] to-[#FFD54F] dark:from-[#5C4033] dark:to-[#FFD54F] flex items-center justify-center">
+              <span className="text-white dark:text-white text-sm text-center px-4">
+                {productTitle}<br />
+                <span className="text-xs opacity-75">
+                  {language === 'en' ? 'Product Image' : 'उत्पाद छवि'}
+                </span>
+              </span>
+            </div>
+          )}
+          
+          {/* Discount Badge */}
+          {discountPercentage > 0 && (
+            <div className="absolute top-2 left-2 bg-red-600 text-white px-2 py-1 rounded text-xs font-semibold">
+              {discountPercentage}% {language === 'en' ? 'OFF' : 'छूट'}
+            </div>
+          )}
 
-        {/* Badge for featured/new/trending */}
-        {(product.featured || product.bestSeller) && (
-          <div className="absolute top-2 right-2 bg-amber-500 text-white px-2 py-1 rounded text-xs font-semibold">
-            FEATURED
-          </div>
-        )}
-        {product.newArrival && (
-          <div className="absolute top-2 right-2 bg-green-500 text-white px-2 py-1 rounded text-xs font-semibold">
-            NEW
-          </div>
-        )}
-        {product.trending && !(product.featured || product.bestSeller) && !product.newArrival && (
-          <div className="absolute top-2 right-2 bg-blue-500 text-white px-2 py-1 rounded text-xs font-semibold">
-            TRENDING
-          </div>
-        )}
+          {/* Badge for featured/new/trending */}
+          {(product.featured || product.best_seller || product.bestSeller) && (
+            <div className="absolute top-2 right-2 bg-[#FFD54F] text-[#5C4033] px-2 py-1 rounded text-xs font-semibold">
+              {language === 'en' ? 'FEATURED' : 'विशेष'}
+            </div>
+          )}
+          {(product.new_arrival || product.newArrival) && (
+            <div className="absolute top-2 right-2 bg-green-500 text-white px-2 py-1 rounded text-xs font-semibold">
+              {language === 'en' ? 'NEW' : 'नया'}
+            </div>
+          )}
+          {product.trending && !(product.featured || product.best_seller || product.bestSeller) && !(product.new_arrival || product.newArrival) && (
+            <div className="absolute top-2 right-2 bg-blue-500 text-white px-2 py-1 rounded text-xs font-semibold">
+              {language === 'en' ? 'TRENDING' : 'ट्रेंडिंग'}
+            </div>
+          )}
 
-        {/* Quick Action Buttons */}
-        <div className="absolute top-2 left-2 flex flex-col space-y-2 opacity-0 group-hover:opacity-100 transition-opacity">
-          <button 
-            onClick={handleWishlistToggle}
-            className={`${inWishlist ? 'bg-red-500 text-white' : 'bg-white/90 hover:bg-white text-red-500'} p-2 rounded-full shadow-md transition-colors`}
-            title={inWishlist ? (language === 'en' ? 'Remove from wishlist' : 'इच्छा-सूची से हटाएं') : (language === 'en' ? 'Add to wishlist' : 'इच्छा-सूची में जोड़ें')}
-          >
-            <svg className="w-5 h-5" fill={inWishlist ? 'currentColor' : 'none'} stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-            </svg>
-          </button>
+          {/* Quick Action Buttons */}
+          <div className="absolute top-2 left-2 flex flex-col space-y-2 opacity-0 group-hover:opacity-100 transition-opacity">
+            <button 
+              onClick={handleWishlistToggle}
+              className={`${inWishlist ? 'bg-red-500 text-white' : 'bg-white/90 hover:bg-white text-red-500 dark:bg-gray-700/90 dark:hover:bg-gray-700 dark:text-red-400'} p-2 rounded-full shadow-md transition-colors`}
+              title={inWishlist ? (language === 'en' ? 'Remove from wishlist' : 'इच्छा-सूची से हटाएं') : (language === 'en' ? 'Add to wishlist' : 'इच्छा-सूची में जोड़ें')}
+            >
+              <Heart className="w-5 h-5" fill={inWishlist ? "currentColor" : "none"} />
+            </button>
+          </div>
+
+          {/* Stock status */}
+          {productStock <= 0 && (
+            <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+              <span className="text-white font-semibold text-lg">
+                {t('outOfStock')}
+              </span>
+            </div>
+          )}
         </div>
-
-        {/* Stock status */}
-        {productStock <= 0 && (
-          <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-            <span className="text-white font-semibold text-lg">{language === 'en' ? 'Out of Stock' : 'स्टॉक ख़त्म'}</span>
-          </div>
-        )}
-      </div>
+      </Link>
 
       <div className="p-4">
         <div className="mb-2">
-          <h3 className="font-semibold text-gray-800 line-clamp-2 hover:text-primary-600 transition-colors">
-            <Link href={`/product/${productSlug || productId}`}>
+          <h3 className="flipkart-product-title">
+            <Link href={`/product/${productSlug}`}>
               {productTitle}
             </Link>
           </h3>
-          <p className="text-sm text-gray-500 mt-1">
-            {language === 'en' ? 'By' : ''} {artisanName}
+          <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+            {categoryName}
           </p>
         </div>
 
@@ -156,24 +202,27 @@ export default function ProductCard({ product }: ProductCardProps) {
         <div className="flex items-center mb-2">
           <div className="flex text-yellow-400">
             {[...Array(5)].map((_, i) => (
-              <svg
+              <Star
                 key={i}
                 className={`w-4 h-4 ${i < Math.floor(productRating) ? 'fill-current' : 'fill-none stroke-current'}`}
-                viewBox="0 0 24 24"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-              </svg>
+              />
             ))}
           </div>
-          <span className="text-sm text-gray-500 ml-1">({productReviewCount})</span>
+          <span className="text-sm text-gray-500 dark:text-gray-400 ml-1">
+            ({productReviewCount})
+          </span>
         </div>
 
         {/* Price */}
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <span className="text-lg font-bold text-primary-600">₹{productPrice.toLocaleString()}</span>
+            <span className="flipkart-product-price">
+              ₹{productPrice.toLocaleString()}
+            </span>
             {productOriginalPrice && productOriginalPrice > productPrice && (
-              <span className="text-sm text-gray-500 line-through">₹{productOriginalPrice.toLocaleString()}</span>
+              <span className="text-sm text-gray-500 dark:text-gray-400 line-through">
+                ₹{productOriginalPrice.toLocaleString()}
+              </span>
             )}
           </div>
         </div>
@@ -183,32 +232,32 @@ export default function ProductCard({ product }: ProductCardProps) {
           <button 
             onClick={handleAddToCart}
             disabled={productStock <= 0}
-            className="flex-1 flex items-center justify-center bg-primary-600 text-white px-3 py-2 rounded-lg hover:bg-primary-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors text-sm font-semibold"
+            className="flex-1 flex items-center justify-center bg-green-600 hover:bg-green-700 text-white px-3 py-2 rounded-lg transition disabled:bg-gray-400 disabled:cursor-not-allowed text-sm font-semibold"
           >
-            <span className="mr-1">🛒</span>
-            {language === 'en' ? 'Add to Cart' : 'कार्ट में जोड़ें'}
+            <ShoppingCart className="w-4 h-4 mr-1" />
+            {t('addToCart')}
           </button>
           <button 
             onClick={handleBuyNow}
             disabled={productStock <= 0}
-            className="flex-1 flex items-center justify-center bg-green-600 text-white px-3 py-2 rounded-lg hover:bg-green-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors text-sm font-semibold"
+            className="flex-1 flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded-lg transition disabled:bg-gray-400 disabled:cursor-not-allowed text-sm font-semibold"
           >
-            <span className="mr-1">💳</span>
-            {language === 'en' ? 'Buy Now' : 'अभी खरीदें'}
+            <CreditCard className="w-4 h-4 mr-1" />
+            {t('buyNow')}
           </button>
           <button 
             onClick={handleWishlistToggle}
-            className={`${inWishlist ? 'bg-red-500 text-white' : 'bg-gray-200 hover:bg-gray-300 text-red-500'} p-2 rounded-lg transition-colors`}
-            title={inWishlist ? (language === 'en' ? 'Remove from wishlist' : 'इच्छा-सूची से हटाएं') : (language === 'en' ? 'Add to wishlist' : 'इच्छा-सूची में जोड़ें')}
+            className={`${inWishlist ? 'bg-pink-600 hover:scale-105' : 'bg-gray-300 hover:scale-105'} transition text-white font-semibold px-3 py-2 rounded-lg`}
+            title={inWishlist ? (language === 'en' ? t('removeFromWishlist') : 'पसंद से हटाएं') : (language === 'en' ? t('addToWishlist') : 'पसंद में जोड़ें')}
           >
-            <span>❤️</span>
+            <Heart className="w-4 h-4" fill={inWishlist ? "currentColor" : "none"} />
           </button>
         </div>
 
         {/* Stock indicator */}
         {productStock > 0 && productStock <= 5 && (
-          <div className="mt-2 text-xs text-orange-600 font-medium">
-            {language === 'en' ? `Only ${productStock} left in stock!` : `केवल ${productStock} स्टॉक में बचे हैं!`}
+          <div className="mt-2 text-xs text-orange-600 dark:text-orange-400 font-medium">
+            {t('onlyLeft').replace('{{count}}', productStock.toString())}
           </div>
         )}
       </div>

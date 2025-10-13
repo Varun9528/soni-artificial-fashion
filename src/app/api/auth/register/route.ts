@@ -1,37 +1,28 @@
 import { NextRequest, NextResponse } from 'next/server';
+import bcrypt from 'bcryptjs';
 import { db } from '@/lib/database/connection';
-
-// Simple password hashing for demo (in production, use bcrypt)
-function hashPassword(password: string): string {
-  // For demo purposes - in production, use bcrypt.hash()
-  return `$2a$12$LQv3c1yqBWVHxkd0LHAkCOYz6TtxMQJqhN8/LeD2WBLBfp3cQ3T/a`; // This represents a hashed version
-}
+import { FormValidator } from '@/lib/validation';
 
 export async function POST(request: NextRequest) {
   try {
     const { name, email, password, phone } = await request.json();
 
-    // Validation
-    if (!name || !email || !password) {
+    // Validation using FormValidator
+    const validator = new FormValidator();
+    validator
+      .addRequired('name', name, 'Name')
+      .addRequired('email', email, 'Email')
+      .addRequired('password', password, 'Password')
+      .addEmail('email', email, 'Email')
+      .addPassword('password', password, 'Password');
+    
+    if (!validator.isValid()) {
       return NextResponse.json(
-        { error: 'Name, email and password are required' },
-        { status: 400 }
-      );
-    }
-
-    // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      return NextResponse.json(
-        { error: 'Invalid email format' },
-        { status: 400 }
-      );
-    }
-
-    // Password validation
-    if (password.length < 8) {
-      return NextResponse.json(
-        { error: 'Password must be at least 8 characters long' },
+        { 
+          success: false,
+          errors: validator.getErrors(),
+          error: 'Validation failed'
+        },
         { status: 400 }
       );
     }
@@ -46,8 +37,11 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Hash password
+    const saltRounds = parseInt(process.env.BCRYPT_SALT_ROUNDS || '12');
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
+
     // Create new user
-    const hashedPassword = hashPassword(password);
     const newUser = await db.createUser({
       email: email.toLowerCase(),
       password_hash: hashedPassword,

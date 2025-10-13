@@ -2,10 +2,11 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 export default function LoginPage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -33,11 +34,13 @@ export default function LoginPage() {
         localStorage.setItem('token', data.token);
         localStorage.setItem('user', JSON.stringify(data.user));
         
-        // Redirect based on role
+        // Redirect based on role - FIXED: Ensure proper role-based redirection
         if (data.user.role === 'admin' || data.user.role === 'super_admin') {
           router.push('/admin');
         } else {
-          router.push('/profile');
+          // Get redirect URL from search params or default to home
+          const redirectUrl = searchParams.get('redirect') || '/';
+          router.push(redirectUrl);
         }
       } else {
         setErrors({ general: data.error || 'Login failed' });
@@ -57,6 +60,9 @@ export default function LoginPage() {
     }));
   };
 
+  // Get error message from search params
+  const errorMessage = searchParams.get('message');
+
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
@@ -73,13 +79,20 @@ export default function LoginPage() {
         </div>
 
         <div className="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-8">
-          <form onSubmit={handleSubmit} className="space-y-6">
-            {errors.general && (
-              <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-md p-4">
-                <div className="text-red-800 dark:text-red-400 text-sm">{errors.general}</div>
-              </div>
-            )}
+          {/* Display error message from redirect */}
+          {errorMessage && (
+            <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-md p-4 mb-6">
+              <div className="text-red-800 dark:text-red-400 text-sm">{errorMessage}</div>
+            </div>
+          )}
+          {/* Display form errors */}
+          {errors.general && (
+            <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-md p-4 mb-6">
+              <div className="text-red-800 dark:text-red-400 text-sm">{errors.general}</div>
+            </div>
+          )}
 
+          <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                 Email address
@@ -170,8 +183,8 @@ export default function LoginPage() {
               </div>
 
               <div className="mt-4 text-sm text-gray-600 dark:text-gray-400 text-center space-y-1">
-                <div><strong>Admin:</strong> admin@pachmarhi.com / admin123</div>
-                <div><strong>User:</strong> user@pachmarhi.com / user123</div>
+                <div><strong>Admin:</strong> admin@lettex.com / admin123</div>
+                <div><strong>User:</strong> user@lettex.com / user123</div>
               </div>
             </div>
           </form>

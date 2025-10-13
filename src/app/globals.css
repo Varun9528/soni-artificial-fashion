@@ -2,56 +2,385 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom animations */
-@keyframes fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
+/*
+ * Ensure Tailwind's base styles are included
+ * This is critical for Tailwind classes to work properly
+ */
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 47.4% 11.2%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 47.4% 11.2%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --primary: 22.1 83.3% 53.3%; /* Deep earthy brown (#5C4033) */
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --accent: 45 93.3% 53.3%; /* Mustard gold (#FFD54F) */
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 210 40% 98%;
+    --ring: 215 20.2% 65.1%;
+    --radius: 0.5rem;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  .dark {
+    --background: 0 0% 7%; /* #121212 */
+    --foreground: 0 0% 89.8%; /* #E5E5E5 */
+    --muted: 223 47% 11%;
+    --muted-foreground: 215.4 16.3% 56.9%;
+    --popover: 224 71% 4%;
+    --popover-foreground: 215 20.2% 65.1%;
+    --card: 224 71% 4%;
+    --card-foreground: 213 31% 91%;
+    --border: 216 34% 17%;
+    --input: 216 34% 17%;
+    --primary: 22.1 83.3% 53.3%; /* Deep earthy brown (#5C4033) */
+    --primary-foreground: 210 40% 98%;
+    --secondary: 222.2 47.4% 11.2%;
+    --secondary-foreground: 210 40% 98%;
+    --accent: 45 93.3% 53.3%; /* Mustard gold (#FFD54F) */
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+    --ring: 216 34% 17%;
+    --radius: 0.5rem;
+  }
+
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Ensure proper box-sizing */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  /* Base styles for focus outlines */
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
   }
 }
 
-@keyframes fade-out {
-  from {
-    opacity: 1;
-    transform: translateY(0);
+/*
+ * Custom component styles
+ * These are our Flipkart-style components that extend Tailwind
+ */
+@layer components {
+  .flipkart-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background-color: #ffffff;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.15);
   }
-  to {
-    opacity: 0;
-    transform: translateY(-10px);
+  
+  .dark .flipkart-header {
+    background-color: #111827;
+  }
+  
+  .flipkart-navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+  }
+  
+  .flipkart-search-bar {
+    flex: 1;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    max-width: 500px;
+  }
+  
+  .flipkart-search-input {
+    width: 100%;
+    border-radius: 0.125rem;
+    border: 1px solid #d1d5db;
+    padding-left: 1rem;
+    padding-right: 3rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+  
+  .flipkart-search-input:focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+    --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+    box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+    --tw-ring-color: #5C4033; /* Deep earthy brown */
+  }
+  
+  .flipkart-button {
+    border-radius: 0.125rem;
+    background-color: #5C4033; /* Deep earthy brown */
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    color: #ffffff;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+  }
+  
+  .flipkart-button:hover {
+    background-color: #4a342d; /* Darker shade of deep earthy brown */
+  }
+  
+  .flipkart-button:focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+    --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+    box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+    --tw-ring-color: #5C4033; /* Deep earthy brown */
+    --tw-ring-offset-width: 2px;
+  }
+  
+  .flipkart-card {
+    border-radius: 0.125rem;
+    border: 1px solid #e5e7eb;
+    background-color: #ffffff;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    transition-property: box-shadow;
+    transition-duration: 150ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .flipkart-card:hover {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+  
+  .dark .flipkart-card {
+    border: 1px solid #374151;
+    background-color: #1f2937;
+  }
+  
+  .flipkart-product-title {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 500;
+    color: #111827;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+  
+  .dark .flipkart-product-title {
+    color: #ffffff;
+  }
+  
+  .flipkart-product-price {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    font-weight: 700;
+    color: #111827;
+  }
+  
+  .dark .flipkart-product-price {
+    color: #ffffff;
+  }
+  
+  .flipkart-badge {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 0.125rem;
+    background-color: #ffedd5;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    font-weight: 500;
+    color: #9a3412;
+  }
+  
+  .dark .flipkart-badge {
+    background-color: #7c2d12;
+    color: #fed7aa;
+  }
+  
+  /* Additional Flipkart-style utilities */
+  .flipkart-hero {
+    background: linear-gradient(to right, #5C4033, #4a342d);
+    color: white;
+  }
+  
+  .flipkart-section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+  
+  .dark .flipkart-section-title {
+    color: #ffffff;
+  }
+  
+  .flipkart-section-title::after {
+    content: "";
+    position: absolute;
+    bottom: -0.5rem;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background-color: #FFD54F; /* Mustard gold */
+  }
+  
+  .flipkart-product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .flipkart-product-card {
+    border-radius: 0.25rem;
+    border: 1px solid #e5e7eb;
+    background-color: #ffffff;
+    overflow: hidden;
+    transition: all 0.2s ease;
+  }
+  
+  .flipkart-product-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+  
+  .dark .flipkart-product-card {
+    border: 1px solid #374151;
+    background-color: #1f2937;
+  }
+  
+  .flipkart-product-image {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+  }
+  
+  .flipkart-product-image img {
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  
+  .flipkart-product-card:hover .flipkart-product-image img {
+    transform: scale(1.05);
+  }
+  
+  .flipkart-product-info {
+    padding: 1rem;
+  }
+  
+  .flipkart-product-name {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #111827;
+    margin-bottom: 0.25rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .dark .flipkart-product-name {
+    color: #ffffff;
+  }
+  
+  .flipkart-product-price-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  
+  .flipkart-product-price-current {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #111827;
+  }
+  
+  .dark .flipkart-product-price-current {
+    color: #ffffff;
+  }
+  
+  .flipkart-product-price-original {
+    font-size: 0.75rem;
+    color: #6b7280;
+    text-decoration: line-through;
+  }
+  
+  .flipkart-product-discount {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #16a34a;
+  }
+  
+  .flipkart-footer {
+    background-color: #111827;
+    color: #ffffff;
+  }
+  
+  .flipkart-footer-link {
+    color: #d1d5db;
+    transition: color 0.2s ease;
+  }
+  
+  .flipkart-footer-link:hover {
+    color: #ffffff;
   }
 }
 
-.animate-fade-in {
-  animation: fade-in 0.3s ease-out forwards;
-}
+/*
+ * Custom utility classes
+ * These extend Tailwind's utility classes
+ */
+@layer utilities {
+  .shadow-flipkart {
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.15);
+  }
+  
+  .shadow-soft {
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  }
 
-.animate-fade-out {
-  animation: fade-out 0.3s ease-out forwards;
-}
+  .shadow-medium {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
 
-/* Custom styles for the marketplace */
-.shadow-soft {
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-}
+  .shadow-strong {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
 
-.shadow-medium {
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-}
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
 
-.line-clamp-2 {
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.line-clamp-3 {
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
 }

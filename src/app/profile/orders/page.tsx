@@ -23,6 +23,42 @@ export default function OrderHistoryPage() {
   const [loading, setLoading] = useState(true);
   const [language, setLanguage] = useState('en');
 
+  // Mock orders data (fallback if API fails)
+  const mockOrders: Order[] = [
+    {
+      id: '1',
+      orderNumber: 'ORD-2024-001',
+      status: 'delivered',
+      totalAmount: 2500,
+      createdAt: '2024-01-15',
+      items: [
+        { product: 'Bamboo Wall Art', quantity: 1, price: 1500 },
+        { product: 'Tribal Jewelry Set', quantity: 1, price: 1000 }
+      ]
+    },
+    {
+      id: '2',
+      orderNumber: 'ORD-2024-002',
+      status: 'shipped',
+      totalAmount: 1800,
+      createdAt: '2024-01-20',
+      items: [
+        { product: 'Handwoven Basket', quantity: 2, price: 900 }
+      ]
+    },
+    {
+      id: '3',
+      orderNumber: 'ORD-2024-003',
+      status: 'processing',
+      totalAmount: 3200,
+      createdAt: '2024-01-25',
+      items: [
+        { product: 'Clay Pot Collection', quantity: 1, price: 1200 },
+        { product: 'Tribal Textile Art', quantity: 1, price: 2000 }
+      ]
+    }
+  ];
+
   useEffect(() => {
     // Check authentication
     const token = localStorage.getItem('token');
@@ -35,44 +71,28 @@ export default function OrderHistoryPage() {
       return;
     }
 
-    // Mock orders data (in production, fetch from API)
-    const mockOrders: Order[] = [
-      {
-        id: '1',
-        orderNumber: 'ORD-2024-001',
-        status: 'delivered',
-        totalAmount: 2500,
-        createdAt: '2024-01-15',
-        items: [
-          { product: 'Bamboo Wall Art', quantity: 1, price: 1500 },
-          { product: 'Tribal Jewelry Set', quantity: 1, price: 1000 }
-        ]
-      },
-      {
-        id: '2',
-        orderNumber: 'ORD-2024-002',
-        status: 'shipped',
-        totalAmount: 1800,
-        createdAt: '2024-01-20',
-        items: [
-          { product: 'Handwoven Basket', quantity: 2, price: 900 }
-        ]
-      },
-      {
-        id: '3',
-        orderNumber: 'ORD-2024-003',
-        status: 'processing',
-        totalAmount: 3200,
-        createdAt: '2024-01-25',
-        items: [
-          { product: 'Clay Pot Collection', quantity: 1, price: 1200 },
-          { product: 'Tribal Textile Art', quantity: 1, price: 2000 }
-        ]
+    // Fetch orders from API
+    const fetchOrders = async () => {
+      try {
+        const response = await fetch('/api/user/orders');
+        const data = await response.json();
+        
+        if (data.success) {
+          setOrders(data.orders);
+        } else {
+          // Fallback to mock data if API fails
+          setOrders(mockOrders);
+        }
+      } catch (error) {
+        console.error('Error fetching orders:', error);
+        // Fallback to mock data if API fails
+        setOrders(mockOrders);
+      } finally {
+        setLoading(false);
       }
-    ];
-    
-    setOrders(mockOrders);
-    setLoading(false);
+    };
+
+    fetchOrders();
   }, [router]);
 
   // Mock localization function

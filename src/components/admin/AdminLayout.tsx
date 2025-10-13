@@ -5,6 +5,7 @@ import { useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { useAuth } from '@/context/AuthContext';
 import NotificationBell from '@/components/admin/NotificationBell';
+import { jwtService } from '@/lib/auth/jwt';
 
 interface AdminLayoutProps {
   children: React.ReactNode;
@@ -20,33 +21,51 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
 
   useEffect(() => {
     // Check if user is logged in and has admin role
-    const token = localStorage.getItem('token');
-    const userData = localStorage.getItem('user');
+    console.log('Checking authentication:', { user, isLoggedIn });
     
-    console.log('Checking authentication:', { token, userData });
+    // First check if there's a token in cookies and verify it
+    const token = document.cookie
+      .split('; ')
+      .find(row => row.startsWith('token='))
+      ?.split('=')[1];
     
-    if (!token || !userData) {
-      console.log('No token or user data, redirecting to login');
+    if (token) {
+      try {
+        const decoded = jwtService.verifyAccessToken(token);
+        console.log('Token decoded:', decoded);
+        
+        // If we have a valid token but no user in context, update the context
+        if (decoded && (!user || user.id !== decoded.sub)) {
+          // Try to get user data from localStorage
+          const userData = localStorage.getItem('user');
+          if (userData) {
+            try {
+              const parsedUser = JSON.parse(userData);
+              // We'll rely on the context provider to handle this
+            } catch (error) {
+              console.error('Error parsing user data:', error);
+            }
+          }
+        }
+      } catch (error) {
+        console.error('Token verification failed:', error);
+        // Invalid token, clear it
+        document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+      }
+    }
+    
+    if (!isLoggedIn || !user) {
+      console.log('Not logged in, redirecting to login');
       router.push('/login?redirect=' + encodeURIComponent(pathname));
       setIsCheckingAuth(false);
       return;
     }
     
-    try {
-      const parsedUser = JSON.parse(userData);
-      console.log('Parsed user:', parsedUser);
-      
-      if (parsedUser.role !== 'admin' && parsedUser.role !== 'super_admin') {
-        console.log('User role not admin, redirecting to login');
-        router.push('/login?redirect=' + encodeURIComponent(pathname));
-        setIsCheckingAuth(false);
-        return;
-      }
-      
-      console.log('Authentication successful');
-    } catch (error) {
-      console.error('Error parsing user data:', error);
-      router.push('/login?redirect=' + encodeURIComponent(pathname));
+    if (user.role !== 'admin' && user.role !== 'super_admin') {
+      console.log('User role not admin, redirecting to home');
+      router.push('/?message=' + encodeURIComponent('Access denied. Admin privileges required.'));
       setIsCheckingAuth(false);
       return;
     }
@@ -55,7 +74,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
     const savedLanguage = localStorage.getItem('language') || 'en';
     setLanguage(savedLanguage);
     setIsCheckingAuth(false);
-  }, [router, pathname]);
+  }, [router, pathname, user, isLoggedIn]);
 
   // Show loading state while checking authentication
   if (isCheckingAuth) {
@@ -82,6 +101,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
   const handleLogout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
     router.push('/login');
   };
 
@@ -198,11 +218,11 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
               <div className="flex items-center space-x-4">
                 <NotificationBell />
                 <span className="text-sm text-gray-600">Last updated: {new Date().toLocaleTimeString()}</span>
-                <div className="w-8 h-8 bg-amber-600 rounded-full flex items-center justify-center">
+                <Link href="/admin/profile" className="w-8 h-8 bg-amber-600 rounded-full flex items-center justify-center">
                   <span className="text-white text-sm font-medium">
                     {user?.name?.charAt(0).toUpperCase() || 'A'}
                   </span>
-                </div>
+                </Link>
               </div>
             </div>
           </div>

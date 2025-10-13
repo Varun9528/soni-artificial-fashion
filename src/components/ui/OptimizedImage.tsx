@@ -50,6 +50,10 @@ export default function OptimizedImage({
   };
 
   const imageSrc = imageError ? fallback : src;
+  
+  // Check if the image is an SVG to disable optimization
+  const isSvg = imageSrc?.endsWith('.svg') || imageSrc?.includes('.svg?');
+  const unoptimized = isSvg;
 
   // Generate sizes attribute if not provided
   const defaultSizes = sizes || (
@@ -82,6 +86,7 @@ export default function OptimizedImage({
         } ${className}`}
         onError={handleError}
         onLoad={handleLoad}
+        unoptimized={unoptimized}
         style={{
           objectFit: 'cover',
         }}

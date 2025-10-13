@@ -46,10 +46,12 @@ export default function NewProductPage() {
       { id: '4', name: { en: 'Accessories', hi: 'सामान' } }
     ]);
     
-    setArtisans([
-      { id: '1', name: 'Ramesh Prajapati', village: 'Pachmarhi' },
-      { id: '2', name: 'Sunita Devi', village: 'Pachmarhi' }
-    ]);
+    const mockArtisans = [
+      { id: '1', name: 'Ramesh Prajapati', village: 'Madhya Pradesh' },
+      { id: '2', name: 'Sunita Devi', village: 'Madhya Pradesh' }
+    ];
+
+    setArtisans(mockArtisans);
     
     setLoading(false);
   }, []);

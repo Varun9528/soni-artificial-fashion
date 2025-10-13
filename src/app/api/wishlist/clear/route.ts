@@ -1,35 +1,28 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getServerSession } from '@/lib/auth/session';
+import { withAuth } from '@/lib/auth/middleware';
 import { prisma } from '@/lib/prisma';
 
-// Clear wishlist
-export async function POST(request: NextRequest) {
+export const POST = withAuth(async (request: NextRequest, authContext: any) => {
   try {
-    const session = await getServerSession(request);
-    
-    if (!session) {
-      return NextResponse.json(
-        { success: false, error: 'Unauthorized' },
-        { status: 401 }
-      );
-    }
+    const userId = authContext.user.id;
 
-    // Delete all wishlist items for user
+    // Clear all wishlist items for user
     await prisma.wishlistItem.deleteMany({
       where: {
-        userId: session.user.id
+        userId: userId
       }
     });
 
     return NextResponse.json({
-      success: true
+      success: true,
+      message: 'Wishlist cleared successfully'
     });
 
   } catch (error) {
     console.error('Error clearing wishlist:', error);
-    return NextResponse.json(
-      { success: false, error: 'Failed to clear wishlist' },
-      { status: 500 }
-    );
+    return NextResponse.json({
+      success: false,
+      error: 'Failed to clear wishlist'
+    }, { status: 500 });
   }
-}
+});

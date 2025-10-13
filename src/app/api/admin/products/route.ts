@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
+import { withAdminAuth } from '@/lib/auth/middleware';
 
-export async function GET(request: NextRequest) {
+export const GET = withAdminAuth(async (request: NextRequest, authContext: any) => {
   try {
     const products = await prisma.product.findMany({
       include: {
@@ -43,9 +44,9 @@ export async function GET(request: NextRequest) {
       error: 'Failed to fetch products'
     }, { status: 500 });
   }
-}
+});
 
-export async function POST(request: NextRequest) {
+export const POST = withAdminAuth(async (request: NextRequest, authContext: any) => {
   try {
     const body = await request.json();
     
@@ -158,4 +159,4 @@ export async function POST(request: NextRequest) {
       error: 'Failed to create product'
     }, { status: 500 });
   }
-}
+});

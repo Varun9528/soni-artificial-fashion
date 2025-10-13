@@ -1,845 +1,482 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
+import { useLanguage } from '@/context/LanguageContext';
+import { useAuth } from '@/context/AuthContext';
 import { useRouter } from 'next/navigation';
-import Image from 'next/image';
-import { useWishlist } from '@/context/WishlistContext';
-
-interface User {
-  id: string;
-  name: string;
-  email: string;
-  phone?: string;
-  role: string;
-}
-
-interface Order {
-  id: string;
-  orderNumber: string;
-  status: string;
-  totalAmount: number;
-  createdAt: string;
-  items: {
-    product: string;
-    quantity: number;
-    price: number;
-  }[];
-}
-
-interface Address {
-  id: string;
-  fullName: string;
-  phone: string;
-  addressLine1: string;
-  addressLine2?: string;
-  city: string;
-  state: string;
-  pincode: string;
-  country: string;
-  isDefault: boolean;
-}
+import Link from 'next/link';
+import { User, MapPin, ShoppingBag, Heart, Bell, Settings, LogOut, Edit3 } from 'lucide-react';
 
 export default function ProfilePage() {
+  const { language } = useLanguage();
+  const { user: authUser, logout } = useAuth();
   const router = useRouter();
-  const { state: wishlistState, removeFromWishlist } = useWishlist();
-  const [user, setUser] = useState<User | null>(null);
-  const [orders, setOrders] = useState<Order[]>([]);
-  const [addresses, setAddresses] = useState<Address[]>([]);
   const [activeTab, setActiveTab] = useState('profile');
-  const [isEditing, setIsEditing] = useState(false);
-  const [isChangingPassword, setIsChangingPassword] = useState(false);
-  const [showDeleteAccount, setShowDeleteAccount] = useState(false);
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: ''
-  });
-  const [passwordData, setPasswordData] = useState({
-    currentPassword: '',
-    newPassword: '',
-    confirmPassword: ''
-  });
-  const [language, setLanguage] = useState('en');
+  const [user, setUser] = useState<any>(null);
+  const [orders, setOrders] = useState<any[]>([]);
+  const [userAddresses, setUserAddresses] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
-  const [products, setProducts] = useState<Record<string, any>>({});
 
   useEffect(() => {
-    fetchProfileData();
-  }, []);
-
-  // Fetch product data for wishlist items
-  useEffect(() => {
-    const fetchProducts = async () => {
-      if (wishlistState.items.length === 0) return;
-      
+    const fetchUserProfile = async () => {
       try {
-        // In a real application, you would fetch products from an API
-        // For now, we'll use mock data or fetch from local storage
-        const response = await fetch('/api/products');
+        const token = localStorage.getItem('token');
+        const response = await fetch('/api/user/profile', {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+        
         if (response.ok) {
           const data = await response.json();
-          const productsMap: Record<string, any> = {};
-          // Fix: data is an object with a products array, not the array itself
-          if (data.success && Array.isArray(data.products)) {
-            data.products.forEach((product: any) => {
-              productsMap[product.id] = product;
-            });
+          if (data.success) {
+            setUser(data.user);
           }
-          setProducts(productsMap);
         }
       } catch (error) {
-        console.error('Error fetching products:', error);
-        // Fallback to mock data
-        const mockProducts: Record<string, any> = {};
-        wishlistState.items.forEach(item => {
-          mockProducts[item.productId] = {
-            id: item.productId,
-            slug: 'placeholder-product',
-            title: {
-              en: 'Placeholder Product',
-              hi: 'प्लेसहोल्डर उत्पाद'
-            },
-            description: {
-              en: 'Product description',
-              hi: 'उत्पाद विवरण'
-            },
-            price: 999,
-            stock: 10,
-            rating: 4.5,
-            reviewCount: 5,
-            categoryId: '1',
-            artisanId: '1',
-            images: ['/images/products/placeholder.jpg'],
-            material: 'Wood',
-            dimensions: '10x10x10 cm',
-            tags: ['handmade'],
-            featured: false,
-            bestSeller: false,
-            trending: false,
-            newArrival: false,
-            createdAt: new Date().toISOString()
-          };
-        });
-        setProducts(mockProducts);
+        console.error('Error fetching user profile:', error);
+      } finally {
+        setLoading(false);
       }
     };
 
-    fetchProducts();
-  }, [wishlistState.items]);
-
-  const fetchProfileData = async () => {
-    try {
-      // Check authentication
-      const token = localStorage.getItem('token');
-      const userData = localStorage.getItem('user');
-      const savedLanguage = localStorage.getItem('language') || 'en';
-      
-      setLanguage(savedLanguage);
-      
-      if (!token || !userData) {
-        router.push('/login');
-        return;
-      }
-
-      const parsedUser = JSON.parse(userData);
-      setUser(parsedUser);
-      setFormData({
-        name: parsedUser.name || '',
-        email: parsedUser.email || '',
-        phone: parsedUser.phone || ''
-      });
-      
-      // Fetch orders from API
-      const ordersResponse = await fetch('/api/orders');
-      const ordersData = await ordersResponse.json();
-      if (ordersData.success) {
-        setOrders(ordersData.orders);
-      }
-      
-      // Fetch addresses from API
-      const addressesResponse = await fetch('/api/user/addresses');
-      const addressesData = await addressesResponse.json();
-      if (addressesData.success) {
-        setAddresses(addressesData.addresses);
-      }
-    } catch (error) {
-      console.error('Error fetching profile data:', error);
-      // Fallback to mock data
-      const mockOrders: Order[] = [
-        {
-          id: '1',
-          orderNumber: 'ORD-2024-001',
-          status: 'delivered',
-          totalAmount: 2500,
-          createdAt: '2024-01-15',
-          items: [
-            { product: 'Bamboo Wall Art', quantity: 1, price: 1500 },
-            { product: 'Tribal Jewelry Set', quantity: 1, price: 1000 }
-          ]
-        },
-        {
-          id: '2',
-          orderNumber: 'ORD-2024-002',
-          status: 'shipped',
-          totalAmount: 1800,
-          createdAt: '2024-01-20',
-          items: [
-            { product: 'Handwoven Basket', quantity: 2, price: 900 }
-          ]
-        }
-      ];
-      setOrders(mockOrders);
-      
-      const mockAddresses: Address[] = [
-        {
-          id: '1',
-          fullName: 'John Doe',
-          phone: '9876543210',
-          addressLine1: '123 Main Street',
-          addressLine2: 'Near Market',
-          city: 'Bhopal',
-          state: 'Madhya Pradesh',
-          pincode: '462001',
-          country: 'India',
-          isDefault: true
-        }
-      ];
-      setAddresses(mockAddresses);
-    }
-    
-    setLoading(false);
-  };
-
-  const handleSaveProfile = async () => {
-    try {
-      // Make API call to update user
-      const response = await fetch('/api/user/profile', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
-        },
-        body: JSON.stringify(formData)
-      });
-      
-      const result = await response.json();
-      
-      if (result.success) {
-        const updatedUser = { ...user, ...formData };
-        setUser(updatedUser as User);
-        localStorage.setItem('user', JSON.stringify(updatedUser));
-        setIsEditing(false);
-        alert('Profile updated successfully!');
-      } else {
-        alert('Failed to update profile: ' + result.error);
-      }
-    } catch (error) {
-      console.error('Error updating profile:', error);
-      alert('Failed to update profile');
-    }
-  };
-
-  const handleChangePassword = async () => {
-    if (passwordData.newPassword !== passwordData.confirmPassword) {
-      alert('New passwords do not match!');
-      return;
-    }
-    
-    try {
-      // Make API call to change password
-      const response = await fetch('/api/user/change-password', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
-        },
-        body: JSON.stringify(passwordData)
-      });
-      
-      const result = await response.json();
-      
-      if (result.success) {
-        alert('Password updated successfully!');
-        setIsChangingPassword(false);
-        setPasswordData({
-          currentPassword: '',
-          newPassword: '',
-          confirmPassword: ''
-        });
-      } else {
-        alert('Failed to update password: ' + result.error);
-      }
-    } catch (error) {
-      console.error('Error changing password:', error);
-      alert('Failed to update password');
-    }
-  };
-
-  const handleDeleteAccount = async () => {
-    if (window.confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
+    const fetchUserOrders = async () => {
       try {
-        // Make API call to delete account
-        const response = await fetch('/api/user/delete', {
-          method: 'DELETE',
+        const token = localStorage.getItem('token');
+        const response = await fetch('/api/user/orders', {
           headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}`
+            'Authorization': `Bearer ${token}`
           }
         });
         
-        const result = await response.json();
-        
-        if (result.success) {
-          localStorage.removeItem('token');
-          localStorage.removeItem('user');
-          router.push('/');
-          alert('Account deleted successfully.');
-        } else {
-          alert('Failed to delete account: ' + result.error);
+        if (response.ok) {
+          const data = await response.json();
+          if (data.success) {
+            setOrders(data.orders);
+          }
         }
       } catch (error) {
-        console.error('Error deleting account:', error);
-        alert('Failed to delete account');
+        console.error('Error fetching user orders:', error);
       }
+    };
+
+    const fetchUserAddresses = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        const response = await fetch('/api/user/addresses', {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+        
+        if (response.ok) {
+          const data = await response.json();
+          if (data.success) {
+            setUserAddresses(data.addresses);
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching user addresses:', error);
+      }
+    };
+
+    if (authUser) {
+      fetchUserProfile();
+      fetchUserOrders();
+      fetchUserAddresses();
+    } else {
+      setLoading(false);
     }
-  };
+  }, [authUser]);
 
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    router.push('/');
-  };
-
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case 'delivered': return 'text-green-600 bg-green-100';
-      case 'shipped': return 'text-blue-600 bg-blue-100';
-      case 'processing': return 'text-yellow-600 bg-yellow-100';
-      case 'cancelled': return 'text-red-600 bg-red-100';
-      default: return 'text-gray-600 bg-gray-100';
-    }
-  };
-
-  // Mock localization function
+  // Translations
   const t = (key: string) => {
     const translations: any = {
       en: {
-        savedAddresses: "Your saved addresses will appear here.",
-        updatePassword: "Update your password for better security.",
-        deleteAccount: "Deleting your account is permanent and cannot be undone.",
-        addAddress: "Add Address"
+        profile: 'Profile',
+        personalInfo: 'Personal Information',
+        addresses: 'Addresses',
+        myOrders: 'My Orders',
+        wishlist: 'Wishlist',
+        notifications: 'Notifications',
+        settings: 'Settings',
+        logout: 'Logout',
+        editProfile: 'Edit Profile',
+        name: 'Name',
+        email: 'Email',
+        phone: 'Phone',
+        memberSince: 'Member since',
+        addAddress: 'Add Address',
+        edit: 'Edit',
+        delete: 'Delete',
+        setAsDefault: 'Set as Default',
+        orderHistory: 'Order History',
+        orderId: 'Order ID',
+        date: 'Date',
+        status: 'Status',
+        total: 'Total',
+        items: 'Items',
+        viewDetails: 'View Details',
+        pending: 'Pending',
+        confirmed: 'Confirmed',
+        processing: 'Processing',
+        shipped: 'Shipped',
+        outForDelivery: 'Out for Delivery',
+        delivered: 'Delivered',
+        cancelled: 'Cancelled',
+        returned: 'Returned',
+        refunded: 'Refunded'
       },
       hi: {
-        savedAddresses: "आपके सेव किए गए पते यहाँ दिखेंगे।",
-        updatePassword: "अधिक सुरक्षा के लिए अपना पासवर्ड अपडेट करें।",
-        deleteAccount: "खाता डिलीट करना स्थायी है और इसे वापस नहीं किया जा सकता।",
-        addAddress: "पता जोड़ें"
+        profile: 'प्रोफ़ाइल',
+        personalInfo: 'व्यक्तिगत जानकारी',
+        addresses: 'पते',
+        myOrders: 'मेरे आदेश',
+        wishlist: 'इच्छा-सूची',
+        notifications: 'अधिसूचनाएँ',
+        settings: 'सेटिंग्स',
+        logout: 'लॉग आउट',
+        editProfile: 'प्रोफ़ाइल संपादित करें',
+        name: 'नाम',
+        email: 'ईमेल',
+        phone: 'फ़ोन',
+        memberSince: 'सदस्यता तारीख',
+        addAddress: 'पता जोड़ें',
+        edit: 'संपादित करें',
+        delete: 'हटाएँ',
+        setAsDefault: 'डिफ़ॉल्ट के रूप मेः सेट करें',
+        orderHistory: 'आदेश इतिहास',
+        orderId: 'आदेश आईडी',
+        date: 'तारीख',
+        status: 'स्थिति',
+        total: 'कुल',
+        items: 'आइटम',
+        viewDetails: 'विवरण देखें',
+        pending: 'लंबित',
+        confirmed: 'पुष्टि की गई',
+        processing: 'प्रसंस्करण',
+        shipped: 'भेज दिया गया',
+        outForDelivery: 'डिलीवरी के लिए निकला',
+        delivered: 'डिलीवर किया गया',
+        cancelled: 'रद्द किया गया',
+        returned: 'वापस किया गया',
+        refunded: 'धनवापसी की गई'
       }
     };
     
     return translations[language][key] || key;
   };
 
+  const getStatusText = (status: string) => {
+    const statusMap: any = {
+      pending: t('pending'),
+      confirmed: t('confirmed'),
+      processing: t('processing'),
+      shipped: t('shipped'),
+      'out-for-delivery': t('outForDelivery'),
+      delivered: t('delivered'),
+      cancelled: t('cancelled'),
+      returned: t('returned'),
+      refunded: t('refunded')
+    };
+    
+    return statusMap[status] || status;
+  };
+
+  const getStatusClass = (status: string) => {
+    switch (status) {
+      case 'delivered':
+        return 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200';
+      case 'shipped':
+      case 'out-for-delivery':
+        return 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200';
+      case 'processing':
+      case 'confirmed':
+        return 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200';
+      case 'pending':
+        return 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200';
+      case 'cancelled':
+      case 'returned':
+      case 'refunded':
+        return 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200';
+      default:
+        return 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200';
+    }
+  };
+
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-amber-600 mx-auto"></div>
-          <p className="mt-4 text-gray-600 dark:text-gray-400">Loading profile...</p>
+      <div className="container mx-auto px-4 py-8">
+        <div className="flex justify-center items-center h-64">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary-500"></div>
         </div>
       </div>
     );
   }
 
   if (!user) {
-    return null;
+    return (
+      <div className="container mx-auto px-4 py-8">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+            {language === 'en' ? 'User not found' : 'उपयोगकर्ता नहीं मिला'}
+          </h1>
+          <button 
+            onClick={() => router.push('/login')}
+            className="flipkart-button"
+          >
+            {language === 'en' ? 'Go to Login' : 'लॉगिन पर जाएं'}
+          </button>
+        </div>
+      </div>
+    );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      <div className="container mx-auto px-4 py-8">
-        <div className="max-w-6xl mx-auto">
-          {/* Header */}
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mb-6">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center space-x-4">
-                <div className="w-16 h-16 bg-amber-600 rounded-full flex items-center justify-center">
-                  <span className="text-white text-2xl font-bold">
-                    {user.name.charAt(0).toUpperCase()}
-                  </span>
-                </div>
-                <div>
-                  <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
-                    {user.name}
-                  </h1>
-                  <p className="text-gray-600 dark:text-gray-400">{user.email}</p>
-                  <span className="inline-block px-2 py-1 text-xs font-medium bg-amber-100 text-amber-800 rounded-full mt-1">
-                    {user.role === 'super_admin' ? 'Super Admin' : user.role.charAt(0).toUpperCase() + user.role.slice(1)}
-                  </span>
-                </div>
+    <div className="container mx-auto px-4 py-8">
+      <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">
+        {t('profile')}
+      </h1>
+      
+      <div className="flex flex-col lg:flex-row gap-8">
+        {/* Sidebar */}
+        <div className="lg:w-64">
+          <div className="flipkart-card p-6">
+            <div className="flex items-center mb-6">
+              <div className="bg-gray-200 dark:bg-gray-700 rounded-full w-16 h-16 flex items-center justify-center">
+                <User className="w-8 h-8 text-gray-600 dark:text-gray-400" />
               </div>
+              <div className="ml-4">
+                <h2 className="font-semibold text-gray-900 dark:text-white">
+                  {user.name}
+                </h2>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  {user.email}
+                </p>
+              </div>
+            </div>
+            
+            <nav className="space-y-1">
               <button
-                onClick={handleLogout}
-                className="px-4 py-2 text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors"
+                onClick={() => setActiveTab('profile')}
+                className={`w-full flex items-center px-4 py-3 text-left rounded-sm ${activeTab === 'profile' ? 'bg-primary-50 text-primary-700 dark:bg-primary-900/30 dark:text-primary-300' : 'text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800'}`}
               >
-                Logout
+                <User className="w-5 h-5 mr-3" />
+                {t('personalInfo')}
               </button>
-            </div>
+              
+              <button
+                onClick={() => setActiveTab('addresses')}
+                className={`w-full flex items-center px-4 py-3 text-left rounded-sm ${activeTab === 'addresses' ? 'bg-primary-50 text-primary-700 dark:bg-primary-900/30 dark:text-primary-300' : 'text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800'}`}
+              >
+                <MapPin className="w-5 h-5 mr-3" />
+                {t('addresses')}
+              </button>
+              
+              <button
+                onClick={() => setActiveTab('orders')}
+                className={`w-full flex items-center px-4 py-3 text-left rounded-sm ${activeTab === 'orders' ? 'bg-primary-50 text-primary-700 dark:bg-primary-900/30 dark:text-primary-300' : 'text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800'}`}
+              >
+                <ShoppingBag className="w-5 h-5 mr-3" />
+                {t('myOrders')}
+              </button>
+              
+              <Link
+                href="/wishlist"
+                className="flex items-center px-4 py-3 text-left rounded-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
+              >
+                <Heart className="w-5 h-5 mr-3" />
+                {t('wishlist')}
+              </Link>
+              
+              <button className="w-full flex items-center px-4 py-3 text-left rounded-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800">
+                <Bell className="w-5 h-5 mr-3" />
+                {t('notifications')}
+              </button>
+              
+              <button className="w-full flex items-center px-4 py-3 text-left rounded-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800">
+                <Settings className="w-5 h-5 mr-3" />
+                {t('settings')}
+              </button>
+              
+              <button 
+                onClick={logout}
+                className="w-full flex items-center px-4 py-3 text-left rounded-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
+              >
+                <LogOut className="w-5 h-5 mr-3" />
+                {t('logout')}
+              </button>
+            </nav>
           </div>
-
-          {/* Navigation Tabs */}
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md mb-6">
-            <div className="border-b border-gray-200 dark:border-gray-700">
-              <nav className="flex space-x-8 px-6">
-                <button
-                  onClick={() => setActiveTab('profile')}
-                  className={`py-4 px-1 border-b-2 font-medium text-sm ${
-                    activeTab === 'profile'
-                      ? 'border-amber-500 text-amber-600'
-                      : 'border-transparent text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300'
-                  }`}
-                >
-                  Profile
-                </button>
-                <button
-                  onClick={() => setActiveTab('orders')}
-                  className={`py-4 px-1 border-b-2 font-medium text-sm ${
-                    activeTab === 'orders'
-                      ? 'border-amber-500 text-amber-600'
-                      : 'border-transparent text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300'
-                  }`}
-                >
-                  Orders
-                </button>
-                <button
-                  onClick={() => setActiveTab('wishlist')}
-                  className={`py-4 px-1 border-b-2 font-medium text-sm ${
-                    activeTab === 'wishlist'
-                      ? 'border-amber-500 text-amber-600'
-                      : 'border-transparent text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300'
-                  }`}
-                >
-                  Wishlist
-                </button>
-                <button
-                  onClick={() => setActiveTab('addresses')}
-                  className={`py-4 px-1 border-b-2 font-medium text-sm ${
-                    activeTab === 'addresses'
-                      ? 'border-amber-500 text-amber-600'
-                      : 'border-transparent text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300'
-                  }`}
-                >
-                  Addresses
-                </button>
-                <button
-                  onClick={() => setActiveTab('security')}
-                  className={`py-4 px-1 border-b-2 font-medium text-sm ${
-                    activeTab === 'security'
-                      ? 'border-amber-500 text-amber-600'
-                      : 'border-transparent text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300'
-                  }`}
-                >
-                  Security
-                </button>
-              </nav>
-            </div>
-          </div>
-
-          {/* Content */}
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-            {activeTab === 'profile' && (
-              <div>
-                <div className="flex items-center justify-between mb-6">
-                  <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
-                    Profile Information
-                  </h2>
-                  <button
-                    onClick={() => setIsEditing(!isEditing)}
-                    className="px-4 py-2 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition-colors"
-                  >
-                    {isEditing ? 'Cancel' : 'Edit Profile'}
-                  </button>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      Full Name
-                    </label>
-                    {isEditing ? (
-                      <input
-                        type="text"
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 dark:bg-gray-700 dark:text-white"
-                      />
-                    ) : (
-                      <p className="text-gray-900 dark:text-white">{user.name}</p>
-                    )}
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      Email Address
-                    </label>
-                    {isEditing ? (
-                      <input
-                        type="email"
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 dark:bg-gray-700 dark:text-white"
-                      />
-                    ) : (
-                      <p className="text-gray-900 dark:text-white">{user.email}</p>
-                    )}
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      Phone Number
-                    </label>
-                    {isEditing ? (
-                      <input
-                        type="tel"
-                        value={formData.phone}
-                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 dark:bg-gray-700 dark:text-white"
-                      />
-                    ) : (
-                      <p className="text-gray-900 dark:text-white">{user.phone || 'Not provided'}</p>
-                    )}
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      Account Type
-                    </label>
-                    <p className="text-gray-900 dark:text-white capitalize">{user.role}</p>
-                  </div>
-                </div>
-
-                {isEditing && (
-                  <div className="mt-6 flex space-x-3">
-                    <button
-                      onClick={handleSaveProfile}
-                      className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
-                    >
-                      Save Changes
-                    </button>
-                    <button
-                      onClick={() => setIsEditing(false)}
-                      className="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition-colors"
-                    >
-                      Cancel
-                    </button>
-                  </div>
-                )}
-              </div>
-            )}
-
-            {activeTab === 'orders' && (
-              <div>
-                <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">
-                  Order History
+        </div>
+        
+        {/* Main content */}
+        <div className="flex-grow">
+          {activeTab === 'profile' && (
+            <div className="flipkart-card p-6">
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-xl font-bold text-gray-900 dark:text-white">
+                  {t('personalInfo')}
                 </h2>
-                {orders.length > 0 ? (
-                  <div className="space-y-4">
-                    {orders.map((order) => (
-                      <div key={order.id} className="border border-gray-200 dark:border-gray-700 rounded-lg p-4">
-                        <div className="flex items-center justify-between mb-2">
-                          <div>
-                            <h3 className="font-medium text-gray-900 dark:text-white">
-                              Order #{order.orderNumber}
-                            </h3>
-                            <p className="text-sm text-gray-600 dark:text-gray-400">
-                              Placed on {new Date(order.createdAt).toLocaleDateString()}
-                            </p>
-                          </div>
-                          <div className="text-right">
-                            <span className={`inline-block px-2 py-1 text-xs font-medium rounded-full ${getStatusColor(order.status)}`}>
-                              {order.status.charAt(0).toUpperCase() + order.status.slice(1)}
-                            </span>
-                            <p className="text-lg font-semibold text-gray-900 dark:text-white mt-1">
-                              ₹{order.totalAmount}
-                            </p>
-                          </div>
-                        </div>
-                        <div className="border-t border-gray-200 dark:border-gray-700 pt-2">
-                          <p className="text-sm text-gray-600 dark:text-gray-400">
-                            {order.items.map(item => `${item.product} (${item.quantity})`).join(', ')}
-                          </p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                ) : (
-                  <div className="text-center py-8">
-                    <p className="text-gray-500 dark:text-gray-400">No orders found</p>
-                    <Link
-                      href="/"
-                      className="inline-block mt-4 px-4 py-2 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition-colors"
-                    >
-                      Start Shopping
-                    </Link>
-                  </div>
-                )}
+                <button className="flipkart-button px-4 py-2 flex items-center text-sm">
+                  <Edit3 className="w-4 h-4 mr-2" />
+                  {t('editProfile')}
+                </button>
               </div>
-            )}
-
-            {activeTab === 'wishlist' && (
-              <div>
-                <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">
-                  My Wishlist ({wishlistState.items.length} items)
-                </h2>
-                {wishlistState.items.length > 0 ? (
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {wishlistState.items.map((item) => {
-                      const product = products[item.productId];
-                      if (!product) return null;
-                      
-                      return (
-                        <div key={item.productId} className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
-                          <div className="relative mb-4">
-                            <Image
-                              src={product.images && product.images.length > 0 ? product.images[0] : '/images/products/placeholder.jpg'}
-                              alt={product.title.en}
-                              width={200}
-                              height={200}
-                              className="w-full h-48 object-cover rounded-lg"
-                              onError={(e: any) => {
-                                const target = e.target as HTMLImageElement;
-                                target.src = '/images/products/placeholder.jpg';
-                              }}
-                            />
-                            <button
-                              onClick={() => removeFromWishlist(item.productId)}
-                              className="absolute top-2 right-2 p-2 bg-white dark:bg-gray-800 rounded-full shadow-md hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
-                              title="Remove from wishlist"
-                            >
-                              <span className="text-red-500">🗑️</span>
-                            </button>
-                          </div>
-                          <div className="space-y-2">
-                            <Link
-                              href={`/product/${product.slug}`}
-                              className="block font-medium text-gray-900 dark:text-white hover:text-amber-600 transition-colors"
-                            >
-                              {product.title.en}
-                            </Link>
-                            <p className="text-lg font-semibold text-amber-600">
-                              ₹{product.price.toLocaleString()}
-                            </p>
-                            <div className="flex space-x-2 mt-3">
-                              <Link
-                                href={`/product/${product.slug}`}
-                                className="flex-1 px-3 py-2 bg-amber-600 text-white text-center text-sm rounded-lg hover:bg-amber-700 transition-colors"
-                              >
-                                View Product
-                              </Link>
-                            </div>
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                ) : (
-                  <div className="text-center py-8">
-                    <div className="mb-4">
-                      <span className="text-6xl">💖</span>
-                    </div>
-                    <p className="text-gray-500 dark:text-gray-400 mb-4">Your wishlist is empty</p>
-                    <Link
-                      href="/"
-                      className="inline-block px-6 py-3 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition-colors"
-                    >
-                      Browse Products
-                    </Link>
-                  </div>
-                )}
-              </div>
-            )}
-
-            {activeTab === 'addresses' && (
-              <div>
-                <div className="flex items-center justify-between mb-6">
-                  <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
-                    Saved Addresses
-                  </h2>
-                  <button className="px-4 py-2 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition-colors">
-                    Add Address
-                  </button>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    {t('name')}
+                  </label>
+                  <p className="text-gray-900 dark:text-white">{user.name}</p>
                 </div>
                 
-                {addresses.length > 0 ? (
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {addresses.map((address) => (
-                      <div key={address.id} className="border border-gray-200 dark:border-gray-700 rounded-lg p-4">
-                        <div className="flex justify-between items-start">
-                          <div>
-                            <h3 className="font-medium text-gray-900 dark:text-white">{address.fullName}</h3>
-                            <p className="text-gray-600 dark:text-gray-400">{address.phone}</p>
-                            <p className="text-gray-900 dark:text-white mt-2">
-                              {address.addressLine1}
-                              {address.addressLine2 && `, ${address.addressLine2}`}
-                              <br />
-                              {address.city}, {address.state} - {address.pincode}
-                              <br />
-                              {address.country}
-                            </p>
-                          </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    {t('email')}
+                  </label>
+                  <p className="text-gray-900 dark:text-white">{user.email}</p>
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    {t('phone')}
+                  </label>
+                  <p className="text-gray-900 dark:text-white">{user.phone || (language === 'en' ? 'Not provided' : 'प्रदान नहीं किया गया')}</p>
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    {t('memberSince')}
+                  </label>
+                  <p className="text-gray-900 dark:text-white">
+                    {user.created_at ? new Date(user.created_at).toLocaleDateString(language === 'en' ? 'en-US' : 'hi-IN', {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric'
+                    }) : (language === 'en' ? 'Not available' : 'उपलब्ध नहीं')}
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
+          
+          {activeTab === 'addresses' && (
+            <div className="flipkart-card p-6">
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-xl font-bold text-gray-900 dark:text-white">
+                  {t('addresses')}
+                </h2>
+                <button className="flipkart-button px-4 py-2 text-sm">
+                  {t('addAddress')}
+                </button>
+              </div>
+              
+              <div className="space-y-4">
+                {userAddresses.map((address: any) => (
+                  <div key={address.id} className="border border-gray-200 dark:border-gray-700 rounded-sm p-4">
+                    <div className="flex items-start justify-between">
+                      <div>
+                        <h3 className="font-semibold text-gray-900 dark:text-white">
+                          {address.name}
                           {address.isDefault && (
-                            <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-amber-100 text-amber-800">
-                              Default
+                            <span className="ml-2 text-xs bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200 px-2 py-1 rounded">
+                              {language === 'en' ? 'Default' : 'डिफ़ॉल्ट'}
                             </span>
                           )}
-                        </div>
-                        <div className="flex space-x-2 mt-4">
-                          <button className="text-sm text-amber-600 hover:text-amber-800">
-                            Edit
-                          </button>
-                          <button className="text-sm text-gray-600 hover:text-gray-800">
-                            Delete
-                          </button>
-                        </div>
+                        </h3>
+                        <p className="text-gray-600 dark:text-gray-400 mt-1">
+                          {address.address}, {address.city}, {address.state} - {address.pincode}
+                        </p>
+                        <p className="text-gray-600 dark:text-gray-400 mt-1">
+                          {address.phone}
+                        </p>
                       </div>
+                      <div className="flex space-x-2">
+                        <button className="text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300">
+                          {t('edit')}
+                        </button>
+                        {!address.isDefault && (
+                          <button className="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200">
+                            {t('delete')}
+                          </button>
+                        )}
+                      </div>
+                    </div>
+                    {!address.isDefault && (
+                      <button className="mt-3 text-sm text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300">
+                        {t('setAsDefault')}
+                      </button>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+          
+          {activeTab === 'orders' && (
+            <div className="flipkart-card p-6">
+              <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-6">
+                {t('orderHistory')}
+              </h2>
+              
+              <div className="overflow-x-auto">
+                <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                  <thead>
+                    <tr>
+                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                        {t('orderId')}
+                      </th>
+                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                        {t('date')}
+                      </th>
+                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                        {t('status')}
+                      </th>
+                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                        {t('total')}
+                      </th>
+                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                        {t('items')}
+                      </th>
+                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                        {t('actions')}
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
+                    {orders.map((order: any) => (
+                      <tr key={order.id}>
+                        <td className="px-4 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">
+                          {order.order_number}
+                        </td>
+                        <td className="px-4 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
+                          {order.created_at ? new Date(order.created_at).toLocaleDateString(language === 'en' ? 'en-US' : 'hi-IN') : ''}
+                        </td>
+                        <td className="px-4 py-4 whitespace-nowrap">
+                          <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${getStatusClass(order.status || 'pending')}`}>
+                            {getStatusText(order.status || 'pending')}
+                          </span>
+                        </td>
+                        <td className="px-4 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
+                          ₹{order.total_amount ? order.total_amount.toLocaleString() : '0'}
+                        </td>
+                        <td className="px-4 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
+                          {order.items ? order.items.length : 0}
+                        </td>
+                        <td className="px-4 py-4 whitespace-nowrap text-sm">
+                          <button className="text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300">
+                            {t('viewDetails')}
+                          </button>
+                        </td>
+                      </tr>
                     ))}
-                  </div>
-                ) : (
-                  <div className="text-center py-8">
-                    <p className="text-gray-500 dark:text-gray-400">{t('savedAddresses')}</p>
-                    <button className="inline-block mt-4 px-4 py-2 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition-colors">
-                      {t('addAddress')}
-                    </button>
-                  </div>
-                )}
+                  </tbody>
+                </table>
               </div>
-            )}
-
-            {activeTab === 'security' && (
-              <div>
-                <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">
-                  Security Settings
-                </h2>
-                
-                {/* Change Password */}
-                <div className="mb-8">
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-md font-medium text-gray-900 dark:text-white">
-                      Change Password
-                    </h3>
-                    <button
-                      onClick={() => setIsChangingPassword(!isChangingPassword)}
-                      className="px-3 py-1 text-sm bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition-colors"
-                    >
-                      {isChangingPassword ? 'Cancel' : 'Change'}
-                    </button>
-                  </div>
-                  
-                  <p className="text-gray-600 dark:text-gray-400 mb-4">
-                    {t('updatePassword')}
-                  </p>
-                  
-                  {isChangingPassword && (
-                    <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 mt-4">
-                      <div className="space-y-4">
-                        <div>
-                          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                            Current Password
-                          </label>
-                          <input
-                            type="password"
-                            value={passwordData.currentPassword}
-                            onChange={(e) => setPasswordData({ ...passwordData, currentPassword: e.target.value })}
-                            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 dark:bg-gray-700 dark:text-white"
-                          />
-                        </div>
-                        
-                        <div>
-                          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                            New Password
-                          </label>
-                          <input
-                            type="password"
-                            value={passwordData.newPassword}
-                            onChange={(e) => setPasswordData({ ...passwordData, newPassword: e.target.value })}
-                            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 dark:bg-gray-700 dark:text-white"
-                          />
-                        </div>
-                        
-                        <div>
-                          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                            Confirm New Password
-                          </label>
-                          <input
-                            type="password"
-                            value={passwordData.confirmPassword}
-                            onChange={(e) => setPasswordData({ ...passwordData, confirmPassword: e.target.value })}
-                            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 dark:bg-gray-700 dark:text-white"
-                          />
-                        </div>
-                        
-                        <div className="flex space-x-3">
-                          <button
-                            onClick={handleChangePassword}
-                            className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
-                          >
-                            Update Password
-                          </button>
-                          <button
-                            onClick={() => setIsChangingPassword(false)}
-                            className="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition-colors"
-                          >
-                            Cancel
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </div>
-                
-                {/* Delete Account */}
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-md font-medium text-gray-900 dark:text-white">
-                      Delete Account
-                    </h3>
-                    <button
-                      onClick={() => setShowDeleteAccount(!showDeleteAccount)}
-                      className="px-3 py-1 text-sm bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
-                    >
-                      {showDeleteAccount ? 'Cancel' : 'Delete'}
-                    </button>
-                  </div>
-                  
-                  <p className="text-gray-600 dark:text-gray-400 mb-4">
-                    {t('deleteAccount')}
-                  </p>
-                  
-                  {showDeleteAccount && (
-                    <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4 mt-4">
-                      <p className="text-red-700 dark:text-red-300 mb-4">
-                        Are you sure you want to delete your account? This action cannot be undone.
-                      </p>
-                      <div className="flex space-x-3">
-                        <button
-                          onClick={handleDeleteAccount}
-                          className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
-                        >
-                          Yes, Delete Account
-                        </button>
-                        <button
-                          onClick={() => setShowDeleteAccount(false)}
-                          className="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition-colors"
-                        >
-                          Cancel
-                        </button>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

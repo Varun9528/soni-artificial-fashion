@@ -1,12 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
+import { withAuth, withAdminAuth } from '@/lib/auth/middleware';
 
-export async function POST(request: NextRequest) {
+export const POST = withAuth(async (request: NextRequest, authContext: any) => {
   try {
     const body = await request.json();
     
     const {
-      user_id,
       items,
       payment_method,
       shipping_address,
@@ -17,8 +17,10 @@ export async function POST(request: NextRequest) {
       coupon_code
     } = body;
 
+    const user_id = authContext.user.id;
+
     // Validate required fields
-    if (!user_id || !items || !items.length || !shipping_address || !total_amount) {
+    if (!items || !items.length || !shipping_address || !total_amount) {
       return NextResponse.json({
         success: false,
         error: 'Missing required fields'
@@ -129,38 +131,31 @@ export async function POST(request: NextRequest) {
       error: 'Failed to create order'
     }, { status: 500 });
   }
-}
+});
 
-// Get user orders
-export async function GET(request: NextRequest) {
+// Get all orders (admin only)
+export const GET = withAdminAuth(async (request: NextRequest, authContext: any) => {
   try {
-    const { searchParams } = new URL(request.url);
-    const userId = searchParams.get('userId');
-
-    if (!userId) {
-      return NextResponse.json({
-        success: false,
-        error: 'User ID is required'
-      }, { status: 400 });
-    }
-
     const orders = await prisma.order.findMany({
-      where: {
-        userId: userId
-      },
       include: {
         items: {
           include: {
             product: {
               select: {
                 title: true,
-                images: true,
+                productImages: true,
                 slug: true
               }
             }
           }
         },
-        address: true
+        address: true,
+        user: {
+          select: {
+            name: true,
+            email: true
+          }
+        }
       },
       orderBy: {
         createdAt: 'desc'
@@ -179,4 +174,67 @@ export async function GET(request: NextRequest) {
       error: 'Failed to fetch orders'
     }, { status: 500 });
   }
-}
+});
+
+// Update order status
+export const PUT = withAdminAuth(async (request: NextRequest, authContext: any) => {
+  try {
+    const body = await request.json();
+    const { orderId, status, paymentStatus } = body;
+
+    // Validate required fields
+    if (!orderId) {
+      return NextResponse.json({
+        success: false,
+        error: 'Order ID is required'
+      }, { status: 400 });
+    }
+
+    // Update order status
+    const updatedOrder = await prisma.order.update({
+      where: { id: orderId },
+      data: {
+        status: status || undefined,
+        paymentStatus: paymentStatus || undefined
+      },
+      include: {
+        items: {
+          include: {
+            product: {
+              select: {
+                title: true,
+                productImages: true,
+                slug: true
+              }
+            }
+          }
+        },
+        address: true
+      }
+    });
+
+    // Create order status history if status changed
+    if (status) {
+      await prisma.orderStatusHistory.create({
+        data: {
+          orderId: updatedOrder.id,
+          status: status,
+          note: `Order status updated to ${status}`
+        }
+      });
+    }
+
+    return NextResponse.json({
+      success: true,
+      order: updatedOrder,
+      message: 'Order updated successfully'
+    });
+
+  } catch (error) {
+    console.error('Error updating order:', error);
+    return NextResponse.json({
+      success: false,
+      error: 'Failed to update order'
+    }, { status: 500 });
+  }
+});

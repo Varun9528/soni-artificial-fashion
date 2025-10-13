@@ -12,6 +12,7 @@ declare const process: {
 
 import { NextRequest, NextResponse } from 'next/server';
 import { sendEmail, getOrderConfirmationEmail } from '@/lib/emailService';
+import prisma from '@/lib/prisma';
 
 interface PaymentRequest {
   amount: number;
@@ -180,18 +181,17 @@ export async function POST(request: NextRequest) {
     }
     
     if (paymentResult.success) {
-      // Log the order (in real app, save to database)
-      console.log('Order Created:', {
-        orderId,
-        amount: body.amount,
-        paymentMethod: body.paymentMethod,
-        items: body.items,
-        shippingAddress: body.shippingAddress,
-        status: 'confirmed',
-        transactionId: paymentResult.transactionId,
-        paymentId: paymentResult.paymentId,
-        createdAt: new Date().toISOString()
-      });
+      // Update order status in database
+      if (body.orderId) {
+        await prisma.order.update({
+          where: { id: body.orderId },
+          data: {
+            paymentStatus: 'COMPLETED',
+            status: 'CONFIRMED',
+            paymentId: paymentResult.paymentId || paymentResult.transactionId
+          }
+        });
+      }
 
       // Send order confirmation email if email is provided
       if (body.customerEmail) {
@@ -271,6 +271,16 @@ export async function PUT(request: NextRequest) {
     }
 
     if (isVerified) {
+      // Update order status in database
+      await prisma.order.update({
+        where: { id: orderId },
+        data: {
+          paymentStatus: 'COMPLETED',
+          status: 'CONFIRMED',
+          paymentId: paymentId
+        }
+      });
+
       return NextResponse.json({
         status: 'success',
         message: 'Payment verified successfully',

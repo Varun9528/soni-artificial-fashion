@@ -4,9 +4,9 @@ import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
-import { products } from '@/data/products';
-import { categories } from '@/data/categories';
 import ProductCard from '@/components/product/ProductCard';
+import { db } from '@/lib/database/connection';
+import { useLanguage } from '@/context/LanguageContext';
 
 interface FilterState {
   priceRange: [number, number];
@@ -19,8 +19,10 @@ interface FilterState {
 export default function CategoryPage() {
   const params = useParams();
   const router = useRouter();
+  const { language } = useLanguage();
   
   const [category, setCategory] = useState<any>(null);
+  const [products, setProducts] = useState<any[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [showFilters, setShowFilters] = useState(false);
@@ -33,26 +35,45 @@ export default function CategoryPage() {
     sortBy: 'featured'
   });
 
-  const allMaterials = Array.from(new Set(products.map(p => p.material).filter(Boolean)));
-  const allArtisans = Array.from(new Set(products.map(p => p.artisanId)));
-
+  // Fetch category and products
   useEffect(() => {
-    const slug = params.slug as string;
-    const foundCategory = categories.find(c => c.slug === slug);
-    
-    if (!foundCategory) {
-      router.push('/404');
-      return;
-    }
+    const fetchData = async () => {
+      try {
+        const slug = params.slug as string;
+        
+        // Fetch category
+        const categories = await db.getAllCategories();
+        const foundCategory = categories.find((c: any) => c.slug === slug);
+        
+        if (!foundCategory) {
+          router.push('/404');
+          return;
+        }
 
-    setCategory(foundCategory);
-    setLoading(false);
+        setCategory(foundCategory);
+        
+        // Fetch products for this category
+        const searchResult = await db.searchProducts({
+          category: foundCategory.id,
+          limit: 100
+        });
+        
+        setProducts(searchResult.products || []);
+        setFilteredProducts(searchResult.products || []);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
   }, [params.slug, router]);
 
   useEffect(() => {
-    if (!category) return;
+    if (!category || products.length === 0) return;
 
-    let filtered = products.filter(p => p.categoryId === category.id);
+    let filtered = [...products];
 
     // Apply filters
     if (filters.inStock) {
@@ -99,7 +120,7 @@ export default function CategoryPage() {
     }
 
     setFilteredProducts(filtered);
-  }, [category, filters]);
+  }, [category, products, filters]);
 
   const handleFilterChange = (key: keyof FilterState, value: any) => {
     setFilters(prev => ({ ...prev, [key]: value }));
@@ -138,7 +159,9 @@ export default function CategoryPage() {
       <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-amber-600 mx-auto"></div>
-          <p className="mt-4 text-gray-600 dark:text-gray-400">Loading category...</p>
+          <p className="mt-4 text-gray-600 dark:text-gray-400">
+            {language === 'en' ? 'Loading category...' : 'श्रेणी लोड हो रही है...'}
+          </p>
         </div>
       </div>
     );
@@ -148,25 +171,35 @@ export default function CategoryPage() {
     return null;
   }
 
+  // Get unique materials and artisans for filters
+  const allMaterials = Array.from(new Set(products.map(p => p.material).filter(Boolean))) as string[];
+  const allArtisans = Array.from(new Set(products.map(p => p.artisan?.name).filter(Boolean))) as string[];
+
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-7xl mx-auto">
           {/* Breadcrumb */}
           <nav className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400 mb-6">
-            <Link href="/" className="hover:text-amber-600">Home</Link>
+            <Link href="/" className="hover:text-amber-600">
+              {language === 'en' ? 'Home' : 'होम'}
+            </Link>
             <span>/</span>
-            <Link href="/categories" className="hover:text-amber-600">Categories</Link>
+            <Link href="/categories" className="hover:text-amber-600">
+              {language === 'en' ? 'Categories' : 'श्रेणियाँ'}
+            </Link>
             <span>/</span>
-            <span className="text-gray-800 dark:text-gray-200">{category.name.en}</span>
+            <span className="text-gray-800 dark:text-gray-200">
+              {category.name?.[language] || category.name?.en || category.name}
+            </span>
           </nav>
 
           {/* Category Header */}
           <div className="mb-8">
             <div className="relative h-48 rounded-lg overflow-hidden mb-6">
               <Image
-                src={`/images/categories/cat-${category.slug}.jpg`}
-                alt={category.name.en}
+                src={category.image || `/images/categories/${category.slug}.png`}
+                alt={category.name?.[language] || category.name?.en || category.name}
                 fill
                 className="object-cover"
                 onError={(e: any) => {
@@ -176,8 +209,12 @@ export default function CategoryPage() {
               />
               <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
                 <div className="text-center text-white">
-                  <h1 className="text-4xl font-bold mb-2">{category.name.en}</h1>
-                  <p className="text-lg opacity-90">{category.description.en}</p>
+                  <h1 className="text-4xl font-bold mb-2">
+                    {category.name?.[language] || category.name?.en || category.name}
+                  </h1>
+                  <p className="text-lg opacity-90">
+                    {category.description?.[language] || category.description?.en || category.description}
+                  </p>
                 </div>
               </div>
             </div>
@@ -188,37 +225,49 @@ export default function CategoryPage() {
             <div className="lg:w-1/4">
               <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 sticky top-8">
                 <div className="flex items-center justify-between mb-4">
-                  <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Filters</h2>
+                  <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
+                    {language === 'en' ? 'Filters' : 'फ़िल्टर'}
+                  </h2>
                   <button
                     onClick={clearFilters}
                     className="text-sm text-amber-600 hover:text-amber-700"
                   >
-                    Clear All
+                    {language === 'en' ? 'Clear All' : 'सभी साफ़ करें'}
                   </button>
                 </div>
 
                 {/* Sort By */}
                 <div className="mb-6">
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Sort By
+                    {language === 'en' ? 'Sort By' : 'क्रमबद्ध करें'}
                   </label>
                   <select
                     value={filters.sortBy}
                     onChange={(e) => handleFilterChange('sortBy', e.target.value)}
                     className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 dark:bg-gray-700 dark:text-white"
                   >
-                    <option value="featured">Featured</option>
-                    <option value="price-low">Price: Low to High</option>
-                    <option value="price-high">Price: High to Low</option>
-                    <option value="rating">Customer Rating</option>
-                    <option value="newest">Newest First</option>
+                    <option value="featured">
+                      {language === 'en' ? 'Featured' : 'विशेष'}
+                    </option>
+                    <option value="price-low">
+                      {language === 'en' ? 'Price: Low to High' : 'मूल्य: कम से अधिक'}
+                    </option>
+                    <option value="price-high">
+                      {language === 'en' ? 'Price: High to Low' : 'मूल्य: अधिक से कम'}
+                    </option>
+                    <option value="rating">
+                      {language === 'en' ? 'Customer Rating' : 'ग्राहक रेटिंग'}
+                    </option>
+                    <option value="newest">
+                      {language === 'en' ? 'Newest First' : 'नवीनतम पहले'}
+                    </option>
                   </select>
                 </div>
 
                 {/* Price Range */}
                 <div className="mb-6">
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Price Range
+                    {language === 'en' ? 'Price Range' : 'मूल्य सीमा'}
                   </label>
                   <div className="space-y-2">
                     <input
@@ -246,7 +295,9 @@ export default function CategoryPage() {
                       onChange={(e) => handleFilterChange('inStock', e.target.checked)}
                       className="rounded border-gray-300 text-amber-600 focus:ring-amber-500"
                     />
-                    <span className="ml-2 text-sm text-gray-700 dark:text-gray-300">In Stock Only</span>
+                    <span className="ml-2 text-sm text-gray-700 dark:text-gray-300">
+                      {language === 'en' ? 'In Stock Only' : 'केवल स्टॉक में'}
+                    </span>
                   </label>
                 </div>
 
@@ -254,7 +305,7 @@ export default function CategoryPage() {
                 {allMaterials.length > 0 && (
                   <div className="mb-6">
                     <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      Materials
+                      {language === 'en' ? 'Materials' : 'सामग्री'}
                     </label>
                     <div className="space-y-2 max-h-40 overflow-y-auto">
                       {allMaterials.map((material) => (
@@ -280,14 +331,18 @@ export default function CategoryPage() {
             <div className="lg:w-3/4">
               <div className="flex items-center justify-between mb-6">
                 <p className="text-gray-600 dark:text-gray-400">
-                  Showing {filteredProducts.length} products
+                  {language === 'en' 
+                    ? `Showing ${filteredProducts.length} products` 
+                    : `${filteredProducts.length} उत्पाद दिखा रहे हैं`}
                 </p>
                 <button
                   onClick={() => setShowFilters(!showFilters)}
                   className="lg:hidden flex items-center space-x-2 px-4 py-2 bg-amber-600 text-white rounded-lg"
                 >
-                  <span>Filters</span>
-                  <span className="text-xs">({Object.values(filters).filter(Boolean).length})</span>
+                  <span>{language === 'en' ? 'Filters' : 'फ़िल्टर'}</span>
+                  <span className="text-xs">
+                    ({Object.values(filters).filter(Boolean).length})
+                  </span>
                 </button>
               </div>
 
@@ -303,16 +358,18 @@ export default function CategoryPage() {
                     <span className="text-6xl">🔍</span>
                   </div>
                   <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                    No products found
+                    {language === 'en' ? 'No products found' : 'कोई उत्पाद नहीं मिला'}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-400 mb-6">
-                    Try adjusting your filters or search criteria
+                    {language === 'en' 
+                      ? 'Try adjusting your filters or search criteria' 
+                      : 'अपने फ़िल्टर या खोज मानदंड समायोजित करने का प्रयास करें'}
                   </p>
                   <button
                     onClick={clearFilters}
                     className="px-6 py-3 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition-colors"
                   >
-                    Clear Filters
+                    {language === 'en' ? 'Clear Filters' : 'फ़िल्टर साफ़ करें'}
                   </button>
                 </div>
               )}

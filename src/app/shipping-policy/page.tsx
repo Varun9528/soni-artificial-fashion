@@ -30,6 +30,12 @@ const ShippingPolicyPage = () => {
     }
   };
 
+  const contactInfo = {
+    email: 'support@lettex.com',
+    phone: '+91 98765 43210',
+    hours: 'Monday to Saturday, 9:00 AM to 6:00 PM IST'
+  };
+
   const t = (key: string) => content[language as keyof typeof content][key as keyof typeof content.en];
 
   return (

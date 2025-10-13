@@ -129,8 +129,7 @@ CREATE TABLE products (
     INDEX idx_price (price),
     INDEX idx_rating (rating),
     INDEX idx_featured (featured),
-    INDEX idx_is_active (is_active),
-    FULLTEXT idx_search (title_en, title_hi, description_en, description_hi, tags)
+    INDEX idx_is_active (is_active)
 );
 
 -- Product images

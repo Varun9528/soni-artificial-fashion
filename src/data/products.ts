@@ -9,8 +9,8 @@ export const products: Product[] = [
       hi: 'बांस की दीवार कला'
     },
     description: {
-      en: 'Handcrafted by skilled Pachmarhi artisans, this bamboo wall art reflects centuries of tradition and artistry. Perfect for gifting or decorating your home with authentic tribal charm.',
-      hi: 'कुशल पचमढ़ी के कारीगरों द्वारा हस्तनिर्मित, यह बांस की दीवार कला शताब्दियों की परंपरा और कला को दर्शाता है। उपहार देने या अपने घर को प्रमाणिक जनजातीय आकर्षण के साथ सजाने के लिए उपयुक्त।'
+      en: 'Handcrafted by skilled artisans, this bamboo wall art reflects centuries of tradition and artistry. Perfect for gifting or decorating your home with authentic charm.',
+      hi: 'कुशल कारीगरों द्वारा हस्तनिर्मित, यह बांस की दीवार कला शताब्दियों की परंपरा और कला को दर्शाता है। उपहार देने या अपने घर को प्रमाणिक आकर्षण के साथ सजाने के लिए उपयुक्त।'
     },
     price: 2499,
     originalPrice: 3499,

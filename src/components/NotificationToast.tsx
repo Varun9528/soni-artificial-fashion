@@ -1,27 +1,30 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { X, CheckCircle, AlertCircle, Info, AlertTriangle } from 'lucide-react';
 
 interface Notification {
   id: string;
   message: string;
   type: 'success' | 'error' | 'info' | 'warning';
+  title?: string;
+  duration?: number;
 }
 
 export default function NotificationToast() {
   const [notifications, setNotifications] = useState<Notification[]>([]);
 
   // Function to show notification
-  const showNotification = (message: string, type: 'success' | 'error' | 'info' | 'warning' = 'info') => {
-    const id = Date.now().toString();
-    const newNotification: Notification = { id, message, type };
+  const showNotification = (message: string, type: 'success' | 'error' | 'info' | 'warning' = 'info', title?: string, duration: number = 5000) => {
+    const id = Date.now().toString() + Math.random().toString(36).substr(2, 9);
+    const newNotification: Notification = { id, message, type, title, duration };
     
     setNotifications(prev => [...prev, newNotification]);
     
-    // Auto remove after 3 seconds
+    // Auto remove after specified duration
     setTimeout(() => {
       removeNotification(id);
-    }, 3000);
+    }, duration);
   };
 
   const removeNotification = (id: string) => {
@@ -44,24 +47,40 @@ export default function NotificationToast() {
       {notifications.map((notification) => (
         <div
           key={notification.id}
-          className={`px-4 py-3 rounded-lg shadow-lg flex items-center justify-between animate-fade-in ${
+          className={`px-4 py-3 rounded-lg shadow-lg flex items-start justify-between animate-fade-in ${
             notification.type === 'success'
-              ? 'bg-green-500 text-white'
+              ? 'bg-green-100 border border-green-200 text-green-800'
               : notification.type === 'error'
-              ? 'bg-red-500 text-white'
+              ? 'bg-red-100 border border-red-200 text-red-800'
               : notification.type === 'warning'
-              ? 'bg-yellow-500 text-white'
-              : 'bg-blue-500 text-white'
+              ? 'bg-yellow-100 border border-yellow-200 text-yellow-800'
+              : 'bg-blue-100 border border-blue-200 text-blue-800'
           }`}
         >
-          <span>{notification.message}</span>
+          <div className="flex items-start">
+            {notification.type === 'success' ? (
+              <CheckCircle className="w-5 h-5 mr-3 mt-0.5 flex-shrink-0" />
+            ) : notification.type === 'error' ? (
+              <AlertCircle className="w-5 h-5 mr-3 mt-0.5 flex-shrink-0" />
+            ) : notification.type === 'warning' ? (
+              <AlertTriangle className="w-5 h-5 mr-3 mt-0.5 flex-shrink-0" />
+            ) : (
+              <Info className="w-5 h-5 mr-3 mt-0.5 flex-shrink-0" />
+            )}
+            <div>
+              {notification.title && (
+                <h4 className="font-medium mb-1">
+                  {notification.title}
+                </h4>
+              )}
+              <p>{notification.message}</p>
+            </div>
+          </div>
           <button
             onClick={() => removeNotification(notification.id)}
-            className="ml-4 text-white hover:text-gray-200"
+            className="ml-4 text-gray-500 hover:text-gray-700"
           >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
+            <X className="w-5 h-5" />
           </button>
         </div>
       ))}

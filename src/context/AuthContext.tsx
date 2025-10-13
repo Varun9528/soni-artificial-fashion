@@ -1,6 +1,7 @@
 'use client';
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { jwtService } from '@/lib/auth/jwt';
 
 interface User {
   id: string;
@@ -42,7 +43,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     // Check if user is logged in on initial load
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('token') || getCookie('token');
     const userData = localStorage.getItem('user');
     const savedLanguage = localStorage.getItem('language') || 'en';
     
@@ -50,59 +51,68 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     
     if (token && userData) {
       try {
-        const parsedUser = JSON.parse(userData);
-        setUser(parsedUser);
+        // Verify token first
+        const decoded = jwtService.verifyAccessToken(token);
+        if (decoded) {
+          const parsedUser = JSON.parse(userData);
+          setUser(parsedUser);
+        } else {
+          // Invalid token, clean up
+          localStorage.removeItem('token');
+          localStorage.removeItem('user');
+          deleteCookie('token');
+        }
       } catch (error) {
-        console.error('Error parsing user data:', error);
+        console.error('Error parsing user data or invalid token:', error);
         localStorage.removeItem('token');
         localStorage.removeItem('user');
+        deleteCookie('token');
       }
     }
   }, []);
 
+  // Helper function to get cookie value
+  const getCookie = (name: string): string | null => {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) {
+      return parts.pop()?.split(';').shift() || null;
+    }
+    return null;
+  };
+
+  // Helper function to delete cookie
+  const deleteCookie = (name: string): void => {
+    document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/`;
+  };
+
   const login = async (email: string, password: string): Promise<{ success: boolean; message: string }> => {
-    // Mock login - in production, make API call to authenticate
     try {
-      // Simulate API call delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // Mock authentication logic
-      if (email === 'admin@pachmarhi.com' && password === 'admin123') {
-        const adminUser = {
-          id: 'admin-1',
-          name: 'Admin User',
-          email: 'admin@pachmarhi.com',
-          role: 'admin'
-        };
-        
-        setUser(adminUser);
-        localStorage.setItem('token', 'mock-jwt-token');
-        localStorage.setItem('user', JSON.stringify(adminUser));
-        
-        return {
-          success: true,
-          message: t('loginSuccess', language).replace('{name}', adminUser.name)
-        };
-      } else if (email === 'user@pachmarhi.com' && password === 'user123') {
-        const regularUser = {
-          id: 'user-1',
-          name: 'Regular User',
-          email: 'user@pachmarhi.com',
-          role: 'user'
-        };
-        
-        setUser(regularUser);
-        localStorage.setItem('token', 'mock-jwt-token');
-        localStorage.setItem('user', JSON.stringify(regularUser));
+      // Make actual API call to authenticate
+      const response = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        // Set user and store token/user data
+        setUser(data.user);
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('user', JSON.stringify(data.user));
         
         return {
           success: true,
-          message: t('loginSuccess', language).replace('{name}', regularUser.name)
+          message: t('loginSuccess', language).replace('{name}', data.user.name)
         };
       } else {
         return {
           success: false,
-          message: 'Invalid email or password'
+          message: data.error || 'Invalid email or password'
         };
       }
     } catch (error) {
@@ -118,6 +128,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setUser(null);
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    deleteCookie('token');
   };
 
   const isLoggedIn = !!user;

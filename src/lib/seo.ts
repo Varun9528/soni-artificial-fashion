@@ -20,14 +20,14 @@ interface SEOConfig {
 
 export class SEOService {
   private defaultConfig: SEOConfig = {
-    title: 'Pachmarhi Tribal Art Marketplace',
-    description: 'Discover authentic tribal art and handicrafts from Pachmarhi. Support local artisans and buy unique handmade products.',
-    keywords: ['tribal art', 'handicrafts', 'Pachmarhi', 'artisans', 'handmade', 'traditional crafts'],
+    title: 'Lettex Ayurvedic Wellness Marketplace',
+    description: 'Discover authentic Ayurvedic and organic wellness products from Lettex. Support traditional knowledge and buy unique natural remedies.',
+    keywords: ['Ayurvedic products', 'organic wellness', 'natural remedies', 'herbal powders', 'organic honey', 'handmade soap'],
     image: '/images/og-image.jpg',
-    url: process.env.NEXT_PUBLIC_APP_URL || 'https://pachmarhi-marketplace.com',
+    url: process.env.NEXT_PUBLIC_APP_URL || 'https://lettex-marketplace.com',
     type: 'website',
     locale: 'en_US',
-    siteName: 'Pachmarhi Tribal Art'
+    siteName: 'Lettex Ayurvedic Wellness'
   };
 
   // Generate meta tags for a page
@@ -44,7 +44,7 @@ export class SEOService {
       'og:url': mergedConfig.url || this.defaultConfig.url || '',
       'og:type': mergedConfig.type || this.defaultConfig.type || 'website',
       'og:locale': mergedConfig.locale || this.defaultConfig.locale || 'en_US',
-      'og:site_name': mergedConfig.siteName || this.defaultConfig.siteName || 'Pachmarhi Tribal Art',
+      'og:site_name': mergedConfig.siteName || this.defaultConfig.siteName || 'Lettex Ayurvedic Wellness',
       'twitter:card': 'summary_large_image',
       'twitter:title': mergedConfig.title,
       'twitter:description': mergedConfig.description,
@@ -59,19 +59,19 @@ export class SEOService {
 
   // Generate organization schema
   generateOrganizationSchema(): any {
-    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://pachmarhi-marketplace.com';
+    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://lettex-marketplace.com';
     
     return {
       '@context': 'https://schema.org',
       '@type': 'Store',
-      'name': 'Pachmarhi Tribal Art Marketplace',
+      'name': 'Lettex Ayurvedic Wellness Marketplace',
       'url': baseUrl,
       'logo': `${baseUrl}/logo.jpg`,
-      'description': 'Authentic tribal art and handicrafts from Pachmarhi',
+      'description': 'Authentic Ayurvedic and organic wellness products from Lettex',
       'address': {
         '@type': 'PostalAddress',
-        'addressLocality': 'Pachmarhi',
-        'addressRegion': 'Madhya Pradesh',
+        'addressLocality': 'Mumbai',
+        'addressRegion': 'Maharashtra',
         'addressCountry': 'IN'
       },
       'sameAs': [
@@ -82,7 +82,7 @@ export class SEOService {
 
   // Generate product schema
   generateProductSchema(product: any): any {
-    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://pachmarhi-marketplace.com';
+    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://lettex-marketplace.com';
     
     return {
       '@context': 'https://schema.org',
@@ -93,7 +93,7 @@ export class SEOService {
       'sku': product.sku || '',
       'brand': {
         '@type': 'Brand',
-        'name': 'Pachmarhi Tribal Art'
+        'name': 'Lettex Ayurvedic Wellness'
       },
       'offers': {
         '@type': 'Offer',
@@ -103,7 +103,7 @@ export class SEOService {
         'availability': product.inStock ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
         'seller': {
           '@type': 'Organization',
-          'name': 'Pachmarhi Tribal Art Marketplace'
+          'name': 'Lettex Ayurvedic Wellness Marketplace'
         }
       },
       'review': product.reviews?.map((review: any) => ({
@@ -124,7 +124,7 @@ export class SEOService {
 
   // Generate breadcrumb schema
   generateBreadcrumbSchema(breadcrumbs: Array<{ name: string; url: string }>): any {
-    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://pachmarhi-marketplace.com';
+    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://lettex-marketplace.com';
     
     return {
       '@context': 'https://schema.org',
@@ -140,7 +140,7 @@ export class SEOService {
 
   // Generate article schema
   generateArticleSchema(article: any): any {
-    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://pachmarhi-marketplace.com';
+    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://lettex-marketplace.com';
     
     return {
       '@context': 'https://schema.org',
@@ -150,11 +150,11 @@ export class SEOService {
       'image': article.image ? `${baseUrl}${article.image}` : undefined,
       'author': {
         '@type': 'Person',
-        'name': article.author?.name || 'Pachmarhi Tribal Art Team'
+        'name': article.author?.name || 'Lettex Wellness Team'
       },
       'publisher': {
         '@type': 'Organization',
-        'name': 'Pachmarhi Tribal Art Marketplace',
+        'name': 'Lettex Ayurvedic Wellness Marketplace',
         'logo': {
           '@type': 'ImageObject',
           'url': `${baseUrl}/logo.jpg`
@@ -183,13 +183,13 @@ export class SEOService {
 
   // Generate canonical URL
   generateCanonicalUrl(path: string): string {
-    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://pachmarhi-marketplace.com';
+    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://lettex-marketplace.com';
     return `${baseUrl}${path}`;
   }
 
   // Generate hreflang tags for multilingual support
   generateHreflangTags(availableLanguages: string[], currentPath: string): Array<{ href: string; hreflang: string }> {
-    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://pachmarhi-marketplace.com';
+    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://lettex-marketplace.com';
     
     return availableLanguages.map(lang => ({
       href: `${baseUrl}/${lang}${currentPath}`,
@@ -200,3 +200,110 @@ export class SEOService {
 
 // Singleton instance
 export const seoService = new SEOService();
+
+export const getDefaultMetadata = () => {
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://lettex-marketplace.com';
+  
+  return {
+    title: {
+      default: process.env.NEXT_PUBLIC_APP_NAME || 'Lettex Ayurvedic Wellness Marketplace',
+      template: `%s | ${process.env.NEXT_PUBLIC_APP_NAME || 'Lettex'}`
+    },
+    description: process.env.NEXT_PUBLIC_APP_DESCRIPTION || 'Discover authentic Ayurvedic and organic wellness products from Lettex',
+    keywords: ['Ayurvedic products', 'organic wellness', 'natural remedies', 'herbal powders', 'organic honey', 'handmade soap'],
+    authors: [{ name: 'Lettex' }],
+    creator: 'Lettex',
+    publisher: 'Lettex',
+    robots: {
+      index: true,
+      follow: true
+    },
+    openGraph: {
+      title: process.env.NEXT_PUBLIC_APP_NAME || 'Lettex Ayurvedic Wellness Marketplace',
+      description: process.env.NEXT_PUBLIC_APP_DESCRIPTION || 'Discover authentic Ayurvedic and organic wellness products from Lettex',
+      url: baseUrl,
+      siteName: process.env.NEXT_PUBLIC_APP_NAME || 'Lettex',
+      images: [
+        {
+          url: `${baseUrl}/images/og-image.jpg`,
+          width: 1200,
+          height: 630,
+          alt: process.env.NEXT_PUBLIC_APP_NAME || 'Lettex Ayurvedic Wellness Marketplace'
+        }
+      ],
+      locale: 'en_US',
+      type: 'website'
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: process.env.NEXT_PUBLIC_APP_NAME || 'Lettex Ayurvedic Wellness Marketplace',
+      description: process.env.NEXT_PUBLIC_APP_DESCRIPTION || 'Discover authentic Ayurvedic and organic wellness products from Lettex',
+      images: [`${baseUrl}/images/og-image.jpg`],
+      creator: '@lettexwellness'
+    },
+    alternates: {
+      canonical: baseUrl
+    },
+    verification: {
+      google: process.env.GOOGLE_SITE_VERIFICATION
+    }
+  };
+};
+
+export const getProductMetadata = (product: any) => {
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://lettex-marketplace.com';
+  
+  return {
+    title: `${product.title_en} | Lettex`,
+    description: product.description_en.substring(0, 160),
+    openGraph: {
+      title: `${product.title_en} | Lettex`,
+      description: product.description_en.substring(0, 160),
+      url: `${baseUrl}/product/${product.slug}`,
+      images: [
+        {
+          url: product.images[0],
+          width: 800,
+          height: 600,
+          alt: product.title_en
+        }
+      ],
+      type: 'product'
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${product.title_en} | Lettex`,
+      description: product.description_en.substring(0, 160),
+      images: [product.images[0]]
+    }
+  };
+};
+
+export const getCategoryMetadata = (category: any) => {
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://lettex-marketplace.com';
+  
+  return {
+    title: `${category.name.en} | Lettex`,
+    description: category.description.en.substring(0, 160),
+    openGraph: {
+      title: `${category.name.en} | Lettex`,
+      description: category.description.en.substring(0, 160),
+      url: `${baseUrl}/category/${category.slug}`,
+      images: [
+        {
+          url: category.image,
+          width: 800,
+          height: 600,
+          alt: category.name.en
+        }
+      ],
+      type: 'website'
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${category.name.en} | Lettex`,
+      description: category.description.en.substring(0, 160),
+      images: [category.image]
+    }
+  };
+};

@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { testConnection } from '@/lib/database';
 
 export async function GET() {
   try {
@@ -16,13 +17,25 @@ export async function GET() {
       });
     }
 
-    // TODO: Add actual database connection test when mysql2 is installed
-    return NextResponse.json({
-      status: 'success',
-      connected: true,
-      message: 'Database configured',
-      timestamp: new Date().toISOString()
-    });
+    // Test actual database connection
+    const connected = await testConnection();
+    
+    if (connected) {
+      return NextResponse.json({
+        status: 'success',
+        connected: true,
+        message: 'MySQL Database connected successfully',
+        timestamp: new Date().toISOString()
+      });
+    } else {
+      return NextResponse.json({
+        status: 'warning',
+        connected: false,
+        message: 'Database configured but connection failed',
+        fallback: 'Using mock data',
+        setup_required: true
+      });
+    }
   } catch (error) {
     return NextResponse.json({
       status: 'error',

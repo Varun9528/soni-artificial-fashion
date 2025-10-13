@@ -299,7 +299,7 @@ export class AuditLogger {
       timestamp: new Date().toISOString(),
       level,
       message,
-      service: 'pachmarhi-marketplace',
+      service: 'lettex-marketplace',
       version: '1.0.0',
       environment: 'development', // Would be dynamic in production
       ...metadata,
@@ -431,3 +431,37 @@ export class SecurityMonitor {
 // Singleton instances
 export const auditLogger = new AuditLogger();
 export const securityMonitor = new SecurityMonitor(auditLogger);
+
+export const securityLogger = {
+  logSecurityEvent: async (event: SecurityEvent) => {
+    try {
+      // Add service identifier
+      const eventWithService = {
+        ...event,
+        service: 'lettex-marketplace',
+        timestamp: new Date().toISOString()
+      };
+
+      // In production, you would store this in a database
+      // For now, we'll just log to console
+      console.log('Security Event:', JSON.stringify(eventWithService, null, 2));
+      
+      // Also log to a security log file in production
+      // await appendFile('/var/log/security.log', JSON.stringify(eventWithService) + '\n');
+    } catch (error) {
+      console.error('Failed to log security event:', error);
+    }
+  },
+
+  logUserAction: auditLogger.logUserAction,
+  logAuth: auditLogger.logAuth,
+  logResourceAccess: auditLogger.logResourceAccess,
+  logAdminAction: auditLogger.logAdminAction,
+  logFinancialAction: auditLogger.logFinancialAction,
+  logPrivacyAction: auditLogger.logPrivacyAction,
+  getAuditLogs: auditLogger.getAuditLogs,
+  getSecurityEvents: auditLogger.getSecurityEvents,
+  generateAuditReport: auditLogger.generateAuditReport,
+  detectSuspiciousActivity: auditLogger.detectSuspiciousActivity,
+  createStructuredLog: auditLogger.createStructuredLog,
+};

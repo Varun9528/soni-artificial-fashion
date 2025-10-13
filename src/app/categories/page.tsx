@@ -2,77 +2,84 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { categories as staticCategories } from '@/data/categories';
+import Image from 'next/image';
 
 interface Product {
   id: string;
-  title: { en: string };
+  title: { en: string; hi: string };
   price: number;
   images: string[];
   category: string;
   inStock: boolean;
 }
 
+interface CategoryOption {
+  id: string;
+  name: string;
+}
+
 export default function CategoriesPage() {
   const [products, setProducts] = useState<Product[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
-  const [language, setLanguage] = useState('en');
+  const [language, setLanguage] = useState<'en' | 'hi'>('en');
   const [sortBy, setSortBy] = useState('popularity');
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 5000]);
   const [selectedCategory, setSelectedCategory] = useState('all');
 
   useEffect(() => {
-    const savedLanguage = localStorage.getItem('language') || 'en';
+    const savedLanguage = (localStorage.getItem('language') as 'en' | 'hi') || 'en';
     setLanguage(savedLanguage);
     
     // Mock products data (in production, fetch from API)
     const mockProducts: Product[] = [
       {
         id: '1',
-        title: { en: 'Bamboo Wall Art' },
-        price: 1500,
-        images: ['/images/products/prod-bamboo-wall-art.jpg'],
-        category: 'Paintings',
+        title: { en: 'Turmeric Herbal Powder', hi: 'हल्दी हर्बल पाउडर' },
+        price: 299,
+        images: ['/images/categories/Gheevi_Turmeric_Pouch_Product_Shot.png'],
+        category: 'herbal-powders',
         inStock: true
       },
       {
         id: '2',
-        title: { en: 'Tribal Necklace Set' },
-        price: 800,
-        images: ['/images/products/prod-tribal-necklace.jpg'],
-        category: 'Jewelry',
+        title: { en: 'Organic Forest Honey', hi: 'जैविक वन शहद' },
+        price: 899,
+        images: ['/images/categories/Gheevi_Organic_Forest_Honey_Jar.png'],
+        category: 'organic-honey',
         inStock: true
       },
       {
         id: '3',
-        title: { en: 'Handwoven Basket' },
-        price: 600,
-        images: ['/images/products/prod-handwoven-basket.jpg'],
-        category: 'Handicrafts',
+        title: { en: 'Ayurvedic Digestive Blend', hi: 'आयुर्वेदिक पाचन मिश्रण' },
+        price: 399,
+        images: ['/images/categories/Geevi_Ayurvedic_Product_Showcase.png'],
+        category: 'ayurvedic-products',
         inStock: false
       },
       {
         id: '4',
-        title: { en: 'Clay Pot Collection' },
-        price: 1200,
-        images: ['/images/products/prod-clay-pot.jpg'],
-        category: 'Sculptures',
+        title: { en: 'Lavender Handmade Soap', hi: 'लैवेंडर हस्तनिर्मित साबुन' },
+        price: 150,
+        images: ['/images/categories/Geevi_Soap_Marble_Display.png'],
+        category: 'handmade-soap',
         inStock: true
       },
       {
         id: '5',
-        title: { en: 'Tribal Textile Art' },
-        price: 2500,
-        images: ['/images/products/prod-tribal-textile.jpg'],
-        category: 'Textiles',
+        title: { en: 'Organic Candy Assortment', hi: 'जैविक कैंडी मिश्रण' },
+        price: 250,
+        images: ['/images/categories/Geevi_Candy_Jar_Product_Shot.png'],
+        category: 'organic-candy',
         inStock: true
       },
       {
         id: '6',
-        title: { en: 'Wooden Sculpture' },
-        price: 3500,
-        images: ['/images/products/prod-wooden-sculpture.jpg'],
-        category: 'Sculptures',
+        title: { en: 'Triphala Herbal Powder', hi: 'त्रिफला हर्बल पाउडर' },
+        price: 349,
+        images: ['/images/categories/Gheevi_Triphala_Jar_Product_Shot.png'],
+        category: 'herbal-powders',
         inStock: true
       }
     ];
@@ -116,17 +123,17 @@ export default function CategoriesPage() {
   const t = (key: string) => {
     const translations: any = {
       en: {
-        title: "Explore Tribal Art Categories",
-        description: "Discover authentic tribal paintings, crafts, and handmade decor from Pachmarhi.",
+        title: "Shop by Category",
+        description: "Discover our authentic Ayurvedic and organic wellness products.",
         sortBy: "Sort By",
         priceRange: "Price Range",
         category: "Category",
-        all: "All",
-        paintings: "Paintings",
-        sculptures: "Sculptures",
-        handicrafts: "Handicrafts",
-        jewelry: "Jewelry",
-        textiles: "Textiles",
+        all: "All Categories",
+        'herbal-powders': "Herbal Powders",
+        'organic-honey': "Organic Honey",
+        'ayurvedic-products': "Ayurvedic Products",
+        'handmade-soap': "Handmade Soap",
+        'organic-candy': "Organic Candy",
         popularity: "Popularity",
         latest: "Latest",
         priceLowToHigh: "Price (Low to High)",
@@ -135,20 +142,44 @@ export default function CategoriesPage() {
         high: "High",
         emptyMessage: "No products found in this category. Please adjust your filters.",
         inStock: "In Stock",
-        outOfStock: "Out of Stock"
+        outOfStock: "Out of Stock",
+        items: "items"
+      },
+      hi: {
+        title: "श्रेणी के अनुसार खरीदारी करें",
+        description: "हमारे प्रामाणिक आयुर्वेदिक और जैविक स्वास्थ्य उत्पादों की खोज करें।",
+        sortBy: "क्रमबद्ध करें",
+        priceRange: "मूल्य सीमा",
+        category: "श्रेणी",
+        all: "सभी श्रेणियाँ",
+        'herbal-powders': "हर्बल पाउडर",
+        'organic-honey': "जैविक शहद",
+        'ayurvedic-products': "आयुर्वेदिक उत्पाद",
+        'handmade-soap': "हस्तनिर्मित साबुन",
+        'organic-candy': "जैविक कैंडी",
+        popularity: "लोकप्रियता",
+        latest: "नवीनतम",
+        priceLowToHigh: "मूल्य (कम से अधिक)",
+        priceHighToLow: "मूल्य (अधिक से कम)",
+        low: "कम",
+        high: "अधिक",
+        emptyMessage: "इस श्रेणी में कोई उत्पाद नहीं मिला। कृपया अपने फ़िल्टर समायोजित करें।",
+        inStock: "स्टॉक में",
+        outOfStock: "स्टॉक ख़त्म",
+        items: "आइटम"
       }
     };
     
     return translations[language][key] || key;
   };
 
-  const categories = [
+  // Create categories list from our static categories data
+  const categories: CategoryOption[] = [
     { id: 'all', name: t('all') },
-    { id: 'Paintings', name: t('paintings') },
-    { id: 'Sculptures', name: t('sculptures') },
-    { id: 'Handicrafts', name: t('handicrafts') },
-    { id: 'Jewelry', name: t('jewelry') },
-    { id: 'Textiles', name: t('textiles') }
+    ...staticCategories.map(category => ({
+      id: category.id,
+      name: language === 'en' ? category.name.en : category.name.hi
+    }))
   ];
 
   const sortOptions = [
@@ -272,7 +303,7 @@ export default function CategoriesPage() {
                       <div className="relative">
                         <img
                           src={product.images[0]}
-                          alt={product.title.en}
+                          alt={language === 'en' ? product.title.en : product.title.hi}
                           className="w-full h-48 object-cover"
                           onError={(e: any) => {
                             const target = e.target as HTMLImageElement;
@@ -291,10 +322,10 @@ export default function CategoriesPage() {
                       </div>
                       <div className="p-4">
                         <h3 className="font-medium text-gray-900 dark:text-white mb-1">
-                          {product.title.en}
+                          {language === 'en' ? product.title.en : product.title.hi}
                         </h3>
                         <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
-                          {product.category}
+                          {categories.find(cat => cat.id === product.category)?.name || product.category}
                         </p>
                         <div className="flex items-center justify-between">
                           <span className="text-lg font-semibold text-amber-600">

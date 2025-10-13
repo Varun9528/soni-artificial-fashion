@@ -37,18 +37,18 @@
     }
   ],
   "categories": [
-    {"id": "cat-1", "name": {"en": "Tribal Shirts", "hi": "जनजातीय शर्ट"}, "slug": "tribal-shirts", "image": "/images/categories/cat-tribal-shirts.jpg"},
-    {"id": "cat-2", "name": {"en": "Jewelry", "hi": "आभूषण"}, "slug": "jewelry", "image": "/images/categories/cat-jewelry.jpg"},
-    {"id": "cat-3", "name": {"en": "Handloom Textiles", "hi": "हैंडलूम वस्त्र"}, "slug": "handloom-textiles", "image": "/images/categories/cat-handloom-textiles.jpg"},
-    {"id": "cat-4", "name": {"en": "Home Decor", "hi": "घर की सजावट"}, "slug": "home-decor", "image": "/images/categories/cat-home-decor.jpg"},
-    {"id": "cat-5", "name": {"en": "Accessories", "hi": "सहायक उपकरण"}, "slug": "accessories", "image": "/images/categories/cat-accessories.jpg"},
-    {"id": "cat-6", "name": {"en": "Gifts & Souvenirs", "hi": "उपहार"}, "slug": "gifts-souvenirs", "image": "/images/categories/cat-gifts-souvenirs.jpg"}
+    {"id": "cat-1", "name": {"en": "Tribal Shirts", "hi": "जनजातीय शर्ट"}, "slug": "tribal-shirts", "image": "/images/categories/cat-tribal-shirts.jpg", "productCount": 24},
+    {"id": "cat-2", "name": {"en": "Jewelry", "hi": "आभूषण"}, "slug": "jewelry", "image": "/images/categories/cat-jewelry.jpg", "productCount": 18},
+    {"id": "cat-3", "name": {"en": "Handloom Textiles", "hi": "हैंडलूम वस्त्र"}, "slug": "handloom-textiles", "image": "/images/categories/cat-handloom-textiles.jpg", "productCount": 32},
+    {"id": "cat-4", "name": {"en": "Home Decor", "hi": "घर की सजावट"}, "slug": "home-decor", "image": "/images/categories/cat-home-decor.jpg", "productCount": 45},
+    {"id": "cat-5", "name": {"en": "Accessories", "hi": "सामान"}, "slug": "accessories", "image": "/images/categories/cat-accessories.jpg", "productCount": 21},
+    {"id": "cat-6", "name": {"en": "Gifts & Souvenirs", "hi": "उपहार और स्मृति चिन्ह"}, "slug": "gifts-souvenirs", "image": "/images/categories/cat-gifts-souvenirs.jpg", "productCount": 15}
   ],
   "artisans": [
-    {"id": "artisan-1", "name": "Sarla Bai", "slug": "sarla-bai", "village": "Pachmarhi", "photo": "/images/artisans/arti-sarla.jpg", "experience": 25},
-    {"id": "artisan-2", "name": "Ramesh Uikey", "slug": "ramesh-uikey", "village": "Bori", "photo": "/images/artisans/arti-ramesh.jpg", "experience": 18},
-    {"id": "artisan-3", "name": "Meera Gond", "slug": "meera-gond", "village": "Satpura", "photo": "/images/artisans/arti-meera.jpg", "experience": 22},
-    {"id": "artisan-4", "name": "Raj Kumar", "slug": "raj-kumar", "village": "Pachmarhi", "photo": "/images/artisans/arti-raj.jpg", "experience": 20}
+    {"id": "artisan-1", "name": "Sarla Bai", "slug": "sarla-bai", "village": "Madhya Pradesh", "photo": "/images/artisans/arti-sarla.jpg", "experience": 25},
+    {"id": "artisan-2", "name": "Ramesh Uikey", "slug": "ramesh-uikey", "village": "Madhya Pradesh", "photo": "/images/artisans/arti-ramesh.jpg", "experience": 18},
+    {"id": "artisan-3", "name": "Meera Gond", "slug": "meera-gond", "village": "Madhya Pradesh", "photo": "/images/artisans/arti-meera.jpg", "experience": 22},
+    {"id": "artisan-4", "name": "Raj Kumar", "slug": "raj-kumar", "village": "Madhya Pradesh", "photo": "/images/artisans/arti-raj.jpg", "experience": 20}
   ],
   "products": [
     {"id": "prod-1", "title": {"en": "Bamboo Wall Art", "hi": "बांस की दीवार कला"}, "slug": "bamboo-wall-art", "price": 1699, "images": ["/images/products/bamboo-wall-art/img1.jpg", "/images/products/bamboo-wall-art/img2.jpg", "/images/products/bamboo-wall-art/img3.jpg"], "categoryId": "cat-4", "artisanId": "artisan-4", "stock": 12},
@@ -65,8 +65,8 @@
     {"id": "prod-12", "title": {"en": "Folk Doll", "hi": "लोक गुड़िया"}, "slug": "folk-doll", "price": 499, "images": ["/images/products/folk-doll/img1.jpg", "/images/products/folk-doll/img2.jpg", "/images/products/folk-doll/img3.jpg"], "categoryId": "cat-6", "artisanId": "artisan-3", "stock": 22}
   ],
   "users": [
-    {"email": "admin@pachmarhi.com", "name": "Admin User", "password": "admin123", "role": "super_admin"},
-    {"email": "user@pachmarhi.com", "name": "Demo User", "password": "user123", "role": "customer"}
+    {"email": "admin@lettex.com", "name": "Admin User", "password": "admin123", "role": "super_admin"},
+    {"email": "user@lettex.com", "name": "Demo User", "password": "user123", "role": "customer"}
   ],
   "coupons": [
     {"code": "WELCOME10", "title": "Welcome Discount", "value": 10, "type": "percentage"},

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { Mail, Phone, MapPin } from 'lucide-react';
 
 export default function ContactPage() {
   const [name, setName] = useState('');
@@ -8,6 +9,33 @@ export default function ContactPage() {
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
   const [language, setLanguage] = useState('en');
+
+  const contactInfo = [
+    {
+      icon: <Mail className="w-6 h-6" />,
+      title: { en: 'Email Us', hi: 'हमें ईमेल करें' },
+      content: { en: 'support@lettex.com', hi: 'support@lettex.com' },
+      action: { en: 'Send Email', hi: 'ईमेल भेजें' },
+      link: 'mailto:support@lettex.com'
+    },
+    {
+      icon: <Phone className="w-6 h-6" />,
+      title: { en: 'Call Us', hi: 'हमें कॉल करें' },
+      content: { en: '+91 98765 43210', hi: '+91 98765 43210' },
+      action: { en: 'Call Now', hi: 'अभी कॉल करें' },
+      link: 'tel:+919876543210'
+    },
+    {
+      icon: <MapPin className="w-6 h-6" />,
+      title: { en: 'Visit Us', hi: 'हमें देखें' },
+      content: { 
+        en: 'Mumbai, Maharashtra, India', 
+        hi: 'मुंबई, महाराष्ट्र, भारत' 
+      },
+      action: { en: 'Get Directions', hi: 'दिशा-निर्देश प्राप्त करें' },
+      link: 'https://maps.google.com'
+    }
+  ];
 
   // Mock localization function
   const t = (key: string) => {

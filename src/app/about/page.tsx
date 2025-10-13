@@ -7,67 +7,76 @@ export default function AboutPage() {
 
   const translations = {
     en: {
-      title: 'About Pachmarhi Tribal Art Marketplace',
+      title: 'About Lettex Marketplace',
       content: `
-        Pachmarhi Tribal Art Marketplace is dedicated to preserving and promoting the indigenous arts and crafts of the Pachmarhi region in Madhya Pradesh.
+        Welcome to Lettex Marketplace — Your Local Store Online.
 
-        Our mission is to provide a sustainable online platform where tribal artisans can showcase their authentic creations—handcrafted bamboo items, traditional paintings, wooden carvings, and textiles—directly to buyers across India and beyond.
+        At Lettex, we believe every household deserves fresh, high-quality essentials at fair prices.
+        Our marketplace connects you directly with trusted local suppliers and brings you the best of groceries, dairy, refined oils, and Lettex-branded products — all in one platform.
 
-        By connecting artisans with customers, we aim to:
-
-        Preserve traditional knowledge and craftsmanship
-
-        Empower artisans with fair trade opportunities
-
-        Provide customers with unique, eco-friendly, and meaningful art pieces
-
-        Every purchase directly supports the livelihood of tribal artisans and helps sustain their cultural heritage.
+        Lettex Marketplace brings your neighborhood grocery and dairy shop to your screen — offering refined oils, milk products, fresh groceries, and our own Lettex-branded essentials with unbeatable freshness and quality.
       `,
       missionTitle: 'Our Mission',
-      missionContent: 'To empower tribal artisans by providing them with a global platform to showcase their traditional crafts while ensuring fair compensation and preserving cultural heritage.',
+      missionContent: 'To deliver daily essentials with trust, freshness, and local quality — combining traditional value with digital convenience.',
       visionTitle: 'Our Vision',
-      visionContent: 'To become the leading marketplace for authentic tribal art, fostering sustainable livelihoods for artisans and promoting cultural appreciation worldwide.',
-      valuesTitle: 'Our Values',
+      visionContent: 'To make daily grocery shopping simple, fast, and enjoyable with trusted local roots and modern technology.',
+      valuesTitle: 'Why Choose Lettex',
       values: [
-        'Authenticity - We ensure all products are genuine tribal art',
-        'Fair Trade - We guarantee fair prices for artisans',
-        'Sustainability - We promote eco-friendly practices',
-        'Cultural Preservation - We help preserve traditional crafts'
-      ]
+        'Local freshness, digital convenience',
+        'Quality you can taste and trust',
+        'Fast and reliable delivery',
+        'Transparent pricing — no hidden costs'
+      ],
+      commitmentTitle: 'Our Commitment to You',
+      commitmentContent: `
+        When you choose Lettex, you're choosing products that are:
+
+        Fresh: Sourced and delivered with care to maintain peak freshness
+        Trusted: From verified local suppliers and trusted brands
+        Affordable: Competitive pricing with no hidden costs
+        Convenient: Easy online shopping with fast delivery
+
+        We believe that healthy living should be accessible to everyone. Our products are priced competitively to ensure that quality nutrition and wellness solutions are within reach for every household.
+      `
     },
     hi: {
-      title: 'पचमढ़ी जनजातीय कला बाजार के बारे में',
+      title: 'लेटेक्स मार्केटप्लेस के बारे में',
       content: `
-        पचमढ़ी जनजातीय कला बाजार मध्य प्रदेश के पचमढ़ी क्षेत्र की स्वदेशी कला और शिल्प को संरक्षित और प्रचारित करने के लिए समर्पित है।
+        लेटेक्स मार्केटप्लेस में आपका स्वागत है — आपकी ऑनलाइन स्थानीय दुकान।
 
-        हमारा उद्देश्य एक स्थायी ऑनलाइन मंच प्रदान करना है जहां जनजातीय कारीगर अपनी प्रामाणिक रचनाओं—हाथ से बने बांस के आइटम, पारंपरिक चित्रकारी, लकड़ी की कार्विंग और कपड़े—को सीधे भारत और उससे परे खरीदारों को प्रदर्शित कर सकते हैं।
+        लेटेक्स में, हम मानते हैं कि प्रत्येक घर को उचित मूल्य पर ताजा, उच्च गुणवत्ता वाली आवश्यक वस्तुएं मिलनी चाहिए।
+        हमारा मार्केटप्लेस आपको सीधे विश्वसनीय स्थानीय आपूर्तिकर्ताओं से जोड़ता है और आपको किराने की वस्तुएं, डेयरी, शोधित तेल और लेटेक्स-ब्रांडेड उत्पादों का सर्वश्रेष्ठ एक प्लेटफॉर्म पर प्रदान करता है।
 
-        कारीगरों को ग्राहकों से जोड़कर, हमारा उद्देश्य है:
-
-        पारंपरिक ज्ञान और शिल्प को संरक्षित करना
-
-        कारीगरों को निष्पक्ष व्यापार के अवसर प्रदान करना
-
-        ग्राहकों को अद्वितीय, पर्यावरण-अनुकूल और सार्थक कला के टुकड़े प्रदान करना
-
-        प्रत्येक खरीदारी सीधे जनजातीय कारीगरों की आजीविका का समर्थन करती है और उनकी सांस्कृतिक विरासत को बनाए रखने में मदद करती है।
+        लेटेक्स मार्केटप्लेस आपके स्क्रीन पर आपकी पड़ोस की किराना और डेयरी की दुकान लाता है — शोधित तेल, दूध के उत्पाद, ताजा किराने की वस्तुएं और हमारे स्वयं के लेटेक्स-ब्रांडेड आवश्यक वस्तुएं प्रदान करता है जिनकी ताजगी और गुणवत्ता अतुलनीय है।
       `,
       missionTitle: 'हमारा उद्देश्य',
-      missionContent: 'जनजातीय कारीगरों को सशक्त बनाना ताकि वे अपनी पारंपरिक शिल्प को प्रदर्शित करने के लिए एक वैश्विक मंच प्राप्त कर सकें जबकि साथ ही उचित प्रतिफल सुनिश्चित करें और सांस्कृतिक विरासत को संरक्षित रखें।',
+      missionContent: 'दैनिक आवश्यक वस्तुएं विश्वास, ताजगी और स्थानीय गुणवत्ता के साथ वितरित करना — पारंपरिक मूल्य को डिजिटल सुविधा के साथ जोड़ना।',
       visionTitle: 'हमारी दृष्टि',
-      visionContent: 'प्रामाणिक जनजातीय कला के लिए अग्रणी बाजार बनना, कारीगरों के लिए स्थायी आजीविका पैदा करना और दुनिया भर में सांस्कृतिक सराहना को बढ़ावा देना।',
-      valuesTitle: 'हमारे मूल्य',
+      visionContent: 'विश्वसनीय स्थानीय मूलों और आधुनिक प्रौद्योगिकी के साथ दैनिक किराने की खरीदारी को सरल, तीव्र और आनंददायक बनाना।',
+      valuesTitle: 'लेटेक्स क्यों चुनें?',
       values: [
-        'प्रामाणिकता - हम सुनिश्चित करते हैं कि सभी उत्पाद प्रामाणिक जनजातीय कला हैं',
-        'निष्पक्ष व्यापार - हम कारीगरों के लिए उचित मूल्य की गारंटी देते हैं',
-        'स्थायित्व - हम पर्यावरण-अनुकूल प्रथाओं को बढ़ावा देते हैं',
-        'सांस्कृतिक संरक्षण - हम पारंपरिक शिल्प को संरक्षित करने में मदद करते हैं'
-      ]
+        'स्थानीय ताजगी, डिजिटल सुविधा',
+        'गुणवत्ता जिसे आप स्वाद और विश्वास कर सकते हैं',
+        'तीव्र और विश्वसनीय डिलीवरी',
+        'पारदर्शी मूल्य — कोई छिपी हुई लागत नहीं'
+      ],
+      commitmentTitle: 'आपके प्रति हमारी प्रतिबद्धता',
+      commitmentContent: `
+        जब आप लेटेक्स चुनते हैं, तो आप उन उत्पादों को चुनते हैं जो हैं:
+
+        ताजा: सावधानीपूर्वक स्रोत लिया गया और ताजगी बनाए रखने के लिए वितरित
+        विश्वसनीय: सत्यापित स्थानीय आपूर्तिकर्ताओं और विश्वसनीय ब्रांडों से
+        सस्ता: प्रतिस्पर्धी मूल्य निर्धारण बिना किसी छिपी हुई लागत के
+        सुविधाजनक: तीव्र डिलीवरी के साथ आसान ऑनलाइन खरीदारी
+
+        हम मानते हैं कि स्वस्थ जीवन हर किसी के लिए सुलभ होना चाहिए। हमारे उत्पाद प्रतिस्पर्धी रूप से मूल्य निर्धारित किए गए हैं ताकि गुणवत्ता पोषण और स्वास्थ्य समाधान प्रत्येक घर तक पहुंच जाएं।
+      `
     }
   };
 
   const t = translations[language as 'en' | 'hi'];
   const contentLines = t.content.split('\n').filter(line => line.trim() !== '');
+  const commitmentLines = t.commitmentContent.split('\n').filter(line => line.trim() !== '');
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-12">
@@ -129,14 +138,33 @@ export default function AboutPage() {
             </div>
           </div>
 
+          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 md:p-8 mb-8">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+              {t.commitmentTitle}
+            </h2>
+            <div className="prose prose-lg dark:prose-invert max-w-none">
+              {commitmentLines.map((line, index) => (
+                line.trim() === '' ? (
+                  <br key={index} />
+                ) : line.trim().startsWith('-') ? (
+                  <li key={index} className="ml-6">{line.substring(1).trim()}</li>
+                ) : (
+                  <p key={index} className="mb-4 text-gray-700 dark:text-gray-300">
+                    {line}
+                  </p>
+                )
+              ))}
+            </div>
+          </div>
+
           <div className="bg-amber-50 dark:bg-amber-900/20 rounded-xl p-6 text-center">
             <h3 className="text-xl font-bold text-amber-800 dark:text-amber-200 mb-2">
-              {language === 'en' ? 'Support Our Artisans' : 'हमारे कारीगरों का समर्थन करें'}
+              {language === 'en' ? 'Choose Lettex for Pure Wellness' : 'शुद्ध स्वास्थ्य के लिए लेटेक्स चुनें'}
             </h3>
             <p className="text-amber-700 dark:text-amber-300">
               {language === 'en' 
-                ? 'Every purchase makes a difference in preserving our cultural heritage.' 
-                : 'प्रत्येक खरीदारी हमारी सांस्कृतिक विरासत को संरक्षित करने में अंतर लाती है।'}
+                ? 'Experience the purity and quality you deserve with Lettex Marketplace.' 
+                : 'लेटेक्स मार्केटप्लेस के साथ आपके योग्य शुद्धता और गुणवत्ता का अनुभव करें।'}
             </p>
           </div>
         </div>
