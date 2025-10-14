@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient, users_role } from '@prisma/client';
 import bcrypt from 'bcryptjs';
 
 const prisma = new PrismaClient();
@@ -14,7 +14,7 @@ async function main() {
       email: 'user1@lettex.com',
       name: 'Rajesh Kumar',
       password_hash: userPassword,
-      role: 'customer',
+      role: users_role.customer,
       email_verified: true,
       phone: '+91 9876543211',
       is_active: true
@@ -23,7 +23,7 @@ async function main() {
       email: 'user2@lettex.com',
       name: 'Priya Sharma',
       password_hash: userPassword,
-      role: 'customer',
+      role: users_role.customer,
       email_verified: true,
       phone: '+91 9876543212',
       is_active: true
@@ -32,7 +32,7 @@ async function main() {
       email: 'user3@lettex.com',
       name: 'Anita Desai',
       password_hash: userPassword,
-      role: 'customer',
+      role: users_role.customer,
       email_verified: true,
       phone: '+91 9876543213',
       is_active: true
@@ -41,7 +41,7 @@ async function main() {
       email: 'user4@lettex.com',
       name: 'Vikram Singh',
       password_hash: userPassword,
-      role: 'customer',
+      role: users_role.customer,
       email_verified: true,
       phone: '+91 9876543214',
       is_active: true
@@ -50,7 +50,7 @@ async function main() {
       email: 'user5@lettex.com',
       name: 'Sunita Patel',
       password_hash: userPassword,
-      role: 'customer',
+      role: users_role.customer,
       email_verified: true,
       phone: '+91 9876543215',
       is_active: true
@@ -59,7 +59,7 @@ async function main() {
       email: 'user6@lettex.com',
       name: 'Deepak Verma',
       password_hash: userPassword,
-      role: 'customer',
+      role: users_role.customer,
       email_verified: true,
       phone: '+91 9876543216',
       is_active: true
@@ -68,7 +68,7 @@ async function main() {
       email: 'user7@lettex.com',
       name: 'Meera Devi',
       password_hash: userPassword,
-      role: 'customer',
+      role: users_role.customer,
       email_verified: true,
       phone: '+91 9876543217',
       is_active: true
@@ -77,7 +77,7 @@ async function main() {
       email: 'user8@lettex.com',
       name: 'Amitabh Joshi',
       password_hash: userPassword,
-      role: 'customer',
+      role: users_role.customer,
       email_verified: true,
       phone: '+91 9876543218',
       is_active: true
@@ -86,7 +86,7 @@ async function main() {
       email: 'user9@lettex.com',
       name: 'Sangeeta Rao',
       password_hash: userPassword,
-      role: 'customer',
+      role: users_role.customer,
       email_verified: true,
       phone: '+91 9876543219',
       is_active: true
@@ -95,7 +95,7 @@ async function main() {
       email: 'user10@lettex.com',
       name: 'Rahul Mehta',
       password_hash: userPassword,
-      role: 'customer',
+      role: users_role.customer,
       email_verified: true,
       phone: '+91 9876543220',
       is_active: true
