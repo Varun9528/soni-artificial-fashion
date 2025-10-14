@@ -372,21 +372,39 @@ async function main() {
       if (!existingProduct) {
         const product = await prisma.product.create({
           data: {
-            ...productData,
-            productImages: {
-              create: [
-                {
-                  url: '/images/products/placeholder.jpg',
-                  isPrimary: true,
-                  sortOrder: 0
-                }
-              ]
-            }
+            slug: productData.slug,
+            title_en: productData.title.en,
+            title_hi: productData.title.hi,
+            description_en: productData.description.en,
+            description_hi: productData.description.hi,
+            price: productData.price,
+            sku: productData.sku,
+            stock: productData.stock,
+            category_id: productData.categoryId,
+            artisan_id: productData.artisanId,
+            featured: productData.featured,
+            best_seller: productData.bestSeller,
+            is_active: productData.isActive,
+            rating: productData.rating,
+            review_count: productData.reviewCount,
+            view_count: productData.viewCount,
+            sales_count: productData.saleCount
           }
         });
-        console.log('Created product:', product.title);
+        
+        // Create product image separately
+        await prisma.productImage.create({
+          data: {
+            product_id: product.id,
+            image_url: '/images/products/placeholder.jpg',
+            is_primary: true,
+            display_order: 0
+          }
+        });
+        
+        console.log('Created product:', product.title_en);
       } else {
-        console.log('Product already exists:', productData.title);
+        console.log('Product already exists:', productData.title.en);
       }
     } catch (error) {
       console.log('Error creating product:', error);
