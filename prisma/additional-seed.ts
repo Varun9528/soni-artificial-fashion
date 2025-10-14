@@ -114,13 +114,13 @@ async function main() {
   }
 
   // Get categories and artisan for product creation
-  const homeDecorCategory = await prisma.category.findFirst({ where: { slug: 'home-decor' } });
-  const jewelryCategory = await prisma.category.findFirst({ where: { slug: 'jewelry' } });
-  const clothingCategory = await prisma.category.findFirst({ where: { slug: 'clothing' } });
-  const accessoriesCategory = await prisma.category.findFirst({ where: { slug: 'accessories' } });
+  const homeDecorCategory = await prisma.category.findFirst({ where: { name_en: 'Home Decor' } });
+  const jewelryCategory = await prisma.category.findFirst({ where: { name_en: 'Jewelry' } });
+  const clothingCategory = await prisma.category.findFirst({ where: { name_en: 'Clothing' } });
+  const accessoriesCategory = await prisma.category.findFirst({ where: { name_en: 'Accessories' } });
   
   const artisan = await prisma.artisan.findFirst({
-    where: { slug: 'ramesh-prajapati' }
+    where: { name: 'Ramesh Prajapati' }
   });
 
   // Create additional sample products
