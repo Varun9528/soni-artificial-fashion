@@ -22,6 +22,7 @@ export default function ProductCard({ product }: ProductCardProps) {
   
   // Handle both static data and API data formats
   const productId = product.id;
+  // Use product.slug for routing and actions
   const productSlug = product.slug || product.id;
   // Use safe access pattern for product title
   const productTitle = 
@@ -72,9 +73,22 @@ export default function ProductCard({ product }: ProductCardProps) {
     return translations[language][key] || key;
   };
 
+  // Create event handlers as arrow functions to ensure proper binding
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
-    addToCart(productId, 1);
+    e.stopPropagation();
+    // Capture product data directly in the function scope
+    const currentProductId = product.id;
+    const currentProductSlug = product.slug || product.id;
+    const currentProductTitle = product.title?.[language] || product.title?.en || product.title_en || product.name || 'Product';
+    const currentProductPrice = product.price || 0;
+    
+    // Use the specific product data for this card
+    addToCart(currentProductId, 1, { 
+      slug: currentProductSlug, 
+      title: currentProductTitle, 
+      price: currentProductPrice 
+    });
     // Show toast notification
     if (typeof window !== 'undefined' && (window as any).showNotification) {
       (window as any).showNotification(
@@ -87,8 +101,11 @@ export default function ProductCard({ product }: ProductCardProps) {
   const handleWishlistToggle = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
+    // Capture product data directly in the function scope
+    const currentProductId = product.id;
+    
     if (inWishlist) {
-      removeFromWishlist(productId);
+      removeFromWishlist(currentProductId);
       if (typeof window !== 'undefined' && (window as any).showNotification) {
         (window as any).showNotification(
           language === 'en' ? 'Removed from wishlist ✅' : 'इच्छा-सूची से हटा दिया गया ✅',
@@ -96,7 +113,8 @@ export default function ProductCard({ product }: ProductCardProps) {
         );
       }
     } else {
-      addToWishlist(productId);
+      // Use the specific product data for this card
+      addToWishlist(currentProductId);
       if (typeof window !== 'undefined' && (window as any).showNotification) {
         (window as any).showNotification(
           language === 'en' ? 'Added to wishlist ❤️' : 'इच्छा-सूची में जोड़ा गया ❤️',
@@ -108,9 +126,21 @@ export default function ProductCard({ product }: ProductCardProps) {
 
   const handleBuyNow = (e: React.MouseEvent) => {
     e.preventDefault();
-    addToCart(productId, 1);
-    // Redirect to checkout
-    router.push('/checkout');
+    e.stopPropagation();
+    // Capture product data directly in the function scope
+    const currentProductId = product.id;
+    const currentProductSlug = product.slug || product.id;
+    const currentProductTitle = product.title?.[language] || product.title?.en || product.title_en || product.name || 'Product';
+    const currentProductPrice = product.price || 0;
+    
+    // Use the specific product data for this card
+    addToCart(currentProductId, 1, { 
+      slug: currentProductSlug, 
+      title: currentProductTitle, 
+      price: currentProductPrice 
+    });
+    // Redirect to checkout with product slug
+    router.push(`/checkout?slug=${currentProductSlug}`);
   };
 
   return (

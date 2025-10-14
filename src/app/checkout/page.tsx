@@ -25,29 +25,58 @@ export default function CheckoutPage() {
   // Fetch product data for items in cart
   useEffect(() => {
     const fetchProductData = async () => {
-      // In a real app, you would fetch product data from your API
-      // For now, we'll use mock data
-      const mockProductData: Record<string, any> = {};
-      cartState.items.forEach(item => {
-        mockProductData[item.productId] = {
-          id: item.productId,
-          name: `Product ${item.productId}`,
-          price: 1000, // Placeholder price
-          image: '/images/products/placeholder.jpg'
-        };
-      });
-      setProductData(mockProductData);
+      // Create an object to store product data
+      const productDataMap: Record<string, any> = {};
+      
+      // Fetch data for each product in the cart
+      for (const item of cartState.items) {
+        try {
+          // Extract product ID - it might be in the variant or the main productId
+          const productId = item.variant?.slug || item.productId;
+          
+          // Fetch product data from API
+          const response = await fetch(`/api/products/${productId}`);
+          if (response.ok) {
+            const product = await response.json();
+            productDataMap[item.productId] = {
+              id: product.id,
+              name: product.title?.[language] || product.title?.en || product.name || `Product ${product.id}`,
+              price: product.price || 0,
+              image: product.images?.[0] || product.productImages?.[0]?.url || '/images/products/placeholder.jpg'
+            };
+          } else {
+            // Fallback to variant data if available
+            productDataMap[item.productId] = {
+              id: item.productId,
+              name: item.variant?.title || `Product ${item.productId}`,
+              price: item.variant?.price || 0,
+              image: '/images/products/placeholder.jpg'
+            };
+          }
+        } catch (error) {
+          console.error('Error fetching product data:', error);
+          // Fallback data
+          productDataMap[item.productId] = {
+            id: item.productId,
+            name: item.variant?.title || `Product ${item.productId}`,
+            price: item.variant?.price || 0,
+            image: '/images/products/placeholder.jpg'
+          };
+        }
+      }
+      
+      setProductData(productDataMap);
     };
 
     if (cartState.items.length > 0) {
       fetchProductData();
     }
-  }, [cartState.items]);
+  }, [cartState.items, language]);
 
   // Calculate totals
   const subtotal = cartState.items.reduce((total, item) => {
     const product = productData[item.productId];
-    const price = product ? product.price : 1000; // Placeholder price
+    const price = product ? product.price : (item.variant?.price || 0);
     return total + (price * item.quantity);
   }, 0);
   
@@ -91,7 +120,10 @@ export default function CheckoutPage() {
         },
         body: JSON.stringify({
           userId: 'mock-user-id', // In a real app, get from session
-          items: cartState.items,
+          items: cartState.items.map(item => ({
+            ...item,
+            productData: productData[item.productId] // Include product data
+          })),
           shippingAddress: formData,
           paymentMethod: formData.paymentMethod,
           subtotal,
@@ -352,8 +384,8 @@ export default function CheckoutPage() {
               <div className="space-y-4 mb-6">
                 {cartState.items.map((item) => {
                   const product = productData[item.productId] || {
-                    name: `Product ${item.productId}`,
-                    price: 1000,
+                    name: item.variant?.title || `Product ${item.productId}`,
+                    price: item.variant?.price || 0,
                     image: '/images/products/placeholder.jpg'
                   };
                   

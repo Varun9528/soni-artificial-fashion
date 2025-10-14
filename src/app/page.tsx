@@ -4,164 +4,17 @@ import Image from "next/image";
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
-import { categories as staticCategories } from '@/data/categories';
+import { categories as staticCategories } from '@/data/categories-fixed';
 // Add missing icon imports
 import { Star, Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
 import BannerSlider from '@/components/BannerSlider';
+import ProductCard from '@/components/product/ProductCard';
 import { useCart } from '@/context/CartContext';
 import { useWishlist } from '@/context/WishlistContext';
 
 export default function Home() {
   const { language } = useLanguage(); // Get language from context
   
-  // Mock products data
-  const mockProducts = [
-    {
-      id: '1',
-      slug: 'herbal-powder-turmeric',
-      title: {
-        en: 'Turmeric Herbal Powder',
-        hi: 'हल्दी हर्बल पाउडर'
-      },
-      price: 299,
-      originalPrice: 399,
-      discount: 25,
-      rating: 4.5,
-      reviewCount: 12,
-      images: ['/images/products/placeholder.jpg'],
-      featured: true,
-      bestSeller: false,
-      newArrival: true,
-      trending: false
-    },
-    {
-      id: '2',
-      slug: 'organic-honey-wildforest',
-      title: {
-        en: 'Wild Forest Organic Honey',
-        hi: 'वन्य वन जैविक शहद'
-      },
-      price: 499,
-      originalPrice: 599,
-      discount: 17,
-      rating: 4.8,
-      reviewCount: 8,
-      images: ['/images/products/placeholder.jpg'],
-      featured: true,
-      bestSeller: true,
-      newArrival: false,
-      trending: true
-    },
-    {
-      id: '3',
-      slug: 'handmade-soap-lavender',
-      title: {
-        en: 'Lavender Handmade Soap',
-        hi: 'लैवेंडर हस्तनिर्मित साबुन'
-      },
-      price: 799,
-      originalPrice: 999,
-      discount: 20,
-      rating: 4.6,
-      reviewCount: 15,
-      images: ['/images/products/placeholder.jpg'],
-      featured: true,
-      bestSeller: false,
-      newArrival: true,
-      trending: false
-    },
-    {
-      id: '4',
-      slug: 'ayurvedic-powder-triphal',
-      title: {
-        en: 'Triphala Ayurvedic Powder',
-        hi: 'त्रिफला आयुर्वेदिक पाउडर'
-      },
-      price: 1299,
-      originalPrice: 1499,
-      discount: 13,
-      rating: 4.9,
-      reviewCount: 6,
-      images: ['/images/products/placeholder.jpg'],
-      featured: true,
-      bestSeller: true,
-      newArrival: false,
-      trending: true
-    },
-    {
-      id: '5',
-      slug: 'organic-candy-assorted',
-      title: {
-        en: 'Assorted Organic Candy',
-        hi: 'मिश्रित जैविक कैंडी'
-      },
-      price: 899,
-      originalPrice: 1099,
-      discount: 18,
-      rating: 4.7,
-      reviewCount: 9,
-      images: ['/images/products/placeholder.jpg'],
-      featured: false,
-      bestSeller: true,
-      newArrival: false,
-      trending: false
-    },
-    {
-      id: '6',
-      slug: 'herbal-powder-cumin',
-      title: {
-        en: 'Cumin Herbal Powder',
-        hi: 'जीरा हर्बल पाउडर'
-      },
-      price: 599,
-      originalPrice: 699,
-      discount: 14,
-      rating: 4.4,
-      reviewCount: 11,
-      images: ['/images/products/placeholder.jpg'],
-      featured: false,
-      bestSeller: false,
-      newArrival: true,
-      trending: true
-    },
-    {
-      id: '7',
-      slug: 'handmade-soap-neem',
-      title: {
-        en: 'Neem Handmade Soap',
-        hi: 'नीम हस्तनिर्मित साबुन'
-      },
-      price: 1199,
-      originalPrice: 1399,
-      discount: 14,
-      rating: 4.8,
-      reviewCount: 7,
-      images: ['/images/products/placeholder.jpg'],
-      featured: false,
-      bestSeller: true,
-      newArrival: false,
-      trending: false
-    },
-    {
-      id: '8',
-      slug: 'ayurvedic-blend-digestive',
-      title: {
-        en: 'Digestive Ayurvedic Blend',
-        hi: 'पाचन आयुर्वेदिक मिश्रण'
-      },
-      price: 1499,
-      originalPrice: 1799,
-      discount: 17,
-      rating: 4.6,
-      reviewCount: 13,
-      images: ['/images/products/placeholder.jpg'],
-      featured: false,
-      bestSeller: false,
-      newArrival: true,
-      trending: true
-    }
-  ];
-
   const [categoryImageErrors, setCategoryImageErrors] = useState<Record<string, boolean>>({});
   const [artisanImageErrors, setArtisanImageErrors] = useState<Record<string, boolean>>({});
   const [featuredProducts, setFeaturedProducts] = useState<any[]>([]);
@@ -199,9 +52,9 @@ export default function Home() {
       } catch (error) {
         console.error('Failed to fetch products:', error);
         // Use mock data when API fails
-        setFeaturedProducts(mockProducts.slice(0, 8));
-        setBestSellers(mockProducts.slice(8, 16));
-        setNewArrivals(mockProducts.slice(16, 24));
+        setFeaturedProducts([]);
+        setBestSellers([]);
+        setNewArrivals([]);
       } finally {
         setLoading(false);
       }
@@ -386,135 +239,6 @@ export default function Home() {
         className={`w-4 h-4 ${i < rating ? 'text-yellow-400 fill-current' : 'text-gray-300'}`}
       />
     ));
-  };
-
-  // Product Card Component with required actions
-  const ProductCard = ({ product }: { product: any }) => {
-    const { addToCart } = useCart();
-    const { addToWishlist, removeFromWishlist, state: wishlistState } = useWishlist();
-    const { language } = useLanguage();
-    
-    // Check if product is in wishlist
-    const inWishlist = wishlistState.items.some((item: any) => item.productId === product.id);
-    
-    // Handle different product data structures
-    const productTitle = product.title?.[language] || 
-                         product.title_en || 
-                         product.title?.en || 
-                         product.name || 
-                         'Product';
-    
-    const productImages = product.images || 
-                          (product.productImages || []).map((img: any) => img.url) || 
-                          ['/images/products/placeholder.jpg'];
-    
-    const handleAddToCart = () => {
-      addToCart(product.id, 1);
-      // Show notification
-      if (typeof window !== 'undefined' && (window as any).showNotification) {
-        (window as any).showNotification(
-          language === 'en' ? 'Added to cart ✅' : 'कार्ट में जोड़ा गया ✅',
-          'success'
-        );
-      }
-    };
-
-    const handleBuyNow = () => {
-      addToCart(product.id, 1);
-      // Redirect to checkout
-      window.location.href = '/checkout';
-    };
-
-    const handleWishlistToggle = () => {
-      if (inWishlist) {
-        removeFromWishlist(product.id);
-        if (typeof window !== 'undefined' && (window as any).showNotification) {
-          (window as any).showNotification(
-            language === 'en' ? 'Removed from wishlist ✅' : 'इच्छा-सूची से हटा दिया गया ✅',
-            'success'
-          );
-        }
-      } else {
-        addToWishlist(product.id);
-        if (typeof window !== 'undefined' && (window as any).showNotification) {
-          (window as any).showNotification(
-            language === 'en' ? 'Added to wishlist ❤️' : 'इच्छा-सूची में जोड़ा गया ❤️',
-            'success'
-          );
-        }
-      }
-    };
-    
-    return (
-      <div className="flipkart-product-card">
-        <Link href={`/product/${product.slug || product.id}`}>
-          <div className="flipkart-product-image">
-            <Image
-              src={productImages[0] || '/images/products/placeholder.jpg'}
-              alt={productTitle}
-              fill
-              className="object-cover"
-              onError={(e) => {
-                const target = e.target as HTMLImageElement;
-                target.src = '/images/products/placeholder.jpg';
-              }}
-              unoptimized={false}
-            />
-          </div>
-        </Link>
-        <div className="flipkart-product-info">
-          <h3 className="flipkart-product-name">
-            <Link href={`/product/${product.slug || product.id}`}>
-              {productTitle}
-            </Link>
-          </h3>
-          <div className="flex items-center text-sm text-gray-500 dark:text-gray-400 mt-1">
-            <span className="flex items-center">
-              <Star className="w-4 h-4 text-yellow-400 fill-current mr-1" />
-              {product.rating || 0}
-            </span>
-            <span className="mx-2">•</span>
-            <span>{product.reviewCount || product.review_count || 0} reviews</span>
-          </div>
-          <div className="flipkart-product-price-container">
-            <span className="flipkart-product-price-current">
-              ₹{product.price || 0}
-            </span>
-            {product.originalPrice && (
-              <>
-                <span className="flipkart-product-price-original">
-                  ₹{product.originalPrice}
-                </span>
-                <span className="flipkart-product-discount">
-                  {product.discount || 0}% off
-                </span>
-              </>
-            )}
-          </div>
-          {/* Product actions */}
-          <div className="flipkart-product-actions">
-            <button 
-              className="flipkart-add-to-cart-btn"
-              onClick={handleAddToCart}
-            >
-              Add to Cart
-            </button>
-            <button 
-              className="flipkart-buy-now-btn"
-              onClick={handleBuyNow}
-            >
-              Buy Now
-            </button>
-            <button 
-              className="flipkart-wishlist-btn"
-              onClick={handleWishlistToggle}
-            >
-              {inWishlist ? '♥' : '♡'} Wishlist
-            </button>
-          </div>
-        </div>
-      </div>
-    );
   };
 
   // Category Card Component

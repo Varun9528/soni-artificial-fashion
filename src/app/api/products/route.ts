@@ -16,10 +16,8 @@ export async function GET(request: NextRequest) {
       return {
         id: product.id,
         slug: product.slug,
-        title_en: product.title?.en || product.title_en,
-        title_hi: product.title?.hi || product.title_hi,
-        description_en: product.description?.en || product.description_en,
-        description_hi: product.description?.hi || product.description_hi,
+        title: product.title, // Keep the title as an object with en and hi properties
+        description: product.description, // Keep the description as an object with en and hi properties
         price: product.price,
         original_price: product.originalPrice,
         stock: product.stock,

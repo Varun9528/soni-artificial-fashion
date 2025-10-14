@@ -41,8 +41,9 @@ export default function CategoryPage() {
       try {
         const slug = params.slug as string;
         
-        // Fetch category
+        // Fetch category - find by slug since categories have slug field
         const categories = await db.getAllCategories();
+        // Find category by matching slug with category slug
         const foundCategory = categories.find((c: any) => c.slug === slug);
         
         if (!foundCategory) {
@@ -54,7 +55,7 @@ export default function CategoryPage() {
         
         // Fetch products for this category
         const searchResult = await db.searchProducts({
-          category: foundCategory.id,
+          category: foundCategory.id, // Use category ID for filtering products
           limit: 100
         });
         
@@ -67,7 +68,9 @@ export default function CategoryPage() {
       }
     };
 
-    fetchData();
+    if (params.slug) {
+      fetchData();
+    }
   }, [params.slug, router]);
 
   useEffect(() => {

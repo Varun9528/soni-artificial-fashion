@@ -38,10 +38,12 @@ export default function ProductDetailPage({ params }: { params: Promise<{ slug: 
       
       try {
         setLoading(true);
+        // Use the slug directly in the API call
         const response = await fetch(`/api/products/${resolvedParams.slug}`);
         const data = await response.json();
         
         if (data.error) {
+          console.error('Product not found:', data.error);
           setProduct(null);
         } else {
           setProduct(data);
@@ -83,8 +85,8 @@ export default function ProductDetailPage({ params }: { params: Promise<{ slug: 
   const handleBuyNow = () => {
     if (product) {
       addToCart(product.id, quantity, selectedVariant);
-      // Redirect to checkout
-      router.push('/checkout');
+      // Redirect to checkout with product slug
+      router.push(`/checkout?slug=${product.slug || resolvedParams?.slug}`);
     }
   };
 
