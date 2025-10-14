@@ -58,24 +58,35 @@ export default function OrderDetailPage({ params }: { params: { id: string } }) 
   useEffect(() => {
     // In a real implementation, fetch order details from API
     // For now, we'll use mock data
-    const mockOrder = {
+    const mockOrder: Order = {
       id: 'ORD-2024-001',
-      date: '2024-01-15',
-      status: 'Delivered',
-      total: 4297,
-      customer: {
+      orderNumber: 'ORD-2024-001',
+      user: {
         name: 'Amit Sharma',
         email: 'amit.sharma@example.com',
         phone: '+91 9876543210'
       },
-      shippingAddress: {
+      address: {
         name: 'Amit Sharma',
-        street: '123 Main Street',
+        address: '123 Main Street',
         city: 'Mumbai',
         state: 'Maharashtra',
-        zipCode: '400001',
-        country: 'India'
+        pincode: '400001',
+        phone: '+91 9876543210'
       },
+      totalAmount: 4297,
+      subtotal: 3500,
+      shippingFee: 500,
+      tax: 297,
+      discount: 0,
+      paymentStatus: 'COMPLETED',
+      status: 'DELIVERED',
+      paymentMethod: 'Credit Card',
+      trackingNumber: 'TN123456789IN',
+      shippingPartner: 'India Post',
+      estimatedDelivery: '2024-01-20',
+      createdAt: '2024-01-15T10:30:00Z',
+      updatedAt: '2024-01-20T14:15:00Z',
       items: [
         {
           id: '1',
@@ -94,6 +105,38 @@ export default function OrderDetailPage({ params }: { params: { id: string } }) 
           },
           quantity: 1,
           price: 1000
+        }
+      ],
+      statusHistory: [
+        {
+          status: 'PENDING',
+          note: 'Order placed',
+          createdAt: '2024-01-15T10:30:00Z'
+        },
+        {
+          status: 'CONFIRMED',
+          note: 'Order confirmed',
+          createdAt: '2024-01-15T11:00:00Z'
+        },
+        {
+          status: 'PROCESSING',
+          note: 'Order processing',
+          createdAt: '2024-01-15T12:00:00Z'
+        },
+        {
+          status: 'SHIPPED',
+          note: 'Order shipped',
+          createdAt: '2024-01-16T09:00:00Z'
+        },
+        {
+          status: 'OUT_FOR_DELIVERY',
+          note: 'Out for delivery',
+          createdAt: '2024-01-19T08:00:00Z'
+        },
+        {
+          status: 'DELIVERED',
+          note: 'Order delivered',
+          createdAt: '2024-01-20T14:15:00Z'
         }
       ]
     };
