@@ -13,92 +13,92 @@ async function main() {
     {
       email: 'user1@lettex.com',
       name: 'Rajesh Kumar',
-      password: userPassword,
-      role: 'USER',
-      emailVerified: true,
+      password_hash: userPassword,
+      role: 'customer',
+      email_verified: true,
       phone: '+91 9876543211',
-      isActive: true
+      is_active: true
     },
     {
       email: 'user2@lettex.com',
       name: 'Priya Sharma',
-      password: userPassword,
-      role: 'USER',
-      emailVerified: true,
+      password_hash: userPassword,
+      role: 'customer',
+      email_verified: true,
       phone: '+91 9876543212',
-      isActive: true
+      is_active: true
     },
     {
       email: 'user3@lettex.com',
       name: 'Anita Desai',
-      password: userPassword,
-      role: 'USER',
-      emailVerified: true,
+      password_hash: userPassword,
+      role: 'customer',
+      email_verified: true,
       phone: '+91 9876543213',
-      isActive: true
+      is_active: true
     },
     {
       email: 'user4@lettex.com',
       name: 'Vikram Singh',
-      password: userPassword,
-      role: 'USER',
-      emailVerified: true,
+      password_hash: userPassword,
+      role: 'customer',
+      email_verified: true,
       phone: '+91 9876543214',
-      isActive: true
+      is_active: true
     },
     {
       email: 'user5@lettex.com',
       name: 'Sunita Patel',
-      password: userPassword,
-      role: 'USER',
-      emailVerified: true,
+      password_hash: userPassword,
+      role: 'customer',
+      email_verified: true,
       phone: '+91 9876543215',
-      isActive: true
+      is_active: true
     },
     {
       email: 'user6@lettex.com',
       name: 'Deepak Verma',
-      password: userPassword,
-      role: 'USER',
-      emailVerified: true,
+      password_hash: userPassword,
+      role: 'customer',
+      email_verified: true,
       phone: '+91 9876543216',
-      isActive: true
+      is_active: true
     },
     {
       email: 'user7@lettex.com',
       name: 'Meera Devi',
-      password: userPassword,
-      role: 'USER',
-      emailVerified: true,
+      password_hash: userPassword,
+      role: 'customer',
+      email_verified: true,
       phone: '+91 9876543217',
-      isActive: true
+      is_active: true
     },
     {
       email: 'user8@lettex.com',
       name: 'Amitabh Joshi',
-      password: userPassword,
-      role: 'USER',
-      emailVerified: true,
+      password_hash: userPassword,
+      role: 'customer',
+      email_verified: true,
       phone: '+91 9876543218',
-      isActive: true
+      is_active: true
     },
     {
       email: 'user9@lettex.com',
       name: 'Sangeeta Rao',
-      password: userPassword,
-      role: 'USER',
-      emailVerified: true,
+      password_hash: userPassword,
+      role: 'customer',
+      email_verified: true,
       phone: '+91 9876543219',
-      isActive: true
+      is_active: true
     },
     {
       email: 'user10@lettex.com',
       name: 'Rahul Mehta',
-      password: userPassword,
-      role: 'USER',
-      emailVerified: true,
+      password_hash: userPassword,
+      role: 'customer',
+      email_verified: true,
       phone: '+91 9876543220',
-      isActive: true
+      is_active: true
     }
   ];
 
