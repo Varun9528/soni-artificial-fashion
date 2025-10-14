@@ -3,14 +3,6 @@ const nextConfig = {
   // Enable react production optimizations
   reactStrictMode: true,
   
-  // Set turbopack root to avoid workspace detection issues
-  turbopack: {
-    root: __dirname,
-    resolveAlias: {
-      "@/*": ["./src/*"]
-    }
-  },
-  
   // Image optimization configuration - Updated to use remotePatterns instead of deprecated domains
   images: {
     domains: [
