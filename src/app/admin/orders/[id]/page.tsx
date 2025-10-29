@@ -324,7 +324,7 @@ export default function OrderDetailPage({ params }: { params: { id: string } }) 
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900">Order Not Found</h1>
-          <p className="mt-2 text-gray-600">The order you're looking for doesn't exist.</p>
+          <p className="mt-2 text-gray-600">The order you&#39;re looking for doesn&#39;t exist.</p>
           <button onClick={() => router.push('/admin/orders')} className="mt-4 inline-block text-amber-600 hover:text-amber-800">
             ← Back to Orders
           </button>

@@ -4,13 +4,14 @@ import { useState, useEffect, useRef } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 
-export default function AddBannerPage() {
+export default function NewBannerPage() {
   const { user } = useAuth();
   const router = useRouter();
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
-  const fileInputRef = useRef(null);
   
   const [formData, setFormData] = useState({
     title: { en: '', hi: '' },
@@ -353,9 +354,11 @@ export default function AddBannerPage() {
                 {uploadedImage && (
                   <div className="mt-2">
                     <div className="aspect-video w-full max-w-2xl bg-gray-100 rounded-lg overflow-hidden border border-gray-200">
-                      <img
+                      <Image
                         src={URL.createObjectURL(uploadedImage)}
                         alt="Preview"
+                        width={800}
+                        height={450}
                         className="w-full h-full object-cover"
                       />
                     </div>

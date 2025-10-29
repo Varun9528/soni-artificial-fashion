@@ -1,18 +1,23 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { useRouter, useParams } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function EditBannerPage() {
   const { user } = useAuth();
   const router = useRouter();
   const { id } = useParams();
-  const [loading, setLoading] = useState(true);
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const [banner, setBanner] = useState(null);
-  const fileInputRef = useRef(null);
-  
+  const [existingImage, setExistingImage] = useState('');
+  const [uploadedImage, setUploadedImage] = useState<File | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [uploading, setUploading] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+
   const [formData, setFormData] = useState({
     title: { en: '', hi: '' },
     subtitle: { en: '', hi: '' },
@@ -25,11 +30,7 @@ export default function EditBannerPage() {
     endDate: '',
   });
 
-  const [uploadedImage, setUploadedImage] = useState<File | null>(null);
-  const [uploading, setUploading] = useState(false);
-  const [submitting, setSubmitting] = useState(false);
-
-  const fetchBanner = async () => {
+  const fetchBanner = useCallback(async () => {
     try {
       const response = await fetch(`/api/admin/banners/${id}`);
       if (response.ok) {
@@ -65,7 +66,7 @@ export default function EditBannerPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [id, setExistingImage, setFormData]);
 
   useEffect(() => {
     if (!user) {

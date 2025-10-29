@@ -118,7 +118,7 @@ export default function ArtisanPage() {
               href={`/products?artisan=${artisan.slug || artisan.id}`}
               className="bg-amber-600 text-white px-6 py-3 rounded-lg hover:bg-amber-700 inline-block"
             >
-              View {artisan.name}'s Products
+              View {artisan.name}&#39;s Products
             </Link>
           </div>
         </div>

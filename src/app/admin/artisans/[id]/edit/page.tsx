@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { useRouter, useParams } from 'next/navigation';
 import Link from 'next/link';
@@ -27,7 +27,7 @@ export default function EditArtisanPage() {
     isActive: true
   });
 
-  const fetchArtisan = async () => {
+  const fetchArtisan = useCallback(async () => {
     try {
       const response = await fetch(`/api/admin/artisans/${id}`);
       if (response.ok) {
@@ -59,7 +59,7 @@ export default function EditArtisanPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [id]);
 
   useEffect(() => {
     if (id) {

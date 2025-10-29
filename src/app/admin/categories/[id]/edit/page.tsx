@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { useRouter, useParams } from 'next/navigation';
 import Link from 'next/link';
@@ -9,27 +9,41 @@ export default function EditCategoryPage() {
   const { user } = useAuth();
   const router = useRouter();
   const { id } = useParams();
+  const [category, setCategory] = useState(null);
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
-  const [category, setCategory] = useState(null);
 
-  const fetchCategory = async () => {
+  const [formData, setFormData] = useState({
+    nameEn: '',
+    nameHi: '',
+    slug: '',
+    descriptionEn: '',
+    descriptionHi: '',
+    isActive: true,
+    image: '',
+    metaTitle: '',
+    metaDescription: '',
+    sortOrder: '0'
+  });
+
+  const fetchCategory = useCallback(async () => {
     try {
       const response = await fetch(`/api/admin/categories/${id}`);
       if (response.ok) {
         const data = await response.json();
         if (data.success) {
           setCategory(data.category);
-          
           setFormData({
             nameEn: data.category.name_en || '',
             nameHi: data.category.name_hi || '',
+            slug: data.category.slug || '',
             descriptionEn: data.category.description_en || '',
             descriptionHi: data.category.description_hi || '',
-            image: data.category.image || '',
-            slug: data.category.slug || '',
-            featured: data.category.featured === 1,
-            isActive: data.category.is_active === 1
+            isActive: data.category.is_active === 1,
+            image: data.category.image_url || '',
+            metaTitle: data.category.meta_title || '',
+            metaDescription: data.category.meta_description || '',
+            sortOrder: data.category.sort_order?.toString() || '0'
           });
         }
       }
@@ -38,7 +52,7 @@ export default function EditCategoryPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [id]);
 
   useEffect(() => {
     if (!user) {
@@ -50,17 +64,6 @@ export default function EditCategoryPage() {
       fetchCategory();
     }
   }, [user, router, id, fetchCategory]);
-
-  const [formData, setFormData] = useState({
-    nameEn: '',
-    nameHi: '',
-    descriptionEn: '',
-    descriptionHi: '',
-    image: '',
-    slug: '',
-    featured: false,
-    isActive: true
-  });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value, type } = e.target;

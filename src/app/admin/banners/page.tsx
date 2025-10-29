@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface Banner {
   id: string;
@@ -20,7 +21,7 @@ interface Banner {
   endDate?: string;
 }
 
-export default function AdminBannersPage() {
+export default function BannersPage() {
   const { user } = useAuth();
   const router = useRouter();
   const [banners, setBanners] = useState<Banner[]>([]);
@@ -170,9 +171,11 @@ export default function AdminBannersPage() {
                 <div className="md:flex">
                   <div className="md:w-1/3">
                     <div className="aspect-video relative">
-                      <img
+                      <Image
                         src={banner.image_desktop || banner.image || '/images/products/placeholder.jpg'}
                         alt={banner.title.en}
+                        width={400}
+                        height={225}
                         className="w-full h-full object-cover"
                         onError={(e: any) => {
                           e.target.src = '/images/products/placeholder.jpg';

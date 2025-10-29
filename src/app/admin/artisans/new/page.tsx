@@ -1,10 +1,13 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { useAuth } from '@/context/AuthContext';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function NewArtisanPage() {
+  const { user } = useAuth();
   const router = useRouter();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [submitting, setSubmitting] = useState(false);
@@ -23,6 +26,12 @@ export default function NewArtisanPage() {
   });
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [uploading, setUploading] = useState(false);
+
+  useEffect(() => {
+    if (!user) {
+      router.push('/login');
+    }
+  }, [user, router]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -304,10 +313,12 @@ export default function NewArtisanPage() {
                   </button>
                   {(imagePreview || formData.photo) && (
                     <div className="ml-4 flex-shrink-0">
-                      <img 
-                        src={imagePreview || formData.photo} 
+                      <Image 
+                        src={imagePreview || formData.photo || '/images/artisans/placeholder.jpg'} 
                         alt="Preview" 
-                        className="h-16 w-16 rounded-full object-cover"
+                        width={64}
+                        height={64}
+                        className="rounded-full object-cover"
                         onError={(e) => {
                           const target = e.target as HTMLImageElement;
                           target.src = '/images/artisans/placeholder.jpg';

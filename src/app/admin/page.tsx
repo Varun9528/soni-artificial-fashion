@@ -18,6 +18,25 @@ export default function AdminDashboard() {
   });
   const [loading, setLoading] = useState(true);
 
+  // Add timeAgo function
+  const timeAgo = (date: Date) => {
+    const now = new Date();
+    const diffInSeconds = Math.floor((now.getTime() - date.getTime()) / 1000);
+    
+    if (diffInSeconds < 60) {
+      return `${diffInSeconds} seconds ago`;
+    } else if (diffInSeconds < 3600) {
+      const minutes = Math.floor(diffInSeconds / 60);
+      return `${minutes} minute${minutes !== 1 ? 's' : ''} ago`;
+    } else if (diffInSeconds < 86400) {
+      const hours = Math.floor(diffInSeconds / 3600);
+      return `${hours} hour${hours !== 1 ? 's' : ''} ago`;
+    } else {
+      const days = Math.floor(diffInSeconds / 86400);
+      return `${days} day${days !== 1 ? 's' : ''} ago`;
+    }
+  };
+
   useEffect(() => {
     if (!user || (user.role !== 'admin' && user.role !== 'super_admin')) {
       router.push('/login');
@@ -144,7 +163,7 @@ export default function AdminDashboard() {
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
           <p className="mt-2 text-gray-600">
-            Welcome back, {user?.name || 'Admin'}! Here's what's happening with your store today.
+            Welcome back, {user?.name || 'Admin'}! Here&#39;s what&#39;s happening with your store today.
           </p>
           <p className="text-sm text-gray-600 mt-1">
             Last updated {timeAgo(stats.lastUpdated)}
