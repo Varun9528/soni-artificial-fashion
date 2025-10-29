@@ -13,7 +13,8 @@ export default function AdminDashboard() {
     totalOrders: 0,
     totalUsers: 0,
     totalArtisans: 0,
-    totalRevenue: 0
+    totalRevenue: 0,
+    lastUpdated: new Date()
   });
   const [loading, setLoading] = useState(true);
 
@@ -78,7 +79,8 @@ export default function AdminDashboard() {
         totalOrders: ordersCount,
         totalUsers: usersCount,
         totalArtisans: artisansCount,
-        totalRevenue: totalRevenue
+        totalRevenue: totalRevenue,
+        lastUpdated: new Date()
       });
     } catch (error) {
       console.error('Error fetching dashboard stats:', error);
@@ -143,6 +145,9 @@ export default function AdminDashboard() {
           <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
           <p className="mt-2 text-gray-600">
             Welcome back, {user?.name || 'Admin'}! Here's what's happening with your store today.
+          </p>
+          <p className="text-sm text-gray-600 mt-1">
+            Last updated {timeAgo(stats.lastUpdated)}
           </p>
         </div>
 

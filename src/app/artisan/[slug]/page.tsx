@@ -108,7 +108,9 @@ export default function ArtisanPage() {
           
           <div>
             <h3 className="text-xl font-semibold text-gray-900 mb-3">About</h3>
-            <p className="text-gray-600 leading-relaxed">{artisan.bio?.en || 'No bio available.'}</p>
+            <p className="text-gray-600 text-sm">
+              {artisan.bio || 'No bio available'}
+            </p>
           </div>
           
           <div className="pt-6">

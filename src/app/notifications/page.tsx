@@ -23,10 +23,6 @@ export default function NotificationsPage() {
   const [hasMore, setHasMore] = useState(false);
   const [total, setTotal] = useState(0);
 
-  useEffect(() => {
-    fetchNotifications();
-  }, [filter, page]);
-
   const fetchNotifications = async () => {
     try {
       setLoading(true);
@@ -44,6 +40,10 @@ export default function NotificationsPage() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    fetchNotifications();
+  }, [filter, page, fetchNotifications]);
 
   const markAsRead = async (notificationId: string) => {
     try {

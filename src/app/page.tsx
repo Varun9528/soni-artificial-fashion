@@ -701,7 +701,7 @@ export default function Home() {
               <div className="flex mb-4">
                 {renderStars(testimonial.rating)}
               </div>
-              <p className="text-gray-600 mb-6 italic">"{testimonial.comment}"</p>
+              <p className="text-gray-600 mb-6 italic">{`"${testimonial.comment}"`}</p>
               <div>
                 <p className="font-semibold text-gray-900">{testimonial.name}</p>
                 <p className="text-sm text-amber-600">{testimonial.location}</p>

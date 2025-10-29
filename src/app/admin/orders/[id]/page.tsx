@@ -352,7 +352,7 @@ export default function OrderDetailPage({ params }: { params: { id: string } }) 
               <div>
                 <h1 className="text-2xl font-bold text-gray-900">Order #{order.orderNumber}</h1>
                 <p className="mt-1 text-sm text-gray-600">
-                  Placed on {new Date(order.createdAt).toLocaleDateString()}
+                  Ordered on {new Date(order.createdAt).toLocaleDateString('en-IN')} at {new Date(order.createdAt).toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', hour12: true })}
                 </p>
               </div>
               <div className="mt-4 md:mt-0">

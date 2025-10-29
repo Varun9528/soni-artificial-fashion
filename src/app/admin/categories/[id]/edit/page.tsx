@@ -12,28 +12,6 @@ export default function EditCategoryPage() {
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [category, setCategory] = useState(null);
-  
-  const [formData, setFormData] = useState({
-    nameEn: '',
-    nameHi: '',
-    descriptionEn: '',
-    descriptionHi: '',
-    image: '',
-    slug: '',
-    featured: false,
-    isActive: true
-  });
-
-  useEffect(() => {
-    if (!user || (user.role !== 'admin' && user.role !== 'super_admin')) {
-      router.push('/login');
-      return;
-    }
-
-    if (id) {
-      fetchCategory();
-    }
-  }, [user, router, id]);
 
   const fetchCategory = async () => {
     try {
@@ -61,6 +39,28 @@ export default function EditCategoryPage() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (!user) {
+      router.push('/login');
+      return;
+    }
+
+    if (id) {
+      fetchCategory();
+    }
+  }, [user, router, id, fetchCategory]);
+
+  const [formData, setFormData] = useState({
+    nameEn: '',
+    nameHi: '',
+    descriptionEn: '',
+    descriptionHi: '',
+    image: '',
+    slug: '',
+    featured: false,
+    isActive: true
+  });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value, type } = e.target;

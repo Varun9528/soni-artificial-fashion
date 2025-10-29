@@ -10,7 +10,6 @@ export default function EditBannerPage() {
   const router = useRouter();
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
-  const [submitting, setSubmitting] = useState(false);
   const [banner, setBanner] = useState(null);
   const fileInputRef = useRef(null);
   
@@ -28,18 +27,7 @@ export default function EditBannerPage() {
 
   const [uploadedImage, setUploadedImage] = useState<File | null>(null);
   const [uploading, setUploading] = useState(false);
-  const [existingImage, setExistingImage] = useState('');
-
-  useEffect(() => {
-    if (!user || (user.role !== 'admin' && user.role !== 'ADMIN' && user.role !== 'super_admin' && user.role !== 'SUPER_ADMIN')) {
-      router.push('/login');
-      return;
-    }
-
-    if (id) {
-      fetchBanner();
-    }
-  }, [user, router, id]);
+  const [submitting, setSubmitting] = useState(false);
 
   const fetchBanner = async () => {
     try {
@@ -78,6 +66,17 @@ export default function EditBannerPage() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (!user) {
+      router.push('/login');
+      return;
+    }
+
+    if (id) {
+      fetchBanner();
+    }
+  }, [user, router, id, fetchBanner]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;

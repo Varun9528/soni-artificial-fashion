@@ -15,9 +15,8 @@ export default function OfflinePage() {
             You're Offline
           </h1>
           
-          <p className="text-gray-600 mb-8">
-            It looks like you've lost your internet connection. Don't worry, you can still browse previously viewed products and your cart items.
-          </p>
+          <p className="text-lg text-gray-600 mb-2">You are currently offline</p>
+          <p className="text-gray-500 mb-8">Please check your internet connection and try again.</p>
         </div>
 
         <div className="space-y-4">

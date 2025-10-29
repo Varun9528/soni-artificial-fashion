@@ -13,16 +13,6 @@ export default function OrderDetailsPage() {
   const [order, setOrder] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    // Redirect to login if not authenticated
-    if (!authUser) {
-      router.push('/login');
-      return;
-    }
-
-    fetchOrderDetails();
-  }, [authUser, router]);
-
   const fetchOrderDetails = async () => {
     try {
       const token = localStorage.getItem('token');
@@ -51,6 +41,15 @@ export default function OrderDetailsPage() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (!authUser) {
+      router.push('/login');
+      return;
+    }
+
+    fetchOrderDetails();
+  }, [authUser, router, fetchOrderDetails]);
 
   // Translations
   const t = (key: string) => {

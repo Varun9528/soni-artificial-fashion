@@ -27,17 +27,6 @@ export default function EditArtisanPage() {
     isActive: true
   });
 
-  useEffect(() => {
-    if (!user || (user.role !== 'admin' && user.role !== 'super_admin')) {
-      router.push('/login');
-      return;
-    }
-
-    if (id) {
-      fetchArtisan();
-    }
-  }, [user, router, id]);
-
   const fetchArtisan = async () => {
     try {
       const response = await fetch(`/api/admin/artisans/${id}`);
@@ -48,7 +37,7 @@ export default function EditArtisanPage() {
           
           // Parse location
           const location = data.artisan.location || '';
-          const locationParts = location.split(',').map(part => part.trim());
+          const locationParts = location.split(',').map((part: string) => part.trim());
           
           setFormData({
             name: data.artisan.name || '',
@@ -71,6 +60,12 @@ export default function EditArtisanPage() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (id) {
+      fetchArtisan();
+    }
+  }, [id, fetchArtisan]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value, type } = e.target;

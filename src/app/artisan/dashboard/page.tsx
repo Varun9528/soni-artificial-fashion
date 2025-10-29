@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { getServerSession } from '@/lib/auth/session';
+import Image from 'next/image';
 
 interface Product {
   id: string;
@@ -326,9 +327,11 @@ export default function ArtisanDashboard() {
                   <div key={product.id} className="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
                     <div className="flex items-center">
                       <div className="flex-shrink-0 w-12 h-12 rounded-md overflow-hidden">
-                        <img
+                        <Image
                           src={product.productImages[0]?.url || '/images/products/placeholder.jpg'}
                           alt={product.title.en}
+                          width={48}
+                          height={48}
                           className="w-full h-full object-cover"
                           onError={(e: any) => {
                             const target = e.target as HTMLImageElement;
