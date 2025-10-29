@@ -41,6 +41,7 @@ export default function AddProduct() {
   const [newColor, setNewColor] = useState('');
   const [uploadedImages, setUploadedImages] = useState<File[]>([]);
   const [uploading, setUploading] = useState(false);
+  const [uploadErrors, setUploadErrors] = useState<string[]>([]);
 
   useEffect(() => {
     if (!user || (user.role !== 'admin' && user.role !== 'super_admin')) {
@@ -100,7 +101,31 @@ export default function AddProduct() {
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
       const files = Array.from(e.target.files);
-      setUploadedImages(prev => [...prev, ...files]);
+      const errors: string[] = [];
+      
+      // Validate file sizes before adding
+      const validFiles = files.filter(file => {
+        if (file.size > 5 * 1024 * 1024) { // 5MB
+          errors.push(`File "${file.name}" is too large (${(file.size / (1024 * 1024)).toFixed(2)}MB). Maximum size is 5MB.`);
+          return false;
+        }
+        if (!file.type.match('image.*')) {
+          errors.push(`File "${file.name}" is not an image.`);
+          return false;
+        }
+        return true;
+      });
+      
+      if (errors.length > 0) {
+        setUploadErrors(errors);
+        // Only add valid files
+        if (validFiles.length > 0) {
+          setUploadedImages(prev => [...prev, ...validFiles]);
+        }
+      } else {
+        setUploadErrors([]);
+        setUploadedImages(prev => [...prev, ...files]);
+      }
     }
   };
 
@@ -146,10 +171,17 @@ export default function AddProduct() {
     if (uploadedImages.length === 0) return [];
 
     setUploading(true);
+    setUploadErrors([]);
     const uploadedUrls = [];
+    const uploadedFilenames = [];
 
     try {
       for (const file of uploadedImages) {
+        // Check file size again before upload
+        if (file.size > 5 * 1024 * 1024) { // 5MB
+          throw new Error(`File "${file.name}" is too large (${(file.size / (1024 * 1024)).toFixed(2)}MB). Maximum size is 5MB.`);
+        }
+
         const formData = new FormData();
         formData.append('file', file);
         formData.append('category', 'products');
@@ -162,14 +194,16 @@ export default function AddProduct() {
         const data = await response.json();
         if (data.success) {
           uploadedUrls.push(data.url);
+          uploadedFilenames.push(data.filename); // Save filename for database storage
         } else {
           throw new Error(data.error || 'Failed to upload image');
         }
       }
 
-      return uploadedUrls;
-    } catch (error) {
+      return { urls: uploadedUrls, filenames: uploadedFilenames };
+    } catch (error: any) {
       console.error('Error uploading images:', error);
+      setUploadErrors([error.message || 'Failed to upload images']);
       throw error;
     } finally {
       setUploading(false);
@@ -179,12 +213,13 @@ export default function AddProduct() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
+    setUploadErrors([]);
 
     try {
       // Upload images first
-      let imageUrls = [];
+      let imageResult = { urls: [], filenames: [] };
       if (uploadedImages.length > 0) {
-        imageUrls = await uploadImages();
+        imageResult = await uploadImages();
       }
 
       const response = await fetch('/api/admin/products', {
@@ -194,7 +229,8 @@ export default function AddProduct() {
         },
         body: JSON.stringify({
           ...formData,
-          images: imageUrls,
+          images: imageResult.urls,
+          imageFilenames: imageResult.filenames, // Pass filenames for database storage
           price: parseFloat(formData.price),
           originalPrice: formData.originalPrice ? parseFloat(formData.originalPrice) : null,
           stock: parseInt(formData.stock)
@@ -209,9 +245,9 @@ export default function AddProduct() {
       } else {
         alert('Error adding product: ' + data.error);
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error adding product:', error);
-      alert('Failed to add product');
+      alert('Failed to add product: ' + (error.message || 'Unknown error'));
     } finally {
       setSubmitting(false);
     }
@@ -547,6 +583,23 @@ export default function AddProduct() {
                   Product Images
                 </label>
                 
+                {/* Upload errors */}
+                {uploadErrors.length > 0 && (
+                  <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg">
+                    <h4 className="text-sm font-medium text-red-800 mb-2">Upload Errors:</h4>
+                    <ul className="text-sm text-red-700 list-disc pl-5 space-y-1">
+                      {uploadErrors.map((error, index) => (
+                        <li key={index}>{error}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                
+                {/* File info */}
+                <div className="mb-4 text-sm text-gray-600">
+                  <p>Maximum file size: 5MB per image. Supported formats: JPEG, PNG, WebP.</p>
+                </div>
+                
                 <div className="flex flex-wrap gap-4 mb-4">
                   {uploadedImages.map((file, index) => (
                     <div key={index} className="relative">
@@ -563,7 +616,7 @@ export default function AddProduct() {
                         <X className="w-3 h-3" />
                       </button>
                       <p className="text-xs text-gray-500 mt-1 truncate w-24">
-                        {file.name}
+                        {file.name} ({(file.size / 1024).toFixed(1)}KB)
                       </p>
                     </div>
                   ))}
@@ -582,8 +635,9 @@ export default function AddProduct() {
                     type="button"
                     onClick={() => fileInputRef.current?.click()}
                     className="px-4 py-2 bg-amber-600 text-white rounded-lg hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-500"
+                    disabled={uploading}
                   >
-                    Select Images
+                    {uploading ? 'Uploading...' : 'Select Images'}
                   </button>
                 </div>
               </div>
@@ -594,21 +648,22 @@ export default function AddProduct() {
                   type="button"
                   onClick={() => router.push('/admin/products')}
                   className="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500"
+                  disabled={submitting || uploading}
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  disabled={submitting}
+                  disabled={submitting || uploading}
                   className="px-6 py-3 bg-amber-600 text-white rounded-lg hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 disabled:opacity-50"
                 >
-                  {submitting ? (
+                  {submitting || uploading ? (
                     <span className="flex items-center">
                       <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                       </svg>
-                      Creating...
+                      {uploading ? 'Uploading...' : 'Creating...'}
                     </span>
                   ) : (
                     'Create Product'

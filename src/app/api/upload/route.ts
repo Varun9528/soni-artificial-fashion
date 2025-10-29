@@ -1,120 +1,78 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { writeFile, mkdir } from 'fs/promises';
-import { join } from 'path';
-import { stat } from 'fs/promises';
+import { existsSync } from 'fs';
+import path from 'path';
+import { v4 as uuidv4 } from 'uuid';
+
+// Ensure upload directory exists
+async function ensureUploadDir() {
+  const uploadDir = path.join(process.cwd(), 'public', 'uploads');
+  if (!existsSync(uploadDir)) {
+    await mkdir(uploadDir, { recursive: true });
+  }
+  return uploadDir;
+}
 
 export async function POST(request: NextRequest) {
   try {
-    const data = await request.formData();
-    const file: File | null = data.get('file') as unknown as File;
-    const category = data.get('category') as string || 'general';
-
+    const formData = await request.formData();
+    const file = formData.get('file') as File;
+    
     if (!file) {
-      return NextResponse.json({ 
-        success: false, 
-        error: 'No file uploaded' 
-      }, { status: 400 });
+      return NextResponse.json(
+        { success: false, error: 'No file provided' },
+        { status: 400 }
+      );
     }
 
     // Validate file type
-    const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
+    const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
     if (!allowedTypes.includes(file.type)) {
-      return NextResponse.json({ 
-        success: false, 
-        error: 'Invalid file type. Only JPEG, PNG, and WebP are allowed.' 
-      }, { status: 400 });
+      return NextResponse.json(
+        { success: false, error: 'Invalid file type. Only JPEG, PNG, GIF, and WebP are allowed.' },
+        { status: 400 }
+      );
     }
 
     // Validate file size (max 5MB)
-    const maxSize = 5 * 1024 * 1024; // 5MB
-    if (file.size > maxSize) {
-      return NextResponse.json({ 
-        success: false, 
-        error: 'File size too large. Maximum size is 5MB.' 
-      }, { status: 400 });
+    if (file.size > 5 * 1024 * 1024) {
+      return NextResponse.json(
+        { success: false, error: 'File too large. Maximum size is 5MB.' },
+        { status: 400 }
+      );
     }
 
-    // Create uploads directory if it doesn't exist
-    const uploadDir = join(process.cwd(), 'public', 'uploads');
-    try {
-      await stat(uploadDir);
-    } catch {
-      // Directory doesn't exist, create it
-      await mkdir(uploadDir, { recursive: true });
-    }
-
-    // Create category directory if it doesn't exist
-    const categoryDir = join(uploadDir, category);
-    try {
-      await stat(categoryDir);
-    } catch {
-      // Directory doesn't exist, create it
-      await mkdir(categoryDir, { recursive: true });
-    }
-
+    // Create upload directory if it doesn't exist
+    const uploadDir = await ensureUploadDir();
+    
     // Generate unique filename
-    const timestamp = Date.now();
-    const fileName = `${timestamp}-${file.name.replace(/[^a-zA-Z0-9.-]/g, '_')}`;
-    const filePath = join(categoryDir, fileName);
-    const relativePath = `/uploads/${category}/${fileName}`;
-
+    const fileExtension = file.name.split('.').pop();
+    const filename = `${uuidv4()}.${fileExtension}`;
+    const filepath = path.join(uploadDir, filename);
+    
     // Convert File to Buffer
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
-
+    
     // Save file to disk
-    await writeFile(filePath, buffer);
-
-    return NextResponse.json({
-      success: true,
-      url: relativePath,
-      filename: fileName,
-      size: file.size,
-      type: file.type,
-      message: 'File uploaded successfully'
+    await writeFile(filepath, buffer);
+    
+    // Return URL to the uploaded file
+    const url = `/uploads/${filename}`;
+    
+    return NextResponse.json({ 
+      success: true, 
+      url,
+      message: 'File uploaded successfully' 
     });
-
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error uploading file:', error);
-    return NextResponse.json({ 
-      success: false, 
-      error: 'Failed to upload file' 
-    }, { status: 500 });
+    return NextResponse.json(
+      { success: false, error: 'Failed to upload file: ' + (error.message || 'Unknown error') },
+      { status: 500 }
+    );
   }
 }
 
-export async function DELETE(request: NextRequest) {
-  try {
-    const { searchParams } = new URL(request.url);
-    const filePath = searchParams.get('path');
-
-    if (!filePath) {
-      return NextResponse.json({ 
-        success: false, 
-        error: 'No file path provided' 
-      }, { status: 400 });
-    }
-
-    // Security check: ensure path is within uploads directory
-    if (!filePath.startsWith('/uploads/')) {
-      return NextResponse.json({ 
-        success: false, 
-        error: 'Invalid file path' 
-      }, { status: 400 });
-    }
-
-    // TODO: Implement actual file deletion
-    // For now, return success response
-    return NextResponse.json({
-      success: true,
-      message: 'File deleted successfully'
-    });
-
-  } catch (error) {
-    console.error('Error deleting file:', error);
-    return NextResponse.json({ 
-      success: false, 
-      error: 'Failed to delete file' 
-    }, { status: 500 });
-  }
-}
+// Disable body parsing for this route since we're handling FormData
+export const dynamic = 'force-dynamic';

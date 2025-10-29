@@ -16,11 +16,11 @@ export async function POST(request: NextRequest) {
     // Mark all unread notifications as read
     const result = await prisma.notification.updateMany({
       where: {
-        userId: session.user.id,
-        read: false
+        user_id: session.user.id,
+        read_at: null
       },
       data: {
-        read: true
+        read_at: new Date()
       }
     });
 

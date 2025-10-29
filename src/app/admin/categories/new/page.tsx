@@ -7,6 +7,7 @@ import Link from 'next/link';
 export default function NewCategoryPage() {
   const router = useRouter();
   const [submitting, setSubmitting] = useState(false);
+  const [uploading, setUploading] = useState(false);
   const [formData, setFormData] = useState({
     nameEn: '',
     nameHi: '',
@@ -27,6 +28,37 @@ export default function NewCategoryPage() {
     }));
   };
 
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setUploading(true);
+    const formData = new FormData();
+    formData.append('file', file);
+
+    try {
+      const response = await fetch('/api/upload', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        setFormData(prev => ({
+          ...prev,
+          image: data.url
+        }));
+      } else {
+        alert('Failed to upload image: ' + data.error);
+      }
+    } catch (error) {
+      console.error('Error uploading image:', error);
+      alert('Failed to upload image');
+    } finally {
+      setUploading(false);
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
@@ -37,21 +69,26 @@ export default function NewCategoryPage() {
         description: { en: formData.descriptionEn, hi: formData.descriptionHi },
         image: formData.image,
         featured: formData.featured,
-        active: formData.active
+        isActive: formData.active,
+        slug: formData.nameEn.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')
       };
 
-      // In a real implementation, you would call an API to create the category
-      console.log('Creating category:', categoryData);
+      const response = await fetch('/api/admin/categories', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(categoryData),
+      });
+
+      const data = await response.json();
       
-      // Show success notification
-      if (typeof window !== 'undefined' && (window as any).showNotification) {
-        (window as any).showNotification(
-          'Category added successfully!',
-          'success'
-        );
+      if (data.success) {
+        alert('Category added successfully!');
+        router.push('/admin/categories');
+      } else {
+        alert('Failed to create category: ' + data.error);
       }
-      
-      router.push('/admin/categories');
     } catch (error) {
       console.error('Error creating category:', error);
       alert('Failed to create category');
@@ -142,19 +179,54 @@ export default function NewCategoryPage() {
                 />
               </div>
 
-              {/* Image */}
+              {/* Image Upload */}
               <div className="md:col-span-2">
-                <label htmlFor="image" className="block text-sm font-medium text-gray-700">
-                  Thumbnail Image URL
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Category Image
                 </label>
-                <input
-                  type="text"
-                  id="image"
-                  name="image"
-                  value={formData.image}
-                  onChange={handleChange}
-                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-amber-500 focus:border-amber-500 sm:text-sm"
-                />
+                <div className="flex items-start space-x-4">
+                  <div className="flex-1">
+                    <input
+                      type="file"
+                      id="imageUpload"
+                      name="imageUpload"
+                      accept="image/*"
+                      onChange={handleImageUpload}
+                      disabled={uploading}
+                      className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-amber-500 focus:border-amber-500 sm:text-sm"
+                    />
+                    {uploading && (
+                      <p className="text-sm text-gray-500 mt-1">Uploading...</p>
+                    )}
+                  </div>
+                  {formData.image && (
+                    <div className="flex-shrink-0">
+                      <img 
+                        src={formData.image} 
+                        alt="Preview" 
+                        className="w-16 h-16 object-cover rounded-md border border-gray-300"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.src = '/images/products/placeholder.jpg';
+                        }}
+                      />
+                    </div>
+                  )}
+                </div>
+                <div className="mt-2">
+                  <label htmlFor="image" className="block text-sm font-medium text-gray-700">
+                    Or enter image URL directly
+                  </label>
+                  <input
+                    type="text"
+                    id="image"
+                    name="image"
+                    value={formData.image}
+                    onChange={handleChange}
+                    placeholder="Enter image URL"
+                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-amber-500 focus:border-amber-500 sm:text-sm"
+                  />
+                </div>
               </div>
 
               {/* Status Flags */}

@@ -1,25 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { prisma } from '@/lib/prisma';
+import { db, enableRealDatabase } from '@/lib/database/connection';
 import { withAuth } from '@/lib/auth/middleware';
+
+// Enable real database for API routes
+enableRealDatabase();
 
 export const GET = withAuth(async (request: NextRequest, authContext: any) => {
   try {
     const userId = authContext.user.id;
     
-    // Fetch user data from database
-    const user = await prisma.user.findUnique({
-      where: { id: userId },
-      select: {
-        id: true,
-        email: true,
-        name: true,
-        phone: true,
-        role: true,
-        email_verified: true,
-        created_at: true,
-        updated_at: true
-      }
-    });
+    // Fetch user data from real database
+    const user = await db.findUserById(userId);
 
     if (!user) {
       return NextResponse.json({
@@ -28,18 +19,12 @@ export const GET = withAuth(async (request: NextRequest, authContext: any) => {
       }, { status: 404 });
     }
 
+    // Return user data without password hash
+    const { password_hash, ...userWithoutPassword } = user;
+
     return NextResponse.json({
       success: true,
-      user: {
-        id: user.id,
-        email: user.email,
-        name: user.name,
-        phone: user.phone,
-        role: user.role,
-        email_verified: user.email_verified,
-        created_at: user.created_at,
-        updated_at: user.updated_at
-      }
+      user: userWithoutPassword
     });
 
   } catch (error) {
@@ -47,6 +32,51 @@ export const GET = withAuth(async (request: NextRequest, authContext: any) => {
     return NextResponse.json({
       success: false,
       error: 'Failed to fetch user profile'
+    }, { status: 500 });
+  }
+});
+
+export const PUT = withAuth(async (request: NextRequest, authContext: any) => {
+  try {
+    const userId = authContext.user.id;
+    const body = await request.json();
+    
+    // Validate required fields
+    if (!body.name || !body.email) {
+      return NextResponse.json({
+        success: false,
+        error: 'Name and email are required'
+      }, { status: 400 });
+    }
+
+    // Update user data in real database
+    const updatedUser = await db.updateUser(userId, {
+      name: body.name,
+      email: body.email,
+      phone: body.phone
+    });
+
+    if (!updatedUser) {
+      return NextResponse.json({
+        success: false,
+        error: 'Failed to update user profile'
+      }, { status: 500 });
+    }
+
+    // Return updated user data without password hash
+    const { password_hash, ...userWithoutPassword } = updatedUser;
+
+    return NextResponse.json({
+      success: true,
+      user: userWithoutPassword,
+      message: 'Profile updated successfully'
+    });
+
+  } catch (error) {
+    console.error('Error updating user profile:', error);
+    return NextResponse.json({
+      success: false,
+      error: 'Failed to update user profile'
     }, { status: 500 });
   }
 });

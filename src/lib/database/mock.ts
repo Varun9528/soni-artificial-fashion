@@ -1,169 +1,712 @@
 // Mock database implementation for development
 import { User, CartItem, WishlistItem, Address } from '@/data/types';
+import bcrypt from 'bcryptjs';
+
+// Hash passwords for mock users
+const adminPasswordHash = bcrypt.hashSync('admin123', 12);
+const userPasswordHash = bcrypt.hashSync('user123', 12);
 
 // Mock users data
 const mockUsers: any[] = [
   {
     id: '1',
-    email: 'admin@lettex.com',
-    password: '$2a$12$example_hashed_password', // In a real app, this would be properly hashed
+    email: 'admin@soniartificialfashion.com',
+    password_hash: adminPasswordHash,
     name: 'Admin User',
     role: 'super_admin',
-    createdAt: '2024-01-01T00:00:00Z',
-    updatedAt: '2024-01-01T00:00:00Z'
+    email_verified: true,
+    created_at: '2024-01-01T00:00:00Z',
+    updated_at: '2024-01-01T00:00:00Z'
   },
   {
     id: '2',
     email: 'user@lettex.com',
-    password: '$2a$12$example_hashed_password', // In a real app, this would be properly hashed
+    password_hash: userPasswordHash,
     name: 'Demo User',
     role: 'customer',
-    createdAt: '2024-01-01T00:00:00Z',
-    updatedAt: '2024-01-01T00:00:00Z'
+    email_verified: true,
+    created_at: '2024-01-01T00:00:00Z',
+    updated_at: '2024-01-01T00:00:00Z'
   }
 ];
 
 // Mock products data
 const mockProducts: any[] = [
+  // Men's Collection Products - Using images from "mens product" directory
   {
-    id: 'bamboo-wall-art-001',
-    slug: 'bamboo-wall-art',
+    id: 'prod-001',
+    slug: 'mens-gold-chain',
     title: {
-      en: 'Bamboo Wall Art',
-      hi: 'बांस की दीवार कला'
+      en: 'Men\'s Gold Chain',
+      hi: 'पुरुषों की सोने की चेन'
     },
     description: {
-      en: 'Handcrafted by skilled Pachmarhi artisans, this bamboo wall art reflects centuries of tradition and artistry. Perfect for gifting or decorating your home with authentic tribal charm.',
-      hi: 'कुशल पचमढ़ी के कारीगरों द्वारा हस्तनिर्मित, यह बांस की दीवार कला शताब्दियों की परंपरा और कला को दर्शाता है। उपहार देने या अपने घर को प्रमाणिक जनजातीय आकर्षण के साथ सजाने के लिए उपयुक्त।'
+      en: 'Premium gold-plated chain for men',
+      hi: 'पुरुषों के लिए प्रीमियम सोने की प्लेटेड चेन'
+    },
+    price: 1899,
+    originalPrice: 2499,
+    stock: 12,
+    rating: 4.2,
+    reviewCount: 15,
+    categoryId: 'cat-006', // Men Collection
+    artisanId: 'soni-designer',
+    featured: false,
+    bestSeller: true,
+    newArrival: false,
+    trending: false,
+    isActive: true,
+    createdAt: '2024-01-01',
+    images: ['/images/products/Soni_Gold_Chain_Watermark.png']
+  },
+  {
+    id: 'prod-002',
+    slug: 'mens-gold-bracelet',
+    title: {
+      en: 'Men\'s Gold Bracelet',
+      hi: 'पुरुषों की सोने की कंघाई'
+    },
+    description: {
+      en: 'Stylish gold-plated bracelet for men',
+      hi: 'पुरुषों के लिए स्टाइलिश सोने की प्लेटेड कंघाई'
+    },
+    price: 2199,
+    originalPrice: 2999,
+    stock: 15,
+    rating: 4.6,
+    reviewCount: 7,
+    categoryId: 'cat-006', // Men Collection
+    artisanId: 'soni-designer',
+    featured: true,
+    bestSeller: false,
+    newArrival: true,
+    trending: true,
+    isActive: true,
+    createdAt: '2024-01-02',
+    images: ['/images/products/Gold_Bracelet_Marble_Macro_Luxury (2).png']
+  },
+  {
+    id: 'prod-003',
+    slug: 'mens-gold-cufflinks',
+    title: {
+      en: 'Men\'s Gold Cufflinks',
+      hi: 'पुरुषों के सोने के कफलिंक्स'
+    },
+    description: {
+      en: 'Elegant gold-plated cufflinks for formal occasions',
+      hi: 'औपचारिक अवसरों के लिए सुरुचिपूर्ण सोने की प्लेटेड कफलिंक्स'
+    },
+    price: 1599,
+    originalPrice: 2199,
+    stock: 20,
+    rating: 4.4,
+    reviewCount: 9,
+    categoryId: 'cat-006', // Men Collection
+    artisanId: 'priya-crafts',
+    featured: false,
+    bestSeller: true,
+    newArrival: false,
+    trending: false,
+    isActive: true,
+    createdAt: '2024-01-03',
+    images: ['/images/products/Gold_Cufflinks_Marble_Macro_Luxury.png']
+  },
+  {
+    id: 'prod-004',
+    slug: 'mens-gold-ring',
+    title: {
+      en: 'Men\'s Gold Ring',
+      hi: 'पुरुषों की सोने की अंगूठी'
+    },
+    description: {
+      en: 'Traditional gold ring for men',
+      hi: 'पुरुषों के लिए पारंपरिक सोने की अंगूठी'
+    },
+    price: 2999,
+    originalPrice: 3999,
+    stock: 10,
+    rating: 4.7,
+    reviewCount: 12,
+    categoryId: 'cat-006', // Men Collection
+    artisanId: 'soni-designer',
+    featured: true,
+    bestSeller: false,
+    newArrival: true,
+    trending: false,
+    isActive: true,
+    createdAt: '2024-01-04',
+    images: ['/images/products/Gold_Rings_Marble_Luxury_Macro (1).png']
+  },
+  {
+    id: 'prod-005',
+    slug: 'mens-gold-watch',
+    title: {
+      en: 'Men\'s Gold Watch',
+      hi: 'पुरुषों की सोने की घड़ी'
+    },
+    description: {
+      en: 'Luxury gold watch for men',
+      hi: 'पुरुषों के लिए लक्ज़री सोने की घड़ी'
+    },
+    price: 4499,
+    originalPrice: 5999,
+    stock: 8,
+    rating: 4.8,
+    reviewCount: 6,
+    categoryId: 'cat-006', // Men Collection
+    artisanId: 'priya-crafts',
+    featured: true,
+    bestSeller: true,
+    newArrival: true,
+    trending: true,
+    isActive: true,
+    createdAt: '2024-01-05',
+    images: ['/images/products/Luxury_Gold_Watch_Marble_Macro.png']
+  },
+  {
+    id: 'prod-006',
+    slug: 'mens-gold-money-clip',
+    title: {
+      en: 'Men\'s Gold Money Clip',
+      hi: 'पुरुषों का सोने का मनी क्लिप'
+    },
+    description: {
+      en: 'Elegant gold money clip for men',
+      hi: 'पुरुषों के लिए सुरुचिपूर्ण सोने का मनी क्लिप'
+    },
+    price: 1299,
+    originalPrice: 1799,
+    stock: 18,
+    rating: 4.3,
+    reviewCount: 8,
+    categoryId: 'cat-006', // Men Collection
+    artisanId: 'soni-designer',
+    featured: false,
+    bestSeller: false,
+    newArrival: true,
+    trending: false,
+    isActive: true,
+    createdAt: '2024-01-06',
+    images: ['/images/products/Gold_Money_Clip_Luxury_Macro.png']
+  },
+  {
+    id: 'prod-007',
+    slug: 'mens-gold-pendant',
+    title: {
+      en: 'Men\'s Gold Pendant',
+      hi: 'पुरुषों का सोने का पेंडेंट'
+    },
+    description: {
+      en: 'Stylish gold pendant for men',
+      hi: 'पुरुषों के लिए स्टाइलिश सोने का पेंडेंट'
+    },
+    price: 2499,
+    originalPrice: 3499,
+    stock: 14,
+    rating: 4.5,
+    reviewCount: 11,
+    categoryId: 'cat-006', // Men Collection
+    artisanId: 'priya-crafts',
+    featured: true,
+    bestSeller: false,
+    newArrival: false,
+    trending: true,
+    isActive: true,
+    createdAt: '2024-01-07',
+    images: ['/images/products/Gold_Pendant_Marble_Luxury_Macro.png']
+  },
+  {
+    id: 'prod-008',
+    slug: 'mens-gold-signet-ring',
+    title: {
+      en: 'Men\'s Gold Signet Ring',
+      hi: 'पुरुषों की सोने की सिग्नेट अंगूठी'
+    },
+    description: {
+      en: 'Classic gold signet ring for men',
+      hi: 'पुरुषों के लिए क्लासिक सोने की सिग्नेट अंगूठी'
+    },
+    price: 3499,
+    originalPrice: 4499,
+    stock: 9,
+    rating: 4.6,
+    reviewCount: 7,
+    categoryId: 'cat-006', // Men Collection
+    artisanId: 'soni-designer',
+    featured: false,
+    bestSeller: true,
+    newArrival: false,
+    trending: false,
+    isActive: true,
+    createdAt: '2024-01-08',
+    images: ['/images/products/Gold_Signet_Ring_Marble_Macro.png']
+  },
+  {
+    id: 'prod-009',
+    slug: 'mens-gold-tie-clip',
+    title: {
+      en: 'Men\'s Gold Tie Clip',
+      hi: 'पुरुषों का सोने का टाई क्लिप'
+    },
+    description: {
+      en: 'Elegant gold tie clip for men',
+      hi: 'पुरुषों के लिए सुरुचिपूर्ण सोने का टाई क्लिप'
+    },
+    price: 1799,
+    originalPrice: 2499,
+    stock: 16,
+    rating: 4.1,
+    reviewCount: 9,
+    categoryId: 'cat-006', // Men Collection
+    artisanId: 'priya-crafts',
+    featured: false,
+    bestSeller: false,
+    newArrival: true,
+    trending: false,
+    isActive: true,
+    createdAt: '2024-01-09',
+    images: ['/images/products/Gold_Tie_Clip_Marble_Luxury.png']
+  },
+  {
+    id: 'prod-010',
+    slug: 'mens-gold-pin',
+    title: {
+      en: 'Men\'s Gold Pin',
+      hi: 'पुरुषों का सोने का पिन'
+    },
+    description: {
+      en: 'Luxury gold pin for men',
+      hi: 'पुरुषों के लिए लक्ज़री सोने का पिन'
+    },
+    price: 2299,
+    originalPrice: 3199,
+    stock: 11,
+    rating: 4.4,
+    reviewCount: 6,
+    categoryId: 'cat-006', // Men Collection
+    artisanId: 'soni-designer',
+    featured: true,
+    bestSeller: false,
+    newArrival: true,
+    trending: false,
+    isActive: true,
+    createdAt: '2024-01-10',
+    images: ['/images/products/Opulent_Gold_Pin_Marble_Macro.png']
+  },
+  // Women's Collection Products - Using images from "products" directory
+  {
+    id: 'prod-011',
+    slug: 'gold-necklace-set',
+    title: {
+      en: 'Gold Necklace Set',
+      hi: 'सोने का हार सेट'
+    },
+    description: {
+      en: 'Elegant gold-plated necklace set with traditional design',
+      hi: 'पारंपरिक डिज़ाइन के साथ सुरुचिपूर्ण सोने की प्लेटेड हार सेट'
     },
     price: 2499,
     originalPrice: 3499,
     stock: 15,
     rating: 4.5,
-    reviewCount: 23,
-    categoryId: 'home-decor',
-    artisanId: 'sarla-bai',
-    images: [
-      '/images/products/bamboo-wall-art/img1.jpg',
-      '/images/products/bamboo-wall-art/img2.jpg',
-      '/images/products/bamboo-wall-art/img3.jpg',
-      '/images/products/bamboo-wall-art/img4.jpg'
-    ],
+    reviewCount: 12,
+    categoryId: 'cat-007', // Women Collection
+    artisanId: 'soni-designer',
     featured: true,
     bestSeller: false,
-    trending: true,
-    newArrival: false,
-    createdAt: '2024-01-15'
-  },
-  {
-    id: 'handloom-sari-001',
-    slug: 'handloom-sari',
-    title: {
-      en: 'Handloom Sari',
-      hi: 'हैंडलूम साड़ी'
-    },
-    description: {
-      en: 'Exquisite handloom sari woven with traditional patterns and vibrant colors. Made by skilled tribal artisans, this sari represents the rich textile heritage of Madhya Pradesh. Perfect for special occasions and cultural celebrations.',
-      hi: 'पारंपरिक पैटर्न और जीवंत रंगों के साथ बुनी गई उत्कृष्ट हैंडलूम साड़ी। कुशल जनजातीय कारीगरों द्वारा निर्मित, यह साड़ी मध्य प्रदेश की समृद्ध वस्त्र विरासत का प्रतिनिधित्व करती है।'
-    },
-    price: 4999,
-    originalPrice: 6999,
-    stock: 8,
-    rating: 4.8,
-    reviewCount: 45,
-    categoryId: 'handloom-textiles',
-    artisanId: 'meera-gond',
-    images: [
-      '/images/products/handloom-sari/img1.jpg',
-      '/images/products/handloom-sari/img2.jpg',
-      '/images/products/handloom-sari/img3.jpg',
-      '/images/products/handloom-sari/img4.jpg',
-      '/images/products/handloom-sari/img5.jpg'
-    ],
-    featured: true,
-    bestSeller: true,
+    newArrival: true,
     trending: false,
-    newArrival: false,
-    createdAt: '2024-01-10'
+    isActive: true,
+    createdAt: '2024-01-11',
+    images: ['/images/products/Gold_Necklace_Set_Ecom_Soni_s778.png']
   },
   {
-    id: 'terracotta-necklace-001',
-    slug: 'terracotta-necklace',
+    id: 'prod-012',
+    slug: 'royal-earrings',
     title: {
-      en: 'Terracotta Necklace',
-      hi: 'टेराकोटा हार'
+      en: 'Royal Earrings',
+      hi: 'रॉयल कान के आभूषण'
     },
     description: {
-      en: 'Elegant terracotta necklace handcrafted with intricate designs. This piece combines earthy textures with artistic patterns, making it perfect for both casual and formal occasions. Each bead is individually shaped and painted.',
-      hi: 'जटिल डिजाइनों के साथ हस्तनिर्मित सुरुचिपूर्ण टेराकोटा हार। यह टुकड़ा मिट्टी की बनावट को कलात्मक पैटर्न के साथ जोड़ता है, जो इसे आकस्मिक और औपचारिक दोनों अवसरों के लिए आदर्श बनाता है।'
+      en: 'Stylish gold-plated earrings for special occasions',
+      hi: 'विशेष अवसरों के लिए फैशनेबल सोने की प्लेटेड कान के आभूषण'
     },
     price: 899,
     originalPrice: 1299,
     stock: 25,
-    rating: 4.3,
-    reviewCount: 18,
-    categoryId: 'jewelry',
-    artisanId: 'ramesh-uikey',
-    images: [
-      '/images/products/terracotta-necklace/img1.jpg',
-      '/images/products/terracotta-necklace/img2.jpg',
-      '/images/products/terracotta-necklace/img3.jpg'
-    ],
+    rating: 4.2,
+    reviewCount: 8,
+    categoryId: 'cat-007', // Women Collection
+    artisanId: 'soni-designer',
+    featured: true,
+    bestSeller: true,
+    newArrival: false,
+    trending: true,
+    isActive: true,
+    createdAt: '2024-01-12',
+    images: ['/images/products/Gold_Royal_Earrings_E455.png']
+  },
+  {
+    id: 'prod-013',
+    slug: 'geometric-bracelet',
+    title: {
+      en: 'Geometric Bracelet',
+      hi: 'ज्यामितीय कंघाई'
+    },
+    description: {
+      en: 'Modern geometric design gold-plated bracelet',
+      hi: 'आधुनिक ज्यामितीय डिज़ाइन सोने की प्लेटेड कंघाई'
+    },
+    price: 1299,
+    originalPrice: 1799,
+    stock: 20,
+    rating: 4.7,
+    reviewCount: 15,
+    categoryId: 'cat-007', // Women Collection
+    artisanId: 'soni-designer',
     featured: false,
     bestSeller: true,
-    trending: true,
     newArrival: false,
-    createdAt: '2024-01-20'
+    trending: false,
+    isActive: true,
+    createdAt: '2024-01-13',
+    images: ['/images/products/Gold_Bracelet_Geometric_Ecom_Soni.png']
+  },
+  {
+    id: 'prod-014',
+    slug: 'diamond-ring',
+    title: {
+      en: 'Diamond Ring',
+      hi: 'हीरा अंगूठी'
+    },
+    description: {
+      en: 'Elegant diamond-studded gold ring',
+      hi: 'सुरुचिपूर्ण हीरा जड़ित सोने की अंगूठी'
+    },
+    price: 3499,
+    originalPrice: 4999,
+    stock: 10,
+    rating: 4.9,
+    reviewCount: 7,
+    categoryId: 'cat-007', // Women Collection
+    artisanId: 'priya-crafts',
+    featured: true,
+    bestSeller: false,
+    newArrival: true,
+    trending: true,
+    isActive: true,
+    createdAt: '2024-01-14',
+    images: ['/images/products/Men\'s_Gold_Diamond_Ring_r567.png']
+  },
+  {
+    id: 'prod-015',
+    slug: 'womens-mangalsutra',
+    title: {
+      en: 'Women\'s Mangalsutra',
+      hi: 'महिलाओं का मांगलसूत्र'
+    },
+    description: {
+      en: 'Traditional mangalsutra with modern touch',
+      hi: 'आधुनिक स्पर्श के साथ पारंपरिक मांगलसूत्र'
+    },
+    price: 2999,
+    originalPrice: 3999,
+    stock: 8,
+    rating: 4.8,
+    reviewCount: 11,
+    categoryId: 'cat-007', // Women Collection
+    artisanId: 'priya-crafts',
+    featured: true,
+    bestSeller: false,
+    newArrival: true,
+    trending: false,
+    isActive: true,
+    createdAt: '2024-01-15',
+    images: ['/images/products/Mangalsutra_Soni_Fashion_Ecommerce_a822.png']
+  },
+  {
+    id: 'prod-016',
+    slug: 'gold-anklet',
+    title: {
+      en: 'Gold Anklet',
+      hi: 'सोने की पांव की कंघाई'
+    },
+    description: {
+      en: 'Beautiful gold-plated anklet for women',
+      hi: 'महिलाओं के लिए सुंदर सोने की प्लेटेड पांव की कंघाई'
+    },
+    price: 1299,
+    originalPrice: 1799,
+    stock: 18,
+    rating: 4.3,
+    reviewCount: 6,
+    categoryId: 'cat-007', // Women Collection
+    artisanId: 'soni-designer',
+    featured: false,
+    bestSeller: false,
+    newArrival: true,
+    trending: true,
+    isActive: true,
+    createdAt: '2024-01-16',
+    images: ['/images/products/Gold_Anklet_Traditional_Soni_a677.png']
+  },
+  {
+    id: 'prod-017',
+    slug: 'gold-hair-chain',
+    title: {
+      en: 'Gold Hair Chain',
+      hi: 'सोने की बाल की चेन'
+    },
+    description: {
+      en: 'Elegant gold-plated hair chain for women',
+      hi: 'महिलाओं के लिए सुरुचिपूर्ण सोने की प्लेटेड बाल की चेन'
+    },
+    price: 999,
+    originalPrice: 1399,
+    stock: 25,
+    rating: 4.1,
+    reviewCount: 8,
+    categoryId: 'cat-007', // Women Collection
+    artisanId: 'priya-crafts',
+    featured: false,
+    bestSeller: true,
+    newArrival: false,
+    trending: false,
+    isActive: true,
+    createdAt: '2024-01-17',
+    images: ['/images/products/Gold_Hair_Chain_Product_Shot_hc567.png']
+  },
+  {
+    id: 'prod-018',
+    slug: 'gold-watch',
+    title: {
+      en: 'Gold Watch',
+      hi: 'सोने की घड़ी'
+    },
+    description: {
+      en: 'Luxury gold watch for women',
+      hi: 'महिलाओं के लिए लक्ज़री सोने की घड़ी'
+    },
+    price: 4499,
+    originalPrice: 5999,
+    stock: 7,
+    rating: 4.7,
+    reviewCount: 9,
+    categoryId: 'cat-007', // Women Collection
+    artisanId: 'soni-designer',
+    featured: true,
+    bestSeller: false,
+    newArrival: true,
+    trending: false,
+    isActive: true,
+    createdAt: '2024-01-18',
+    images: ['/images/products/Gold_Artisan_Watch_a282.png']
+  },
+  {
+    id: 'prod-019',
+    slug: 'gold-nose-ring',
+    title: {
+      en: 'Gold Nose Ring',
+      hi: 'सोने की नाक की अंगूठी'
+    },
+    description: {
+      en: 'Traditional gold nose ring for women',
+      hi: 'महिलाओं के लिए पारंपरिक सोने की नाक की अंगूठी'
+    },
+    price: 799,
+    originalPrice: 1199,
+    stock: 30,
+    rating: 4.0,
+    reviewCount: 12,
+    categoryId: 'cat-007', // Women Collection
+    artisanId: 'priya-crafts',
+    featured: false,
+    bestSeller: true,
+    newArrival: false,
+    trending: true,
+    isActive: true,
+    createdAt: '2024-01-19',
+    images: ['/images/products/Gold_Nose_Ring.png']
+  },
+  {
+    id: 'prod-020',
+    slug: 'gold-toe-ring',
+    title: {
+      en: 'Gold Toe Ring',
+      hi: 'सोने की पांव की अंगूठी'
+    },
+    description: {
+      en: 'Beautiful gold toe ring for women',
+      hi: 'महिलाओं के लिए सुंदर सोने की पांव की अंगूठी'
+    },
+    price: 599,
+    originalPrice: 899,
+    stock: 22,
+    rating: 4.2,
+    reviewCount: 7,
+    categoryId: 'cat-007', // Women Collection
+    artisanId: 'soni-designer',
+    featured: false,
+    bestSeller: false,
+    newArrival: true,
+    trending: false,
+    isActive: true,
+    createdAt: '2024-01-20',
+    images: ['/images/products/Gold_Toe_Ring_Soni_Traditional.png']
   }
 ];
 
 // Mock categories data
 const mockCategories: any[] = [
   {
-    id: 'home-decor',
-    slug: 'home-decor',
+    id: 'cat-006',
     name: {
-      en: 'Home Decor',
-      hi: 'घर की सजावट'
-    }
+      en: 'Men Collection',
+      hi: 'पुरुष संग्रह'
+    },
+    description: {
+      en: 'Elegant jewelry collection designed exclusively for men.',
+      hi: 'पुरुषों के लिए विशेष रूप से डिज़ाइन किया गया सुरुचिपूर्ण आभूषण संग्रह।'
+    },
+    image: '/images/men collection/Gold_Figaro_Bracelet_Studio_Shot.png',
+    parentId: null,
+    displayOrder: 1,
+    isActive: true,
+    createdAt: '2024-01-01'
   },
   {
-    id: 'jewelry',
-    slug: 'jewelry',
+    id: 'cat-007',
     name: {
-      en: 'Jewelry',
-      hi: 'आभूषण'
-    }
+      en: 'Women Collection',
+      hi: 'महिला संग्रह'
+    },
+    description: {
+      en: 'Exquisite jewelry collection crafted for the modern woman.',
+      hi: 'आधुनिक महिला के लिए तैयार किया गया शानदार आभूषण संग्रह।'
+    },
+    image: '/images/women collection/Golden_Radiance_Portrait.png',
+    parentId: null,
+    displayOrder: 2,
+    isActive: true,
+    createdAt: '2024-01-01'
   },
   {
-    id: 'handloom-textiles',
-    slug: 'handloom-textiles',
+    id: 'necklaces',
     name: {
-      en: 'Handloom Textiles',
-      hi: 'हैंडलूम कपड़े'
-    }
+      en: 'Necklaces',
+      hi: 'हार'
+    },
+    description: {
+      en: 'Stylish necklaces for every occasion',
+      hi: 'हर अवसर के लिए स्टाइलिश हार'
+    },
+    image: '/images/processed/categories/1-gram-gold-plated-chain-for-men.jpg',
+    parentId: null,
+    displayOrder: 3,
+    isActive: true,
+    createdAt: '2024-01-01'
+  },
+  {
+    id: 'earrings',
+    name: {
+      en: 'Earrings',
+      hi: 'कान के आभूषण'
+    },
+    description: {
+      en: 'Trendy earrings to complement your look',
+      hi: 'आपके लुक को पूरा करने के लिए ट्रेंडी कान के आभूषण'
+    },
+    image: '/images/processed/categories/fashion-accessories-jewellery-men-women.jpg',
+    parentId: null,
+    displayOrder: 4,
+    isActive: true,
+    createdAt: '2024-01-01'
+  },
+  {
+    id: 'bracelets',
+    name: {
+      en: 'Bracelets',
+      hi: 'कंगन'
+    },
+    description: {
+      en: 'Beautiful bracelets for your wrist',
+      hi: 'आपकी कलाई के लिए सुंदर कंगन'
+    },
+    image: '/images/processed/categories/women-gold-plated-jewellery-accessory-collection.jpg',
+    parentId: null,
+    displayOrder: 5,
+    isActive: true,
+    createdAt: '2024-01-01'
+  },
+  {
+    id: 'rings',
+    name: {
+      en: 'Rings',
+      hi: 'अंगूठियाँ'
+    },
+    description: {
+      en: 'Elegant rings for a perfect finish',
+      hi: 'एक आदर्श खत्म करने के लिए शिक्षित अंगूठियाँ'
+    },
+    image: '/images/processed/categories/1-gram-gold-plated-chain-for-men.jpg',
+    parentId: null,
+    displayOrder: 6,
+    isActive: true,
+    createdAt: '2024-01-01'
+  },
+  {
+    id: 'fashion-accessories',
+    name: {
+      en: 'Fashion Accessories',
+      hi: 'फैशन सहायक उत्पाद'
+    },
+    description: {
+      en: 'Complete your look with our accessories',
+      hi: 'हमारे सहायक उत्पादों के साथ अपने लुक को पूरा करें'
+    },
+    image: '/images/processed/categories/fashion-accessories-jewellery-men-women.jpg',
+    parentId: null,
+    displayOrder: 7,
+    isActive: true,
+    createdAt: '2024-01-01'
   }
 ];
 
 // Mock artisans data
 const mockArtisans: any[] = [
   {
-    id: 'sarla-bai',
-    slug: 'sarla-bai',
-    name: 'Sarla Bai',
-    village: 'Pachmarhi'
+    id: 'soni-designer',
+    name: 'Soni Designer',
+    bio: {
+      en: 'Master designer specializing in artificial fashion jewelry with over 15 years of experience.',
+      hi: 'कृत्रिम फैशन आभूषण में विशेषज्ञता रखने वाले मास्टर डिजाइनर, 15 से अधिक वर्षों का अनुभव।'
+    },
+    specialization: 'Artificial Jewelry Design',
+    location: 'Delhi, India',
+    phone: '+91 9876543210',
+    email: 'designer@sonifashion.com',
+    avatar: '/images/artisans/soni-designer.jpg',
+    experienceYears: 15,
+    rating: 4.9,
+    isVerified: true,
+    createdAt: '2024-01-01'
   },
   {
-    id: 'meera-gond',
-    slug: 'meera-gond',
-    name: 'Meera Gond',
-    village: 'Pipariya'
-  },
-  {
-    id: 'ramesh-uikey',
-    slug: 'ramesh-uikey',
-    name: 'Ramesh Uikey',
-    village: 'Hoshangabad'
+    id: 'priya-crafts',
+    name: 'Priya Crafts',
+    bio: {
+      en: 'Skilled artisan known for creating beautiful artificial jewelry using traditional techniques.',
+      hi: 'पारंपरिक तकनीकों का उपयोग करके सुंदर कृत्रिम आभूषण बनाने के लिए जानी जाने वाली कुशल कारीगर।'
+    },
+    specialization: 'Artificial Jewelry Making',
+    location: 'Mumbai, India',
+    phone: '+91 9876543211',
+    email: 'priya@sonifashion.com',
+    avatar: '/images/artisans/priya-crafts.jpg',
+    experienceYears: 12,
+    rating: 4.7,
+    isVerified: true,
+    createdAt: '2024-01-01'
   }
 ];
 
@@ -286,7 +829,11 @@ export const mockDb = {
           id: artisan.id,
           name: artisan.name,
           village: artisan.village
-        } : null
+        } : null,
+        productImages: product.images.map((url: string, index: number) => ({
+          url,
+          isPrimary: index === 0
+        }))
       };
     });
   },
@@ -371,6 +918,10 @@ export const mockDb = {
         rating: product.rating,
         reviewCount: product.reviewCount,
         images: product.images,
+        productImages: product.images.map((url: string, index: number) => ({
+          url,
+          isPrimary: index === 0
+        })),
         category: productCategory ? {
           id: productCategory.id,
           name: productCategory.name,
@@ -390,8 +941,8 @@ export const mockDb = {
     return {
       products: transformedProducts,
       pagination: {
-        currentPage: searchParams.page,
-        totalPages: Math.ceil(totalCount / searchParams.limit),
+        currentPage: searchParams.page || 1,
+        totalPages: Math.ceil(totalCount / (searchParams.limit || 10)),
         totalProducts: totalCount,
         hasNextPage: endIndex < totalCount,
         hasPrevPage: searchParams.page > 1
@@ -401,7 +952,35 @@ export const mockDb = {
 
   // Cart operations
   async getCartItems(userId: string): Promise<CartItem[]> {
-    return mockCartItems.filter(item => item.user_id === userId);
+    // Enhance cart items with product information including images
+    const enhancedCartItems = mockCartItems
+      .filter(item => item.user_id === userId)
+      .map(cartItem => {
+        const product = mockProducts.find(p => p.id === cartItem.product_id);
+        if (product) {
+          return {
+            productId: cartItem.product_id, // Fix: map product_id to productId
+            quantity: cartItem.quantity,
+            variant: cartItem.variant,
+            product: {
+              id: product.id,
+              title: product.title,
+              price: product.price,
+              originalPrice: product.originalPrice,
+              stock: product.stock,
+              image: product.images && product.images.length > 0 ? product.images[0] : '/images/products/placeholder.jpg' // Include image
+            }
+          };
+        }
+        // If product not found, still return the cart item with correct structure
+        return {
+          productId: cartItem.product_id, // Fix: map product_id to productId
+          quantity: cartItem.quantity,
+          variant: cartItem.variant
+        };
+      });
+    
+    return enhancedCartItems;
   },
 
   async addToCart(userId: string, productId: string, quantity: number): Promise<CartItem> {
@@ -412,7 +991,11 @@ export const mockDb = {
     if (existingItemIndex >= 0) {
       // Update existing item
       mockCartItems[existingItemIndex].quantity += quantity;
-      return mockCartItems[existingItemIndex];
+      return {
+        productId: mockCartItems[existingItemIndex].product_id, // Fix: map product_id to productId
+        quantity: mockCartItems[existingItemIndex].quantity,
+        variant: mockCartItems[existingItemIndex].variant
+      };
     } else {
       // Create new item
       const cartItem: any = {
@@ -423,11 +1006,15 @@ export const mockDb = {
         created_at: new Date().toISOString()
       };
       mockCartItems.push(cartItem);
-      return cartItem;
+      return {
+        productId: cartItem.product_id, // Fix: map product_id to productId
+        quantity: cartItem.quantity,
+        variant: cartItem.variant
+      };
     }
   },
 
-  async removeFromCart(userId: string, productId: string): Promise<boolean> {
+  async removeFromCart(userId: string, productId: string, variant?: any): Promise<boolean> {
     const initialLength = mockCartItems.length;
     mockCartItems = mockCartItems.filter(
       item => !(item.user_id === userId && item.product_id === productId)
@@ -544,4 +1131,115 @@ export const mockDb = {
     );
     return mockWishlistItems.length < initialLength;
   },
+  
+  // Admin operations for mock database
+  async getAllProducts(): Promise<any[]> {
+    // Enhance products with category and artisan data and proper image mapping
+    return mockProducts.map(product => {
+      const category = mockCategories.find((c: any) => c.id === product.categoryId);
+      const artisan = mockArtisans.find((a: any) => a.id === product.artisanId);
+      
+      return {
+        ...product,
+        category: category ? {
+          id: category.id,
+          name: category.name,
+          slug: category.slug
+        } : null,
+        artisan: artisan ? {
+          id: artisan.id,
+          name: artisan.name,
+          village: artisan.village
+        } : null,
+        productImages: product.images.map((url: string, index: number) => ({
+          url,
+          isPrimary: index === 0
+        }))
+      };
+    });
+  },
+  
+  async createProduct(productData: any): Promise<any> {
+    // Generate a new ID for the product
+    const newId = `prod-${Date.now()}`;
+    
+    // Create the product object
+    const newProduct = {
+      id: newId,
+      ...productData,
+      // Map images array to the format expected by the frontend
+      images: productData.images || [],
+      imageFilenames: productData.imageFilenames || [], // Store filenames
+      // Set default values for boolean fields if not provided
+      featured: productData.featured || false,
+      bestSeller: productData.bestSeller || false,
+      newArrival: productData.newArrival || false,
+      trending: productData.trending || false,
+      isActive: productData.isActive !== undefined ? productData.isActive : true,
+      rating: productData.rating || 0,
+      reviewCount: productData.reviewCount || 0,
+      createdAt: new Date().toISOString()
+    };
+    
+    // Add the new product to the mockProducts array
+    mockProducts.push(newProduct);
+    
+    // Return the created product with enhanced data
+    const category = mockCategories.find((c: any) => c.id === newProduct.categoryId);
+    const artisan = mockArtisans.find((a: any) => a.id === newProduct.artisanId);
+    
+    return {
+      ...newProduct,
+      category: category ? {
+        id: category.id,
+        name: category.name,
+        slug: category.slug
+      } : null,
+      artisan: artisan ? {
+        id: artisan.id,
+        name: artisan.name,
+        village: artisan.village
+      } : null,
+      productImages: newProduct.images.map((url: string, index: number) => ({
+        url,
+        filename: newProduct.imageFilenames[index] || '', // Include filename
+        isPrimary: index === 0
+      }))
+    };
+  },
+  
+  async getAllCategories(): Promise<any[]> {
+    // Enhance categories with product counts
+    return mockCategories.map(category => {
+      // Count products in this category
+      const productCount = mockProducts.filter(product => product.categoryId === category.id).length;
+      
+      return {
+        ...category,
+        productCount // Include product count
+      };
+    });
+  },
+  
+  async getAllArtisans(): Promise<any[]> {
+    return mockArtisans;
+  },
+  
+  async getAllBanners(): Promise<any[]> {
+    return []; // Return empty array for banners in mock
+  },
+  
+  async getDashboardStats(): Promise<any> {
+    return {
+      totalProducts: mockProducts.length,
+      totalOrders: mockOrders.length,
+      totalUsers: mockUsers.length,
+      totalArtisans: mockArtisans.length
+    };
+  },
+  
+  async getTotalRevenue(): Promise<number> {
+    // Calculate total revenue from mock orders
+    return mockOrders.reduce((total, order) => total + (order.totalAmount || 0), 0);
+  }
 };

@@ -1,7 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { db } from '@/lib/database/connection';
+import { db, enableRealDatabase } from '@/lib/database/connection';
 import { handleApiError } from '@/lib/errorHandler';
 import { withAuth } from '@/lib/auth/middleware';
+
+// Enable real database for API routes
+enableRealDatabase();
 
 export const GET = withAuth(async (request: NextRequest, authContext: any) => {
   try {
@@ -9,6 +12,7 @@ export const GET = withAuth(async (request: NextRequest, authContext: any) => {
     
     // Get cart items from database
     const cartItems = await db.getCartItems(userId);
+    console.log('Cart items from database:', cartItems);
     
     return NextResponse.json({
       success: true,
@@ -23,6 +27,7 @@ export const GET = withAuth(async (request: NextRequest, authContext: any) => {
     }, { status: statusCode || 500 });
   }
 });
+
 
 export const POST = withAuth(async (request: NextRequest, authContext: any) => {
   try {
@@ -101,13 +106,22 @@ export const PUT = withAuth(async (request: NextRequest, authContext: any) => {
 
 export const DELETE = withAuth(async (request: NextRequest, authContext: any) => {
   try {
-    const body = await request.json();
-    const { productId, variant } = body;
+    console.log('DELETE request received');
+    
+    // Get productId from URL parameters
+    const url = new URL(request.url);
+    const productId = url.searchParams.get('productId');
+    
+    // Variant is not used in current implementation but kept for consistency
+    const variant = undefined;
     
     const userId = authContext.user.id;
     
+    console.log('DELETE cart request:', { userId, productId, variant });
+    
     // Validate input
     if (!productId) {
+      console.log('Product ID is missing in DELETE request');
       return NextResponse.json({
         success: false,
         error: 'Product ID is required'
@@ -115,10 +129,12 @@ export const DELETE = withAuth(async (request: NextRequest, authContext: any) =>
     }
     
     // Remove item from cart in database
-    await db.removeFromCart(userId, productId);
+    const result = await db.removeFromCart(userId, productId, variant);
+    console.log('Remove from cart result:', result);
     
     // Get updated cart items
     const cartItems = await db.getCartItems(userId);
+    console.log('Updated cart items:', cartItems);
     
     return NextResponse.json({
       success: true,

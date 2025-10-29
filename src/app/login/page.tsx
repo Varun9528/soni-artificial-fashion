@@ -1,12 +1,14 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
+import { useAuth } from '@/context/AuthContext';
 
 export default function LoginPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const { login, user } = useAuth();
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -15,35 +17,31 @@ export default function LoginPage() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isLoading, setIsLoading] = useState(false);
 
+  // Redirect if already logged in
+  useEffect(() => {
+    if (user) {
+      if (user.role === 'admin' || user.role === 'super_admin') {
+        router.push('/admin');
+      } else {
+        const redirectUrl = searchParams.get('redirect') || '/';
+        router.push(redirectUrl);
+      }
+    }
+  }, [user, router, searchParams]);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     setErrors({});
 
     try {
-      const response = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-      });
+      const result = await login(formData.email, formData.password);
 
-      const data = await response.json();
-
-      if (response.ok) {
-        // Store token and redirect
-        localStorage.setItem('token', data.token);
-        localStorage.setItem('user', JSON.stringify(data.user));
-        
-        // Redirect based on role - FIXED: Ensure proper role-based redirection
-        if (data.user.role === 'admin' || data.user.role === 'super_admin') {
-          router.push('/admin');
-        } else {
-          // Get redirect URL from search params or default to home
-          const redirectUrl = searchParams.get('redirect') || '/';
-          router.push(redirectUrl);
-        }
+      if (result.success) {
+        // Redirect will happen via useEffect when user state updates
+        console.log('Login successful, redirecting...');
       } else {
-        setErrors({ general: data.error || 'Login failed' });
+        setErrors({ general: result.message });
       }
     } catch (error) {
       setErrors({ general: 'Network error. Please try again.' });
@@ -178,13 +176,12 @@ export default function LoginPage() {
                   <div className="w-full border-t border-gray-300 dark:border-gray-600" />
                 </div>
                 <div className="relative flex justify-center text-sm">
-                  <span className="px-2 bg-white dark:bg-gray-800 text-gray-500">Demo Credentials</span>
+                  <span className="px-2 bg-white dark:bg-gray-800 text-gray-500"></span>
                 </div>
               </div>
 
               <div className="mt-4 text-sm text-gray-600 dark:text-gray-400 text-center space-y-1">
-                <div><strong>Admin:</strong> admin@lettex.com / admin123</div>
-                <div><strong>User:</strong> user@lettex.com / user123</div>
+                
               </div>
             </div>
           </form>

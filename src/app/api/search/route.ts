@@ -1,10 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { db } from '@/lib/database/connection';
+import { db, enableRealDatabase } from '@/lib/database/connection';
 import { handleApiError } from '@/lib/errorHandler';
+
+// Enable real database for API routes
+enableRealDatabase();
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
-  const query = searchParams.get('q') || '';
+  const query = searchParams.get('query') || '';
   const category = searchParams.get('category') || undefined;
   const minPrice = searchParams.get('minPrice');
   const maxPrice = searchParams.get('maxPrice');

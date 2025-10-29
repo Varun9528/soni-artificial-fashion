@@ -13,7 +13,7 @@ export default function AdminProducts() {
   const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
-    if (!user || (user.role !== 'ADMIN' && user.role !== 'SUPER_ADMIN')) {
+    if (!user || (user.role !== 'admin' && user.role !== 'super_admin')) {
       router.push('/login');
       return;
     }
@@ -34,6 +34,37 @@ export default function AdminProducts() {
 
     fetchProducts();
   }, [user, router]);
+
+  // Refresh products when window gains focus
+  useEffect(() => {
+    const handleFocus = () => {
+      // Only refresh if we're not already loading
+      if (!loading) {
+        setLoading(true);
+        const fetchProducts = async () => {
+          try {
+            const response = await fetch('/api/admin/products');
+            const data = await response.json();
+            if (data.success) {
+              setProducts(data.products);
+            }
+          } catch (error) {
+            console.error('Error fetching products:', error);
+          } finally {
+            setLoading(false);
+          }
+        };
+
+        fetchProducts();
+      }
+    };
+
+    window.addEventListener('focus', handleFocus);
+    
+    return () => {
+      window.removeEventListener('focus', handleFocus);
+    };
+  }, [loading]);
 
   const handleDeleteProduct = async (productId: string) => {
     if (!confirm('Are you sure you want to delete this product?')) {
@@ -75,15 +106,38 @@ export default function AdminProducts() {
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="container mx-auto px-4 py-8">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
           <div>
             <h1 className="text-2xl font-bold text-gray-900">Products Management</h1>
             <p className="text-gray-600 mt-1">Manage all products in your marketplace</p>
           </div>
-          <div className="mt-4 md:mt-0">
+          <div className="flex gap-2">
+            <button
+              onClick={() => {
+                setLoading(true);
+                const fetchProducts = async () => {
+                  try {
+                    const response = await fetch('/api/admin/products');
+                    const data = await response.json();
+                    if (data.success) {
+                      setProducts(data.products);
+                    }
+                  } catch (error) {
+                    console.error('Error fetching products:', error);
+                  } finally {
+                    setLoading(false);
+                  }
+                };
+
+                fetchProducts();
+              }}
+              className="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors font-medium"
+            >
+              Refresh
+            </button>
             <Link
               href="/admin/products/add"
-              className="px-4 py-2 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition-colors font-medium"
+              className="block w-full sm:w-auto text-center px-4 py-2 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition-colors font-medium"
             >
               Add New Product
             </Link>
@@ -122,25 +176,25 @@ export default function AdminProducts() {
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Product
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden md:table-cell">
                     Category
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden lg:table-cell">
                     Artisan
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Price
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Stock
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden sm:table-cell">
                     Status
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Actions
                   </th>
                 </tr>
@@ -148,20 +202,20 @@ export default function AdminProducts() {
               <tbody className="bg-white divide-y divide-gray-200">
                 {loading ? (
                   <tr>
-                    <td colSpan={7} className="px-6 py-4 text-center text-gray-500">
+                    <td colSpan={7} className="px-4 sm:px-6 py-4 text-center text-gray-500">
                       Loading products...
                     </td>
                   </tr>
                 ) : filteredProducts.length === 0 ? (
                   <tr>
-                    <td colSpan={7} className="px-6 py-4 text-center text-gray-500">
+                    <td colSpan={7} className="px-4 sm:px-6 py-4 text-center text-gray-500">
                       No products found
                     </td>
                   </tr>
                 ) : (
                   filteredProducts.map((product: any) => (
                     <tr key={product.id} className="hover:bg-gray-50">
-                      <td className="px-6 py-4 whitespace-nowrap">
+                      <td className="px-4 sm:px-6 py-4 whitespace-nowrap">
                         <div className="flex items-center">
                           <div className="flex-shrink-0 h-10 w-10">
                             {product.productImages?.[0] ? (
@@ -192,33 +246,33 @@ export default function AdminProducts() {
                             <div className="text-sm font-medium text-gray-900">
                               {product.title?.en}
                             </div>
-                            <div className="text-sm text-gray-500">
+                            <div className="text-xs text-gray-500 md:hidden">
                               ID: {product.id.slice(0, 8)}
                             </div>
                           </div>
                         </div>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
+                      <td className="px-4 sm:px-6 py-4 whitespace-nowrap hidden md:table-cell">
                         <div className="text-sm text-gray-900">
                           {product.category?.name?.en}
                         </div>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
+                      <td className="px-4 sm:px-6 py-4 whitespace-nowrap hidden lg:table-cell">
                         <div className="text-sm text-gray-900">
                           {product.artisan?.name}
                         </div>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
+                      <td className="px-4 sm:px-6 py-4 whitespace-nowrap">
                         <div className="text-sm text-gray-900">
                           ₹{product.price}
                         </div>
                         {product.originalPrice && product.originalPrice > product.price && (
-                          <div className="text-sm text-gray-500 line-through">
+                          <div className="text-xs text-gray-500 line-through hidden sm:block">
                             ₹{product.originalPrice}
                           </div>
                         )}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
+                      <td className="px-4 sm:px-6 py-4 whitespace-nowrap">
                         <span
                           className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
                             product.stock > 0
@@ -226,33 +280,40 @@ export default function AdminProducts() {
                               : 'bg-red-100 text-red-800'
                           }`}
                         >
-                          {product.stock > 0 ? `${product.stock} in stock` : 'Out of stock'}
+                          <span className="hidden sm:inline">
+                            {product.stock > 0 ? `${product.stock} in stock` : 'Out of stock'}
+                          </span>
+                          <span className="sm:hidden">
+                            {product.stock > 0 ? 'In Stock' : 'Out'}
+                          </span>
                         </span>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
+                      <td className="px-4 sm:px-6 py-4 whitespace-nowrap hidden sm:table-cell">
                         <span
                           className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
-                            product.isActive
+                            product.isActive !== false
                               ? 'bg-green-100 text-green-800'
                               : 'bg-gray-100 text-gray-800'
                           }`}
                         >
-                          {product.isActive ? 'Active' : 'Inactive'}
+                          {product.isActive !== false ? 'Active' : 'Inactive'}
                         </span>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                        <Link
-                          href={`/admin/products/edit/${product.id}`}
-                          className="text-amber-600 hover:text-amber-900 mr-3"
-                        >
-                          Edit
-                        </Link>
-                        <button
-                          onClick={() => handleDeleteProduct(product.id)}
-                          className="text-red-600 hover:text-red-900"
-                        >
-                          Delete
-                        </button>
+                      <td className="px-4 sm:px-6 py-4 whitespace-nowrap text-sm font-medium">
+                        <div className="flex space-x-2">
+                          <Link
+                            href={`/admin/products/edit/${product.id}`}
+                            className="text-amber-600 hover:text-amber-900"
+                          >
+                            Edit
+                          </Link>
+                          <button
+                            onClick={() => handleDeleteProduct(product.id)}
+                            className="text-red-600 hover:text-red-900"
+                          >
+                            Delete
+                          </button>
+                        </div>
                       </td>
                     </tr>
                   ))

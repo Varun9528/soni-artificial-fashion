@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useAuth } from '@/context/AuthContext';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
@@ -21,37 +22,40 @@ interface Artisan {
 }
 
 export default function AdminArtisansPage() {
+  const { user } = useAuth();
   const router = useRouter();
   const [artisans, setArtisans] = useState<Artisan[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Check admin auth
-    const token = localStorage.getItem('token');
-    const userData = localStorage.getItem('user');
-    
-    if (!token || !userData) {
-      router.push('/login');
-      return;
-    }
-
-    try {
-      const user = JSON.parse(userData);
-      if (user.role !== 'admin' && user.role !== 'super_admin') {
-        router.push('/');
-        return;
-      }
-    } catch (error) {
+    if (!user || (user.role !== 'admin' && user.role !== 'super_admin')) {
       router.push('/login');
       return;
     }
 
     loadArtisans();
-  }, [router]);
+  }, [user, router]);
+
+  // Refresh artisans when window gains focus
+  useEffect(() => {
+    const handleFocus = () => {
+      // Only refresh if we're not already loading
+      if (!loading) {
+        setLoading(true);
+        loadArtisans();
+      }
+    };
+
+    window.addEventListener('focus', handleFocus);
+    
+    return () => {
+      window.removeEventListener('focus', handleFocus);
+    };
+  }, [loading]);
 
   const loadArtisans = async () => {
     try {
-      const response = await fetch('/api/artisans');
+      const response = await fetch('/api/admin/artisans');
       if (response.ok) {
         const data = await response.json();
         setArtisans(data.artisans || []);
@@ -60,6 +64,60 @@ export default function AdminArtisansPage() {
       console.error('Error loading artisans:', error);
     }
     setLoading(false);
+  };
+
+  const handleToggleActive = async (id: string, isActive: boolean) => {
+    try {
+      const response = await fetch(`/api/admin/artisans/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          isActive
+        }),
+      });
+
+      const data = await response.json();
+      
+      if (data.success) {
+        // Update the artisan in the local state
+        setArtisans(prev => prev.map(artisan => 
+          artisan.id === id ? { ...artisan, isActive } : artisan
+        ));
+        alert('Artisan updated successfully!');
+      } else {
+        alert('Failed to update artisan: ' + data.error);
+      }
+    } catch (error: any) {
+      console.error('Error updating artisan:', error);
+      alert('Failed to update artisan: ' + (error.message || 'Unknown error'));
+    }
+  };
+
+  const handleDelete = async (id: string) => {
+    if (!confirm('Are you sure you want to delete this artisan? This will also delete all associated products.')) {
+      return;
+    }
+
+    try {
+      const response = await fetch(`/api/admin/artisans/${id}`, {
+        method: 'DELETE',
+      });
+
+      const data = await response.json();
+      
+      if (data.success) {
+        // Remove the artisan from the local state
+        setArtisans(prev => prev.filter(artisan => artisan.id !== id));
+        alert('Artisan deleted successfully!');
+      } else {
+        alert('Failed to delete artisan: ' + data.error);
+      }
+    } catch (error: any) {
+      console.error('Error deleting artisan:', error);
+      alert('Failed to delete artisan: ' + (error.message || 'Unknown error'));
+    }
   };
 
   if (loading) {
@@ -78,27 +136,38 @@ export default function AdminArtisansPage() {
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
-          <div className="flex items-center justify-between mb-8">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
+              <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">
                 Artisan Management
               </h1>
               <p className="text-gray-600 dark:text-gray-400 mt-1">
                 Manage marketplace artisans
               </p>
             </div>
-            <Link
-              href="/admin/artisans/new"
-              className="px-6 py-3 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition-colors font-medium"
-            >
-              + Add New Artisan
-            </Link>
+            <div className="flex gap-2">
+              <button
+                onClick={() => {
+                  setLoading(true);
+                  loadArtisans();
+                }}
+                className="px-4 py-2 sm:px-6 sm:py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors font-medium text-center"
+              >
+                Refresh
+              </button>
+              <Link
+                href="/admin/artisans/new"
+                className="px-4 py-2 sm:px-6 sm:py-3 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition-colors font-medium text-center"
+              >
+                + Add New Artisan
+              </Link>
+            </div>
           </div>
 
           {/* Artisans Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {artisans.map((artisan) => (
-              <div key={artisan.id} className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
+              <div key={artisan.id} className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-200">
                 <div className="aspect-square relative">
                   <img
                     src={artisan.photo}
@@ -129,7 +198,7 @@ export default function AdminArtisansPage() {
                   {/* Skills */}
                   <div className="mb-4">
                     <div className="flex flex-wrap gap-1">
-                      {artisan.skills.slice(0,3).map((skill, index) => (
+                      {(artisan.skills || []).slice(0,3).map((skill, index) => (
                         <span
                           key={index}
                           className="px-2 py-1 text-xs bg-amber-100 text-amber-800 rounded-full"
@@ -137,7 +206,7 @@ export default function AdminArtisansPage() {
                           {skill}
                         </span>
                       ))}
-                      {artisan.skills.length > 3 && (
+                      {artisan.skills && artisan.skills.length > 3 && (
                         <span className="px-2 py-1 text-xs bg-gray-100 text-gray-600 rounded-full">
                           +{artisan.skills.length - 3}
                         </span>
@@ -170,12 +239,21 @@ export default function AdminArtisansPage() {
                   <div className="flex space-x-2">
                     <Link
                       href={`/admin/artisans/${artisan.id}/edit`}
-                      className="flex-1 text-center px-3 py-2 bg-amber-600 text-white rounded hover:bg-amber-700 transition-colors"
+                      className="flex-1 text-center px-3 py-2 bg-amber-600 text-white rounded hover:bg-amber-700 transition-colors text-sm"
                     >
                       Edit
                     </Link>
-                    <button className="flex-1 px-3 py-2 border border-gray-300 text-gray-700 dark:text-gray-300 rounded hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                    <button 
+                      onClick={() => handleToggleActive(artisan.id, !artisan.isActive)}
+                      className="flex-1 px-3 py-2 border border-gray-300 text-gray-700 dark:text-gray-300 rounded hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-sm"
+                    >
                       {artisan.isActive ? 'Deactivate' : 'Activate'}
+                    </button>
+                    <button 
+                      onClick={() => handleDelete(artisan.id)}
+                      className="flex-1 px-3 py-2 border border-red-300 text-red-600 rounded hover:bg-red-50 transition-colors text-sm"
+                    >
+                      Delete
                     </button>
                   </div>
                 </div>

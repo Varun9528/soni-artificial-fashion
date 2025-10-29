@@ -1,13 +1,12 @@
 'use client';
 
-import Link from 'next/link';
-import Image from 'next/image';
 import { useCart } from '@/context/CartContext';
 import { useWishlist } from '@/context/WishlistContext';
 import { useState } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { useRouter } from 'next/navigation';
 import { Heart, ShoppingCart, CreditCard, Star } from 'lucide-react';
+import Image from 'next/image';
 
 interface ProductCardProps {
   product: any;
@@ -33,7 +32,26 @@ export default function ProductCard({ product }: ProductCardProps) {
     'Product';
   const productPrice = product.price || 0;
   const productOriginalPrice = product.original_price || product.originalPrice || product.price;
-  const productImages = product.images || (product.productImages || []).map((img: any) => img.url) || [product.image_path];
+  
+  // Process images to use absolute URLs
+  let productImages = product.images || (product.productImages || []).map((img: any) => img.url) || [product.image_path];
+  
+  // Convert relative URLs to absolute URLs with proper handling
+  productImages = productImages.map((img: any) => {
+    // Handle both string URLs and objects with url property
+    const imgUrl = typeof img === 'string' ? img : (img?.url || '');
+    
+    if (!imgUrl) return '/images/products/placeholder.jpg';
+    
+    // If it's already an absolute path, return as is
+    if (imgUrl.startsWith('http') || imgUrl.startsWith('/images/') || imgUrl.startsWith('/uploads/')) {
+      return imgUrl;
+    }
+    
+    // If it's a relative path, make it absolute
+    return `/images/products/${imgUrl}`;
+  });
+  
   const productRating = product.rating || 0;
   const productReviewCount = product.review_count || product.reviewCount || 0;
   const productStock = product.stock || product.inStock || 0;
@@ -143,10 +161,14 @@ export default function ProductCard({ product }: ProductCardProps) {
     router.push(`/checkout?slug=${currentProductSlug}`);
   };
 
+  const handleProductClick = () => {
+    router.push(`/product/${productSlug}`);
+  };
+
   return (
-    <div className="flipkart-card group hover:scale-105 transition-transform shadow-lg">
-      <Link href={`/product/${productSlug}`}>
-        <div className="relative aspect-square overflow-hidden">
+    <div className="flipkart-card group hover:scale-105 transition-transform shadow-lg h-full flex flex-col">
+      <button onClick={handleProductClick} className="block flex-1 w-full text-left">
+        <div className="relative aspect-square overflow-hidden rounded-t-lg">
           {!imageError && (firstImage || (productImages && productImages.length > 0)) ? (
             <Image
               src={firstImage || productImages[0] || '/images/products/placeholder.jpg'}
@@ -172,7 +194,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           
           {/* Discount Badge */}
           {discountPercentage > 0 && (
-            <div className="absolute top-2 left-2 bg-red-600 text-white px-2 py-1 rounded text-xs font-semibold">
+            <div className="absolute top-2 left-2 flipkart-badge">
               {discountPercentage}% {language === 'en' ? 'OFF' : 'छूट'}
             </div>
           )}
@@ -214,79 +236,82 @@ export default function ProductCard({ product }: ProductCardProps) {
             </div>
           )}
         </div>
-      </Link>
+      </button>
 
-      <div className="p-4">
-        <div className="mb-2">
-          <h3 className="flipkart-product-title">
-            <Link href={`/product/${productSlug}`}>
+      <div className="p-3 flex-1 flex flex-col">
+        <div className="mb-1">
+          <h3 className="flipkart-product-title text-sm">
+            <button onClick={handleProductClick} className="text-inherit hover:text-amber-600 dark:hover:text-amber-400">
               {productTitle}
-            </Link>
+            </button>
           </h3>
-          <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+          <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
             {categoryName}
           </p>
         </div>
 
         {/* Rating */}
-        <div className="flex items-center mb-2">
+        <div className="flex items-center mb-1">
           <div className="flex text-yellow-400">
             {[...Array(5)].map((_, i) => (
               <Star
                 key={i}
-                className={`w-4 h-4 ${i < Math.floor(productRating) ? 'fill-current' : 'fill-none stroke-current'}`}
+                className={`w-3 h-3 ${i < Math.floor(productRating) ? 'fill-current' : 'fill-none stroke-current'}`}
               />
             ))}
           </div>
-          <span className="text-sm text-gray-500 dark:text-gray-400 ml-1">
+          <span className="text-xs text-gray-500 dark:text-gray-400 ml-1">
             ({productReviewCount})
           </span>
         </div>
 
         {/* Price */}
-        <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <span className="flipkart-product-price">
-              ₹{productPrice.toLocaleString()}
-            </span>
-            {productOriginalPrice && productOriginalPrice > productPrice && (
-              <span className="text-sm text-gray-500 dark:text-gray-400 line-through">
+        <div className="flex items-center mb-2">
+          <span className="flipkart-product-price text-base">
+            ₹{productPrice.toLocaleString()}
+          </span>
+          {productOriginalPrice && productOriginalPrice > productPrice && (
+            <>
+              <span className="flipkart-product-original-price text-sm ml-2">
                 ₹{productOriginalPrice.toLocaleString()}
               </span>
-            )}
-          </div>
+              <span className="flipkart-product-discount text-xs ml-2">
+                {discountPercentage}% off
+              </span>
+            </>
+          )}
         </div>
 
         {/* CTA Buttons */}
-        <div className="flex space-x-2 mt-3">
+        <div className="flex space-x-1 mt-2 flex-1 items-end">
           <button 
             onClick={handleAddToCart}
             disabled={productStock <= 0}
-            className="flex-1 flex items-center justify-center bg-green-600 hover:bg-green-700 text-white px-3 py-2 rounded-lg transition disabled:bg-gray-400 disabled:cursor-not-allowed text-sm font-semibold"
+            className="flipkart-button flex-1 flex items-center justify-center px-2 py-1 text-xs"
           >
-            <ShoppingCart className="w-4 h-4 mr-1" />
+            <ShoppingCart className="w-3 h-3 mr-1" />
             {t('addToCart')}
           </button>
           <button 
             onClick={handleBuyNow}
             disabled={productStock <= 0}
-            className="flex-1 flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded-lg transition disabled:bg-gray-400 disabled:cursor-not-allowed text-sm font-semibold"
+            className="flipkart-button-secondary flex-1 flex items-center justify-center px-2 py-1 text-xs"
           >
-            <CreditCard className="w-4 h-4 mr-1" />
+            <CreditCard className="w-3 h-3 mr-1" />
             {t('buyNow')}
           </button>
           <button 
             onClick={handleWishlistToggle}
-            className={`${inWishlist ? 'bg-pink-600 hover:scale-105' : 'bg-gray-300 hover:scale-105'} transition text-white font-semibold px-3 py-2 rounded-lg`}
+            className={`${inWishlist ? 'bg-pink-600 hover:scale-105' : 'bg-gray-300 hover:scale-105'} transition text-white font-semibold px-2 py-1 rounded-md`}
             title={inWishlist ? (language === 'en' ? t('removeFromWishlist') : 'पसंद से हटाएं') : (language === 'en' ? t('addToWishlist') : 'पसंद में जोड़ें')}
           >
-            <Heart className="w-4 h-4" fill={inWishlist ? "currentColor" : "none"} />
+            <Heart className="w-3 h-3" fill={inWishlist ? "currentColor" : "none"} />
           </button>
         </div>
 
         {/* Stock indicator */}
         {productStock > 0 && productStock <= 5 && (
-          <div className="mt-2 text-xs text-orange-600 dark:text-orange-400 font-medium">
+          <div className="mt-1 text-xs text-orange-600 dark:text-orange-400 font-medium">
             {t('onlyLeft').replace('{{count}}', productStock.toString())}
           </div>
         )}

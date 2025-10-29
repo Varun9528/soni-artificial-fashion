@@ -14,9 +14,9 @@ export default function ContactPage() {
     {
       icon: <Mail className="w-6 h-6" />,
       title: { en: 'Email Us', hi: 'हमें ईमेल करें' },
-      content: { en: 'support@lettex.com', hi: 'support@lettex.com' },
+      content: { en: 'support@sonifashion.com', hi: 'support@sonifashion.com' },
       action: { en: 'Send Email', hi: 'ईमेल भेजें' },
-      link: 'mailto:support@lettex.com'
+      link: 'mailto:support@sonifashion.com'
     },
     {
       icon: <Phone className="w-6 h-6" />,
@@ -71,14 +71,33 @@ export default function ContactPage() {
     return translations[language][key] || key;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real app, you would send the form data to your backend
-    alert('Thank you for your message! We will get back to you soon.');
-    setName('');
-    setEmail('');
-    setSubject('');
-    setMessage('');
+    
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, email, subject, message }),
+      });
+      
+      const data = await response.json();
+      
+      if (data.success) {
+        alert(data.message);
+        setName('');
+        setEmail('');
+        setSubject('');
+        setMessage('');
+      } else {
+        alert('Failed to send message. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error sending message:', error);
+      alert('Failed to send message. Please try again.');
+    }
   };
 
   return (
@@ -109,7 +128,7 @@ export default function ContactPage() {
                     </div>
                     <div className="ml-4">
                       <h3 className="font-medium text-gray-900 dark:text-white">{t('email')}</h3>
-                      <p className="text-gray-600 dark:text-gray-400">support@pachmarhiart.com</p>
+                      <p className="text-gray-600 dark:text-gray-400">support@sonifashion.com</p>
                     </div>
                   </div>
                   

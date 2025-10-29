@@ -1,71 +1,47 @@
 const mysql = require('mysql2/promise');
-const { PrismaClient } = require('@prisma/client');
 
-const prisma = new PrismaClient();
+// Database configuration from environment variables
+const dbConfig = {
+  host: process.env.DB_HOST || 'localhost',
+  user: process.env.DB_USER || 'root',
+  password: process.env.DB_PASSWORD || '',
+  database: process.env.DB_NAME || 'soni_artificial_fashion',
+  port: parseInt(process.env.DB_PORT || '3306'),
+  // Connection pool configuration to prevent "too many connections" error
+  connectionLimit: 10,
+  queueLimit: 0,
+  acquireTimeout: 60000,
+  timeout: 60000,
+  reconnect: true,
+  keepAliveInitialDelay: 0,
+  enableKeepAlive: true
+};
 
 async function testConnection() {
   try {
     console.log('Testing database connection...');
+    console.log('DB Config:', dbConfig);
     
-    // Try to count products
-    const productCount = await prisma.product.count();
-    console.log(`Current product count: ${productCount}`);
+    // Create a connection pool with better configuration
+    const pool = mysql.createPool(dbConfig);
     
+    // Test the connection
+    const connection = await pool.getConnection();
     console.log('Database connection successful!');
+    
+    // Run a simple query
+    const [rows] = await connection.execute('SELECT 1 as test');
+    console.log('Query result:', rows);
+    
+    // Release the connection
+    connection.release();
+    
+    // Close the pool
+    await pool.end();
+    console.log('Database connection test completed successfully!');
   } catch (error) {
-    console.error('Database connection failed:', error.message);
-  } finally {
-    await prisma.$disconnect();
+    console.error('Database connection failed:', error);
   }
 }
 
 testConnection();
-
-async function testDatabase() {
-  try {
-    // Create connection to the database
-    const connection = await mysql.createConnection({
-      host: process.env.DB_HOST || 'localhost',
-      user: process.env.DB_USER || 'root',
-      password: process.env.DB_PASSWORD || '',
-      port: process.env.DB_PORT || 3306,
-      database: 'pachmarhi_marketplace_final'
-    });
-    
-    console.log('✅ Database connection successful!');
-    
-    // Test query to check if tables exist
-    const [rows] = await connection.execute('SHOW TABLES');
-    console.log('📋 Database tables:');
-    rows.forEach(row => {
-      console.log(`  - ${Object.values(row)[0]}`);
-    });
-    
-    // Test query to check users
-    const [users] = await connection.execute('SELECT COUNT(*) as count FROM users');
-    console.log(`\n👥 Users count: ${users[0].count}`);
-    
-    // Test query to check categories
-    const [categories] = await connection.execute('SELECT COUNT(*) as count FROM categories');
-    console.log(`📂 Categories count: ${categories[0].count}`);
-    
-    // Test query to check artisans
-    const [artisans] = await connection.execute('SELECT COUNT(*) as count FROM artisans');
-    console.log(`🧑 Artisans count: ${artisans[0].count}`);
-    
-    // Test query to check products
-    const [products] = await connection.execute('SELECT COUNT(*) as count FROM products');
-    console.log(`🛍️ Products count: ${products[0].count}`);
-    
-    await connection.end();
-    console.log('\n✅ Database test completed successfully!');
-    
-  } catch (error) {
-    console.error('❌ Database test failed:', error.message);
-  }
-}
-
-// Load environment variables
-require('dotenv').config({ path: '.env.local' });
-
-testDatabase();

@@ -1,0 +1,3932 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xml:lang="en" xmlns="http://www.w3.org/2005/Atom" xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:s="http://jadedpixel.com/-/spec/shopify">
+  <id>https://www.soni.fashion/collections/all.atom</id>
+  <link rel="alternate" type="text/html" href="https://www.soni.fashion/collections/all"/>
+  <link rel="self" type="application/atom+xml" href="https://www.soni.fashion/collections/rings-for-men.atom"/>
+  <title>Soni Fashion ®</title>
+  <updated>2025-10-16T16:14:56+05:30</updated>
+  <author>
+    <name>Soni Fashion ®</name>
+  </author>
+  <entry>
+    <id>https://www.soni.fashion/products/8625913430194</id>
+    <published>2025-10-16T16:14:56+05:30</published>
+    <updated>2025-10-16T16:14:56+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/1-gram-gold-plated-blue-stone-with-diamond-artisanal-design-ring-style-a870"/>
+    <title>1 Gram Gold Plated Blue Stone with Diamond Artisanal Design Ring - Style A870</title>
+    <s:type>ring</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/soni-fashion-ring-1-gram-gold-plated-blue-stone-with-diamond-artisanal-design-ring-style-a870_0.jpg?v=1760611428"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>ring<br>
+        <strong>Price: </strong>
+            2200.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>This 1 Gram Gold Plated Blue Stone With Diamond Artisanal Design Ring defines modern style! Featuring a textured stone, shining rhodium and miligram gold, along with a diamond and brass accents, this piece is both stunning and timeless.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Ring Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Height</strong></td>
+<td>:</td>
+<td style="text-align: left;">34 mm (3.4 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">7 mm (0.7 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">16 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Brass, Diamond, Miligram Gold, Rhodium, Stone</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining, Textured</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">Festival, Marriage / Wedding / Engagement, Birthday, Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Groom</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Ring</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>More Info</strong></td>
+<td>:</td>
+<td style="text-align: left;">This product is gold plated with approx 200 miligram of gold.</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Diamond</s:tag>
+    <s:tag>Miligram Gold</s:tag>
+    <s:tag>Rhodium</s:tag>
+    <s:tag>Stone</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625913430194</id>
+      <title>18</title>
+      <s:price currency="INR">2200.00</s:price>
+      <s:sku>RG-26A-870_S18</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625913430194</id>
+      <title>19</title>
+      <s:price currency="INR">2200.00</s:price>
+      <s:sku>RG-26A-870_S19</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625913430194</id>
+      <title>23</title>
+      <s:price currency="INR">2200.00</s:price>
+      <s:sku>RG-26A-870_S23</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625913430194</id>
+      <title>25</title>
+      <s:price currency="INR">2200.00</s:price>
+      <s:sku>RG-26A-870_S25</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625913430194</id>
+      <title>26</title>
+      <s:price currency="INR">2200.00</s:price>
+      <s:sku>RG-26A-870_S26</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8623831908530</id>
+    <published>2025-10-13T16:50:35+05:30</published>
+    <updated>2025-10-13T16:50:35+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/1-gram-gold-plated-blue-stone-with-diamond-hand-crafted-ring-for-men-style-b386"/>
+    <title>1 Gram Gold Plated Blue Stone With Diamond Hand-crafted Ring For Men - Style B386</title>
+    <s:type>ring</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/soni-fashion-ring-1-gram-gold-plated-blue-stone-with-diamond-hand-crafted-ring-for-men-style-b386_4.jpg?v=1760354435"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>ring<br>
+        <strong>Price: </strong>
+            2250.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Make a statement with this vintage, hand-crafted 1 gram gold-plated men's ring. Boasting a blue stone and a diamond surrounded by a textured, shining, and royal rhodium oval, this unique piece is perfect for the modern man. Crafted with a milligram gold and brass base for superior durability, this golden ring is sure to be a treasured favourite.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Ring Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Height</strong></td>
+<td>:</td>
+<td style="text-align: left;">24 mm (2.4 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">10 mm (1 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">7 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;">Fixed</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Shape</strong></td>
+<td>:</td>
+<td style="text-align: left;">Oval</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Lock Type</strong></td>
+<td>:</td>
+<td style="text-align: left;">No Lock</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden, Blue</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Brass, Diamond, Miligram Gold, Rhodium, Stone</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining, Textured</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">Festival, Marriage / Wedding / Engagement, Birthday, Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Vintage, Groom, Royal</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Ring</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>More Info</strong></td>
+<td>:</td>
+<td style="text-align: left;">This product is gold plated with approx 200 miligram of gold.</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Blue Ring</s:tag>
+    <s:tag>Brass</s:tag>
+    <s:tag>Diamond</s:tag>
+    <s:tag>Golden Ring</s:tag>
+    <s:tag>Miligram Gold</s:tag>
+    <s:tag>Oval</s:tag>
+    <s:tag>Rhodium</s:tag>
+    <s:tag>Royal</s:tag>
+    <s:tag>Stone</s:tag>
+    <s:tag>Vintage</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8623831908530</id>
+      <title>18</title>
+      <s:price currency="INR">2250.00</s:price>
+      <s:sku>RG-26B-386_S18</s:sku>
+      <s:grams>7</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8623831908530</id>
+      <title>19</title>
+      <s:price currency="INR">2250.00</s:price>
+      <s:sku>RG-26B-386_S19</s:sku>
+      <s:grams>7</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8623831908530</id>
+      <title>25</title>
+      <s:price currency="INR">2250.00</s:price>
+      <s:sku>RG-26B-386_S25</s:sku>
+      <s:grams>7</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8623831908530</id>
+      <title>26</title>
+      <s:price currency="INR">2250.00</s:price>
+      <s:sku>RG-26B-386_S26</s:sku>
+      <s:grams>7</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8621768114354</id>
+    <published>2025-10-10T15:21:58+05:30</published>
+    <updated>2025-10-10T15:21:58+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/1-gram-gold-plated-green-stone-with-diamond-best-quality-ring-for-men-style-b361"/>
+    <title>1 Gram Gold Plated Green Stone with Diamond Best Quality Ring for Men - Style B361</title>
+    <s:type>ring</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/soni-fashion-ring-1-gram-gold-plated-green-stone-with-diamond-best-quality-ring-for-men-style-b361_0.jpg?v=1760089738"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>ring<br>
+        <strong>Price: </strong>
+            2200.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Classic yet modern, this stunning men's ring features a vintage, textured gold-plated finish with a sparkling 1-gram green stone and a sparkling diamond. Miligram gold, brass, and a Rajwadi design combine for a distinguished look. Perfect for the groom, this golden green ring is sure to make a style statement.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Ring Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Height</strong></td>
+<td>:</td>
+<td style="text-align: left;">25 mm (2.5 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">7 mm (0.7 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">11 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;">Fixed</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Lock Type</strong></td>
+<td>:</td>
+<td style="text-align: left;">No Lock</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden, Green</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Brass, Diamond, Miligram Gold, Stone</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining, Textured</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">Festival, Marriage / Wedding / Engagement, Birthday, Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Vintage, Groom, Rajwadi</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Ring</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>More Info</strong></td>
+<td>:</td>
+<td style="text-align: left;">This product is gold plated with approx 200 miligram of gold.</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Diamond</s:tag>
+    <s:tag>Golden Ring</s:tag>
+    <s:tag>Green Ring</s:tag>
+    <s:tag>Miligram Gold</s:tag>
+    <s:tag>Rajwadi</s:tag>
+    <s:tag>Stone</s:tag>
+    <s:tag>Vintage</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8621768114354</id>
+      <title>19</title>
+      <s:price currency="INR">2200.00</s:price>
+      <s:sku>RG-26B-361_S19</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8621768114354</id>
+      <title>22</title>
+      <s:price currency="INR">2200.00</s:price>
+      <s:sku>RG-26B-361_S22</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8621768114354</id>
+      <title>23</title>
+      <s:price currency="INR">2200.00</s:price>
+      <s:sku>RG-26B-361_S23</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8621768114354</id>
+      <title>24</title>
+      <s:price currency="INR">2200.00</s:price>
+      <s:sku>RG-26B-361_S24</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8621768114354</id>
+      <title>25</title>
+      <s:price currency="INR">2200.00</s:price>
+      <s:sku>RG-26B-361_S25</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8621768114354</id>
+      <title>26</title>
+      <s:price currency="INR">2200.00</s:price>
+      <s:sku>RG-26B-361_S26</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8621055967410</id>
+    <published>2025-10-09T15:44:01+05:30</published>
+    <updated>2025-10-09T15:44:01+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/trending-design-gold-plated-adjustable-ring-for-men-style-b694"/>
+    <title>Trending Design Gold Plated Adjustable Ring for Men - Style B694</title>
+    <s:type>ring</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/Trending_Design_Gold_Plated_Adjustable_Ring_for_Men.jpg?v=1760005362"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>ring<br>
+        <strong>Price: </strong>
+            490.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Elevate your style with this gold-plated adjustable ring designed for men. Featuring a shining hip hop aesthetic with high-quality brass construction and diamond-like detailing, it adds a bold and trendy touch to any outfit. The durable hid-reg plating ensures long-lasting shine, making it perfect for everyday wear or special occasions. Adjust it easily for a comfortable fit that suits your style.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Ring Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Width</strong></td>
+<td>:</td>
+<td style="text-align: left;">7 mm (0.7 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">7 mm (0.7 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">4 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;">Adjustable</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Brass, Diamond</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">Festival, Marriage / Wedding / Engagement, Party Wear, Birthday, Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Hip Hop</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Men</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Ring</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Diamond</s:tag>
+    <s:tag>Golden Ring</s:tag>
+    <s:tag>Hid_Reg_Plating</s:tag>
+    <s:tag>Hip Hop</s:tag>
+    <s:tag>Shining</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8621055967410</id>
+      <title>Default Title</title>
+      <s:price currency="INR">490.00</s:price>
+      <s:sku>RG-4B-694</s:sku>
+      <s:grams>4</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8621055836338</id>
+    <published>2025-10-09T15:41:06+05:30</published>
+    <updated>2025-10-09T15:41:06+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/delicate-design-gold-plated-adjustable-ring-for-men-style-b691"/>
+    <title>Delicate Design Gold Plated Adjustable Ring for Men - Style B691</title>
+    <s:type>ring</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/DelicateDesignGoldPlatedAdjustableRingforMen.jpg?v=1760004667"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>ring<br>
+        <strong>Price: </strong>
+            490.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>This gold-plated adjustable ring for men combines a sleek hip-hop style with a delicate design. Crafted from brass with a hidden regular plating, it features shining diamond accents that add subtle brilliance. Its adjustable fit ensures comfort, making it a stylish and versatile accessory for everyday wear.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Ring Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Width</strong></td>
+<td>:</td>
+<td style="text-align: left;">8 mm (0.8 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">10 mm (1 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">6 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;">Adjustable</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Brass, Diamond</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">Festival, Marriage / Wedding / Engagement, Party Wear, Birthday, Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Hip Hop</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Men</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Ring</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Diamond</s:tag>
+    <s:tag>Golden Ring</s:tag>
+    <s:tag>Hid_Reg_Plating</s:tag>
+    <s:tag>Hip Hop</s:tag>
+    <s:tag>Shining</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8621055836338</id>
+      <title>Default Title</title>
+      <s:price currency="INR">490.00</s:price>
+      <s:sku>RG-4B-691</s:sku>
+      <s:grams>6</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8618198696114</id>
+    <published>2025-10-04T18:19:48+05:30</published>
+    <updated>2025-10-04T18:19:48+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/green-stone-with-diamond-designer-design-best-quality-gold-plated-ring-style-a771"/>
+    <title>Green Stone with Diamond Designer Design Best Quality Gold Plated Ring - Style A771</title>
+    <s:type>ring</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/soni-fashion-ring-green-stone-with-diamond-designer-design-best-quality-gold-plated-ring-style-a771_2.jpg?v=1759582189"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>ring<br>
+        <strong>Price: </strong>
+            950.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p data-mce-fragment="1">This designer Green Stone ring boasts a stunning diamond accent, enhanced by its textured brass finish and regal gold plating. Add a touch of elegance and style to any outfit with this best-quality accessory. Perfect for any occasion, this green and gold ring is sure to turn heads.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Ring Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Height</strong></td>
+<td>:</td>
+<td style="text-align: left;">18 mm (1.8 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">6 mm (0.6 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">6 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden, Green</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Brass, Diamond</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining, Textured</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">Festival, Marriage / Wedding / Engagement, Birthday, Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Groom, Royal</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Ring</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Diamond</s:tag>
+    <s:tag>Golden Ring</s:tag>
+    <s:tag>Green Ring</s:tag>
+    <s:tag>Hid_Reg_Plating</s:tag>
+    <s:tag>Royal</s:tag>
+    <s:tag>Textured</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8618198696114</id>
+      <title>26</title>
+      <s:price currency="INR">950.00</s:price>
+      <s:sku>RG-8A-771_S26</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8618198696114</id>
+      <title>27</title>
+      <s:price currency="INR">950.00</s:price>
+      <s:sku>RG-8A-771_S27</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8618148692146</id>
+    <published>2025-10-04T15:06:36+05:30</published>
+    <updated>2025-10-04T15:06:36+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/1-gram-gold-plated-blue-stone-with-diamond-gorgeous-design-ring-style-a281"/>
+    <title>1 Gram Gold Plated Blue Stone with Diamond Gorgeous Design Ring - Style A281</title>
+    <s:type>ring</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/soni-fashion-ring-1-gram-gold-plated-blue-stone-with-diamond-gorgeous-design-ring-style-a281_0.jpg?v=1759570436"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>ring<br>
+        <strong>Price: </strong>
+            1980.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>This 1 Gram Gold Plated Blue Stone with Diamond Gorgeous Design Ring is exquisitely crafted with a textured finish and shining gold for a luxurious look. Rhodium plating ensures a long-lasting royal sheen, while the diamond and brass accents further add to the ring's regal quality. This stunning piece is sure to make a groom feel special on his big day.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Ring Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Height</strong></td>
+<td>:</td>
+<td style="text-align: left;">25 mm (2.5 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">9 mm (0.9 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">10 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden, Blue</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Brass, Diamond, Miligram Gold, Rhodium, Stone</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining, Textured</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">Festival, Marriage / Wedding / Engagement, Birthday, Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Groom, Royal</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Ring</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>More Info</strong></td>
+<td>:</td>
+<td style="text-align: left;">This product is gold plated with approx 200 miligram of gold.</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Blue Ring</s:tag>
+    <s:tag>Brass</s:tag>
+    <s:tag>Diamond</s:tag>
+    <s:tag>Golden Ring</s:tag>
+    <s:tag>Miligram Gold</s:tag>
+    <s:tag>Rhodium</s:tag>
+    <s:tag>Royal</s:tag>
+    <s:tag>Stone</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8618148692146</id>
+      <title>19</title>
+      <s:price currency="INR">1980.00</s:price>
+      <s:sku>RG-25A-281_S19</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8618148692146</id>
+      <title>20</title>
+      <s:price currency="INR">1980.00</s:price>
+      <s:sku>RG-25A-281_S20</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8618148692146</id>
+      <title>22</title>
+      <s:price currency="INR">1980.00</s:price>
+      <s:sku>RG-25A-281_S22</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8618148692146</id>
+      <title>23</title>
+      <s:price currency="INR">1980.00</s:price>
+      <s:sku>RG-25A-281_S23</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8618148692146</id>
+      <title>24</title>
+      <s:price currency="INR">1980.00</s:price>
+      <s:sku>RG-25A-281_S24</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8618148692146</id>
+      <title>25</title>
+      <s:price currency="INR">1980.00</s:price>
+      <s:sku>RG-25A-281_S25</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8618148692146</id>
+      <title>26</title>
+      <s:price currency="INR">1980.00</s:price>
+      <s:sku>RG-25A-281_S26</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8618148692146</id>
+      <title>27</title>
+      <s:price currency="INR">1980.00</s:price>
+      <s:sku>RG-25A-281_S27</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8618148692146</id>
+      <title>28</title>
+      <s:price currency="INR">1980.00</s:price>
+      <s:sku>RG-25A-281_S28</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8609151746226</id>
+    <published>2025-09-22T16:48:09+05:30</published>
+    <updated>2025-09-22T16:48:09+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/1-gram-gold-plated-red-stone-with-diamond-amazing-design-ring-for-men-style-b475"/>
+    <title>1 Gram Gold Plated Red Stone with Diamond Amazing Design Ring for Men - Style B475</title>
+    <s:type>ring</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/soni-fashion-ring-1-gram-gold-plated-red-stone-with-diamond-amazing-design-ring-for-men-style-b475_3.jpg?v=1758539890"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>ring<br>
+        <strong>Price: </strong>
+            2870.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>This 1 Gram Gold Plated Red Stone with Diamond Amazing Design Ring for Men offers a sophisticated design with superior textured styling, a royal rhodium plating, a miligram gold finish, and a glamorous diamond feature. The shining stone and golden brass create an eye-catching look perfect for any occasion.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Ring Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Height</strong></td>
+<td>:</td>
+<td style="text-align: left;">17 mm (1.7 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">9 mm (0.9 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">7 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden, Red</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Brass, Diamond, Miligram Gold, Rhodium, Stone</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining, Textured</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">Festival, Marriage / Wedding / Engagement, Birthday, Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Royal, Stylish, Superior, Glamorous</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Ring</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>More Info</strong></td>
+<td>:</td>
+<td style="text-align: left;">This product is gold plated with approx 200 miligram of gold.</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Diamond</s:tag>
+    <s:tag>Golden Ring</s:tag>
+    <s:tag>Miligram Gold</s:tag>
+    <s:tag>Red Ring</s:tag>
+    <s:tag>Rhodium</s:tag>
+    <s:tag>Royal</s:tag>
+    <s:tag>Stone</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8609151746226</id>
+      <title>18</title>
+      <s:price currency="INR">2870.00</s:price>
+      <s:sku>RG-25B-475_S18</s:sku>
+      <s:grams>7</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8609151746226</id>
+      <title>19</title>
+      <s:price currency="INR">2870.00</s:price>
+      <s:sku>RG-25B-475_S19</s:sku>
+      <s:grams>7</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8609151746226</id>
+      <title>21</title>
+      <s:price currency="INR">2870.00</s:price>
+      <s:sku>RG-25B-475_S21</s:sku>
+      <s:grams>7</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8609151746226</id>
+      <title>22</title>
+      <s:price currency="INR">2870.00</s:price>
+      <s:sku>RG-25B-475_S22</s:sku>
+      <s:grams>7</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8609151746226</id>
+      <title>23</title>
+      <s:price currency="INR">2870.00</s:price>
+      <s:sku>RG-25B-475_S23</s:sku>
+      <s:grams>7</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8609151746226</id>
+      <title>24</title>
+      <s:price currency="INR">2870.00</s:price>
+      <s:sku>RG-25B-475_S24</s:sku>
+      <s:grams>7</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8609151746226</id>
+      <title>26</title>
+      <s:price currency="INR">2870.00</s:price>
+      <s:sku>RG-25B-475_S26</s:sku>
+      <s:grams>7</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8607088181426</id>
+    <published>2025-09-18T17:45:18+05:30</published>
+    <updated>2025-09-18T17:45:18+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/1-gram-gold-plated-yellow-stone-ring-for-men-style-b690"/>
+    <title>1 Gram Gold Plated Yellow Stone Ring for Men - Style B690</title>
+    <s:type>ring</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/RG-19B-690.jpg?v=1758197719"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>ring<br>
+        <strong>Price: </strong>
+            1950.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Elevate your style with this 1 Gram Gold Plated Yellow Stone Ring for men. Crafted in brass with a miligram gold plating, it features a matte finish and a detailed filigree design that adds a unique touch. The shining yellow stone complements its golden hue, making it an ideal accessory for everyday wear or special occasions. Durable and stylish, this ring blends traditional craftsmanship with modern elegance.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Ring Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Height</strong></td>
+<td>:</td>
+<td style="text-align: left;">15 mm (1.5 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">4 mm (0.4 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">4 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;">Fixed</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden, Yellow</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Brass, Miligram Gold, Stone</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining, Matt</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">Festival, Marriage / Wedding / Engagement, Birthday, Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Filigree Design</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Men</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Ring</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>More Info</strong></td>
+<td>:</td>
+<td style="text-align: left;">This product is gold plated with approx 100 miligram of gold.</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Filigree Design</s:tag>
+    <s:tag>Golden Ring</s:tag>
+    <s:tag>Matt</s:tag>
+    <s:tag>Miligram Gold</s:tag>
+    <s:tag>Shining</s:tag>
+    <s:tag>Stone</s:tag>
+    <s:tag>Yellow Ring</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8607088181426</id>
+      <title>16</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-690_S16</s:sku>
+      <s:grams>4</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8607088181426</id>
+      <title>17</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-690_S17</s:sku>
+      <s:grams>4</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8607088181426</id>
+      <title>18</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-690_S18</s:sku>
+      <s:grams>4</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8607088181426</id>
+      <title>19</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-690_S19</s:sku>
+      <s:grams>4</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8607088181426</id>
+      <title>20</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-690_S20</s:sku>
+      <s:grams>4</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8607088181426</id>
+      <title>21</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-690_S21</s:sku>
+      <s:grams>4</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8607088181426</id>
+      <title>22</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-690_S22</s:sku>
+      <s:grams>4</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8607088181426</id>
+      <title>23</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-690_S23</s:sku>
+      <s:grams>4</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8607088181426</id>
+      <title>24</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-690_S24</s:sku>
+      <s:grams>4</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8607088181426</id>
+      <title>25</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-690_S25</s:sku>
+      <s:grams>4</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8607088181426</id>
+      <title>26</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-690_S26</s:sku>
+      <s:grams>4</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8607088181426</id>
+      <title>27</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-690_S27</s:sku>
+      <s:grams>4</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8607088181426</id>
+      <title>28</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-690_S28</s:sku>
+      <s:grams>4</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8607088181426</id>
+      <title>29</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-690_S29</s:sku>
+      <s:grams>4</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8607088181426</id>
+      <title>30</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-690_S30</s:sku>
+      <s:grams>4</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8607088181426</id>
+      <title>31</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-690_S31</s:sku>
+      <s:grams>4</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8588682264754</id>
+    <published>2025-09-03T14:18:13+05:30</published>
+    <updated>2025-09-03T14:18:13+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/1-gram-gold-plated-green-stone-with-diamond-funky-design-ring-for-men-style-a783"/>
+    <title>1 Gram Gold Plated Green Stone with Diamond Funky Design Ring for Men - Style A783</title>
+    <s:type>ring</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/soni-fashion-ring-1-gram-gold-forming-green-stone-with-diamond-funky-design-ring-for-men-style-a783_0.jpg?v=1756888897"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>ring<br>
+        <strong>Price: </strong>
+            2430.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>This men's ring has a stylish and modern design with a 1 gram gold plated green stone and diamonds set into a textured brass frame. It features a shining royal rhodium miligram gold finish for a unique look that is sure to get attention. A great choice for the groom, this ring is sure to become a treasured item.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Ring Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Height</strong></td>
+<td>:</td>
+<td style="text-align: left;">25 mm (2.5 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">6 mm (0.6 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">13 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden, Green</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Brass, Diamond, Miligram Gold, Rhodium, Stone</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining, Textured</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">Festival, Marriage / Wedding / Engagement, Birthday, Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Groom, Royal</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Ring</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>More Info</strong></td>
+<td>:</td>
+<td style="text-align: left;">This product is gold plated with approx 200 miligram of gold.</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Diamond</s:tag>
+    <s:tag>Golden Ring</s:tag>
+    <s:tag>Green Ring</s:tag>
+    <s:tag>Miligram Gold</s:tag>
+    <s:tag>Rhodium</s:tag>
+    <s:tag>Royal</s:tag>
+    <s:tag>Stone</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8588682264754</id>
+      <title>21</title>
+      <s:price currency="INR">2430.00</s:price>
+      <s:sku>RG-25A-783_S21</s:sku>
+      <s:grams>13</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8588682264754</id>
+      <title>22</title>
+      <s:price currency="INR">2430.00</s:price>
+      <s:sku>RG-25A-783_S22</s:sku>
+      <s:grams>13</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8588682264754</id>
+      <title>23</title>
+      <s:price currency="INR">2430.00</s:price>
+      <s:sku>RG-25A-783_S23</s:sku>
+      <s:grams>13</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8588682264754</id>
+      <title>24</title>
+      <s:price currency="INR">2430.00</s:price>
+      <s:sku>RG-25A-783_S24</s:sku>
+      <s:grams>13</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8588682264754</id>
+      <title>25</title>
+      <s:price currency="INR">2430.00</s:price>
+      <s:sku>RG-25A-783_S25</s:sku>
+      <s:grams>13</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8588682264754</id>
+      <title>26</title>
+      <s:price currency="INR">2430.00</s:price>
+      <s:sku>RG-25A-783_S26</s:sku>
+      <s:grams>13</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8588682264754</id>
+      <title>27</title>
+      <s:price currency="INR">2430.00</s:price>
+      <s:sku>RG-25A-783_S27</s:sku>
+      <s:grams>13</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8588682264754</id>
+      <title>28</title>
+      <s:price currency="INR">2430.00</s:price>
+      <s:sku>RG-25A-783_S28</s:sku>
+      <s:grams>13</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8588682264754</id>
+      <title>29</title>
+      <s:price currency="INR">2430.00</s:price>
+      <s:sku>RG-25A-783_S29</s:sku>
+      <s:grams>13</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8587942658226</id>
+    <published>2025-09-02T15:01:09+05:30</published>
+    <updated>2025-09-02T15:01:09+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/1-gram-gold-plated-blue-stone-with-diamond-fashionable-design-ring-style-a929"/>
+    <title>1 Gram Gold Plated Blue Stone with Diamond Fashionable Design Ring - Style A929</title>
+    <s:type>ring</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/soni-fashion-ring-1-gram-gold-forming-blue-stone-with-diamond-fashionable-design-ring-style-a929_0.jpg?v=1756805252"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>ring<br>
+        <strong>Price: </strong>
+            3360.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>This luxurious fashion accessory combines 1 gram of Gold Plated and the shimmering brilliance of a Blue Stone with Diamonds to create an eye-catching piece. The ring also features textured, royal rhodium-plating and a Jaguar design on a miligram gold base for an exquisite, formal look. Perfect for the contemporary groom, this elegant golden ring is sure to make a statement.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Ring Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Height</strong></td>
+<td>:</td>
+<td style="text-align: left;">33 mm (3.3 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">7 mm (0.7 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">17 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden, Blue</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Brass, Diamond, Miligram Gold, Rhodium</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining, Textured</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">Festival, Marriage / Wedding / Engagement, Birthday, Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Groom, Royal</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Symbol</strong></td>
+<td>:</td>
+<td style="text-align: left;">Jaguar</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Men</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Ring</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>More Info</strong></td>
+<td>:</td>
+<td style="text-align: left;">This product is gold plated with approx 200 miligram of gold.</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Blue Ring</s:tag>
+    <s:tag>Brass</s:tag>
+    <s:tag>Diamond</s:tag>
+    <s:tag>Golden Ring</s:tag>
+    <s:tag>Jaguar</s:tag>
+    <s:tag>Miligram Gold</s:tag>
+    <s:tag>Rhodium</s:tag>
+    <s:tag>Royal</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8587942658226</id>
+      <title>20</title>
+      <s:price currency="INR">3360.00</s:price>
+      <s:sku>RG-29A-929_S20</s:sku>
+      <s:grams>17</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8587942658226</id>
+      <title>22</title>
+      <s:price currency="INR">3360.00</s:price>
+      <s:sku>RG-29A-929_S22</s:sku>
+      <s:grams>17</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8587942658226</id>
+      <title>23</title>
+      <s:price currency="INR">3360.00</s:price>
+      <s:sku>RG-29A-929_S23</s:sku>
+      <s:grams>17</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8587942658226</id>
+      <title>26</title>
+      <s:price currency="INR">3360.00</s:price>
+      <s:sku>RG-29A-929_S26</s:sku>
+      <s:grams>17</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8587942658226</id>
+      <title>28</title>
+      <s:price currency="INR">3360.00</s:price>
+      <s:sku>RG-29A-929_S28</s:sku>
+      <s:grams>17</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8587942658226</id>
+      <title>29</title>
+      <s:price currency="INR">3360.00</s:price>
+      <s:sku>RG-29A-929_S29</s:sku>
+      <s:grams>17</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8587942658226</id>
+      <title>30</title>
+      <s:price currency="INR">3360.00</s:price>
+      <s:sku>RG-29A-929_S30</s:sku>
+      <s:grams>17</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8584562442418</id>
+    <published>2025-08-29T11:53:55+05:30</published>
+    <updated>2025-08-29T11:53:55+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/1-gram-gold-plated-om-expensive-looking-design-high-quality-ring-style-a316"/>
+    <title>1 Gram Gold Plated Om Expensive-Looking Design High-Quality Ring - Style A316</title>
+    <s:type>ring</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/soni-fashion-ring-1-gram-gold-forming-om-expensive-looking-design-high-quality-ring-style-a316_1.jpg?v=1756886855"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>ring<br>
+        <strong>Price: </strong>
+            2140.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>This 1 gram gold-plated ring features a textured, royal Rajwadi design centered around the sacred Om (Aum) symbol. Crafted with high-quality brass and a miligram gold finish, it offers an expensive look while celebrating religious significance. The intricate detailing makes it a perfect accessory for those who appreciate traditional and spiritual jewelry.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Ring Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Height</strong></td>
+<td>:</td>
+<td style="text-align: left;">24 mm (2.4 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">4 mm (0.4 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">14 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Brass, Miligram Gold</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining, Textured</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">Festival, Marriage / Wedding / Engagement, Birthday, Gift, Photography, Religious/Temple</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Religious, Groom, Royal, Rajwadi</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Symbol</strong></td>
+<td>:</td>
+<td style="text-align: left;">Aum, OM</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Men</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Ring</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>More Info</strong></td>
+<td>:</td>
+<td style="text-align: left;">This product is gold plated with approx 200 miligram of gold.</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Aum</s:tag>
+    <s:tag>Brass</s:tag>
+    <s:tag>Golden Ring</s:tag>
+    <s:tag>Miligram Gold</s:tag>
+    <s:tag>Om</s:tag>
+    <s:tag>Rajwadi</s:tag>
+    <s:tag>Religious</s:tag>
+    <s:tag>Royal</s:tag>
+    <s:tag>Textured</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8584562442418</id>
+      <title>24</title>
+      <s:price currency="INR">2140.00</s:price>
+      <s:sku>RG-19A-316_S24</s:sku>
+      <s:grams>14</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8584562442418</id>
+      <title>25</title>
+      <s:price currency="INR">2140.00</s:price>
+      <s:sku>RG-19A-316_S25</s:sku>
+      <s:grams>14</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8584562442418</id>
+      <title>26</title>
+      <s:price currency="INR">2140.00</s:price>
+      <s:sku>RG-19A-316_S26</s:sku>
+      <s:grams>14</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8584562442418</id>
+      <title>28</title>
+      <s:price currency="INR">2140.00</s:price>
+      <s:sku>RG-19A-316_S28</s:sku>
+      <s:grams>14</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8577282277554</id>
+    <published>2025-08-21T14:18:42+05:30</published>
+    <updated>2025-08-21T14:18:42+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/1-gram-gold-plated-awesome-design-yellow-stone-ring-for-men-style-b689"/>
+    <title>1 Gram Gold Plated Awesome Design Yellow Stone Ring for Men - Style B689</title>
+    <s:type>ring</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/RG-689.png?v=1758787183"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>ring<br>
+        <strong>Price: </strong>
+            1950.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>This 1 gram gold-plated ring features a striking yellow oval stone set in a detailed miligram gold design. Crafted from sturdy brass, it offers a radiant golden finish that complements any style. Perfect for men seeking a bold yet elegant accessory.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Ring Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Height</strong></td>
+<td>:</td>
+<td style="text-align: left;">12 mm (1.2 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">6 mm (0.6 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">5 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;">Fixed</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Shape</strong></td>
+<td>:</td>
+<td style="text-align: left;">Oval</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden, Yellow</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Brass, Miligram Gold, Stone</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">Festival, Marriage / Wedding / Engagement, Birthday, Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Men</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Ring</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>More Info</strong></td>
+<td>:</td>
+<td style="text-align: left;">This product is gold plated with approx 100 miligram of gold.</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Golden Ring</s:tag>
+    <s:tag>Miligram Gold</s:tag>
+    <s:tag>Oval</s:tag>
+    <s:tag>Shining</s:tag>
+    <s:tag>Stone</s:tag>
+    <s:tag>Yellow Ring</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8577282277554</id>
+      <title>17</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-689_S17</s:sku>
+      <s:grams>5</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8577282277554</id>
+      <title>19</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-689_S19</s:sku>
+      <s:grams>5</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8577282277554</id>
+      <title>20</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-689_S20</s:sku>
+      <s:grams>5</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8577282277554</id>
+      <title>21</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-689_S21</s:sku>
+      <s:grams>5</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8577282277554</id>
+      <title>22</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-689_S22</s:sku>
+      <s:grams>5</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8577282277554</id>
+      <title>23</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-689_S23</s:sku>
+      <s:grams>5</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8577282277554</id>
+      <title>24</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-689_S24</s:sku>
+      <s:grams>5</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8577282277554</id>
+      <title>25</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-689_S25</s:sku>
+      <s:grams>5</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8577282277554</id>
+      <title>26</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-689_S26</s:sku>
+      <s:grams>5</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8577282277554</id>
+      <title>18</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-689_S18</s:sku>
+      <s:grams>5</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8577282277554</id>
+      <title>27</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-689_S27</s:sku>
+      <s:grams>5</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8577282146482</id>
+    <published>2025-08-21T14:18:11+05:30</published>
+    <updated>2025-08-21T14:18:11+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/1-gram-gold-plated-popular-design-yellow-stone-ring-for-men-style-b688"/>
+    <title>1 Gram Gold Plated Popular Design Yellow Stone Ring for Men - Style B688</title>
+    <s:type>ring</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/RG-688.png?v=1759840356"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>ring<br>
+        <strong>Price: </strong>
+            1950.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>This 1 Gram Gold Plated Men's Ring features a striking yellow stone set in a shining rectangular design. Crafted from brass with a miligram gold finish, it offers a matte golden look that adds subtle elegance to any outfit. Durable and stylish, this ring is perfect for everyday wear or special occasions.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Ring Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Height</strong></td>
+<td>:</td>
+<td style="text-align: left;">11 mm (1.1 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">6 mm (0.6 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">5 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;">Fixed</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Shape</strong></td>
+<td>:</td>
+<td style="text-align: left;">Rectangle</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden, Yellow</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Brass, Miligram Gold, Stone</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining, Matt</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">Festival, Marriage / Wedding / Engagement, Birthday, Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Men</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Ring</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>More Info</strong></td>
+<td>:</td>
+<td style="text-align: left;">This product is gold plated with approx 100 miligram of gold.</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Golden Ring</s:tag>
+    <s:tag>Matt</s:tag>
+    <s:tag>Miligram Gold</s:tag>
+    <s:tag>Rectangle</s:tag>
+    <s:tag>Shining</s:tag>
+    <s:tag>Stone</s:tag>
+    <s:tag>Yellow Ring</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8577282146482</id>
+      <title>17</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-688_S17</s:sku>
+      <s:grams>5</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8577282146482</id>
+      <title>18</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-688_S18</s:sku>
+      <s:grams>5</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8577282146482</id>
+      <title>19</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-688_S19</s:sku>
+      <s:grams>5</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8577282146482</id>
+      <title>20</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-688_S20</s:sku>
+      <s:grams>5</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8577282146482</id>
+      <title>21</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-688_S21</s:sku>
+      <s:grams>5</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8577282146482</id>
+      <title>22</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-688_S22</s:sku>
+      <s:grams>5</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8577282146482</id>
+      <title>23</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-688_S23</s:sku>
+      <s:grams>5</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8577282146482</id>
+      <title>24</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-688_S24</s:sku>
+      <s:grams>5</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8577282146482</id>
+      <title>25</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-688_S25</s:sku>
+      <s:grams>5</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8577282146482</id>
+      <title>26</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-688_S26</s:sku>
+      <s:grams>5</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8577282146482</id>
+      <title>27</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-688_S27</s:sku>
+      <s:grams>5</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8559898919090</id>
+    <published>2025-08-06T13:23:43+05:30</published>
+    <updated>2025-08-06T13:23:43+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/1-gram-gold-plated-jaguar-with-diamond-best-quality-ring-for-men-style-a922"/>
+    <title>1 Gram Gold Plated Jaguar with Diamond Best Quality Ring for Men - Style A922</title>
+    <s:type>ring</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/soni-fashion-ring-1-gram-gold-forming-jaguar-with-diamond-best-quality-ring-for-men-style-a922_1.jpg?v=1754466824"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>ring<br>
+        <strong>Price: </strong>
+            2815.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>This 1 Gram Gold Plated Jaguar With Diamond Best Quality Ring For Men is a luxurious statement piece. Textured and Shining for a glamorous look, the Miligram Gold, Brass, and Diamonds are intricately detailed and expertly crafted. Make your mark with this timeless classic.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Ring Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Height</strong></td>
+<td>:</td>
+<td style="text-align: left;">26 mm (2.6 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">4 mm (0.4 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">6 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Brass, Diamond, Miligram Gold</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining, Textured</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">Festival, Marriage / Wedding / Engagement, Birthday, Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Groom</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Symbol</strong></td>
+<td>:</td>
+<td style="text-align: left;">Jaguar</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Men</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Ring</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>More Info</strong></td>
+<td>:</td>
+<td style="text-align: left;">This product is gold plated with approx 200 miligram of gold.</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Diamond</s:tag>
+    <s:tag>Golden Ring</s:tag>
+    <s:tag>Jaguar</s:tag>
+    <s:tag>Miligram Gold</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8559898919090</id>
+      <title>19</title>
+      <s:price currency="INR">2815.00</s:price>
+      <s:sku>RG-22A-922_S19</s:sku>
+      <s:grams>6</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8559898919090</id>
+      <title>20</title>
+      <s:price currency="INR">2815.00</s:price>
+      <s:sku>RG-22A-922_S20</s:sku>
+      <s:grams>6</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8559898919090</id>
+      <title>22</title>
+      <s:price currency="INR">2815.00</s:price>
+      <s:sku>RG-22A-922_S22</s:sku>
+      <s:grams>6</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8559898919090</id>
+      <title>23</title>
+      <s:price currency="INR">2815.00</s:price>
+      <s:sku>RG-22A-922_S23</s:sku>
+      <s:grams>6</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8559898919090</id>
+      <title>24</title>
+      <s:price currency="INR">2815.00</s:price>
+      <s:sku>RG-22A-922_S24</s:sku>
+      <s:grams>6</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8559898919090</id>
+      <title>25</title>
+      <s:price currency="INR">2815.00</s:price>
+      <s:sku>RG-22A-922_S25</s:sku>
+      <s:grams>6</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8559898919090</id>
+      <title>26</title>
+      <s:price currency="INR">2815.00</s:price>
+      <s:sku>RG-22A-922_S26</s:sku>
+      <s:grams>6</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8559898919090</id>
+      <title>27</title>
+      <s:price currency="INR">2815.00</s:price>
+      <s:sku>RG-22A-922_S27</s:sku>
+      <s:grams>6</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8559898919090</id>
+      <title>28</title>
+      <s:price currency="INR">2815.00</s:price>
+      <s:sku>RG-22A-922_S28</s:sku>
+      <s:grams>6</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8552094105778</id>
+    <published>2025-07-28T17:11:02+05:30</published>
+    <updated>2025-07-28T17:11:02+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/1-gram-gold-plated-black-stone-with-diamond-funky-design-ring-for-men-style-b200"/>
+    <title>1 Gram Gold Plated Black Stone With Diamond Funky Design Ring For Men - Style B200</title>
+    <s:type>ring</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/RG-200_4.jpg?v=1753763515"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>ring<br>
+        <strong>Price: </strong>
+            1800.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p data-mce-fragment="1">This stylish black and gold ring features a diamond accent, plated with 1 gram of gold and rhodium for a sleek, Rajwadi-inspired design. Made with brass, this ring offers a unique addition to any outfit. Add some shine to your accessories with this funky, milligram gold-plated ring.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Ring Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Height</strong></td>
+<td>:</td>
+<td style="text-align: left;">23 mm (2.3 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">9 mm (0.9 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">7 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden, Black</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Brass, Diamond, Miligram Gold, Rhodium, Stone</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining, Textured</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">Festival, Marriage / Wedding / Engagement, Birthday, Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Groom, Rajwadi</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Ring</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>More Info</strong></td>
+<td>:</td>
+<td style="text-align: left;">This product is gold plated with approx 200 miligram of gold.</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Black Ring</s:tag>
+    <s:tag>Brass</s:tag>
+    <s:tag>Diamond</s:tag>
+    <s:tag>Golden Ring</s:tag>
+    <s:tag>Miligram Gold</s:tag>
+    <s:tag>Rajwadi</s:tag>
+    <s:tag>Rhodium</s:tag>
+    <s:tag>Stone</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8552094105778</id>
+      <title>18</title>
+      <s:price currency="INR">1800.00</s:price>
+      <s:sku>RG-22B-200_S18</s:sku>
+      <s:grams>7</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8552094105778</id>
+      <title>25</title>
+      <s:price currency="INR">1800.00</s:price>
+      <s:sku>RG-22B-200_S25</s:sku>
+      <s:grams>7</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8552094105778</id>
+      <title>26</title>
+      <s:price currency="INR">1800.00</s:price>
+      <s:sku>RG-22B-200_S26</s:sku>
+      <s:grams>7</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8552094105778</id>
+      <title>27</title>
+      <s:price currency="INR">1800.00</s:price>
+      <s:sku>RG-22B-200_S27</s:sku>
+      <s:grams>7</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8552094105778</id>
+      <title>28</title>
+      <s:price currency="INR">1800.00</s:price>
+      <s:sku>RG-22B-200_S28</s:sku>
+      <s:grams>7</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8552094105778</id>
+      <title>29</title>
+      <s:price currency="INR">1800.00</s:price>
+      <s:sku>RG-22B-200_S29</s:sku>
+      <s:grams>7</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8550372343986</id>
+    <published>2025-07-26T17:08:59+05:30</published>
+    <updated>2025-07-26T17:08:59+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/1-gram-gold-plated-black-stone-with-diamond-antique-design-ring-style-a866"/>
+    <title>1 Gram Gold Plated Black Stone With Diamond Antique Design Ring - Style A866</title>
+    <s:type>ring</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/soni-fashion-ring-1-gram-gold-plated-black-stone-with-diamond-antique-design-ring-style-a866_0.jpg?v=1753529764"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>ring<br>
+        <strong>Price: </strong>
+            1620.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>This 1 Gram Gold Plated Black Stone with Diamond Antique Design Ring is the perfect gift for an elegant occasion. Crafted from brass and featuring a textured stone set in a shining rhodium miligram gold, this golden ring is sure to make a statement on any groom. A beautiful diamond completes the timeless design.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Ring Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Height</strong></td>
+<td>:</td>
+<td style="text-align: left;">23 mm (2.3 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">6 mm (0.6 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">10 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden, Black</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Brass, Diamond, Miligram Gold, Rhodium, Stone</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining, Textured</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">Festival, Marriage / Wedding / Engagement, Birthday, Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Groom</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Ring</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>More Info</strong></td>
+<td>:</td>
+<td style="text-align: left;">This product is gold plated with approx 200 miligram of gold.</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Black Ring</s:tag>
+    <s:tag>Brass</s:tag>
+    <s:tag>Diamond</s:tag>
+    <s:tag>Golden Ring</s:tag>
+    <s:tag>Miligram Gold</s:tag>
+    <s:tag>Rhodium</s:tag>
+    <s:tag>Stone</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8550372343986</id>
+      <title>19</title>
+      <s:price currency="INR">1620.00</s:price>
+      <s:sku>RG-22A-866_S19</s:sku>
+      <s:grams>10</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8550372343986</id>
+      <title>20</title>
+      <s:price currency="INR">1620.00</s:price>
+      <s:sku>RG-22A-866_S20</s:sku>
+      <s:grams>10</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8550372343986</id>
+      <title>21</title>
+      <s:price currency="INR">1620.00</s:price>
+      <s:sku>RG-22A-866_S21</s:sku>
+      <s:grams>10</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8550372343986</id>
+      <title>26</title>
+      <s:price currency="INR">1620.00</s:price>
+      <s:sku>RG-22A-866_S26</s:sku>
+      <s:grams>10</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8550372343986</id>
+      <title>28</title>
+      <s:price currency="INR">1620.00</s:price>
+      <s:sku>RG-22A-866_S28</s:sku>
+      <s:grams>10</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8550355009714</id>
+    <published>2025-07-26T15:38:26+05:30</published>
+    <updated>2025-07-26T15:38:26+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/1-gram-gold-plated-black-stone-with-diamond-funky-design-ring-for-men-style-b456"/>
+    <title>1 Gram Gold Plated Black Stone with Diamond Funky Design Ring for Men - Style B456</title>
+    <s:type>ring</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/soni-fashion-ring-1-gram-gold-plated-black-stone-with-diamond-funky-design-ring-for-men-style-b456_3.jpg?v=1753524506"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>ring<br>
+        <strong>Price: </strong>
+            2160.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>This 1 Gram Gold Plated Black Stone with Diamond Funky Design Ring for Men is a unique and stunning choice for any fashion-forward man. It features a textured, shining rhodium surface with a classic Rajwadi miligram gold filigree design and a sparkling diamond set in a brass setting. This ring is sure to turn heads with its extraordinary and fashionable look.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Ring Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Height</strong></td>
+<td>:</td>
+<td style="text-align: left;">25 mm (2.5 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">8 mm (0.8 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">13 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Brass, Diamond, Miligram Gold, Rhodium</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining, Textured</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">Festival, Marriage / Wedding / Engagement, Birthday, Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Filigree Design, Rajwadi, Fashionable, Extraordinary, Excellent</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Ring</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>More Info</strong></td>
+<td>:</td>
+<td style="text-align: left;">This product is gold plated with approx 200 miligram of gold.</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Diamond</s:tag>
+    <s:tag>Miligram Gold</s:tag>
+    <s:tag>Rajwadi</s:tag>
+    <s:tag>Rhodium</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8550355009714</id>
+      <title>19</title>
+      <s:price currency="INR">2160.00</s:price>
+      <s:sku>RG-26B-456_S19</s:sku>
+      <s:grams>13</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8550355009714</id>
+      <title>20</title>
+      <s:price currency="INR">2160.00</s:price>
+      <s:sku>RG-26B-456_S20</s:sku>
+      <s:grams>13</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8550355009714</id>
+      <title>22</title>
+      <s:price currency="INR">2160.00</s:price>
+      <s:sku>RG-26B-456_S22</s:sku>
+      <s:grams>13</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8550355009714</id>
+      <title>25</title>
+      <s:price currency="INR">2160.00</s:price>
+      <s:sku>RG-26B-456_S25</s:sku>
+      <s:grams>13</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8550318342322</id>
+    <published>2025-07-26T12:54:21+05:30</published>
+    <updated>2025-07-26T12:54:21+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/1-gram-gold-plated-red-stone-with-diamond-antique-design-ring-for-men-style-b368"/>
+    <title>1 Gram Gold Plated Red Stone with Diamond Antique Design Ring for Men - Style B368</title>
+    <s:type>ring</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/soni-fashion-ring-1-gram-gold-plated-red-stone-with-diamond-antique-design-ring-for-men-style-b368_4.jpg?v=1753514662"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>ring<br>
+        <strong>Price: </strong>
+            2250.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Ideal for grooms, this 1 Gram Gold Plated Red Stone with Diamond Antique Design Ring features a vintage design with a textured stone for a shining, royal look. Crafted with rhodium-plated brass and a miligram gold, the oval-shaped red ring is finished with a diamond for a timeless, refined look.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Ring Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Height</strong></td>
+<td>:</td>
+<td style="text-align: left;">21 mm (2.1 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">8 mm (0.8 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">7 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;">Fixed</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Shape</strong></td>
+<td>:</td>
+<td style="text-align: left;">Oval</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Lock Type</strong></td>
+<td>:</td>
+<td style="text-align: left;">No Lock</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden, Red</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Brass, Diamond, Miligram Gold, Rhodium, Stone</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining, Textured</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">Festival, Marriage / Wedding / Engagement, Birthday, Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Vintage, Groom, Royal</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Ring</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>More Info</strong></td>
+<td>:</td>
+<td style="text-align: left;">This product is gold plated with approx 200 miligram of gold.</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Diamond</s:tag>
+    <s:tag>Golden Ring</s:tag>
+    <s:tag>Miligram Gold</s:tag>
+    <s:tag>Oval</s:tag>
+    <s:tag>Red Ring</s:tag>
+    <s:tag>Rhodium</s:tag>
+    <s:tag>Royal</s:tag>
+    <s:tag>Stone</s:tag>
+    <s:tag>Vintage</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8550318342322</id>
+      <title>19</title>
+      <s:price currency="INR">2250.00</s:price>
+      <s:sku>RG-26B-368_S19</s:sku>
+      <s:grams>7</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8550318342322</id>
+      <title>20</title>
+      <s:price currency="INR">2250.00</s:price>
+      <s:sku>RG-26B-368_S20</s:sku>
+      <s:grams>7</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8550318342322</id>
+      <title>22</title>
+      <s:price currency="INR">2250.00</s:price>
+      <s:sku>RG-26B-368_S22</s:sku>
+      <s:grams>7</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8550318342322</id>
+      <title>24</title>
+      <s:price currency="INR">2250.00</s:price>
+      <s:sku>RG-26B-368_S24</s:sku>
+      <s:grams>7</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8550318342322</id>
+      <title>26</title>
+      <s:price currency="INR">2250.00</s:price>
+      <s:sku>RG-26B-368_S26</s:sku>
+      <s:grams>7</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8550318342322</id>
+      <title>27</title>
+      <s:price currency="INR">2250.00</s:price>
+      <s:sku>RG-26B-368_S27</s:sku>
+      <s:grams>7</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8546694430898</id>
+    <published>2025-07-23T15:15:15+05:30</published>
+    <updated>2025-07-23T15:15:15+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/1-gram-gold-plated-red-stone-with-diamond-antique-design-ring-for-men-style-b435"/>
+    <title>1 Gram Gold Plated Red Stone with Diamond Antique Design Ring for Men - Style B435</title>
+    <s:type>ring</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/soni-fashion-ring-1-gram-gold-plated-red-stone-with-diamond-antique-design-ring-for-men-style-b435_0.jpg?v=1753263490"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>ring<br>
+        <strong>Price: </strong>
+            1800.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>This intricately designed gold-plated brass ring features a prominent 1 gram of rhodium milligram gold with a textured red stone and a diamond-encrusted filigree pattern - for a truly extraordinary look. Perfect for men who appreciate timeless elegance.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Ring Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Height</strong></td>
+<td>:</td>
+<td style="text-align: left;">21 mm (2.1 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">7 mm (0.7 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">8 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;">Fixed</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden, Red</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Brass, Diamond, Milligram Gold, Rhodium, Stone</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining, Textured</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">Festival, Marriage / Wedding / Engagement, Birthday, Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Filigree Design, Extraordinary, Excellent, Prominent</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Ring</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>More Info</strong></td>
+<td>:</td>
+<td style="text-align: left;">This product is gold plated with approx. 200 milligram of gold.</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Diamond</s:tag>
+    <s:tag>Golden Ring</s:tag>
+    <s:tag>Miligram Gold</s:tag>
+    <s:tag>Red Ring</s:tag>
+    <s:tag>Rhodium</s:tag>
+    <s:tag>Stone</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8546694430898</id>
+      <title>16</title>
+      <s:price currency="INR">1800.00</s:price>
+      <s:sku>RG-22B-435_S16</s:sku>
+      <s:grams>8</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8546694430898</id>
+      <title>17</title>
+      <s:price currency="INR">1800.00</s:price>
+      <s:sku>RG-22B-435_S17</s:sku>
+      <s:grams>8</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8546694430898</id>
+      <title>19</title>
+      <s:price currency="INR">1800.00</s:price>
+      <s:sku>RG-22B-435_S19</s:sku>
+      <s:grams>8</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8546694430898</id>
+      <title>20</title>
+      <s:price currency="INR">1800.00</s:price>
+      <s:sku>RG-22B-435_S20</s:sku>
+      <s:grams>8</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8546694430898</id>
+      <title>21</title>
+      <s:price currency="INR">1800.00</s:price>
+      <s:sku>RG-22B-435_S21</s:sku>
+      <s:grams>8</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8546694430898</id>
+      <title>22</title>
+      <s:price currency="INR">1800.00</s:price>
+      <s:sku>RG-22B-435_S22</s:sku>
+      <s:grams>8</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8546694430898</id>
+      <title>23</title>
+      <s:price currency="INR">1800.00</s:price>
+      <s:sku>RG-22B-435_S23</s:sku>
+      <s:grams>8</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8546694430898</id>
+      <title>24</title>
+      <s:price currency="INR">1800.00</s:price>
+      <s:sku>RG-22B-435_S24</s:sku>
+      <s:grams>8</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8546694430898</id>
+      <title>25</title>
+      <s:price currency="INR">1800.00</s:price>
+      <s:sku>RG-22B-435_S25</s:sku>
+      <s:grams>8</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8546694430898</id>
+      <title>26</title>
+      <s:price currency="INR">1800.00</s:price>
+      <s:sku>RG-22B-435_S26</s:sku>
+      <s:grams>8</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8545685831858</id>
+    <published>2025-07-22T17:31:53+05:30</published>
+    <updated>2025-07-22T17:31:53+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/1-gram-gold-plated-amazing-design-ring-for-men-style-b684"/>
+    <title>1 Gram Gold Plated Amazing Design Ring for Men - Style B684</title>
+    <s:type>ring</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/RG-684_4.jpg?v=1753185714"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>ring<br>
+        <strong>Price: </strong>
+            1950.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>This 1 gram gold-plated ring for men features a stunning design that combines the elegance of miligram gold plating with the brilliance of diamond accents. Crafted from durable brass and finished with a rhodium shine, this golden ring offers both style and lasting quality. Perfect for adding a touch of sophistication to any outfit.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Ring Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Height</strong></td>
+<td>:</td>
+<td style="text-align: left;">6 mm (0.6 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">3 mm (0.3 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">3 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;">Fixed</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden, Rhodium</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Brass, Diamond, Miligram Gold</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">Festival, Marriage / Wedding / Engagement, Party Wear, Birthday, Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Men</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Ring</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>More Info</strong></td>
+<td>:</td>
+<td style="text-align: left;">This product is gold plated with approx 100 miligram of gold.</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Diamond</s:tag>
+    <s:tag>Golden Ring</s:tag>
+    <s:tag>Miligram Gold</s:tag>
+    <s:tag>Rhodium Ring</s:tag>
+    <s:tag>Shining</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8545685831858</id>
+      <title>20</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-684_S20</s:sku>
+      <s:grams>3</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8545685831858</id>
+      <title>21</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-684_S21</s:sku>
+      <s:grams>3</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8545685831858</id>
+      <title>24</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-684_S24</s:sku>
+      <s:grams>3</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8545685831858</id>
+      <title>25</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-684_S25</s:sku>
+      <s:grams>3</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8545685831858</id>
+      <title>26</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-684_S26</s:sku>
+      <s:grams>3</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8545685831858</id>
+      <title>17</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-684_S17</s:sku>
+      <s:grams>3</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8545685831858</id>
+      <title>18</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-684_S18</s:sku>
+      <s:grams>3</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8545685831858</id>
+      <title>19</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-684_S19</s:sku>
+      <s:grams>3</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8545685831858</id>
+      <title>23</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-684_S23</s:sku>
+      <s:grams>3</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8545685930162</id>
+    <published>2025-07-22T17:31:10+05:30</published>
+    <updated>2025-07-22T17:31:10+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/1-gram-gold-plated-prominent-design-ring-for-men-style-b685"/>
+    <title>1 Gram Gold Plated Prominent Design Ring for Men - Style B685</title>
+    <s:type>ring</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/1GramGoldPlatedProminentDesignRingforMen_3d1ebfba-d90c-4b05-89c1-29c51749ef94.jpg?v=1753185671"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>ring<br>
+        <strong>Price: </strong>
+            1950.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>This 1 gram gold-plated ring for men features a prominent design crafted from durable brass and finished with a rhodium coating for added shine and protection. Accented with sparkling diamonds, it combines elegance and strength, making it a perfect accessory for everyday wear or special occasions. The gold plating offers a luxurious look without the weight of solid gold, ensuring comfort and style.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Ring Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Height</strong></td>
+<td>:</td>
+<td style="text-align: left;">9 mm (0.9 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">4 mm (0.4 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">3 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;">Fixed</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden, Rhodium</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Brass, Diamond, Miligram Gold, Rhodium</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">Festival, Marriage / Wedding / Engagement, Party Wear, Birthday, Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Diamond Ring</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Men</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Ring</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>More Info</strong></td>
+<td>:</td>
+<td style="text-align: left;">This product is gold plated with approx 100 miligram of gold.</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Diamond</s:tag>
+    <s:tag>Diamond Ring</s:tag>
+    <s:tag>Golden Ring</s:tag>
+    <s:tag>Miligram Gold</s:tag>
+    <s:tag>Rhodium</s:tag>
+    <s:tag>Rhodium Ring</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8545685930162</id>
+      <title>17</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-685_S17</s:sku>
+      <s:grams>3</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8545685930162</id>
+      <title>19</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-685_S19</s:sku>
+      <s:grams>3</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8545685930162</id>
+      <title>20</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-685_S20</s:sku>
+      <s:grams>3</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8545685930162</id>
+      <title>21</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-685_S21</s:sku>
+      <s:grams>3</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8545685930162</id>
+      <title>22</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-685_S22</s:sku>
+      <s:grams>3</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8545685930162</id>
+      <title>23</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-685_S23</s:sku>
+      <s:grams>3</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8545685930162</id>
+      <title>24</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-685_S24</s:sku>
+      <s:grams>3</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8545685930162</id>
+      <title>25</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-685_S25</s:sku>
+      <s:grams>3</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8545685930162</id>
+      <title>26</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-685_S26</s:sku>
+      <s:grams>3</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8545685995698</id>
+    <published>2025-07-22T17:30:16+05:30</published>
+    <updated>2025-07-22T17:30:16+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/1-gram-gold-plated-best-quality-ring-for-men-style-b686"/>
+    <title>1 Gram Gold Plated Best Quality Ring for Men - Style B686</title>
+    <s:type>ring</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/1GramGoldPlatedBestQualityRingforMen.jpg?v=1753185617"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>ring<br>
+        <strong>Price: </strong>
+            1950.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>This 1 gram gold-plated ring for men combines royal elegance with a shining finish. Crafted from durable brass and plated with miligram gold and rhodium, it offers lasting shine and resistance to tarnish. The round design is enhanced with a diamond detail, making it a stylish and sophisticated accessory for any occasion.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Ring Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Height</strong></td>
+<td>:</td>
+<td style="text-align: left;">12 mm (1.2 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">4 mm (0.4 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">3 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;">Fixed</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Shape</strong></td>
+<td>:</td>
+<td style="text-align: left;">Round</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Brass, Diamond, Miligram Gold, Rhodium</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">Festival, Marriage / Wedding / Engagement, Party Wear, Birthday, Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Royal</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Men</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Ring</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>More Info</strong></td>
+<td>:</td>
+<td style="text-align: left;">This product is gold plated with approx 100 miligram of gold.</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Diamond</s:tag>
+    <s:tag>Golden Ring</s:tag>
+    <s:tag>Miligram Gold</s:tag>
+    <s:tag>Rhodium</s:tag>
+    <s:tag>Round</s:tag>
+    <s:tag>Royal</s:tag>
+    <s:tag>Shining</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8545685995698</id>
+      <title>16</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-686_S16</s:sku>
+      <s:grams>3</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8545685995698</id>
+      <title>17</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-686_S17</s:sku>
+      <s:grams>3</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8545685995698</id>
+      <title>20</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-686_S20</s:sku>
+      <s:grams>3</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8545685995698</id>
+      <title>21</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-686_S21</s:sku>
+      <s:grams>3</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8545685995698</id>
+      <title>22</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-686_S22</s:sku>
+      <s:grams>3</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8545685995698</id>
+      <title>23</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-686_S23</s:sku>
+      <s:grams>3</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8545685995698</id>
+      <title>24</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-686_S24</s:sku>
+      <s:grams>3</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8545685995698</id>
+      <title>26</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-686_S26</s:sku>
+      <s:grams>3</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8545685995698</id>
+      <title>18</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-686_S18</s:sku>
+      <s:grams>3</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8545685995698</id>
+      <title>19</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-686_S19</s:sku>
+      <s:grams>3</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8545685995698</id>
+      <title>25</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-686_S25</s:sku>
+      <s:grams>3</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8545686094002</id>
+    <published>2025-07-22T17:29:42+05:30</published>
+    <updated>2025-07-22T17:29:42+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/1-gram-gold-plated-popular-design-ring-for-men-style-b687"/>
+    <title>1 Gram Gold Plated Popular Design Ring for Men - Style B687</title>
+    <s:type>ring</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/RG-687_4_90b5c80f-14da-45b9-833f-882649b52693.jpg?v=1753185583"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>ring<br>
+        <strong>Price: </strong>
+            1950.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>This stylish men's ring features a popular design plated with 1 gram of miligram gold over durable brass, enhanced with a shining rhodium finish for extra brilliance. The ring is adorned with a sparkling diamond, combining elegance and strength for everyday wear. Perfect for adding a touch of sophistication to any outfit.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Ring Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Height</strong></td>
+<td>:</td>
+<td style="text-align: left;">12 mm (1.2 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">3 mm (0.3 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">4 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;">Fixed</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Brass, Diamond, Miligram Gold, Rhodium</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">Festival, Marriage / Wedding / Engagement, Party Wear, Birthday, Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Men</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Ring</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>More Info</strong></td>
+<td>:</td>
+<td style="text-align: left;">This product is gold plated with approx 100 miligram of gold.</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Diamond</s:tag>
+    <s:tag>Golden Ring</s:tag>
+    <s:tag>Miligram Gold</s:tag>
+    <s:tag>Rhodium</s:tag>
+    <s:tag>Shining</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8545686094002</id>
+      <title>17</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-687_S17</s:sku>
+      <s:grams>4</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8545686094002</id>
+      <title>18</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-687_S18</s:sku>
+      <s:grams>4</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8545686094002</id>
+      <title>19</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-687_S19</s:sku>
+      <s:grams>4</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8545686094002</id>
+      <title>20</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-687_S20</s:sku>
+      <s:grams>4</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8545686094002</id>
+      <title>21</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-687_S21</s:sku>
+      <s:grams>4</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8545686094002</id>
+      <title>23</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-687_S23</s:sku>
+      <s:grams>4</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8545686094002</id>
+      <title>24</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-687_S24</s:sku>
+      <s:grams>4</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8545686094002</id>
+      <title>25</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-687_S25</s:sku>
+      <s:grams>4</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8545686094002</id>
+      <title>26</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-687_S26</s:sku>
+      <s:grams>4</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8545686094002</id>
+      <title>28</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-684_S28</s:sku>
+      <s:grams>4</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8545686094002</id>
+      <title>22</title>
+      <s:price currency="INR">1950.00</s:price>
+      <s:sku>RG-19B-687_S22</s:sku>
+      <s:grams>4</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8545679605938</id>
+    <published>2025-07-22T17:11:41+05:30</published>
+    <updated>2025-07-22T17:11:41+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/1-gram-gold-plated-pink-stone-best-quality-elegant-design-ring-for-men-style-b251"/>
+    <title>1 Gram Gold Plated Pink Stone Best Quality Elegant Design Ring For Men - Style B251</title>
+    <s:type>ring</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/soni-fashion-ring-1-gram-gold-plated-pink-stone-best-quality-elegant-design-ring-for-men-style-b251_4.jpg?v=1753184502"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>ring<br>
+        <strong>Price: </strong>
+            2850.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p data-mce-fragment="1">Experience the luxurious elegance and sophistication of our 1 Gram Gold Plated Pink Stone Ring. Made with the highest quality Rajwadi pink stone, this ring exudes a golden charm unlike any other. Crafted with miligram gold and brass, this ring elevates your style with its exquisite design.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Ring Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Height</strong></td>
+<td>:</td>
+<td style="text-align: left;">24 mm (2.4 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">10 mm (1 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">13 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden, Pink</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Brass, Miligram Gold, Stone</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining, Textured</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">Festival, Marriage / Wedding / Engagement, Birthday, Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Groom, Rajwadi</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Ring</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>More Info</strong></td>
+<td>:</td>
+<td style="text-align: left;">This product is gold plated with approx 200 miligram of gold.</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Golden Ring</s:tag>
+    <s:tag>Miligram Gold</s:tag>
+    <s:tag>Pink Ring</s:tag>
+    <s:tag>Rajwadi</s:tag>
+    <s:tag>Stone</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8545679605938</id>
+      <title>19</title>
+      <s:price currency="INR">2850.00</s:price>
+      <s:sku>RG-28B-251_S19</s:sku>
+      <s:grams>13</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8545679605938</id>
+      <title>21</title>
+      <s:price currency="INR">2850.00</s:price>
+      <s:sku>RG-28B-251_S21</s:sku>
+      <s:grams>13</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8545679605938</id>
+      <title>23</title>
+      <s:price currency="INR">2850.00</s:price>
+      <s:sku>RG-28B-251_S23</s:sku>
+      <s:grams>13</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8545679605938</id>
+      <title>24</title>
+      <s:price currency="INR">2850.00</s:price>
+      <s:sku>RG-28B-251_S24</s:sku>
+      <s:grams>13</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8545679605938</id>
+      <title>26</title>
+      <s:price currency="INR">2850.00</s:price>
+      <s:sku>RG-28B-251_S26</s:sku>
+      <s:grams>13</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8545679605938</id>
+      <title>27</title>
+      <s:price currency="INR">2850.00</s:price>
+      <s:sku>RG-28B-251_S27</s:sku>
+      <s:grams>13</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8545679605938</id>
+      <title>29</title>
+      <s:price currency="INR">2850.00</s:price>
+      <s:sku>RG-28B-251_S29</s:sku>
+      <s:grams>13</s:grams>
+    </s:variant>
+  </entry>
+</feed>

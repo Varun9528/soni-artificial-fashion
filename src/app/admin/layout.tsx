@@ -1,5 +1,4 @@
 import AdminLayout from '@/components/admin/AdminLayout';
-import { AuthProvider } from '@/context/AuthContext';
 import { NotificationProvider } from '@/context/NotificationContext';
 
 export default function AdminLayoutWrapper({
@@ -8,10 +7,15 @@ export default function AdminLayoutWrapper({
   children: React.ReactNode;
 }) {
   return (
-    <AuthProvider>
-      <NotificationProvider>
-        <AdminLayout>{children}</AdminLayout>
-      </NotificationProvider>
-    </AuthProvider>
+    <html lang="en">
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </head>
+      <body>
+        <NotificationProvider>
+          <AdminLayout>{children}</AdminLayout>
+        </NotificationProvider>
+      </body>
+    </html>
   );
 }

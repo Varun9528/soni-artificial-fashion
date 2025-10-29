@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { db } from '@/lib/database/connection';
+import { db, enableRealDatabase } from '@/lib/database/connection';
+
+// Enable real database
+enableRealDatabase();
 
 export async function GET(request: NextRequest) {
   try {

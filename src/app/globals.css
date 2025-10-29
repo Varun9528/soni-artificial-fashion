@@ -18,11 +18,11 @@
     --card-foreground: 222.2 47.4% 11.2%;
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --primary: 22.1 83.3% 53.3%; /* Deep earthy brown (#5C4033) */
+    --primary: 35 70% 40%; /* Gold accent */
     --primary-foreground: 210 40% 98%;
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
-    --accent: 45 93.3% 53.3%; /* Mustard gold (#FFD54F) */
+    --accent: 45 93.3% 53.3%; /* Gold (#FFD54F) */
     --accent-foreground: 210 40% 98%;
     --destructive: 0 100% 50%;
     --destructive-foreground: 210 40% 98%;
@@ -41,11 +41,11 @@
     --card-foreground: 213 31% 91%;
     --border: 216 34% 17%;
     --input: 216 34% 17%;
-    --primary: 22.1 83.3% 53.3%; /* Deep earthy brown (#5C4033) */
+    --primary: 35 70% 40%; /* Gold accent */
     --primary-foreground: 210 40% 98%;
     --secondary: 222.2 47.4% 11.2%;
     --secondary-foreground: 210 40% 98%;
-    --accent: 45 93.3% 53.3%; /* Mustard gold (#FFD54F) */
+    --accent: 45 93.3% 53.3%; /* Gold (#FFD54F) */
     --accent-foreground: 210 40% 98%;
     --destructive: 0 63% 31%;
     --destructive-foreground: 210 40% 98%;
@@ -79,10 +79,10 @@
 
 /*
  * Custom component styles
- * These are our Flipkart-style components that extend Tailwind
+ * These are our jewelry store components that extend Tailwind
  */
 @layer components {
-  .flipkart-header {
+  .jewelry-header {
     position: sticky;
     top: 0;
     z-index: 50;
@@ -90,25 +90,25 @@
     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.15);
   }
   
-  .dark .flipkart-header {
+  .dark .jewelry-header {
     background-color: #111827;
   }
   
-  .flipkart-navbar {
+  .jewelry-navbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0.75rem 1rem;
   }
   
-  .flipkart-search-bar {
+  .jewelry-search-bar {
     flex: 1;
     margin-left: 1rem;
     margin-right: 1rem;
     max-width: 500px;
   }
   
-  .flipkart-search-input {
+  .jewelry-search-input {
     width: 100%;
     border-radius: 0.125rem;
     border: 1px solid #d1d5db;
@@ -118,18 +118,18 @@
     padding-bottom: 0.5rem;
   }
   
-  .flipkart-search-input:focus {
+  .jewelry-search-input:focus {
     outline: 2px solid transparent;
     outline-offset: 2px;
     --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
     --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
     box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
-    --tw-ring-color: #5C4033; /* Deep earthy brown */
+    --tw-ring-color: #5C4033; /* Deep brown */
   }
   
-  .flipkart-button {
+  .jewelry-button {
     border-radius: 0.125rem;
-    background-color: #5C4033; /* Deep earthy brown */
+    background-color: #5C4033; /* Deep brown */
     padding-left: 1rem;
     padding-right: 1rem;
     padding-top: 0.5rem;
@@ -139,21 +139,21 @@
     transition: background-color 0.2s ease;
   }
   
-  .flipkart-button:hover {
-    background-color: #4a342d; /* Darker shade of deep earthy brown */
+  .jewelry-button:hover {
+    background-color: #4a342d; /* Darker shade */
   }
   
-  .flipkart-button:focus {
+  .jewelry-button:focus {
     outline: 2px solid transparent;
     outline-offset: 2px;
     --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
     --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
     box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
-    --tw-ring-color: #5C4033; /* Deep earthy brown */
+    --tw-ring-color: #5C4033; /* Deep brown */
     --tw-ring-offset-width: 2px;
   }
   
-  .flipkart-card {
+  .jewelry-card {
     border-radius: 0.125rem;
     border: 1px solid #e5e7eb;
     background-color: #ffffff;
@@ -163,16 +163,16 @@
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   }
   
-  .flipkart-card:hover {
+  .jewelry-card:hover {
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   }
   
-  .dark .flipkart-card {
+  .dark .jewelry-card {
     border: 1px solid #374151;
     background-color: #1f2937;
   }
   
-  .flipkart-product-title {
+  .jewelry-product-title {
     font-size: 0.875rem;
     line-height: 1.25rem;
     font-weight: 500;
@@ -183,22 +183,22 @@
     -webkit-box-orient: vertical;
   }
   
-  .dark .flipkart-product-title {
-    color: #ffffff;
+  .dark .jewelry-product-title {
+    color: #f3f4f6;
   }
   
-  .flipkart-product-price {
+  .jewelry-product-price {
     font-size: 1.125rem;
     line-height: 1.75rem;
     font-weight: 700;
     color: #111827;
   }
   
-  .dark .flipkart-product-price {
-    color: #ffffff;
+  .dark .jewelry-product-price {
+    color: #f3f4f6;
   }
   
-  .flipkart-badge {
+  .jewelry-badge {
     display: inline-flex;
     align-items: center;
     border-radius: 0.125rem;
@@ -213,18 +213,18 @@
     color: #9a3412;
   }
   
-  .dark .flipkart-badge {
+  .dark .jewelry-badge {
     background-color: #7c2d12;
     color: #fed7aa;
   }
   
-  /* Additional Flipkart-style utilities */
-  .flipkart-hero {
+  /* Additional jewelry store utilities */
+  .jewelry-hero {
     background: linear-gradient(to right, #5C4033, #4a342d);
     color: white;
   }
   
-  .flipkart-section-title {
+  .jewelry-section-title {
     font-size: 1.5rem;
     font-weight: 700;
     color: #111827;
@@ -232,11 +232,11 @@
     position: relative;
   }
   
-  .dark .flipkart-section-title {
-    color: #ffffff;
+  .dark .jewelry-section-title {
+    color: #f3f4f6;
   }
   
-  .flipkart-section-title::after {
+  .jewelry-section-title::after {
     content: "";
     position: absolute;
     bottom: -0.5rem;
@@ -246,13 +246,13 @@
     background-color: #FFD54F; /* Mustard gold */
   }
   
-  .flipkart-product-grid {
+  .jewelry-product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 1.5rem;
   }
   
-  .flipkart-product-card {
+  .jewelry-product-card {
     border-radius: 0.25rem;
     border: 1px solid #e5e7eb;
     background-color: #ffffff;
@@ -260,37 +260,37 @@
     transition: all 0.2s ease;
   }
   
-  .flipkart-product-card:hover {
+  .jewelry-product-card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.06);
   }
   
-  .dark .flipkart-product-card {
+  .dark .jewelry-product-card {
     border: 1px solid #374151;
     background-color: #1f2937;
   }
   
-  .flipkart-product-image {
+  .jewelry-product-image {
     position: relative;
     width: 100%;
     height: 200px;
     overflow: hidden;
   }
   
-  .flipkart-product-image img {
+  .jewelry-product-image img {
     object-fit: cover;
     transition: transform 0.3s ease;
   }
   
-  .flipkart-product-card:hover .flipkart-product-image img {
+  .jewelry-product-card:hover .jewelry-product-image img {
     transform: scale(1.05);
   }
   
-  .flipkart-product-info {
+  .jewelry-product-info {
     padding: 1rem;
   }
   
-  .flipkart-product-name {
+  .jewelry-product-name {
     font-size: 0.875rem;
     font-weight: 500;
     color: #111827;
@@ -301,51 +301,253 @@
     overflow: hidden;
   }
   
-  .dark .flipkart-product-name {
-    color: #ffffff;
+  .dark .jewelry-product-name {
+    color: #f3f4f6;
   }
   
-  .flipkart-product-price-container {
+  .jewelry-product-price-container {
     display: flex;
     align-items: center;
     gap: 0.5rem;
     margin-top: 0.5rem;
   }
   
-  .flipkart-product-price-current {
+  .jewelry-product-price-current {
     font-size: 1rem;
     font-weight: 700;
     color: #111827;
   }
   
-  .dark .flipkart-product-price-current {
-    color: #ffffff;
+  .dark .jewelry-product-price-current {
+    color: #f3f4f6;
   }
   
-  .flipkart-product-price-original {
+  .jewelry-product-price-original {
     font-size: 0.75rem;
     color: #6b7280;
     text-decoration: line-through;
   }
   
-  .flipkart-product-discount {
+  .jewelry-product-discount {
     font-size: 0.75rem;
     font-weight: 500;
     color: #16a34a;
   }
   
-  .flipkart-footer {
+  .jewelry-footer {
     background-color: #111827;
     color: #ffffff;
   }
   
-  .flipkart-footer-link {
+  .jewelry-footer-link {
     color: #d1d5db;
     transition: color 0.2s ease;
   }
   
-  .flipkart-footer-link:hover {
+  .jewelry-footer-link:hover {
     color: #ffffff;
+  }
+  
+  /* Soni Fashion specific components */
+  .soni-header {
+    background: linear-gradient(to right, #f59e0b, #d97706, #f59e0b);
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .dark .soni-header {
+    background: linear-gradient(to right, #d97706, #b45309, #d97706);
+  }
+
+  .soni-search-input {
+    background-color: white;
+    border-radius: 50px;
+    border: none;
+    padding: 12px 20px;
+    width: 100%;
+    outline: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .dark .soni-search-input {
+    background-color: #2d3748;
+    color: white;
+  }
+
+  .soni-search-button {
+    background: linear-gradient(to right, #ca8a04, #a16207);
+    border: none;
+    border-radius: 0 50px 50px 0;
+    padding: 0 20px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .dark .soni-search-button {
+    background: linear-gradient(to right, #a16207, #713f12);
+    color: white;
+  }
+
+  .soni-button {
+    background: linear-gradient(to right, #f59e0b, #d97706);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 12px 24px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .soni-button:hover {
+    background: linear-gradient(to right, #d97706, #b45309);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  .dark .soni-button {
+    background: linear-gradient(to right, #d97706, #b45309);
+  }
+
+  .soni-button-secondary {
+    background-color: #fff;
+    color: #f59e0b;
+    border: 2px solid #f59e0b;
+    border-radius: 50px;
+    padding: 12px 24px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .dark .soni-button-secondary {
+    background-color: #2d3748;
+    color: #fbbf24;
+    border-color: #fbbf24;
+  }
+
+  .soni-button-secondary:hover {
+    background-color: #fef3c7;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  .dark .soni-button-secondary:hover {
+    background-color: #4a5568;
+  }
+
+  .soni-card {
+    background-color: #ffffff;
+    border: 1px solid #fde68a;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+  }
+
+  .dark .soni-card {
+    background-color: #2d3748;
+    border: 1px solid #d97706;
+  }
+
+  .soni-card:hover {
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
+  }
+
+  .dark .soni-card:hover {
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  .soni-product-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 6px;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .dark .soni-product-title {
+    color: #f3f4f6;
+  }
+
+  .soni-product-price {
+    font-size: 18px;
+    font-weight: 700;
+    color: #f59e0b;
+  }
+
+  .dark .soni-product-price {
+    color: #fbbf24;
+  }
+
+  .soni-product-original-price {
+    font-size: 14px;
+    color: #9ca3af;
+    text-decoration: line-through;
+    margin-left: 8px;
+  }
+
+  .dark .soni-product-original-price {
+    color: #6b7280;
+  }
+
+  .soni-product-discount {
+    font-size: 14px;
+    color: #16a34a;
+    font-weight: 600;
+    margin-left: 8px;
+  }
+
+  .dark .soni-product-discount {
+    color: #68d391;
+  }
+
+  .soni-badge {
+    background: linear-gradient(to right, #f59e0b, #d97706);
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-right: 8px;
+  }
+
+  .dark .soni-badge {
+    background: linear-gradient(to right, #d97706, #b45309);
+  }
+
+  .soni-section-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #fde68a;
+    position: relative;
+  }
+
+  .dark .soni-section-title {
+    color: #f3f4f6;
+    border-bottom: 2px solid #d97706;
+  }
+
+  .soni-section-title::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(to right, #f59e0b, #d97706);
   }
 }
 
@@ -354,7 +556,7 @@
  * These extend Tailwind's utility classes
  */
 @layer utilities {
-  .shadow-flipkart {
+  .shadow-jewelry {
     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.15);
   }
   
@@ -383,4 +585,162 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
+}
+
+/* Jewelry Store Specific Styles */
+.jewelry-product-card {
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.jewelry-product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(92, 64, 51, 0.15);
+}
+
+.jewelry-category-card {
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.jewelry-category-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 20px rgba(255, 213, 79, 0.25);
+}
+
+.jewelry-hero-banner {
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 2rem 0;
+}
+
+/* Flipkart-style components */
+.flipkart-card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.flipkart-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.flipkart-product-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #212121;
+  margin-bottom: 4px;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.flipkart-product-price {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #212121;
+}
+
+.flipkart-product-original-price {
+  font-size: 0.875rem;
+  color: #878787;
+  text-decoration: line-through;
+  margin-left: 8px;
+}
+
+.flipkart-product-discount {
+  font-size: 0.75rem;
+  color: #388e3c;
+  font-weight: 500;
+  margin-left: 8px;
+}
+
+.flipkart-badge {
+  background: linear-gradient(to right, #ff6161, #ff3333);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.flipkart-button {
+  background: linear-gradient(to right, #ff9f00, #ff6100);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.flipkart-button:hover {
+  background: linear-gradient(to right, #ff6100, #ff3300);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.flipkart-button-secondary {
+  background: linear-gradient(to right, #fb5454, #e63939);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.flipkart-button-secondary:hover {
+  background: linear-gradient(to right, #e63939, #c92c2c);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Dark mode specific fixes */
+.dark body {
+  background-color: #1a202c;
+  color: #f3f4f6;
+}
+
+.dark .bg-white {
+  background-color: #2d3748 !important;
+}
+
+.dark .text-gray-900 {
+  color: #f9fafb !important;
+}
+
+.dark .text-gray-800 {
+  color: #f3f4f6 !important;
+}
+
+.dark .text-gray-700 {
+  color: #e5e7eb !important;
+}
+
+.dark .text-gray-600 {
+  color: #d1d5db !important;
+}
+
+.dark .text-gray-500 {
+  color: #9ca3af !important;
+}
+
+.dark .border-gray-200 {
+  border-color: #4b5563 !important;
+}
+
+.dark .border-gray-300 {
+  border-color: #6b7280 !important;
 }

@@ -27,11 +27,11 @@ export async function POST(request: NextRequest) {
     const coupon = await prisma.coupon.findUnique({
       where: {
         code: code.toUpperCase(),
-        isActive: true,
-        startDate: {
+        is_active: true,
+        valid_from: {
           lte: new Date()
         },
-        endDate: {
+        valid_until: {
           gte: new Date()
         }
       }
@@ -45,7 +45,7 @@ export async function POST(request: NextRequest) {
     }
     
     // Check if coupon has reached usage limit
-    if (coupon.usageLimit && coupon.usedCount >= coupon.usageLimit) {
+    if (coupon.usage_limit && coupon.usage_count && coupon.usage_count >= coupon.usage_limit) {
       return NextResponse.json({
         success: false,
         error: 'Coupon usage limit reached'
@@ -53,11 +53,11 @@ export async function POST(request: NextRequest) {
     }
     
     // Check if user has already used this coupon (if user limit is 1)
-    if (coupon.userLimit === 1) {
-      const userCoupon = await prisma.userCoupon.findFirst({
+    if (coupon.user_usage_limit === 1) {
+      const userCoupon = await prisma.coupon_usage.findFirst({
         where: {
-          userId: session.user.id,
-          couponId: coupon.id
+          user_id: session.user.id,
+          coupon_id: coupon.id
         }
       });
       
@@ -70,10 +70,10 @@ export async function POST(request: NextRequest) {
     }
     
     // Check minimum order value
-    if (coupon.minOrderValue && parseFloat(orderTotal) < coupon.minOrderValue) {
+    if (coupon.minimum_order_amount && parseFloat(orderTotal) < parseFloat(coupon.minimum_order_amount.toString())) {
       return NextResponse.json({
         success: false,
-        error: `Minimum order value of ₹${coupon.minOrderValue} required for this coupon`
+        error: `Minimum order value of ₹${coupon.minimum_order_amount} required for this coupon`
       });
     }
     
@@ -81,16 +81,16 @@ export async function POST(request: NextRequest) {
     let discount = 0;
     
     switch (coupon.type) {
-      case 'PERCENTAGE':
-        discount = (parseFloat(orderTotal) * coupon.value) / 100;
-        if (coupon.maxDiscount && discount > coupon.maxDiscount) {
-          discount = coupon.maxDiscount;
+      case 'percentage':
+        discount = (parseFloat(orderTotal) * parseFloat(coupon.value.toString())) / 100;
+        if (coupon.maximum_discount_amount && discount > parseFloat(coupon.maximum_discount_amount.toString())) {
+          discount = parseFloat(coupon.maximum_discount_amount.toString());
         }
         break;
-      case 'FIXED':
-        discount = coupon.value;
+      case 'fixed':
+        discount = parseFloat(coupon.value.toString());
         break;
-      case 'FREE_SHIPPING':
+      case 'free_shipping':
         // This will be handled in the checkout process
         discount = 0;
         break;

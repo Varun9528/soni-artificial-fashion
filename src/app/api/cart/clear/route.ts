@@ -1,20 +1,28 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { db, enableRealDatabase } from '@/lib/database/connection';
+import { withAuth } from '@/lib/auth/middleware';
 
-// Mock cart data storage (in a real app, this would be in a database)
-const mockCarts: Record<string, any[]> = {};
+// Enable real database for API routes
+enableRealDatabase();
 
-export async function POST(request: NextRequest) {
+export const POST = withAuth(async (request: NextRequest, authContext: any) => {
   try {
-    // In a real implementation, we would get the user ID from the session
-    const userId = 'mock-user-id';
+    const userId = authContext.user.id;
     
-    // Clear the user's cart
-    mockCarts[userId] = [];
+    // Clear the user's cart using the database abstraction
+    const success = await db.clearCart(userId);
     
-    return NextResponse.json({
-      success: true,
-      message: 'Cart cleared successfully'
-    });
+    if (success) {
+      return NextResponse.json({
+        success: true,
+        message: 'Cart cleared successfully'
+      });
+    } else {
+      return NextResponse.json({
+        success: false,
+        error: 'Failed to clear cart'
+      }, { status: 500 });
+    }
   } catch (error) {
     console.error('Error clearing cart:', error);
     return NextResponse.json({
@@ -22,4 +30,4 @@ export async function POST(request: NextRequest) {
       error: 'Failed to clear cart'
     }, { status: 500 });
   }
-}
+});

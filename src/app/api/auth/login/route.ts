@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import bcrypt from 'bcryptjs';
-import { db } from '@/lib/database/connection';
-import { jwtService } from '@/lib/auth/jwt';
-import { FormValidator } from '@/lib/validation';
-import { UserRole } from '@/types/auth';
+import jwt from 'jsonwebtoken';
+import { db, enableRealDatabase } from '@/lib/database/connection';
+
+// Enable real database for API routes
+enableRealDatabase();
 
 export async function POST(request: NextRequest) {
   try {
@@ -11,39 +12,26 @@ export async function POST(request: NextRequest) {
     
     console.log('Login attempt for email:', email);
 
-    // Validation using FormValidator
-    const validator = new FormValidator();
-    validator
-      .addRequired('email', email, 'Email')
-      .addRequired('password', password, 'Password');
-    
-    if (!validator.isValid()) {
+    // Basic validation
+    if (!email || !password) {
       return NextResponse.json(
-        { 
-          success: false,
-          errors: validator.getErrors(),
-          error: 'Validation failed'
-        },
+        { error: 'Email and password are required' },
         { status: 400 }
       );
     }
-    
-    validator.addEmail('email', email, 'Email');
-    
-    if (!validator.isValid()) {
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
       return NextResponse.json(
-        { 
-          success: false,
-          errors: validator.getErrors(),
-          error: 'Invalid email format'
-        },
+        { error: 'Invalid email format' },
         { status: 400 }
       );
     }
 
     // Find user in database
+    console.log('Attempting to find user in database...');
     const user = await db.findUserByEmail(email);
-    
     console.log('User found in database:', user);
     
     if (!user) {
@@ -60,7 +48,6 @@ export async function POST(request: NextRequest) {
     console.log('Hashed password from database:', user.password_hash);
     
     const isValidPassword = await bcrypt.compare(password, user.password_hash);
-    
     console.log('Password valid:', isValidPassword);
     
     if (!isValidPassword) {
@@ -71,8 +58,12 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Use default secrets if environment variables are not set
+    const JWT_SECRET = process.env.JWT_SECRET || 'your-super-secret-jwt-key-change-in-production';
+    const JWT_REFRESH_SECRET = process.env.JWT_REFRESH_SECRET || 'your-super-secret-refresh-key-change-in-production';
+
     const tokenPayload = {
-      userId: user.id,
+      sub: user.id, // Use 'sub' as per JWT standard and JWTPayload interface
       email: user.email,
       role: user.role,
       name: user.name,
@@ -81,25 +72,21 @@ export async function POST(request: NextRequest) {
     };
 
     // Generate access token (15 minutes)
-    const accessToken = jwt.sign(tokenPayload, process.env.JWT_SECRET!, {
-      expiresIn: '15m',
-      issuer: 'lettex-marketplace',
-      audience: 'lettex-users'
+    const accessToken = jwt.sign(tokenPayload, JWT_SECRET, {
+      expiresIn: '15m'
     });
 
     // Generate refresh token (7 days)
-    const refreshToken = jwt.sign(tokenPayload, process.env.JWT_REFRESH_SECRET!, {
-      expiresIn: '7d',
-      issuer: 'lettex-marketplace',
-      audience: 'lettex-users'
+    const refreshToken = jwt.sign(tokenPayload, JWT_REFRESH_SECRET, {
+      expiresIn: '7d'
     });
 
     // Return user info (without password) and token
-    const { password_hash: _, ...userWithoutPassword } = user;
+    const { password_hash, ...userWithoutPassword } = user;
     
     const response = NextResponse.json({
       success: true,
-      token,
+      token: accessToken,
       user: userWithoutPassword,
       message: 'Login successful'
     });
@@ -107,7 +94,7 @@ export async function POST(request: NextRequest) {
     // Set cookie with token - ensure it works for both localhost and production
     const isProduction = process.env.NODE_ENV === 'production';
     
-    response.cookies.set('token', token, {
+    response.cookies.set('token', accessToken, {
       httpOnly: true,
       secure: isProduction,
       maxAge: rememberMe ? 30 * 24 * 60 * 60 : 24 * 60 * 60,
@@ -117,10 +104,10 @@ export async function POST(request: NextRequest) {
 
     return response;
 
-  } catch (error) {
+  } catch (error: any) {
     console.error('Login error:', error);
     return NextResponse.json(
-      { error: 'Internal server error' },
+      { error: 'Internal server error', details: error.message },
       { status: 500 }
     );
   }

@@ -1,0 +1,3336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xml:lang="en" xmlns="http://www.w3.org/2005/Atom" xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:s="http://jadedpixel.com/-/spec/shopify">
+  <id>https://www.soni.fashion/collections/all.atom</id>
+  <link rel="alternate" type="text/html" href="https://www.soni.fashion/collections/all"/>
+  <link rel="self" type="application/atom+xml" href="https://www.soni.fashion/collections/rings-ladies-jewellery.atom"/>
+  <title>Soni Fashion ®</title>
+  <updated>2025-10-16T15:00:54+05:30</updated>
+  <author>
+    <name>Soni Fashion ®</name>
+  </author>
+  <entry>
+    <id>https://www.soni.fashion/products/8625828233394</id>
+    <published>2025-10-16T15:00:54+05:30</published>
+    <updated>2025-10-16T15:00:54+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/1-gram-gold-plated-exclusive-design-ring-for-ladies-style-a264"/>
+    <title>1 Gram Gold Plated Exclusive Design Ring for Ladies - Style A264</title>
+    <s:type>Ladies Ring</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/1GramGoldPlatedExclusiveDesignRingforLadies.jpg?v=1760607056"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>Ladies Ring<br>
+        <strong>Price: </strong>
+            1350.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Enhance your elegance with this 1 Gram Gold Plated Rhodium Ladies Ring. Crafted from durable brass and adorned with sparkling diamonds, it features a shining finish that captures the latest trend in golden jewelry. Lightweight and stylish, this exclusive design offers a radiant look perfect for any occasion.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Ring Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">6 mm (0.6 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">3 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;">Fixed</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden, Rhodium</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Miligram Gold, Brass, Diamond</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">9 to 5 Look, Party Wear, Festival, Marriage / Wedding / Engagement, Birthday Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Latest Trend</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Women, Teenage, School / Collage Girls</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Ring</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>More Info</strong></td>
+<td>:</td>
+<td style="text-align: left;">This product is gold plated with approx 50 miligram of gold.</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Diamond</s:tag>
+    <s:tag>Golden Ladies Ring</s:tag>
+    <s:tag>Latest Trend</s:tag>
+    <s:tag>Miligram Gold</s:tag>
+    <s:tag>Rhodium Ladies Ring</s:tag>
+    <s:tag>Shining</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625828233394</id>
+      <title>13</title>
+      <s:price currency="INR">1350.00</s:price>
+      <s:sku>LRG-13A-264_S13</s:sku>
+      <s:grams>3</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625828233394</id>
+      <title>14</title>
+      <s:price currency="INR">1350.00</s:price>
+      <s:sku>LRG-13A-264_S14</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625828233394</id>
+      <title>15</title>
+      <s:price currency="INR">1350.00</s:price>
+      <s:sku>LRG-13A-264_S15</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8625828266162</id>
+    <published>2025-10-16T15:00:12+05:30</published>
+    <updated>2025-10-16T15:00:12+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/1-gram-gold-plated-chic-design-ring-for-ladies-style-a265"/>
+    <title>1 Gram Gold Plated Chic Design Ring for Ladies - Style A265</title>
+    <s:type>Ladies Ring</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/1GramGoldPlatedChicDesignRingforLadies.jpg?v=1760607014"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>Ladies Ring<br>
+        <strong>Price: </strong>
+            1250.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>This 1 gram gold-plated chic design ring for ladies features a shining rhodium finish and stylish golden tones. Crafted from durable brass with a miligram gold layer, it incorporates sparkling diamond accents to add elegance and charm. Perfect for keeping up with the latest trend, this ring blends fashion and quality for everyday wear or special occasions.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Ring Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">4 mm (0.4 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">2 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;">Fixed</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden, Rhodium</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Miligram Gold, Brass, Diamond</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">9 to 5 Look, Party Wear, Festival, Marriage / Wedding / Engagement, Birthday Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Latest Trend</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Women, Teenage, School / Collage Girls</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Ring</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>More Info</strong></td>
+<td>:</td>
+<td style="text-align: left;">This product is gold plated with approx 50 miligram of gold.</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Diamond</s:tag>
+    <s:tag>Golden Ladies Ring</s:tag>
+    <s:tag>Latest Trend</s:tag>
+    <s:tag>Miligram Gold</s:tag>
+    <s:tag>Rhodium Ladies Ring</s:tag>
+    <s:tag>Shining</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625828266162</id>
+      <title>8</title>
+      <s:price currency="INR">1250.00</s:price>
+      <s:sku>LRG-12A-265_S8</s:sku>
+      <s:grams>2</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625828266162</id>
+      <title>11</title>
+      <s:price currency="INR">1250.00</s:price>
+      <s:sku>LRG-12A-265_S11</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625828266162</id>
+      <title>12</title>
+      <s:price currency="INR">1250.00</s:price>
+      <s:sku>LRG-12A-265_S12</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625828266162</id>
+      <title>13</title>
+      <s:price currency="INR">1250.00</s:price>
+      <s:sku>LRG-12A-265_S13</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625828266162</id>
+      <title>14</title>
+      <s:price currency="INR">1250.00</s:price>
+      <s:sku>LRG-12A-265_S14</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625828266162</id>
+      <title>16</title>
+      <s:price currency="INR">1250.00</s:price>
+      <s:sku>LRG-12A-265_S16</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625828266162</id>
+      <title>17</title>
+      <s:price currency="INR">1250.00</s:price>
+      <s:sku>LRG-12A-265_S17</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8625828298930</id>
+    <published>2025-10-16T14:59:27+05:30</published>
+    <updated>2025-10-16T14:59:27+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/1-gram-gold-plated-brilliant-design-ring-for-ladies-style-a266"/>
+    <title>1 Gram Gold Plated Brilliant Design Ring for Ladies - Style A266</title>
+    <s:type>Ladies Ring</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/1GramGoldPlatedBrilliantDesignRingforLadies.jpg?v=1760606968"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>Ladies Ring<br>
+        <strong>Price: </strong>
+            1290.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>This 1 Gram Gold Plated Rhodium Ladies Ring combines elegant brilliance with the latest trends. Crafted from durable brass and finished with a miligram gold coating, it features a sparkling diamond detail that adds a touch of sophistication. Perfect for enhancing any outfit, this golden ladies ring blends style and quality effortlessly.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Ring Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">2 mm (0.2 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden, Rhodium</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Miligram Gold, Brass, Diamond</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">9 to 5 Look, Party Wear, Festival, Marriage / Wedding / Engagement, Birthday Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Latest Trend</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Women, Teenage, School / Collage Girls</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Ring</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>More Info</strong></td>
+<td>:</td>
+<td style="text-align: left;">This product is gold plated with approx 50 miligram of gold.</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Diamond</s:tag>
+    <s:tag>Golden Ladies Ring</s:tag>
+    <s:tag>Latest Trend</s:tag>
+    <s:tag>Miligram Gold</s:tag>
+    <s:tag>Rhodium Ladies Ring</s:tag>
+    <s:tag>Shining</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625828298930</id>
+      <title>11</title>
+      <s:price currency="INR">1290.00</s:price>
+      <s:sku>LRG-12A-266_S11</s:sku>
+      <s:grams>1</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625828298930</id>
+      <title>12</title>
+      <s:price currency="INR">1290.00</s:price>
+      <s:sku>LRG-12A-266_S12</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625828298930</id>
+      <title>13</title>
+      <s:price currency="INR">1290.00</s:price>
+      <s:sku>LRG-12A-266_S13</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625828298930</id>
+      <title>14</title>
+      <s:price currency="INR">1290.00</s:price>
+      <s:sku>LRG-12A-266_S14</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8625828331698</id>
+    <published>2025-10-16T14:58:48+05:30</published>
+    <updated>2025-10-16T14:58:48+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/1-gram-gold-plated-best-quality-ring-for-ladies-style-a267"/>
+    <title>1 Gram Gold Plated Best Quality Ring for Ladies - Style A267</title>
+    <s:type>Ladies Ring</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/1GramGoldPlatedBestQualityRingforLadies_2c8ff3e2-0487-4bb6-9329-b3272b0a6b5b.jpg?v=1760606930"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>Ladies Ring<br>
+        <strong>Price: </strong>
+            1250.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>This elegant ladies' ring features a 1 gram gold plating over brass, delivering a luxurious look with durability. Adorned with shining diamond accents, it showcases the latest in rhodium-finished trends, combining classic golden tones with modern style. Perfect for everyday wear or special occasions, this ring blends quality craftsmanship with timeless beauty.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Ring Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">3 mm (0.3 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden, Rhodium</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Miligram Gold, Brass, Diamond</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">9 to 5 Look, Everyday, Festival, Marriage / Wedding / Engagement, Birthday Gift</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Latest Trend</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Women, Teenage, School / Collage Girls</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Ring</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>More Info</strong></td>
+<td>:</td>
+<td style="text-align: left;">This product is gold plated with approx 50 miligram of gold.</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Diamond</s:tag>
+    <s:tag>Golden Ladies Ring</s:tag>
+    <s:tag>Latest Trend</s:tag>
+    <s:tag>Miligram Gold</s:tag>
+    <s:tag>Rhodium Ladies Ring</s:tag>
+    <s:tag>Shining</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625828331698</id>
+      <title>8</title>
+      <s:price currency="INR">1250.00</s:price>
+      <s:sku>LRG-12A-267_S8</s:sku>
+      <s:grams>1</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625828331698</id>
+      <title>10</title>
+      <s:price currency="INR">1250.00</s:price>
+      <s:sku>LRG-12A-267_S10</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625828331698</id>
+      <title>11</title>
+      <s:price currency="INR">1250.00</s:price>
+      <s:sku>LRG-12A-267_S11</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625828331698</id>
+      <title>12</title>
+      <s:price currency="INR">1250.00</s:price>
+      <s:sku>LRG-12A-267_S12</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625828331698</id>
+      <title>13</title>
+      <s:price currency="INR">1250.00</s:price>
+      <s:sku>LRG-12A-267_S13</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8625828167858</id>
+    <published>2025-10-16T14:58:11+05:30</published>
+    <updated>2025-10-16T14:58:11+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/1-gram-gold-plated-unique-design-ring-for-ladies-style-a263"/>
+    <title>1 Gram Gold Plated Unique Design Ring for Ladies - Style A263</title>
+    <s:type>Ladies Ring</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/1GramGoldPlatedUniqueDesignRingforLadies_369ea2f3-b59c-4345-bc1b-33cb4ef8ddf2.jpg?v=1760606892"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>Ladies Ring<br>
+        <strong>Price: </strong>
+            1290.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>This 1 gram gold-plated ring features a unique crown-inspired design, crafted from durable brass with a radiant rhodium finish. Adorned with sparkling diamond accents, it offers a shining touch that complements the latest fashion trends. Lightweight and elegant, this golden ladies ring adds a sophisticated flair to any outfit.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Ring Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">2 mm (0.2 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">2 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;">Fixed</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden, Rhodium</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Miligram Gold, Brass, Diamond</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">9 to 5 Look, Party Wear, Festival, Marriage / Wedding / Engagement, Birthday Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Latest Trend</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Symbol</strong></td>
+<td>:</td>
+<td style="text-align: left;">Crown</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Women, Teenage, School / Collage Girls</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Ring</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>More Info</strong></td>
+<td>:</td>
+<td style="text-align: left;">This product is gold plated with approx 50 miligram of gold.</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Crown</s:tag>
+    <s:tag>Diamond</s:tag>
+    <s:tag>Golden Ladies Ring</s:tag>
+    <s:tag>Latest Trend</s:tag>
+    <s:tag>Miligram Gold</s:tag>
+    <s:tag>Rhodium Ladies Ring</s:tag>
+    <s:tag>Shining</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625828167858</id>
+      <title>11</title>
+      <s:price currency="INR">1290.00</s:price>
+      <s:sku>LRG-12A-263_S11</s:sku>
+      <s:grams>2</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625828167858</id>
+      <title>13</title>
+      <s:price currency="INR">1290.00</s:price>
+      <s:sku>LRG-12A-263_S13</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625828167858</id>
+      <title>15</title>
+      <s:price currency="INR">1290.00</s:price>
+      <s:sku>LRG-12A-263_S15</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8625827938482</id>
+    <published>2025-10-16T14:51:02+05:30</published>
+    <updated>2025-10-16T14:51:02+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/1-gram-gold-plated-butterfly-unique-design-ring-for-ladies-style-a258"/>
+    <title>1 Gram Gold Plated Butterfly Unique Design Ring for Ladies - Style A258</title>
+    <s:type>Ladies Ring</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/1GramGoldPlatedButterflyUniqueDesignRingforLadies.jpg?v=1760606464"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>Ladies Ring<br>
+        <strong>Price: </strong>
+            1350.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>This 1 gram gold plated brass ring features a delicate butterfly design accented with sparkling diamonds, capturing the latest trends in women's jewelry. Its shining miligram gold finish adds elegant charm, making it a perfect accessory to enhance any outfit with subtle sophistication.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Ring Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">3 mm (0.3 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">2 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;">Fixed</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Miligram Gold, Brass, Diamond</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">9 to 5 Look, Party Wear, Festival, Marriage / Wedding / Engagement, Birthday Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Latest Trend</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Symbol</strong></td>
+<td>:</td>
+<td style="text-align: left;">Butterfly</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Women, Teenage, School / Collage Girls</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Ring</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>More Info</strong></td>
+<td>:</td>
+<td style="text-align: left;">This product is gold plated with approx 50 miligram of gold.</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Butterfly</s:tag>
+    <s:tag>Diamond</s:tag>
+    <s:tag>Golden Ladies Ring</s:tag>
+    <s:tag>Latest Trend</s:tag>
+    <s:tag>Miligram Gold</s:tag>
+    <s:tag>Shining</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625827938482</id>
+      <title>8</title>
+      <s:price currency="INR">1350.00</s:price>
+      <s:sku>LRG-13A-258_S8</s:sku>
+      <s:grams>2</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625827938482</id>
+      <title>10</title>
+      <s:price currency="INR">1350.00</s:price>
+      <s:sku>LRG-13A-258_S10</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625827938482</id>
+      <title>11</title>
+      <s:price currency="INR">1350.00</s:price>
+      <s:sku>LRG-13A-258_S11</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625827938482</id>
+      <title>14</title>
+      <s:price currency="INR">1350.00</s:price>
+      <s:sku>LRG-13A-258_S14</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8625827971250</id>
+    <published>2025-10-16T14:50:28+05:30</published>
+    <updated>2025-10-16T14:50:28+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/1-gram-gold-plated-fancy-design-ring-for-ladies-style-a259"/>
+    <title>1 Gram Gold Plated Fancy Design Ring for Ladies - Style A259</title>
+    <s:type>Ladies Ring</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/1GramGoldPlatedFancyDesignRingforLadies.jpg?v=1760606430"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>Ladies Ring<br>
+        <strong>Price: </strong>
+            1350.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>This shining rhodium-plated ladies ring features a stylish rectangular design crafted from miligram gold-plated brass. Adorned with sparkling diamonds, it reflects the latest trends in fashion jewelry. Lightweight and elegant, this golden fancy ring is perfect for adding a touch of sophistication to any outfit.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Ring Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">7 mm (0.7 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;">Fixed</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Shape</strong></td>
+<td>:</td>
+<td style="text-align: left;">Rectangle</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden, Rhodium</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Miligram Gold, Brass, Diamond</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">9 to 5 Look, Party Wear, Festival, Marriage / Wedding / Engagement, Birthday Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Latest Trend</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Women, Teenage, School / Collage Girls</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Ring</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>More Info</strong></td>
+<td>:</td>
+<td style="text-align: left;">This product is gold plated with approx 50 miligram of gold.</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Diamond</s:tag>
+    <s:tag>Golden Ladies Ring</s:tag>
+    <s:tag>Latest Trend</s:tag>
+    <s:tag>Miligram Gold</s:tag>
+    <s:tag>Rectangle</s:tag>
+    <s:tag>Rhodium Ladies Ring</s:tag>
+    <s:tag>Shining</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625827971250</id>
+      <title>13</title>
+      <s:price currency="INR">1350.00</s:price>
+      <s:sku>LRG-13A-259_S13</s:sku>
+      <s:grams>1</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625827971250</id>
+      <title>14</title>
+      <s:price currency="INR">1350.00</s:price>
+      <s:sku>LRG-13A-259_S14</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625827971250</id>
+      <title>16</title>
+      <s:price currency="INR">1350.00</s:price>
+      <s:sku>LRG-13A-259_S16</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8625828069554</id>
+    <published>2025-10-16T14:49:52+05:30</published>
+    <updated>2025-10-16T14:49:52+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/1-gram-gold-plated-sparkling-design-ring-for-ladies-style-a260"/>
+    <title>1 Gram Gold Plated Sparkling Design Ring for Ladies - Style A260</title>
+    <s:type>Ladies Ring</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/1GramGoldPlatedSparklingDesignRingforLadies.jpg?v=1760606393"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>Ladies Ring<br>
+        <strong>Price: </strong>
+            1250.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>This exquisite ladies ring features a shining rectangle design plated with 1 gram of milligram gold, capturing the latest trends in jewelry fashion. Crafted from durable brass and accented with sparkling diamond-like stones, it offers both elegance and lasting shine. Perfect for adding a touch of sophistication to any outfit.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Ring Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">4 mm (0.4 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;">Fixed</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Shape</strong></td>
+<td>:</td>
+<td style="text-align: left;">Rectangle</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Miligram Gold, Brass, Diamond</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">9 to 5 Look, Party Wear, Festival, Marriage / Wedding / Engagement, Birthday Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Latest Trend</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Women, Teenage, School / Collage Girls</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Ring</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>More Info</strong></td>
+<td>:</td>
+<td style="text-align: left;">This product is gold plated with approx 50 miligram of gold.</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Diamond</s:tag>
+    <s:tag>Golden Ladies Ring</s:tag>
+    <s:tag>Latest Trend</s:tag>
+    <s:tag>Miligram Gold</s:tag>
+    <s:tag>Rectangle</s:tag>
+    <s:tag>Shining</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625828069554</id>
+      <title>9</title>
+      <s:price currency="INR">1250.00</s:price>
+      <s:sku>LRG-12A-260_S9</s:sku>
+      <s:grams>1</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625828069554</id>
+      <title>10</title>
+      <s:price currency="INR">1250.00</s:price>
+      <s:sku>LRG-12A-260_S10</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625828069554</id>
+      <title>13</title>
+      <s:price currency="INR">1250.00</s:price>
+      <s:sku>LRG-12A-260_S13</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8625828102322</id>
+    <published>2025-10-16T14:49:13+05:30</published>
+    <updated>2025-10-16T14:49:13+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/1-gram-gold-plated-radiant-design-ring-for-ladies-style-a261"/>
+    <title>1 Gram Gold Plated Radiant Design Ring for Ladies - Style A261</title>
+    <s:type>Ladies Ring</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/1GramGoldPlatedRadiantDesignRingforLadies.jpg?v=1760606355"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>Ladies Ring<br>
+        <strong>Price: </strong>
+            1290.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Elevate your style with this 1 Gram Gold Plated Radiant Design Ring, crafted from durable brass and adorned with sparkling diamonds. Featuring the latest trend in elegant golden rings for ladies, it offers a radiant look that complements any outfit. Perfect for adding a touch of sophistication to your everyday wear or special occasions.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Ring Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">4 mm (0.4 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">3 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;">Fixed</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Miligram Gold, Brass, Diamond</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">9 to 5 Look, Party Wear, Festival, Marriage / Wedding / Engagement, Birthday Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Latest Trend</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Women, Teenage, School / Collage Girls</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Ring</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>More Info</strong></td>
+<td>:</td>
+<td style="text-align: left;">This product is gold plated with approx 50 miligram of gold.</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Diamond</s:tag>
+    <s:tag>Golden Ladies Ring</s:tag>
+    <s:tag>Latest Trend</s:tag>
+    <s:tag>Miligram Gold</s:tag>
+    <s:tag>Shining</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625828102322</id>
+      <title>6</title>
+      <s:price currency="INR">1290.00</s:price>
+      <s:sku>LRG-12A-261_S6</s:sku>
+      <s:grams>3</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625828102322</id>
+      <title>11</title>
+      <s:price currency="INR">1290.00</s:price>
+      <s:sku>LRG-12A-261_S11</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625828102322</id>
+      <title>13</title>
+      <s:price currency="INR">1290.00</s:price>
+      <s:sku>LRG-12A-261_S13</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625828102322</id>
+      <title>14</title>
+      <s:price currency="INR">1290.00</s:price>
+      <s:sku>LRG-12A-261_S14</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625828102322</id>
+      <title>16</title>
+      <s:price currency="INR">1290.00</s:price>
+      <s:sku>LRG-12A-261_S16</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8625828135090</id>
+    <published>2025-10-16T14:48:37+05:30</published>
+    <updated>2025-10-16T14:48:37+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/1-gram-gold-plated-superior-quality-ring-for-ladies-style-a262"/>
+    <title>1 Gram Gold Plated Superior Quality Ring for Ladies - Style A262</title>
+    <s:type>Ladies Ring</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/1GramGoldPlatedSuperiorQualityRingforLadies.jpg?v=1760606319"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>Ladies Ring<br>
+        <strong>Price: </strong>
+            1350.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>This 1 Gram Gold Plated Ring for ladies combines superior craftsmanship with a shining rhodium finish. Designed with a delicate heart motif and adorned with sparkling diamonds, it captures the latest trends in elegant jewelry. Made from durable brass and miligram gold plating, this golden ladies ring offers a stylish and lasting accessory for any occasion.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Ring Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">2 mm (0.2 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;">Fixed</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Shape</strong></td>
+<td>:</td>
+<td style="text-align: left;">Heart</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden, Rhodium</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Miligram Gold, Brass, Diamond</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">9 to 5 Look, Party Wear, Festival, Marriage / Wedding / Engagement, Birthday Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Latest Trend</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Symbol</strong></td>
+<td>:</td>
+<td style="text-align: left;">Heart</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Women, Teenage, School / Collage Girls</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Ring</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>More Info</strong></td>
+<td>:</td>
+<td style="text-align: left;">This product is gold plated with approx 50 miligram of gold.</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Diamond</s:tag>
+    <s:tag>Golden Ladies Ring</s:tag>
+    <s:tag>Heart</s:tag>
+    <s:tag>Latest Trend</s:tag>
+    <s:tag>Miligram Gold</s:tag>
+    <s:tag>Rhodium Ladies Ring</s:tag>
+    <s:tag>Shining</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625828135090</id>
+      <title>8</title>
+      <s:price currency="INR">1350.00</s:price>
+      <s:sku>LRG-13A-262_S8</s:sku>
+      <s:grams>1</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625828135090</id>
+      <title>9</title>
+      <s:price currency="INR">1350.00</s:price>
+      <s:sku>LRG-13A-262_S9</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625828135090</id>
+      <title>12</title>
+      <s:price currency="INR">1350.00</s:price>
+      <s:sku>LRG-13A-262_S12</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625828135090</id>
+      <title>13</title>
+      <s:price currency="INR">1350.00</s:price>
+      <s:sku>LRG-13A-262_S13</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8625827741874</id>
+    <published>2025-10-16T14:42:12+05:30</published>
+    <updated>2025-10-16T14:42:12+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/1-gram-gold-plated-latest-design-ring-for-ladies-style-a253"/>
+    <title>1 Gram Gold Plated Latest Design Ring for Ladies - Style A253</title>
+    <s:type>Ladies Ring</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/1GramGoldPlatedLatestDesignRingforLadies.jpg?v=1760605933"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>Ladies Ring<br>
+        <strong>Price: </strong>
+            1350.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>This stunning ladies' ring features a 1-gram gold plating with a miligram gold finish for a brilliant shine. Crafted from durable brass and adorned with sparkling diamond accents, it offers elegant style and lasting quality. Perfect for adding a touch of sophistication to any outfit.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Ring Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">7 mm (0.7 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">2 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;">Fixed</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Miligram Gold, Brass, Diamond</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">9 to 5 Look, Party Wear, Festival, Marriage / Wedding / Engagement, Birthday Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Women, Teenage, School / Collage Girls</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Ring</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>More Info</strong></td>
+<td>:</td>
+<td style="text-align: left;">This product is gold plated with approx 50 miligram of gold.</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Diamond</s:tag>
+    <s:tag>Golden Ladies Ring</s:tag>
+    <s:tag>Miligram Gold</s:tag>
+    <s:tag>Shining</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625827741874</id>
+      <title>12</title>
+      <s:price currency="INR">1350.00</s:price>
+      <s:sku>LRG-13A-253_S12</s:sku>
+      <s:grams>2</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625827741874</id>
+      <title>14</title>
+      <s:price currency="INR">1350.00</s:price>
+      <s:sku>LRG-13A-253_S14</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8625827774642</id>
+    <published>2025-10-16T14:41:23+05:30</published>
+    <updated>2025-10-16T14:41:23+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/1-gram-gold-plated-magnificent-design-ring-for-ladies-style-a254"/>
+    <title>1 Gram Gold Plated Magnificent Design Ring for Ladies - Style A254</title>
+    <s:type>Ladies Ring</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/1GramGoldPlatedMagnificentDesignRingforLadies.jpg?v=1760605884"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>Ladies Ring<br>
+        <strong>Price: </strong>
+            1350.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>This stunning ladies' ring features a magnificent design plated with 1 gram of miligram gold over durable brass, offering the elegance of gold at an affordable price. Adorned with sparkling diamond accents, it adds a radiant shine to any outfit. Perfect for daily wear or special occasions, this golden ring combines style and durability for a timeless accessory.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Ring Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">7 mm (0.7 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">2 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;">Fixed</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Miligram Gold, Brass, Diamond</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">9 to 5 Look, Everyday, Festival, Marriage / Wedding / Engagement, Birthday Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Women, Teenage, School / Collage Girls</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Ring</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>More Info</strong></td>
+<td>:</td>
+<td style="text-align: left;">This product is gold plated with approx 50 miligram of gold.</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Diamond</s:tag>
+    <s:tag>Golden Ladies Ring</s:tag>
+    <s:tag>Miligram Gold</s:tag>
+    <s:tag>Shining</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625827774642</id>
+      <title>13</title>
+      <s:price currency="INR">1350.00</s:price>
+      <s:sku>LRG-13A-254_S13</s:sku>
+      <s:grams>2</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625827774642</id>
+      <title>14</title>
+      <s:price currency="INR">1350.00</s:price>
+      <s:sku>LRG-13A-254_S14</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8625827807410</id>
+    <published>2025-10-16T14:40:41+05:30</published>
+    <updated>2025-10-16T14:40:41+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/1-gram-gold-plated-best-quality-ring-for-ladies-style-a255"/>
+    <title>1 Gram Gold Plated Best Quality Ring for Ladies - Style A255</title>
+    <s:type>Ladies Ring</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/1GramGoldPlatedBestQualityRingforLadies_4f4f3977-7ef3-47b3-b4f3-4967554a049f.jpg?v=1760605842"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>Ladies Ring<br>
+        <strong>Price: </strong>
+            1350.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>This 1 gram gold-plated ladies' ring features a stylish design crafted from durable brass and adorned with sparkling diamond accents. Following the latest trends, its miligram gold finish adds a radiant shine, perfect for enhancing everyday looks or special occasions. Lightweight and elegant, it offers both comfort and beauty in one accessory.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Ring Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">6 mm (0.6 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">2 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;">Fixed</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Miligram Gold, Brass, Diamond</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">9 to 5 Look, Party Wear, Festival, Marriage / Wedding / Engagement, Birthday Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Latest Trend</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Women, Teenage, School / Collage Girls</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Ring</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>More Info</strong></td>
+<td>:</td>
+<td style="text-align: left;">This product is gold plated with approx 50 miligram of gold.</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Diamond</s:tag>
+    <s:tag>Golden Ladies Ring</s:tag>
+    <s:tag>Latest Trend</s:tag>
+    <s:tag>Miligram Gold</s:tag>
+    <s:tag>Shining</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625827807410</id>
+      <title>11</title>
+      <s:price currency="INR">1350.00</s:price>
+      <s:sku>LRG-13A-255_S11</s:sku>
+      <s:grams>2</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625827807410</id>
+      <title>12</title>
+      <s:price currency="INR">1350.00</s:price>
+      <s:sku>LRG-13A-255_S12</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625827807410</id>
+      <title>14</title>
+      <s:price currency="INR">1350.00</s:price>
+      <s:sku>LRG-13A-255_S14</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625827807410</id>
+      <title>16</title>
+      <s:price currency="INR">1350.00</s:price>
+      <s:sku>LRG-13A-255_S16</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625827807410</id>
+      <title>17</title>
+      <s:price currency="INR">1350.00</s:price>
+      <s:sku>LRG-13A-255_S17</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625827807410</id>
+      <title>19</title>
+      <s:price currency="INR">1350.00</s:price>
+      <s:sku>LRG-13A-255_S19</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8625827840178</id>
+    <published>2025-10-16T14:40:07+05:30</published>
+    <updated>2025-10-16T14:40:07+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/1-gram-gold-plated-heart-shape-diamond-ring-for-ladies-style-a256"/>
+    <title>1 Gram Gold Plated Heart Shape Diamond Ring for Ladies - Style A256</title>
+    <s:type>Ladies Ring</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/1GramGoldPlatedHeartShapeDiamondRingforLadies.jpg?v=1760605808"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>Ladies Ring<br>
+        <strong>Price: </strong>
+            1290.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>This elegant 1-gram gold-plated ring features a heart-shaped design adorned with a sparkling diamond, crafted on a brass base for durability. Perfect for the latest fashion trends, it adds a shining touch to any outfit and makes a thoughtful gift for women who appreciate delicate, stylish jewelry.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Ring Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">4 mm (0.4 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">2 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;">Fixed</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden, Pink</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Miligram Gold, Brass, Diamond</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">9 to 5 Look, Party Wear, Festival, Marriage / Wedding / Engagement, Birthday Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Latest Trend</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Symbol</strong></td>
+<td>:</td>
+<td style="text-align: left;">Heart</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Women, Teenage, School / Collage Girls</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Ring</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>More Info</strong></td>
+<td>:</td>
+<td style="text-align: left;">This product is gold plated with approx 50 miligram of gold.</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Diamond</s:tag>
+    <s:tag>Golden Ladies Ring</s:tag>
+    <s:tag>Heart</s:tag>
+    <s:tag>Latest Trend</s:tag>
+    <s:tag>Miligram Gold</s:tag>
+    <s:tag>Pink Ladies Ring</s:tag>
+    <s:tag>Shining</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625827840178</id>
+      <title>9</title>
+      <s:price currency="INR">1290.00</s:price>
+      <s:sku>LRG-12A-256_S9</s:sku>
+      <s:grams>2</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625827840178</id>
+      <title>10</title>
+      <s:price currency="INR">1290.00</s:price>
+      <s:sku>LRG-12A-256_S10</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625827840178</id>
+      <title>11</title>
+      <s:price currency="INR">1290.00</s:price>
+      <s:sku>LRG-12A-256_S11</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625827840178</id>
+      <title>12</title>
+      <s:price currency="INR">1290.00</s:price>
+      <s:sku>LRG-12A-256_S12</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625827840178</id>
+      <title>13</title>
+      <s:price currency="INR">1290.00</s:price>
+      <s:sku>LRG-12A-256_S13</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625827840178</id>
+      <title>14</title>
+      <s:price currency="INR">1290.00</s:price>
+      <s:sku>LRG-12A-256_S14</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625827840178</id>
+      <title>16</title>
+      <s:price currency="INR">1290.00</s:price>
+      <s:sku>LRG-12A-256_S16</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8625827905714</id>
+    <published>2025-10-16T14:39:31+05:30</published>
+    <updated>2025-10-16T14:39:31+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/1-gram-gold-plated-fashion-forward-ring-for-ladies-style-a257"/>
+    <title>1 Gram Gold Plated Fashion-Forward Ring for Ladies - Style A257</title>
+    <s:type>Ladies Ring</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/1GramGoldPlatedFashion-ForwardRingforLadies_bff7a3f7-b127-4236-9df4-696f34e3c53a.jpg?v=1760605772"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>Ladies Ring<br>
+        <strong>Price: </strong>
+            1250.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>This 1 gram gold-plated ladies ring combines rhodium shine with a stylish diamond accent, crafted on a brass base for durability. Featuring a miligram gold coating, it offers a trendy golden finish perfect for everyday wear or special occasions. Stay fashionable with this elegant ring that captures the latest trends while providing lasting shine and charm.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Ring Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">3 mm (0.3 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;">Fixed</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden, Rhodium</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Miligram Gold, Brass, Diamond</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">9 to 5 Look, Party Wear, Festival, Marriage / Wedding / Engagement, Birthday Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Latest Trend</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Women, Teenage, School / Collage Girls</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Ring</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>More Info</strong></td>
+<td>:</td>
+<td style="text-align: left;">This product is gold plated with approx 50 miligram of gold.</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Diamond</s:tag>
+    <s:tag>Golden Ladies Ring</s:tag>
+    <s:tag>Latest Trend</s:tag>
+    <s:tag>Miligram Gold</s:tag>
+    <s:tag>Rhodium Ladies Ring</s:tag>
+    <s:tag>Shining</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625827905714</id>
+      <title>10</title>
+      <s:price currency="INR">1250.00</s:price>
+      <s:sku>LRG-12A-257_S10</s:sku>
+      <s:grams>1</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625827905714</id>
+      <title>11</title>
+      <s:price currency="INR">1250.00</s:price>
+      <s:sku>LRG-12A-257_S11</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625827905714</id>
+      <title>12</title>
+      <s:price currency="INR">1250.00</s:price>
+      <s:sku>LRG-12A-257_S12</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625827905714</id>
+      <title>13</title>
+      <s:price currency="INR">1250.00</s:price>
+      <s:sku>LRG-12A-257_S13</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625827905714</id>
+      <title>14</title>
+      <s:price currency="INR">1250.00</s:price>
+      <s:sku>LRG-12A-257_S14</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8625201053874</id>
+    <published>2025-10-15T19:12:23+05:30</published>
+    <updated>2025-10-15T19:12:23+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/1-gram-gold-plated-unique-design-ring-for-ladies-style-a252"/>
+    <title>1 Gram Gold Plated Unique Design Ring for Ladies - Style A252</title>
+    <s:type>Ladies Ring</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/1GramGoldPlatedUniqueDesignRingforLadies.jpg?v=1760535744"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>Ladies Ring<br>
+        <strong>Price: </strong>
+            1350.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>This 1 Gram Gold Plated Ladies Ring features a unique design with a shining rhodium finish, combining elegance and modern style. Crafted from brass with a miligram gold plating, it includes sparkling diamond accents that add a touch of sophistication. Perfect for those following the latest trends, this golden ring enhances any outfit with subtle brilliance.</p>
+<table>
+<tbody>
+<tr>
+<th style="text-align: left;" colspan="3"><strong>Ring Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">9 mm (0.9 cm)</td>
+</tr>
+<tr>
+<th style="text-align: left;" colspan="3"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">3 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;">Fixed</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden, Rhodium</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Miligram Gold, Brass, Diamond</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">9 to 5 Look, Party Wear, Festival, Marriage / Wedding / Engagement, Birthday Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Latest Trend</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Women, Teenage, School / Collage Girls</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Ring</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>More Info</strong></td>
+<td>:</td>
+<td style="text-align: left;">This product is gold plated with approx 50 miligram of gold.</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Diamond</s:tag>
+    <s:tag>Golden Ladies Ring</s:tag>
+    <s:tag>Latest Trend</s:tag>
+    <s:tag>Miligram Gold</s:tag>
+    <s:tag>Rhodium Ladies Ring</s:tag>
+    <s:tag>Shining</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625201053874</id>
+      <title>12</title>
+      <s:price currency="INR">1350.00</s:price>
+      <s:sku>LRG-13A-252_S12</s:sku>
+      <s:grams>3</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625201053874</id>
+      <title>13</title>
+      <s:price currency="INR">1350.00</s:price>
+      <s:sku>LRG-13A-252_S13</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8625201021106</id>
+    <published>2025-10-15T19:11:30+05:30</published>
+    <updated>2025-10-15T19:11:30+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/1-gram-gold-plated-stunning-design-ring-for-ladies-style-a251"/>
+    <title>1 Gram Gold Plated Stunning Design Ring for Ladies - Style A251</title>
+    <s:type>Ladies Ring</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/1GramGoldPlatedStunningDesignRingforLadies.jpg?v=1760535691"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>Ladies Ring<br>
+        <strong>Price: </strong>
+            1250.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>This 1 Gram gold-plated ladies ring features a stunning heart design, accented with sparkling diamonds and finished with a shining rhodium coating. Crafted on a durable brass base, it combines the elegance of miligram gold plating with the latest trends for a stylish and affordable accessory. Perfect for adding a touch of golden charm to any outfit.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Ring Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">3 mm (0.3 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">3 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;">Fixed</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Shape</strong></td>
+<td>:</td>
+<td style="text-align: left;">Heart</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden, Rhodium</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Miligram Gold, Brass, Diamond</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">9 to 5 Look, Party Wear, Festival, Marriage / Wedding / Engagement, Birthday Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Latest Trend</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Symbol</strong></td>
+<td>:</td>
+<td style="text-align: left;">Heart</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Women, Teenage, School / Collage Girls</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Ring</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>More Info</strong></td>
+<td>:</td>
+<td style="text-align: left;">This product is gold plated with approx 50 miligram of gold.</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Diamond</s:tag>
+    <s:tag>Golden Ladies Ring</s:tag>
+    <s:tag>Heart</s:tag>
+    <s:tag>Latest Trend</s:tag>
+    <s:tag>Miligram Gold</s:tag>
+    <s:tag>Rhodium Ladies Ring</s:tag>
+    <s:tag>Shining</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625201021106</id>
+      <title>11</title>
+      <s:price currency="INR">1250.00</s:price>
+      <s:sku>LRG-12A-251_S11</s:sku>
+      <s:grams>3</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625201021106</id>
+      <title>12</title>
+      <s:price currency="INR">1250.00</s:price>
+      <s:sku>LRG-12A-251_S12</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625201021106</id>
+      <title>13</title>
+      <s:price currency="INR">1250.00</s:price>
+      <s:sku>LRG-12A-251_S13</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8625200988338</id>
+    <published>2025-10-15T19:05:47+05:30</published>
+    <updated>2025-10-15T19:05:47+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/1-gram-gold-plated-opulent-design-ring-for-ladies-style-a250"/>
+    <title>1 Gram Gold Plated Opulent Design Ring for Ladies - Style A250</title>
+    <s:type>Ladies Ring</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/1GramGoldPlatedOpulentDesignRingforLadies.jpg?v=1760535348"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>Ladies Ring<br>
+        <strong>Price: </strong>
+            1350.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Enhance your style with this 1 gram gold plated ladies ring featuring an opulent design. Crafted from brass with a radiant rhodium finish, it offers a shining golden look that complements the latest trends. Adorned with delicate diamond accents, this elegant ring symbolizes love and sophistication, perfect for any occasion. Durable and lightweight, it combines beauty with comfort for everyday wear.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Ring Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">3 mm (0.3 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">2 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;">Adjustable</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Lock Type</strong></td>
+<td>:</td>
+<td style="text-align: left;">No Lock</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden, Rhodium</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Miligram Gold, Brass, Diamond</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">9 to 5 Look, Everyday, Festival, Marriage / Wedding / Engagement, Birthday Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Latest Trend</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Symbol</strong></td>
+<td>:</td>
+<td style="text-align: left;">Love</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Women, Teenage, School / Collage Girls</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Ring</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>More Info</strong></td>
+<td>:</td>
+<td style="text-align: left;">This product is gold plated with approx 50 miligram of gold.</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Diamond</s:tag>
+    <s:tag>Golden Ladies Ring</s:tag>
+    <s:tag>Latest Trend</s:tag>
+    <s:tag>Love</s:tag>
+    <s:tag>Miligram Gold</s:tag>
+    <s:tag>Rhodium Ladies Ring</s:tag>
+    <s:tag>Shining</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625200988338</id>
+      <title>Default Title</title>
+      <s:price currency="INR">1350.00</s:price>
+      <s:sku>LRG-13A-250</s:sku>
+      <s:grams>2</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8625200955570</id>
+    <published>2025-10-15T19:05:09+05:30</published>
+    <updated>2025-10-15T19:05:09+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/1-gram-gold-plated-designer-ring-for-ladies-style-a249"/>
+    <title>1 Gram Gold Plated Designer Ring for Ladies - Style A249</title>
+    <s:type>Ladies Ring</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/1GramGoldPlatedDesignerRingforLadies.jpg?v=1760535310"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>Ladies Ring<br>
+        <strong>Price: </strong>
+            1290.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>This 1 gram gold-plated designer ring combines the elegance of rhodium shine with a stylish diamond accent, crafted on durable brass. Featuring a miligram gold finish, it adds a subtle golden glow perfect for everyday wear or special occasions. Inspired by the latest trends, this ladies ring symbolizes love and sophistication, making it a versatile accessory for any outfit.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Ring Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">2 mm (0.2 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;">Adjustable</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Lock Type</strong></td>
+<td>:</td>
+<td style="text-align: left;">No Lock</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden, Rhodium</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Miligram Gold, Brass, Diamond</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">9 to 5 Look, Everyday, Festival, Marriage / Wedding / Engagement, Birthday Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Latest Trend</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Symbol</strong></td>
+<td>:</td>
+<td style="text-align: left;">Love</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Women, Teenage, School / Collage Girls</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Ring</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>More Info</strong></td>
+<td>:</td>
+<td style="text-align: left;">This product is gold plated with approx 50 miligram of gold.</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Diamond</s:tag>
+    <s:tag>Golden Ladies Ring</s:tag>
+    <s:tag>Latest Trend</s:tag>
+    <s:tag>Love</s:tag>
+    <s:tag>Miligram Gold</s:tag>
+    <s:tag>Rhodium Ladies Ring</s:tag>
+    <s:tag>Shining</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625200955570</id>
+      <title>Default Title</title>
+      <s:price currency="INR">1290.00</s:price>
+      <s:sku>LRG-12A-249</s:sku>
+      <s:grams>1</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8625200922802</id>
+    <published>2025-10-15T19:04:31+05:30</published>
+    <updated>2025-10-15T19:04:31+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/1-gram-gold-plated-fashion-forward-ring-for-ladies-style-a248"/>
+    <title>1 Gram Gold Plated Fashion-Forward Ring for Ladies - Style A248</title>
+    <s:type>Ladies Ring</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/1GramGoldPlatedFashion-ForwardRingforLadies.jpg?v=1760535272"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>Ladies Ring<br>
+        <strong>Price: </strong>
+            1290.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Elevate your style with this 1 Gram Gold Plated Ladies Ring, crafted in miligram gold over brass for a lasting shine. Featuring a rhodium finish and sparkling diamond accents, this golden ring captures the latest fashion trends. Perfect for adding a touch of elegance to any outfit.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Ring Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">4 mm (0.4 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;">Adjustable</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Lock Type</strong></td>
+<td>:</td>
+<td style="text-align: left;">No Lock</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden, Rhodium</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Miligram Gold, Brass, Diamond</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">9 to 5 Look, Party Wear, Festival, Marriage / Wedding / Engagement, Birthday Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Latest Trend</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Women, Teenage, School / Collage Girls</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Ring</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>More Info</strong></td>
+<td>:</td>
+<td style="text-align: left;">This product is gold plated with approx 50 miligram of gold.</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Diamond</s:tag>
+    <s:tag>Golden Ladies Ring</s:tag>
+    <s:tag>Latest Trend</s:tag>
+    <s:tag>Miligram Gold</s:tag>
+    <s:tag>Rhodium Ladies Ring</s:tag>
+    <s:tag>Shining</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625200922802</id>
+      <title>Default Title</title>
+      <s:price currency="INR">1290.00</s:price>
+      <s:sku>LRG-12A-248</s:sku>
+      <s:grams>1</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8625200890034</id>
+    <published>2025-10-15T19:03:59+05:30</published>
+    <updated>2025-10-15T19:03:59+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/1-gram-gold-plated-best-quality-ring-for-ladies-style-a247"/>
+    <title>1 Gram Gold Plated Best Quality Ring for Ladies - Style A247</title>
+    <s:type>Ladies Ring</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/1GramGoldPlatedBestQualityRingforLadies.jpg?v=1760535240"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>Ladies Ring<br>
+        <strong>Price: </strong>
+            1350.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>This 1 gram gold-plated ladies ring features a shining rhodium finish, expertly crafted on a brass base for durability. Adorned with sparkling diamond accents, it combines the latest trends with classic elegance. Perfect for adding a touch of golden brilliance to any outfit.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Ring Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">3 mm (0.3 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;">Adjustable</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Lock Type</strong></td>
+<td>:</td>
+<td style="text-align: left;">No Lock</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden, Rhodium</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Miligram Gold, Brass, Diamond</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">9 to 5 Look, Party Wear, Festival, Marriage / Wedding / Engagement, Birthday Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Latest Trend</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Women, Teenage, School / Collage Girls</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Ring</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>More Info</strong></td>
+<td>:</td>
+<td style="text-align: left;">This product is gold plated with approx 50 miligram of gold.</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Diamond</s:tag>
+    <s:tag>Golden Ladies Ring</s:tag>
+    <s:tag>Latest Trend</s:tag>
+    <s:tag>Miligram Gold</s:tag>
+    <s:tag>Rhodium Ladies Ring</s:tag>
+    <s:tag>Shining</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625200890034</id>
+      <title>Default Title</title>
+      <s:price currency="INR">1350.00</s:price>
+      <s:sku>LRG-13A-247</s:sku>
+      <s:grams>1</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8625200824498</id>
+    <published>2025-10-15T19:03:19+05:30</published>
+    <updated>2025-10-15T19:03:19+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/1-gram-gold-plated-lovely-design-ring-for-ladies-style-a246"/>
+    <title>1 Gram Gold Plated Lovely Design Ring for Ladies - Style A246</title>
+    <s:type>Ladies Ring</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/LRG-13A-246.jpg?v=1760535200"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>Ladies Ring<br>
+        <strong>Price: </strong>
+            1350.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>This elegant ladies ring features a shining 1 gram gold plating over durable brass, showcasing a lovely design perfect for the latest trends. Adorned with sparkling diamond accents, it adds a touch of sophistication to any outfit. Lightweight and stylish, this golden ring is an excellent choice for everyday wear or special occasions.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Ring Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">3 mm (0.3 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;">Adjustable</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Miligram Gold, Brass, Diamond</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">9 to 5 Look, Party Wear, Festival, Marriage / Wedding / Engagement, Birthday Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Latest Trend</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Women, Teenage, School / Collage Girls</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Ring</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>More Info</strong></td>
+<td>:</td>
+<td style="text-align: left;">This product is gold plated with approx 50 miligram of gold.</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Diamond</s:tag>
+    <s:tag>Golden Ladies Ring</s:tag>
+    <s:tag>Latest Trend</s:tag>
+    <s:tag>Miligram Gold</s:tag>
+    <s:tag>Shining</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625200824498</id>
+      <title>Default Title</title>
+      <s:price currency="INR">1350.00</s:price>
+      <s:sku>LRG-13A-246</s:sku>
+      <s:grams>1</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8533748056242</id>
+    <published>2025-07-10T15:49:41+05:30</published>
+    <updated>2025-07-10T15:49:41+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/designer-with-diamond-unique-design-gold-plated-ring-for-lady-style-lrg-146"/>
+    <title>Designer with Diamond Unique Design Gold Plated Ring for Lady - Style LRG-146</title>
+    <s:type>Ladies Ring</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/soni-fashion-ladies-ring-designer-with-diamond-unique-design-gold-plated-ring-for-lady-style-lrg-146_1.jpg?v=1752142615"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>Ladies Ring<br>
+        <strong>Price: </strong>
+            600.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p data-mce-fragment="1">Elevate your style with our Designer Diamond Unique Design Gold Plated Ring for ladies. Featuring a textured and shining finish, this royal ring is perfect for the latest trend. With a hidden-reg plating and made of brass, it's a stunning addition to any bridal collection.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Ring Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Height</strong></td>
+<td>:</td>
+<td style="text-align: left;">26 mm (2.6 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">6 mm (0.6 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">4 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Brass</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining, Textured</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">9 to 5 Look, Party Wear, Everyday, Festival, Marriage / Wedding / Engagement, Birthday Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Latest Trend, Bridal, Royal</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Women, Teenage, School / Collage Girls</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Ring</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Golden Ladies Ring</s:tag>
+    <s:tag>Hid_Reg_Plating</s:tag>
+    <s:tag>Latest Trend</s:tag>
+    <s:tag>Royal</s:tag>
+    <s:tag>Shining</s:tag>
+    <s:tag>Textured</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8533748056242</id>
+      <title>11</title>
+      <s:price currency="INR">600.00</s:price>
+      <s:sku>LRG-7A-146_S11</s:sku>
+      <s:grams>4</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8533748056242</id>
+      <title>12</title>
+      <s:price currency="INR">600.00</s:price>
+      <s:sku>LRG-7A-146_S12</s:sku>
+      <s:grams>4</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8533748056242</id>
+      <title>13</title>
+      <s:price currency="INR">600.00</s:price>
+      <s:sku>LRG-7A-146_S13</s:sku>
+      <s:grams>4</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8533748056242</id>
+      <title>14</title>
+      <s:price currency="INR">600.00</s:price>
+      <s:sku>LRG-7A-146_S14</s:sku>
+      <s:grams>4</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8533748056242</id>
+      <title>16</title>
+      <s:price currency="INR">600.00</s:price>
+      <s:sku>LRG-7A-146_S16</s:sku>
+      <s:grams>4</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8533748056242</id>
+      <title>18</title>
+      <s:price currency="INR">600.00</s:price>
+      <s:sku>LRG-7A-146_S18</s:sku>
+      <s:grams>4</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8533748056242</id>
+      <title>19</title>
+      <s:price currency="INR">600.00</s:price>
+      <s:sku>LRG-7A-146_S19</s:sku>
+      <s:grams>4</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8533748056242</id>
+      <title>20</title>
+      <s:price currency="INR">600.00</s:price>
+      <s:sku>LRG-7A-146_S20</s:sku>
+      <s:grams>4</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8522233086130</id>
+    <published>2025-06-30T13:39:47+05:30</published>
+    <updated>2025-06-30T13:39:47+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/1-gram-gold-plated-blue-stone-with-diamond-designer-ring-for-ladies-style-lrg-087"/>
+    <title>1 Gram Gold Plated Blue Stone With Diamond Designer Ring For Ladies - Style Lrg-087</title>
+    <s:type>Ladies Ring</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/soni-fashion-ladies-ring-1-gram-gold-plated-blue-stone-with-diamond-designer-ring-for-ladies-style-lrg-087_0.jpg?v=1751270796"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>Ladies Ring<br>
+        <strong>Price: </strong>
+            1500.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>This designer 1 Gram Gold Plated Blue Stone with Diamond Ring is crafted from rhodium plated Brass and features a stunning traditional textured stone in the middle that is sure to turn heads. The latest trendy miligram gold plating makes this a standout piece that will add a touch of sophistication to any look. The diamond accents add a touch of elegance, making this the perfect ring for any occasion.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Ring Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">5 mm (0.5 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">2 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden, Blue</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Miligram Gold, Brass, Diamond, Rhodium, Stone</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining, Textured</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">9 to 5 Look, Everyday, Festival, Marriage / Wedding / Engagement, Birthday Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Latest Trend, Traditional, Designer, Pretty, Fancy</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Women, Teenage, School / Collage Girls</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>More Info</strong></td>
+<td>:</td>
+<td style="text-align: left;">This product is gold plated with approx 100 miligram of gold.</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Blue Ladies Ring</s:tag>
+    <s:tag>Brass</s:tag>
+    <s:tag>Diamond</s:tag>
+    <s:tag>Golden Ladies Ring</s:tag>
+    <s:tag>Latest Trend</s:tag>
+    <s:tag>Miligram Gold</s:tag>
+    <s:tag>Rhodium</s:tag>
+    <s:tag>Stone</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8522233086130</id>
+      <title>10</title>
+      <s:price currency="INR">1500.00</s:price>
+      <s:sku>LRG-14A-087_S10</s:sku>
+      <s:grams>2</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8522233086130</id>
+      <title>11</title>
+      <s:price currency="INR">1500.00</s:price>
+      <s:sku>LRG-14A-087_S11</s:sku>
+      <s:grams>2</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8522233086130</id>
+      <title>12</title>
+      <s:price currency="INR">1500.00</s:price>
+      <s:sku>LRG-14A-087_S12</s:sku>
+      <s:grams>2</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8522233086130</id>
+      <title>13</title>
+      <s:price currency="INR">1500.00</s:price>
+      <s:sku>LRG-14A-087_S13</s:sku>
+      <s:grams>2</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8522233086130</id>
+      <title>14</title>
+      <s:price currency="INR">1500.00</s:price>
+      <s:sku>LRG-14A-087_S14</s:sku>
+      <s:grams>2</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8522233086130</id>
+      <title>15</title>
+      <s:price currency="INR">1500.00</s:price>
+      <s:sku>LRG-14A-087_S15</s:sku>
+      <s:grams>2</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8522233086130</id>
+      <title>16</title>
+      <s:price currency="INR">1500.00</s:price>
+      <s:sku>LRG-14A-087_S16</s:sku>
+      <s:grams>2</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8520874918066</id>
+    <published>2025-06-27T16:37:27+05:30</published>
+    <updated>2025-06-27T16:37:27+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/1-gram-gold-plated-gorgeous-design-white-stone-ring-for-ladies-style-a237"/>
+    <title>1 Gram Gold Plated Gorgeous Design White Stone Ring for Ladies - Style A237</title>
+    <s:type>Ladies Ring</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/LRG-237.jpg?v=1751022443"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>Ladies Ring<br>
+        <strong>Price: </strong>
+            1550.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>This 1 gram gold-plated ring is a stunning addition to any jewelry collection. The white stone adds a touch of elegance while the miligram gold plating gives it a shining finish. Its latest trend design and brass material make it a beautiful and unique option for any fashion-forward woman.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;" data-mce-style="text-align: left;"><strong>Ring Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;" data-mce-style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;" data-mce-style="text-align: left;">4 mm (0.4 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;" data-mce-style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;" data-mce-style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;" data-mce-style="text-align: left;">3 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;" data-mce-style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;" data-mce-style="text-align: left;">Adjustable</td>
+</tr>
+<tr>
+<td style="text-align: right;" data-mce-style="text-align: right;"><strong>Lock Type</strong></td>
+<td>:</td>
+<td style="text-align: left;" data-mce-style="text-align: left;">No Lock</td>
+</tr>
+<tr>
+<td style="text-align: right;" data-mce-style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;" data-mce-style="text-align: left;">Golden, White</td>
+</tr>
+<tr>
+<td style="text-align: right;" data-mce-style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;" data-mce-style="text-align: left;">Miligram Gold, Brass, Diamond, Stone</td>
+</tr>
+<tr>
+<td style="text-align: right;" data-mce-style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;" data-mce-style="text-align: left;">Shining</td>
+</tr>
+<tr>
+<td style="text-align: right;" data-mce-style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;" data-mce-style="text-align: left;">9 to 5 Look, Party Wear, Everyday, Festival, Marriage / Wedding / Engagement, Birthday Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;" data-mce-style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;" data-mce-style="text-align: left;">Latest Trend</td>
+</tr>
+<tr>
+<td style="text-align: right;" data-mce-style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;" data-mce-style="text-align: left;">Women, Teenage, School / Collage Girls</td>
+</tr>
+<tr>
+<td style="text-align: right;" data-mce-style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;" data-mce-style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;" data-mce-style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;" data-mce-style="text-align: left;">1 Ring</td>
+</tr>
+<tr>
+<td style="text-align: right;" data-mce-style="text-align: right;"><strong>More Info</strong></td>
+<td>:</td>
+<td style="text-align: left;" data-mce-style="text-align: left;">This product is gold plated with approx 50 miligram of gold.</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Diamond</s:tag>
+    <s:tag>Golden Ladies Ring</s:tag>
+    <s:tag>Latest Trend</s:tag>
+    <s:tag>Miligram Gold</s:tag>
+    <s:tag>Shining</s:tag>
+    <s:tag>Stone</s:tag>
+    <s:tag>White Ladies Ring</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8520874918066</id>
+      <title>Default Title</title>
+      <s:price currency="INR">1550.00</s:price>
+      <s:sku>LRG-17A-237</s:sku>
+      <s:grams>3</s:grams>
+    </s:variant>
+  </entry>
+</feed>

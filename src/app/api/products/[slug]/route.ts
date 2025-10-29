@@ -1,13 +1,24 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { db } from '@/lib/database/connection';
+import { db, enableRealDatabase } from '@/lib/database/connection';
+
+// Enable real database for API routes
+enableRealDatabase();
 
 export async function GET(req: NextRequest, { params }: { params: Promise<{ slug: string }> }) {
   try {
     const resolvedParams = await params;
-    const { slug } = resolvedParams;
+    let { slug } = resolvedParams;
     
-    // Get product by slug from the database
-    const product = await db.getProductBySlug(slug);
+    // If slug looks like a product ID (starts with prod-), find by ID instead
+    let product;
+    if (slug.startsWith('prod-')) {
+      // Try to get product by ID from the database
+      const allProducts = await db.getAllProducts();
+      product = allProducts.find((p: any) => p.id === slug);
+    } else {
+      // Get product by slug from the database
+      product = await db.getProductBySlug(slug);
+    }
     
     if (!product) {
       return NextResponse.json(
@@ -19,7 +30,7 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ slug
     // Format product for frontend
     const formattedProduct = {
       id: product.id,
-      slug: product.slug,
+      slug: product.slug || product.id, // Use ID as slug if slug is missing
       title: product.title,
       description: product.description,
       price: product.price,
@@ -28,8 +39,9 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ slug
       rating: product.rating,
       reviewCount: product.reviewCount,
       categoryId: product.categoryId,
-      artisanId: product.artisanId,
+      artisan_id: product.artisanId,
       images: product.images,
+      productImages: product.productImages, // Include productImages for consistency
       material: product.material,
       dimensions: product.dimensions,
       tags: product.tags,

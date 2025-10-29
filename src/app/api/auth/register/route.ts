@@ -1,7 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import bcrypt from 'bcryptjs';
-import { db } from '@/lib/database/connection';
+import { db, enableRealDatabase } from '@/lib/database/connection';
 import { FormValidator } from '@/lib/validation';
+
+// Enable real database for API routes
+enableRealDatabase();
 
 export async function POST(request: NextRequest) {
   try {

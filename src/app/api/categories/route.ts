@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { db } from '@/lib/database/connection';
+import { db, enableRealDatabase } from '@/lib/database/connection';
+
+// Enable real database for API routes
+enableRealDatabase();
 
 export async function GET(request: NextRequest) {
   try {
@@ -9,11 +12,12 @@ export async function GET(request: NextRequest) {
     // Format categories for frontend
     const formattedCategories = categories.map((category: any) => ({
       id: category.id,
-      slug: category.id, // Using ID as slug since categories don't have a slug field
+      slug: category.id, // Using ID as slug since categories don't have a separate slug field
       name: category.name,
       description: category.description,
       image: category.image,
       isActive: category.isActive,
+      productCount: category.productCount, // Include product count
       createdAt: category.createdAt
     }));
     

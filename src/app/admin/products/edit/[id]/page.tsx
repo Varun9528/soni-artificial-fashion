@@ -1,9 +1,10 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { useRouter, useParams } from 'next/navigation';
 import Link from 'next/link';
+import { X, Upload } from 'lucide-react';
 
 export default function EditProduct() {
   const { user } = useAuth();
@@ -14,6 +15,7 @@ export default function EditProduct() {
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [product, setProduct] = useState(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
   
   const [formData, setFormData] = useState({
     title: { en: '', hi: '' },
@@ -40,9 +42,13 @@ export default function EditProduct() {
 
   const [newMaterial, setNewMaterial] = useState('');
   const [newColor, setNewColor] = useState('');
+  const [uploadedImages, setUploadedImages] = useState<File[]>([]);
+  const [uploading, setUploading] = useState(false);
+  const [uploadErrors, setUploadErrors] = useState<string[]>([]);
+  const [existingImages, setExistingImages] = useState<string[]>([]);
 
   useEffect(() => {
-    if (!user || (user.role !== 'ADMIN' && user.role !== 'SUPER_ADMIN')) {
+    if (!user || (user.role !== 'admin' && user.role !== 'super_admin')) {
       router.push('/login');
       return;
     }
@@ -59,6 +65,10 @@ export default function EditProduct() {
         }
         
         setProduct(productData.product);
+        
+        // Set existing images
+        const productImages = productData.product.productImages?.map((img: any) => img.url) || [];
+        setExistingImages(productImages);
         
         // Set form data with product values
         setFormData({
@@ -79,9 +89,9 @@ export default function EditProduct() {
           isActive: productData.product.isActive !== undefined ? productData.product.isActive : true,
           metaTitle: productData.product.metaTitle || '',
           metaDesc: productData.product.metaDesc || '',
-          images: productData.product.productImages?.map(img => img.url) || [],
-          materials: productData.product.productMaterials?.map(m => m.material) || [],
-          colors: productData.product.productColors?.map(c => c.color) || [],
+          images: productImages,
+          materials: productData.product.productMaterials?.map((m: any) => m.material) || [],
+          colors: productData.product.productColors?.map((c: any) => c.color) || []
         });
 
         // Fetch categories and artisans
@@ -168,33 +178,101 @@ export default function EditProduct() {
     }));
   };
 
-  const handleAddImage = () => {
-    setFormData(prev => ({
-      ...prev,
-      images: [...prev.images, '']
-    }));
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      const files = Array.from(e.target.files);
+      const errors: string[] = [];
+      
+      // Validate file sizes before adding
+      const validFiles = files.filter(file => {
+        if (file.size > 5 * 1024 * 1024) { // 5MB
+          errors.push(`File "${file.name}" is too large (${(file.size / (1024 * 1024)).toFixed(2)}MB). Maximum size is 5MB.`);
+          return false;
+        }
+        if (!file.type.match('image.*')) {
+          errors.push(`File "${file.name}" is not an image.`);
+          return false;
+        }
+        return true;
+      });
+      
+      if (errors.length > 0) {
+        setUploadErrors(errors);
+        // Only add valid files
+        if (validFiles.length > 0) {
+          setUploadedImages(prev => [...prev, ...validFiles]);
+        }
+      } else {
+        setUploadErrors([]);
+        setUploadedImages(prev => [...prev, ...files]);
+      }
+    }
   };
 
-  const handleRemoveImage = (index: number) => {
-    setFormData(prev => ({
-      ...prev,
-      images: prev.images.filter((_, i) => i !== index)
-    }));
+  const removeImage = (index: number) => {
+    setUploadedImages(prev => prev.filter((_, i) => i !== index));
   };
 
-  const handleImageChange = (index: number, value: string) => {
-    setFormData(prev => {
-      const newImages = [...prev.images];
-      newImages[index] = value;
-      return { ...prev, images: newImages };
-    });
+  const removeExistingImage = (index: number) => {
+    setExistingImages(prev => prev.filter((_, i) => i !== index));
+  };
+
+  const uploadImages = async () => {
+    if (uploadedImages.length === 0) return [];
+
+    setUploading(true);
+    setUploadErrors([]);
+    const uploadedUrls = [];
+
+    try {
+      for (const file of uploadedImages) {
+        // Check file size again before upload
+        if (file.size > 5 * 1024 * 1024) { // 5MB
+          throw new Error(`File "${file.name}" is too large (${(file.size / (1024 * 1024)).toFixed(2)}MB). Maximum size is 5MB.`);
+        }
+
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('category', 'products');
+
+        const response = await fetch('/api/upload', {
+          method: 'POST',
+          body: formData,
+        });
+
+        const data = await response.json();
+        if (data.success) {
+          uploadedUrls.push(data.url);
+        } else {
+          throw new Error(data.error || 'Failed to upload image');
+        }
+      }
+
+      return uploadedUrls;
+    } catch (error: any) {
+      console.error('Error uploading images:', error);
+      setUploadErrors([error.message || 'Failed to upload images']);
+      throw error;
+    } finally {
+      setUploading(false);
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
+    setUploadErrors([]);
 
     try {
+      // Upload new images first
+      let newImageUrls = [];
+      if (uploadedImages.length > 0) {
+        newImageUrls = await uploadImages();
+      }
+
+      // Combine existing images and new uploaded images
+      const allImages = [...existingImages, ...newImageUrls];
+
       const response = await fetch(`/api/admin/products/${id}`, {
         method: 'PUT',
         headers: {
@@ -202,6 +280,7 @@ export default function EditProduct() {
         },
         body: JSON.stringify({
           ...formData,
+          images: allImages,
           price: parseFloat(formData.price),
           originalPrice: formData.originalPrice ? parseFloat(formData.originalPrice) : null,
           stock: parseInt(formData.stock)
@@ -216,26 +295,29 @@ export default function EditProduct() {
       } else {
         alert('Error updating product: ' + data.error);
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error updating product:', error);
-      alert('Failed to update product');
+      alert('Failed to update product: ' + (error.message || 'Unknown error'));
     } finally {
       setSubmitting(false);
     }
   };
 
-  if (!user) {
+  if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <p>Loading...</p>
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-amber-600 mx-auto"></div>
+          <p className="mt-4 text-gray-600">Loading product...</p>
+        </div>
       </div>
     );
   }
 
-  if (loading) {
+  if (!user) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <p>Loading product data...</p>
+        <p>Loading...</p>
       </div>
     );
   }
@@ -480,38 +562,6 @@ export default function EditProduct() {
                 </div>
               </div>
 
-              {/* Images */}
-              <div>
-                <h3 className="text-md font-medium text-gray-900 mb-4">Product Images</h3>
-                <div className="space-y-2">
-                  {formData.images.map((image, index) => (
-                    <div key={index} className="flex gap-2">
-                      <input
-                        type="text"
-                        value={image}
-                        onChange={(e) => handleImageChange(index, e.target.value)}
-                        placeholder="Image URL"
-                        className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
-                      />
-                      <button
-                        type="button"
-                        onClick={() => handleRemoveImage(index)}
-                        className="px-3 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
-                      >
-                        Remove
-                      </button>
-                    </div>
-                  ))}
-                  <button
-                    type="button"
-                    onClick={handleAddImage}
-                    className="px-4 py-2 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition-colors"
-                  >
-                    Add Image
-                  </button>
-                </div>
-              </div>
-
               {/* Materials */}
               <div>
                 <h3 className="text-md font-medium text-gray-900 mb-4">Materials</h3>
@@ -581,121 +631,138 @@ export default function EditProduct() {
                   <button
                     type="button"
                     onClick={handleAddColor}
-                    className="px-4 py-2 bg-amber-600 text-white rounded-r-lg hover:bg-amber-700 transition-colors"
+                    className="px-4 py-2 bg-amber-600 text-white rounded-r-lg hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-500"
                   >
                     Add
                   </button>
                 </div>
               </div>
-
-              {/* Flags */}
+              
+              {/* Product Images */}
               <div>
-                <h3 className="text-md font-medium text-gray-900 mb-4">Product Flags</h3>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  <label className="flex items-center">
-                    <input
-                      type="checkbox"
-                      name="featured"
-                      checked={formData.featured}
-                      onChange={handleChange}
-                      className="rounded border-gray-300 text-amber-600 focus:ring-amber-500"
-                    />
-                    <span className="ml-2 text-sm text-gray-700">Featured</span>
-                  </label>
-                  
-                  <label className="flex items-center">
-                    <input
-                      type="checkbox"
-                      name="bestSeller"
-                      checked={formData.bestSeller}
-                      onChange={handleChange}
-                      className="rounded border-gray-300 text-amber-600 focus:ring-amber-500"
-                    />
-                    <span className="ml-2 text-sm text-gray-700">Best Seller</span>
-                  </label>
-                  
-                  <label className="flex items-center">
-                    <input
-                      type="checkbox"
-                      name="newArrival"
-                      checked={formData.newArrival}
-                      onChange={handleChange}
-                      className="rounded border-gray-300 text-amber-600 focus:ring-amber-500"
-                    />
-                    <span className="ml-2 text-sm text-gray-700">New Arrival</span>
-                  </label>
-                  
-                  <label className="flex items-center">
-                    <input
-                      type="checkbox"
-                      name="trending"
-                      checked={formData.trending}
-                      onChange={handleChange}
-                      className="rounded border-gray-300 text-amber-600 focus:ring-amber-500"
-                    />
-                    <span className="ml-2 text-sm text-gray-700">Trending</span>
-                  </label>
-                  
-                  <label className="flex items-center">
-                    <input
-                      type="checkbox"
-                      name="isActive"
-                      checked={formData.isActive}
-                      onChange={handleChange}
-                      className="rounded border-gray-300 text-amber-600 focus:ring-amber-500"
-                    />
-                    <span className="ml-2 text-sm text-gray-700">Active</span>
-                  </label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Product Images
+                </label>
+                
+                {/* Upload errors */}
+                {uploadErrors.length > 0 && (
+                  <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg">
+                    <h4 className="text-sm font-medium text-red-800 mb-2">Upload Errors:</h4>
+                    <ul className="text-sm text-red-700 list-disc pl-5 space-y-1">
+                      {uploadErrors.map((error, index) => (
+                        <li key={index}>{error}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                
+                {/* File info */}
+                <div className="mb-4 text-sm text-gray-600">
+                  <p>Maximum file size: 5MB per image. Supported formats: JPEG, PNG, WebP.</p>
+                </div>
+                
+                {/* Existing Images */}
+                {existingImages.length > 0 && (
+                  <div className="mb-4">
+                    <h4 className="text-sm font-medium text-gray-700 mb-2">Existing Images:</h4>
+                    <div className="flex flex-wrap gap-4">
+                      {existingImages.map((url, index) => (
+                        <div key={index} className="relative">
+                          <div className="w-24 h-24 border rounded-lg overflow-hidden">
+                            <img 
+                              src={url} 
+                              alt={`Product image ${index + 1}`} 
+                              className="w-full h-full object-cover"
+                              onError={(e) => {
+                                const target = e.target as HTMLImageElement;
+                                target.src = '/images/products/placeholder.jpg';
+                              }}
+                            />
+                          </div>
+                          <button
+                            type="button"
+                            onClick={() => removeExistingImage(index)}
+                            className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full p-1"
+                          >
+                            <X className="w-3 h-3" />
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                
+                {/* New Images to Upload */}
+                <div className="flex flex-wrap gap-4 mb-4">
+                  {uploadedImages.map((file, index) => (
+                    <div key={index} className="relative">
+                      <div className="w-24 h-24 border rounded-lg overflow-hidden">
+                        <div className="w-full h-full bg-gray-200 flex items-center justify-center">
+                          <Upload className="w-6 h-6 text-gray-400" />
+                        </div>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => removeImage(index)}
+                        className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full p-1"
+                      >
+                        <X className="w-3 h-3" />
+                      </button>
+                      <p className="text-xs text-gray-500 mt-1 truncate w-24">
+                        {file.name} ({(file.size / 1024).toFixed(1)}KB)
+                      </p>
+                    </div>
+                  ))}
+                </div>
+                
+                <div className="mt-2">
+                  <input
+                    type="file"
+                    ref={fileInputRef}
+                    onChange={handleFileChange}
+                    multiple
+                    accept="image/*"
+                    className="hidden"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => fileInputRef.current?.click()}
+                    className="px-4 py-2 bg-amber-600 text-white rounded-lg hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-500"
+                    disabled={uploading}
+                  >
+                    {uploading ? 'Uploading...' : 'Add More Images'}
+                  </button>
                 </div>
               </div>
-
-              {/* SEO */}
-              <div>
-                <h3 className="text-md font-medium text-gray-900 mb-4">SEO Information</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Meta Title
-                    </label>
-                    <input
-                      type="text"
-                      name="metaTitle"
-                      value={formData.metaTitle}
-                      onChange={handleChange}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Meta Description
-                    </label>
-                    <textarea
-                      name="metaDesc"
-                      value={formData.metaDesc}
-                      onChange={handleChange}
-                      rows={2}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
-                    />
-                  </div>
-                </div>
+              
+              {/* Form actions */}
+              <div className="flex justify-end space-x-4 pt-6 border-t border-gray-200">
+                <button
+                  type="button"
+                  onClick={() => router.push('/admin/products')}
+                  className="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500"
+                  disabled={submitting || uploading}
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  disabled={submitting || uploading}
+                  className="px-6 py-3 bg-amber-600 text-white rounded-lg hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 disabled:opacity-50"
+                >
+                  {submitting || uploading ? (
+                    <span className="flex items-center">
+                      <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      {uploading ? 'Uploading...' : 'Updating...'}
+                    </span>
+                  ) : (
+                    'Update Product'
+                  )}
+                </button>
               </div>
-            </div>
-
-            <div className="px-6 py-4 bg-gray-50 border-t border-gray-200 flex justify-end space-x-3">
-              <Link
-                href="/admin/products"
-                className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors"
-              >
-                Cancel
-              </Link>
-              <button
-                type="submit"
-                disabled={submitting}
-                className="px-4 py-2 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition-colors disabled:opacity-50"
-              >
-                {submitting ? 'Updating...' : 'Update Product'}
-              </button>
             </div>
           </form>
         </div>

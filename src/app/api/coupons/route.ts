@@ -11,11 +11,11 @@ export async function GET(request: NextRequest) {
       const coupon = await prisma.coupon.findUnique({
         where: {
           code: code.toUpperCase(),
-          isActive: true,
-          startDate: {
+          is_active: true,
+          valid_from: {
             lte: new Date()
           },
-          endDate: {
+          valid_until: {
             gte: new Date()
           }
         }
@@ -29,7 +29,7 @@ export async function GET(request: NextRequest) {
       }
       
       // Check if coupon has reached usage limit
-      if (coupon.usageLimit && coupon.usedCount >= coupon.usageLimit) {
+      if (coupon.usage_limit && coupon.usage_count && coupon.usage_count >= coupon.usage_limit) {
         return NextResponse.json({
           success: false,
           error: 'Coupon usage limit reached'
@@ -45,16 +45,16 @@ export async function GET(request: NextRequest) {
     // Get all active coupons
     const coupons = await prisma.coupon.findMany({
       where: {
-        isActive: true,
-        startDate: {
+        is_active: true,
+        valid_from: {
           lte: new Date()
         },
-        endDate: {
+        valid_until: {
           gte: new Date()
         }
       },
       orderBy: {
-        createdAt: 'desc'
+        created_at: 'desc'
       }
     });
     
@@ -106,13 +106,13 @@ export async function POST(request: NextRequest) {
         description,
         type,
         value: parseFloat(value),
-        minOrderValue: minOrderValue ? parseFloat(minOrderValue) : null,
-        maxDiscount: maxDiscount ? parseFloat(maxDiscount) : null,
-        usageLimit: usageLimit ? parseInt(usageLimit) : null,
-        userLimit: userLimit ? parseInt(userLimit) : 1,
-        isActive: Boolean(isActive),
-        startDate: new Date(startDate),
-        endDate: new Date(endDate)
+        minimum_order_amount: minOrderValue ? parseFloat(minOrderValue) : null,
+        maximum_discount_amount: maxDiscount ? parseFloat(maxDiscount) : null,
+        usage_limit: usageLimit ? parseInt(usageLimit) : null,
+        user_usage_limit: userLimit ? parseInt(userLimit) : 1,
+        is_active: Boolean(isActive),
+        valid_from: new Date(startDate),
+        valid_until: new Date(endDate)
       }
     });
     

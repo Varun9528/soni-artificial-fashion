@@ -1,101 +1,89 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
+import { useLanguage } from '@/context/LanguageContext';
+import { useAuth } from '@/context/AuthContext';
 import { useRouter } from 'next/navigation';
 
-interface Order {
-  id: string;
-  orderNumber: string;
-  status: string;
-  totalAmount: number;
-  createdAt: string;
-  items: {
-    product: string;
-    quantity: number;
-    price: number;
-  }[];
-}
-
-export default function OrderHistoryPage() {
+export default function OrdersPage() {
+  const { language } = useLanguage();
+  const { user } = useAuth();
   const router = useRouter();
-  const [orders, setOrders] = useState<Order[]>([]);
+  const [orders, setOrders] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
-  const [language, setLanguage] = useState('en');
-
-  // Mock orders data (fallback if API fails)
-  const mockOrders: Order[] = [
-    {
-      id: '1',
-      orderNumber: 'ORD-2024-001',
-      status: 'delivered',
-      totalAmount: 2500,
-      createdAt: '2024-01-15',
-      items: [
-        { product: 'Bamboo Wall Art', quantity: 1, price: 1500 },
-        { product: 'Tribal Jewelry Set', quantity: 1, price: 1000 }
-      ]
-    },
-    {
-      id: '2',
-      orderNumber: 'ORD-2024-002',
-      status: 'shipped',
-      totalAmount: 1800,
-      createdAt: '2024-01-20',
-      items: [
-        { product: 'Handwoven Basket', quantity: 2, price: 900 }
-      ]
-    },
-    {
-      id: '3',
-      orderNumber: 'ORD-2024-003',
-      status: 'processing',
-      totalAmount: 3200,
-      createdAt: '2024-01-25',
-      items: [
-        { product: 'Clay Pot Collection', quantity: 1, price: 1200 },
-        { product: 'Tribal Textile Art', quantity: 1, price: 2000 }
-      ]
-    }
-  ];
+  const [token, setToken] = useState<string | null>(null);
 
   useEffect(() => {
-    // Check authentication
-    const token = localStorage.getItem('token');
-    const savedLanguage = localStorage.getItem('language') || 'en';
-    
-    setLanguage(savedLanguage);
-    
-    if (!token) {
-      router.push('/login');
-      return;
-    }
+    // Get token from localStorage
+    const storedToken = localStorage.getItem('token');
+    setToken(storedToken);
+  }, []);
 
-    // Fetch orders from API
+  useEffect(() => {
+    if (!token || !user) return;
+
+    let isMounted = true;
+    
     const fetchOrders = async () => {
+      setLoading(true);
       try {
-        const response = await fetch('/api/user/orders');
+        const response = await fetch('/api/user/orders', {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Cache-Control': 'no-cache, no-store, must-revalidate',
+            'Pragma': 'no-cache',
+            'Expires': '0'
+          }
+        });
         const data = await response.json();
         
-        if (data.success) {
-          setOrders(data.orders);
-        } else {
-          // Fallback to mock data if API fails
-          setOrders(mockOrders);
+        // Check if component is still mounted before setting state
+        if (isMounted) {
+          if (data.success) {
+            // Transform the data to match the expected structure - USE ONLY THE API DATA DIRECTLY
+            const transformedOrders = data.orders.map((order: any) => ({
+              id: order.id,
+              orderNumber: order.order_number, // ALWAYS USE THE ORDER_NUMBER FROM API
+              order_number: order.order_number, // Keep original for reference
+              status: order.status?.toLowerCase() || 'processing',
+              totalAmount: order.total_amount || 0,
+              createdAt: order.created_at || new Date().toISOString(),
+              items: order.items?.map((item: any) => ({
+                product: {
+                  title: {
+                    en: item.product_name || 'Unknown Product',
+                    hi: item.product_name || 'अज्ञात उत्पाद'
+                  }
+                },
+                quantity: item.quantity || 1,
+                price: item.price || 0
+              })) || []
+            }));
+            console.log('Setting transformed orders with correct order numbers:', transformedOrders);
+            setOrders(transformedOrders);
+          } else {
+            console.error('Failed to fetch orders:', data.error);
+          }
         }
       } catch (error) {
         console.error('Error fetching orders:', error);
-        // Fallback to mock data if API fails
-        setOrders(mockOrders);
+        if (isMounted) {
+          console.error('Network error while fetching orders');
+        }
       } finally {
-        setLoading(false);
+        if (isMounted) {
+          setLoading(false);
+        }
       }
     };
 
     fetchOrders();
-  }, [router]);
 
-  // Mock localization function
+    return () => {
+      isMounted = false;
+    };
+  }, [token, user]);
+
   const t = (key: string) => {
     const translations: any = {
       en: {
@@ -188,13 +176,13 @@ export default function OrderHistoryPage() {
                     
                     <div className="md:col-span-2">
                       <p className="text-gray-600 dark:text-gray-400">
-                        {new Date(order.createdAt).toLocaleDateString()}
+                        {order.createdAt && !isNaN(new Date(order.createdAt).getTime()) ? new Date(order.createdAt).toLocaleDateString() : 'N/A'}
                       </p>
                     </div>
                     
                     <div className="md:col-span-3">
                       <p className="text-gray-900 dark:text-white">
-                        {order.items.map(item => `${item.product} (${item.quantity})`).join(', ')}
+                        {order.items.map((item: { product: { title: { en: string } }, quantity: number }) => `${item.product.title.en} (${item.quantity})`).join(', ')}
                       </p>
                     </div>
                     
@@ -211,12 +199,16 @@ export default function OrderHistoryPage() {
                     </div>
                     
                     <div className="md:col-span-1 flex justify-end">
-                      <Link
-                        href={`/order/${order.id}`}
-                        className="text-amber-600 hover:text-amber-800"
+                      <button
+                        onClick={() => {
+                          console.log('View Details clicked. Using order number:', order.orderNumber);
+                          // ALWAYS use the orderNumber which is the correct order_number from API
+                          router.push(`/profile/orders/${order.orderNumber}`);
+                        }}
+                        className="text-amber-600 hover:text-amber-800 bg-transparent border-none cursor-pointer"
                       >
                         {t('viewDetails')}
-                      </Link>
+                      </button>
                     </div>
                   </div>
                 ))}
@@ -230,12 +222,12 @@ export default function OrderHistoryPage() {
               <p className="text-gray-500 dark:text-gray-400 mb-6">
                 {t('emptyMessage')}
               </p>
-              <Link
-                href="/"
+              <button
+                onClick={() => router.push('/')}
                 className="inline-block px-6 py-3 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition-colors"
               >
                 Start Shopping
-              </Link>
+              </button>
             </div>
           )}
         </div>

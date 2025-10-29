@@ -5,7 +5,6 @@ import { useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { useAuth } from '@/context/AuthContext';
 import NotificationBell from '@/components/admin/NotificationBell';
-import { jwtService } from '@/lib/auth/jwt';
 
 interface AdminLayoutProps {
   children: React.ReactNode;
@@ -14,79 +13,31 @@ interface AdminLayoutProps {
 export default function AdminLayout({ children }: AdminLayoutProps) {
   const router = useRouter();
   const pathname = usePathname();
-  const { user, isLoggedIn } = useAuth();
+  const { user, isLoggedIn, logout } = useAuth();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [language, setLanguage] = useState('en');
-  const [isCheckingAuth, setIsCheckingAuth] = useState(true);
 
   useEffect(() => {
-    // Check if user is logged in and has admin role
-    console.log('Checking authentication:', { user, isLoggedIn });
+    console.log('AdminLayout - checking auth state:', { user, isLoggedIn });
     
-    // First check if there's a token in cookies and verify it
-    const token = document.cookie
-      .split('; ')
-      .find(row => row.startsWith('token='))
-      ?.split('=')[1];
-    
-    if (token) {
-      try {
-        const decoded = jwtService.verifyAccessToken(token);
-        console.log('Token decoded:', decoded);
-        
-        // If we have a valid token but no user in context, update the context
-        if (decoded && (!user || user.id !== decoded.sub)) {
-          // Try to get user data from localStorage
-          const userData = localStorage.getItem('user');
-          if (userData) {
-            try {
-              const parsedUser = JSON.parse(userData);
-              // We'll rely on the context provider to handle this
-            } catch (error) {
-              console.error('Error parsing user data:', error);
-            }
-          }
-        }
-      } catch (error) {
-        console.error('Token verification failed:', error);
-        // Invalid token, clear it
-        document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
-      }
-    }
-    
-    if (!isLoggedIn || !user) {
+    // Redirect if not logged in
+    if (!isLoggedIn) {
       console.log('Not logged in, redirecting to login');
       router.push('/login?redirect=' + encodeURIComponent(pathname));
-      setIsCheckingAuth(false);
       return;
     }
     
-    if (user.role !== 'admin' && user.role !== 'super_admin') {
+    // Redirect if not admin
+    if (user && user.role !== 'admin' && user.role !== 'super_admin') {
       console.log('User role not admin, redirecting to home');
       router.push('/?message=' + encodeURIComponent('Access denied. Admin privileges required.'));
-      setIsCheckingAuth(false);
       return;
     }
     
     // Set language from localStorage
     const savedLanguage = localStorage.getItem('language') || 'en';
     setLanguage(savedLanguage);
-    setIsCheckingAuth(false);
   }, [router, pathname, user, isLoggedIn]);
-
-  // Show loading state while checking authentication
-  if (isCheckingAuth) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-amber-600 mx-auto"></div>
-          <p className="mt-4 text-gray-600">Checking authentication...</p>
-        </div>
-      </div>
-    );
-  }
 
   const navigation = [
     { name: 'Dashboard', href: '/admin', icon: '📊' },
@@ -95,14 +46,21 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
     { name: 'Categories', href: '/admin/categories', icon: '🏷️' },
     { name: 'Artisans', href: '/admin/artisans', icon: '👨‍🎨' },
     { name: 'Banners', href: '/admin/banners', icon: '🖼️' },
-    { name: 'Analytics', href: '/admin/analytics', icon: '📊' },
+    { name: 'Contact Requests', href: '/admin/contact-requests', icon: '📧' },
+    { name: 'Sell Requests', href: '/admin/sell-requests', icon: '💼' },
+    { name: 'Analytics', href: '/admin/analytics', icon: '📈' },
   ];
 
   const handleLogout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
-    router.push('/login');
+    // Use the logout function from auth context
+    logout();
+    // Preserve the redirect parameter if it exists
+    const currentPath = window.location.pathname;
+    if (currentPath.startsWith('/admin')) {
+      router.push('/login?redirect=' + encodeURIComponent(currentPath));
+    } else {
+      router.push('/login');
+    }
   };
 
   return (
@@ -111,20 +69,25 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
       {sidebarOpen && (
         <div className="fixed inset-0 z-40 lg:hidden">
           <div className="fixed inset-0 bg-gray-600 bg-opacity-75" onClick={() => setSidebarOpen(false)}></div>
-          <div className="relative flex-1 flex flex-col max-w-xs w-full bg-white">
+          <div className="relative flex-1 flex flex-col max-w-xs w-full bg-white shadow-xl">
             <div className="absolute top-0 right-0 -mr-12 pt-2">
               <button
                 type="button"
-                className="ml-1 flex items-center justify-center h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                className="ml-1 flex items-center justify-center h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white bg-gray-800 text-white"
                 onClick={() => setSidebarOpen(false)}
               >
                 <span className="sr-only">Close sidebar</span>
-                <span className="h-6 w-6 text-white">✕</span>
+                <span className="h-6 w-6">✕</span>
               </button>
             </div>
             <div className="flex-1 h-0 pt-5 pb-4 overflow-y-auto">
               <div className="flex-shrink-0 flex items-center px-4">
-                <h1 className="text-xl font-bold text-gray-900">Admin Panel</h1>
+                <div className="flex items-center space-x-2">
+                  <div className="w-8 h-8 bg-amber-600 rounded-lg flex items-center justify-center">
+                    <span className="text-white font-bold text-sm">SA</span>
+                  </div>
+                  <h1 className="text-xl font-bold text-gray-900">Soni Admin</h1>
+                </div>
               </div>
               <nav className="mt-5 px-2 space-y-1">
                 {navigation.map((item) => (
@@ -133,9 +96,9 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
                     href={item.href}
                     className={`${
                       pathname === item.href
-                        ? 'bg-gray-100 text-gray-900'
+                        ? 'bg-amber-50 border-amber-500 text-amber-700'
                         : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
-                    } group flex items-center px-2 py-2 text-base font-medium rounded-md`}
+                    } group flex items-center px-2 py-2 text-base font-medium rounded-md border-l-4 border-transparent transition-colors duration-200`}
                     onClick={() => setSidebarOpen(false)}
                   >
                     <span className="mr-3 text-xl">{item.icon}</span>
@@ -165,7 +128,12 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
         <div className="flex-1 flex flex-col min-h-0 border-r border-gray-200 bg-white">
           <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
             <div className="flex items-center flex-shrink-0 px-4">
-              <h1 className="text-xl font-bold text-gray-900">Admin Panel</h1>
+              <div className="flex items-center space-x-2">
+                <div className="w-8 h-8 bg-amber-600 rounded-lg flex items-center justify-center">
+                  <span className="text-white font-bold text-sm">SA</span>
+                </div>
+                <h1 className="text-xl font-bold text-gray-900">Soni Admin</h1>
+              </div>
             </div>
             <nav className="mt-5 flex-1 px-2 bg-white space-y-1">
               {navigation.map((item) => (
@@ -174,9 +142,9 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
                   href={item.href}
                   className={`${
                     pathname === item.href
-                      ? 'bg-gray-100 text-gray-900'
+                      ? 'bg-amber-50 border-amber-500 text-amber-700'
                       : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
-                  } group flex items-center px-2 py-2 text-sm font-medium rounded-md`}
+                  } group flex items-center px-2 py-2 text-sm font-medium rounded-md border-l-4 border-transparent transition-colors duration-200`}
                 >
                   <span className="mr-3 text-lg">{item.icon}</span>
                   {item.name}
@@ -185,23 +153,30 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
             </nav>
           </div>
           <div className="flex-shrink-0 flex border-t border-gray-200 p-4">
-            <button
-              onClick={handleLogout}
-              className="flex-shrink-0 w-full group block"
-            >
-              <div className="flex items-center">
-                <div className="ml-3">
-                  <p className="text-sm font-medium text-gray-700 group-hover:text-gray-900">Sign out</p>
-                </div>
+            <div className="flex items-center">
+              <div>
+                <p className="text-sm font-medium text-gray-700 truncate">{user?.name || 'Admin User'}</p>
+                <p className="text-xs font-medium text-gray-500 truncate">{user?.email}</p>
               </div>
-            </button>
+            </div>
+            <div className="ml-auto">
+              <button
+                onClick={handleLogout}
+                className="text-gray-400 hover:text-gray-500"
+              >
+                <span className="sr-only">Sign out</span>
+                <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
       </div>
 
       <div className="lg:pl-64 flex flex-col flex-1">
         {/* Admin Header */}
-        <div className="bg-white shadow-sm border-b">
+        <div className="bg-white shadow-sm border-b border-gray-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center py-4">
               <div className="flex items-center">
@@ -211,18 +186,27 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
                   onClick={() => setSidebarOpen(true)}
                 >
                   <span className="sr-only">Open sidebar</span>
-                  <span className="h-6 w-6">☰</span>
+                  <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                  </svg>
                 </button>
                 <h1 className="text-xl font-bold text-gray-900">Admin Dashboard</h1>
               </div>
               <div className="flex items-center space-x-4">
                 <NotificationBell />
-                <span className="text-sm text-gray-600">Last updated: {new Date().toLocaleTimeString()}</span>
-                <Link href="/admin/profile" className="w-8 h-8 bg-amber-600 rounded-full flex items-center justify-center">
-                  <span className="text-white text-sm font-medium">
-                    {user?.name?.charAt(0).toUpperCase() || 'A'}
-                  </span>
-                </Link>
+                <div className="flex items-center">
+                  <div className="ml-3">
+                    <p className="text-sm font-medium text-gray-700 hidden md:block">{user?.name || 'Admin User'}</p>
+                    <p className="text-xs font-medium text-gray-500 hidden md:block">{user?.email}</p>
+                  </div>
+                  <div className="ml-4 flex-shrink-0">
+                    <div className="w-8 h-8 bg-amber-600 rounded-full flex items-center justify-center">
+                      <span className="text-white text-sm font-medium">
+                        {user?.name?.charAt(0).toUpperCase() || 'A'}
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

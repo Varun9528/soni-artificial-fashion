@@ -1,6 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useAuth } from '@/context/AuthContext';
+import { useRouter } from 'next/navigation';
 
 // Mock localization function
 const t = (key: string, lang: string = 'en') => {
@@ -49,48 +51,94 @@ const t = (key: string, lang: string = 'en') => {
 };
 
 export default function AdminAnalytics() {
+  const { user } = useAuth();
+  const router = useRouter();
   const [language, setLanguage] = useState('en');
+  const [salesOverview, setSalesOverview] = useState<any>({});
+  const [topCategories, setTopCategories] = useState<any[]>([]);
+  const [topProducts, setTopProducts] = useState<any[]>([]);
+  const [customerGrowth, setCustomerGrowth] = useState<any>({});
+  const [returnsReport, setReturnsReport] = useState<any>({});
+  const [recentOrders, setRecentOrders] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if (!user || (user.role !== 'admin' && user.role !== 'super_admin')) {
+      router.push('/login');
+      return;
+    }
+
     const savedLanguage = localStorage.getItem('language') || 'en';
     setLanguage(savedLanguage);
-  }, []);
 
-  // Mock data for analytics
-  const salesOverview = {
-    totalRevenue: 1250000,
-    ordersProcessed: 1847,
-    averageOrderValue: 675.85,
-    topSellingCategory: "Home Decor"
+    fetchAnalyticsData();
+  }, [user, router]);
+
+  const fetchAnalyticsData = async () => {
+    try {
+      // Fetch all analytics data
+      const [
+        salesOverviewRes,
+        topCategoriesRes,
+        topProductsRes,
+        customerGrowthRes,
+        returnsReportRes,
+        recentOrdersRes
+      ] = await Promise.all([
+        fetch('/api/admin/analytics/sales-overview'),
+        fetch('/api/admin/analytics/top-categories'),
+        fetch('/api/admin/analytics/top-products'),
+        fetch('/api/admin/analytics/customer-growth'),
+        fetch('/api/admin/analytics/returns-report'),
+        fetch('/api/admin/analytics/recent-orders')
+      ]);
+
+      if (salesOverviewRes.ok) {
+        const data = await salesOverviewRes.json();
+        setSalesOverview(data.data);
+      }
+
+      if (topCategoriesRes.ok) {
+        const data = await topCategoriesRes.json();
+        setTopCategories(data.data);
+      }
+
+      if (topProductsRes.ok) {
+        const data = await topProductsRes.json();
+        setTopProducts(data.data);
+      }
+
+      if (customerGrowthRes.ok) {
+        const data = await customerGrowthRes.json();
+        setCustomerGrowth(data.data);
+      }
+
+      if (returnsReportRes.ok) {
+        const data = await returnsReportRes.json();
+        setReturnsReport(data.data);
+      }
+
+      if (recentOrdersRes.ok) {
+        const data = await recentOrdersRes.json();
+        setRecentOrders(data.data);
+      }
+    } catch (error) {
+      console.error('Error fetching analytics data:', error);
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const topCategories = [
-    { name: "Home Decor", revenue: 350000, percentage: 28 },
-    { name: "Jewelry", revenue: 280000, percentage: 22.4 },
-    { name: "Textiles", revenue: 210000, percentage: 16.8 },
-    { name: "Pottery", revenue: 175000, percentage: 14 },
-    { name: "Woodwork", revenue: 140000, percentage: 11.2 },
-    { name: "Other", revenue: 95000, percentage: 7.6 }
-  ];
-
-  const topProducts = [
-    { name: "Bamboo Wall Art", sales: 1247, revenue: 187050 },
-    { name: "Handwoven Basket", sales: 985, revenue: 78800 },
-    { name: "Tribal Necklace Set", sales: 876, revenue: 131400 },
-    { name: "Clay Pot Collection", sales: 756, revenue: 90720 },
-    { name: "Wooden Sculpture", sales: 634, revenue: 95100 }
-  ];
-
-  const customerGrowth = {
-    newCustomers: 342,
-    returningCustomers: 156,
-    growthRate: 12.5
-  };
-
-  const returnsReport = {
-    returnPercentage: 3.2,
-    refundAmount: 38500
-  };
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-amber-600 mx-auto"></div>
+          <p className="mt-4 text-gray-600 dark:text-gray-400">Loading analytics...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-6">
@@ -105,7 +153,7 @@ export default function AdminAnalytics() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm font-medium text-gray-600 dark:text-gray-400">{t('totalRevenue', language)}</p>
-                <p className="text-2xl font-bold text-gray-900 dark:text-white">₹{salesOverview.totalRevenue.toLocaleString()}</p>
+                <p className="text-2xl font-bold text-gray-900 dark:text-white">₹{salesOverview.totalRevenue?.toLocaleString() || '0'}</p>
               </div>
               <div className="p-3 rounded-full bg-blue-500">
                 <span className="text-2xl">💰</span>
@@ -117,7 +165,7 @@ export default function AdminAnalytics() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm font-medium text-gray-600 dark:text-gray-400">{t('ordersProcessed', language)}</p>
-                <p className="text-2xl font-bold text-gray-900 dark:text-white">{salesOverview.ordersProcessed}</p>
+                <p className="text-2xl font-bold text-gray-900 dark:text-white">{salesOverview.totalOrders || '0'}</p>
               </div>
               <div className="p-3 rounded-full bg-green-500">
                 <span className="text-2xl">🛍️</span>
@@ -129,7 +177,7 @@ export default function AdminAnalytics() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm font-medium text-gray-600 dark:text-gray-400">{t('averageOrderValue', language)}</p>
-                <p className="text-2xl font-bold text-gray-900 dark:text-white">₹{salesOverview.averageOrderValue.toFixed(2)}</p>
+                <p className="text-2xl font-bold text-gray-900 dark:text-white">₹{salesOverview.averageOrderValue?.toFixed(2) || '0.00'}</p>
               </div>
               <div className="p-3 rounded-full bg-purple-500">
                 <span className="text-2xl">📈</span>
@@ -141,7 +189,7 @@ export default function AdminAnalytics() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm font-medium text-gray-600 dark:text-gray-400">{t('topSellingCategory', language)}</p>
-                <p className="text-2xl font-bold text-gray-900 dark:text-white">{salesOverview.topSellingCategory}</p>
+                <p className="text-2xl font-bold text-gray-900 dark:text-white">{salesOverview.topSellingCategory || 'N/A'}</p>
               </div>
               <div className="p-3 rounded-full bg-orange-500">
                 <span className="text-2xl">🏆</span>
@@ -153,7 +201,7 @@ export default function AdminAnalytics() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm font-medium text-gray-600 dark:text-gray-400">{t('customerGrowth', language)}</p>
-                <p className="text-2xl font-bold text-gray-900 dark:text-white">{customerGrowth.growthRate}%</p>
+                <p className="text-2xl font-bold text-gray-900 dark:text-white">{customerGrowth.growthRate || '0'}%</p>
               </div>
               <div className="p-3 rounded-full bg-teal-500">
                 <span className="text-2xl">👥</span>
@@ -184,12 +232,12 @@ export default function AdminAnalytics() {
                 <div key={index}>
                   <div className="flex justify-between mb-1">
                     <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{category.name}</span>
-                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">₹{category.revenue.toLocaleString()}</span>
+                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">₹{category.revenue?.toLocaleString() || '0'}</span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2 dark:bg-gray-700">
                     <div 
                       className="bg-amber-600 h-2 rounded-full" 
-                      style={{ width: `${category.percentage}%` }}
+                      style={{ width: `${category.percentage || 0}%` }}
                     ></div>
                   </div>
                 </div>
@@ -216,8 +264,8 @@ export default function AdminAnalytics() {
                   {topProducts.map((product, index) => (
                     <tr key={index}>
                       <td className="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">{product.name}</td>
-                      <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">{product.sales}</td>
-                      <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">₹{product.revenue.toLocaleString()}</td>
+                      <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">{product.sales || '0'}</td>
+                      <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">₹{product.revenue?.toLocaleString() || '0'}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -232,15 +280,15 @@ export default function AdminAnalytics() {
               <div className="space-y-4">
                 <div className="flex justify-between">
                   <span className="text-sm text-gray-600 dark:text-gray-400">New Customers</span>
-                  <span className="text-sm font-medium text-gray-900 dark:text-white">{customerGrowth.newCustomers}</span>
+                  <span className="text-sm font-medium text-gray-900 dark:text-white">{customerGrowth.newCustomers || '0'}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-sm text-gray-600 dark:text-gray-400">Returning Customers</span>
-                  <span className="text-sm font-medium text-gray-900 dark:text-white">{customerGrowth.returningCustomers}</span>
+                  <span className="text-sm font-medium text-gray-900 dark:text-white">{customerGrowth.returningCustomers || '0'}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-sm text-gray-600 dark:text-gray-400">Growth Rate</span>
-                  <span className="text-sm font-medium text-green-600 dark:text-green-400">+{customerGrowth.growthRate}%</span>
+                  <span className="text-sm font-medium text-green-600 dark:text-green-400">+{customerGrowth.growthRate || '0'}%</span>
                 </div>
               </div>
             </div>
@@ -250,11 +298,11 @@ export default function AdminAnalytics() {
               <div className="space-y-4">
                 <div className="flex justify-between">
                   <span className="text-sm text-gray-600 dark:text-gray-400">{t('returnPercentage', language)}</span>
-                  <span className="text-sm font-medium text-gray-900 dark:text-white">{returnsReport.returnPercentage}%</span>
+                  <span className="text-sm font-medium text-gray-900 dark:text-white">{returnsReport.returnPercentage || '0'}%</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-sm text-gray-600 dark:text-gray-400">{t('refundAmount', language)}</span>
-                  <span className="text-sm font-medium text-gray-900 dark:text-white">₹{returnsReport.refundAmount.toLocaleString()}</span>
+                  <span className="text-sm font-medium text-gray-900 dark:text-white">₹{returnsReport.refundAmount?.toLocaleString() || '0'}</span>
                 </div>
               </div>
             </div>
@@ -275,30 +323,31 @@ export default function AdminAnalytics() {
                 </tr>
               </thead>
               <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
-                <tr>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">ORD-001</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">John Doe</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">₹2,599</td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">Shipped</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">ORD-002</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">Jane Smith</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">₹1,899</td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">Processing</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">ORD-003</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">Mike Johnson</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">₹3,299</td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Delivered</span>
-                  </td>
-                </tr>
+                {recentOrders.length > 0 ? (
+                  recentOrders.map((order) => (
+                    <tr key={order.id}>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">{order.orderNumber}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">{order.customer?.name || 'N/A'}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">₹{order.totalAmount?.toLocaleString() || '0'}</td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
+                          order.status === 'DELIVERED' ? 'bg-green-100 text-green-800' :
+                          order.status === 'SHIPPED' ? 'bg-blue-100 text-blue-800' :
+                          order.status === 'PROCESSING' ? 'bg-yellow-100 text-yellow-800' :
+                          'bg-gray-100 text-gray-800'
+                        }`}>
+                          {order.status}
+                        </span>
+                      </td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td colSpan={4} className="px-6 py-4 text-center text-sm text-gray-500 dark:text-gray-400">
+                      No recent orders
+                    </td>
+                  </tr>
+                )}
               </tbody>
             </table>
           </div>

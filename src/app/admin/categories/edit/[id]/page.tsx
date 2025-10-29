@@ -11,6 +11,7 @@ export default function EditCategory() {
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
+  const [uploading, setUploading] = useState(false);
   const [category, setCategory] = useState(null);
   
   const [formData, setFormData] = useState({
@@ -73,6 +74,37 @@ export default function EditCategory() {
       ...prev,
       [name]: type === 'checkbox' ? checked : value
     }));
+  };
+
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setUploading(true);
+    const formData = new FormData();
+    formData.append('file', file);
+
+    try {
+      const response = await fetch('/api/upload', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        setFormData(prev => ({
+          ...prev,
+          image: data.url
+        }));
+      } else {
+        alert('Failed to upload image: ' + data.error);
+      }
+    } catch (error) {
+      console.error('Error uploading image:', error);
+      alert('Failed to upload image');
+    } finally {
+      setUploading(false);
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -237,12 +269,41 @@ export default function EditCategory() {
                 </div>
               </div>
 
-              {/* Image */}
+              {/* Image Upload */}
               <div>
                 <h3 className="text-md font-medium text-gray-900 mb-4">Image</h3>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Image URL
+                <div className="flex items-start space-x-4">
+                  <div className="flex-1">
+                    <input
+                      type="file"
+                      id="imageUpload"
+                      name="imageUpload"
+                      accept="image/*"
+                      onChange={handleImageUpload}
+                      disabled={uploading}
+                      className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-amber-500 focus:border-amber-500 sm:text-sm"
+                    />
+                    {uploading && (
+                      <p className="text-sm text-gray-500 mt-1">Uploading...</p>
+                    )}
+                  </div>
+                  {formData.image && (
+                    <div className="flex-shrink-0">
+                      <img 
+                        src={formData.image} 
+                        alt="Preview" 
+                        className="w-16 h-16 object-cover rounded-md border border-gray-300"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.src = '/images/products/placeholder.jpg';
+                        }}
+                      />
+                    </div>
+                  )}
+                </div>
+                <div className="mt-2">
+                  <label htmlFor="image" className="block text-sm font-medium text-gray-700">
+                    Or enter image URL directly
                   </label>
                   <input
                     type="text"

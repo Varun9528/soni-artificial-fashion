@@ -1,13 +1,52 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { db } from '@/lib/database/connection';
+import { db, enableRealDatabase } from '@/lib/database/connection';
+
+// Enable real database for API routes
+enableRealDatabase();
 
 export async function GET(request: NextRequest) {
   try {
-    // Get all products from the database
-    const products = await db.getAllProducts();
+    // Parse query parameters
+    const { searchParams } = new URL(request.url);
+    const category = searchParams.get('category');
+    const featured = searchParams.get('featured');
+    const bestSeller = searchParams.get('bestSeller');
+    const newArrival = searchParams.get('newArrival');
+    const limit = searchParams.get('limit');
+    
+    // Prepare filters
+    const filters: any = {};
+    if (category) filters.category = category;
+    if (featured === 'true') filters.featured = true;
+    if (bestSeller === 'true') filters.bestSeller = true;
+    if (newArrival === 'true') filters.newArrival = true;
+    if (limit) filters.limit = parseInt(limit);
+    
+    // If any filters are applied, use searchProducts to get pagination data, otherwise use getAllProducts
+    let result;
+    if (Object.keys(filters).length > 0) {
+      // Convert filters to searchParams format for searchProducts
+      const searchParams: any = {
+        category: filters.category,
+        featured: filters.featured,
+        bestSeller: filters.bestSeller,
+        newArrival: filters.newArrival,
+        limit: filters.limit,
+        page: 1 // Add default page parameter
+      };
+      result = await db.searchProducts(searchParams);
+    } else {
+      const products = await db.getAllProducts();
+      result = {
+        products: products,
+        pagination: {
+          totalProducts: products.length
+        }
+      };
+    }
     
     // Format products for frontend
-    const formattedProducts = products.map((product: any) => {
+    const formattedProducts = result.products.map((product: any) => {
       // Get the primary image if available
       const primaryImage = product.productImages && product.productImages.length > 0 
         ? product.productImages.find((img: any) => img.isPrimary) || product.productImages[0]
@@ -24,7 +63,7 @@ export async function GET(request: NextRequest) {
         rating: product.rating,
         review_count: product.reviewCount,
         category: product.category,
-        images: primaryImage ? [primaryImage.url] : [],
+        images: primaryImage ? [primaryImage.url] : product.images || [],
         productImages: product.productImages,
         featured: product.featured,
         best_seller: product.bestSeller,
@@ -36,6 +75,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({
       success: true,
       products: formattedProducts,
+      pagination: result.pagination,
       count: formattedProducts.length
     });
   } catch (error) {

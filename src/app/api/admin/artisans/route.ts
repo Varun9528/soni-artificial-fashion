@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { db } from '@/lib/database/connection';
+import { db, enableRealDatabase } from '@/lib/database/connection';
 import { withAdminAuth } from '@/lib/auth/middleware';
+
+// Enable real database
+enableRealDatabase();
 
 // GET /api/admin/artisans - Get all artisans (admin only)
 export async function GET(request: NextRequest) {
@@ -33,20 +36,26 @@ export const POST = withAdminAuth(async (request: NextRequest, authContext: any)
       );
     }
 
-    // In a real implementation, we would create the artisan in the database
-    // For now, we'll return a success response
+    // Validate that photo is not a base64 data URL if provided
+    if (body.photo && body.photo.startsWith('data:')) {
+      return NextResponse.json(
+        { success: false, error: 'Invalid photo format. Please upload an image file.' },
+        { status: 400 }
+      );
+    }
+
+    // Create the artisan in the database
+    const artisan = await db.createArtisan(body);
+    
     return NextResponse.json({
       success: true,
       message: 'Artisan created successfully',
-      artisan: {
-        id: 'new-artisan-id',
-        ...body
-      }
+      artisan: artisan
     });
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error creating artisan:', error);
     return NextResponse.json(
-      { success: false, error: 'Failed to create artisan' },
+      { success: false, error: 'Failed to create artisan: ' + (error.message || 'Unknown error') },
       { status: 500 }
     );
   }

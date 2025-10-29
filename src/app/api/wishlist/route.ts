@@ -1,7 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { db } from '@/lib/database/connection';
+import { db, enableRealDatabase } from '@/lib/database/connection';
 import { handleApiError } from '@/lib/errorHandler';
 import { withAuth } from '@/lib/auth/middleware';
+
+// Enable real database
+enableRealDatabase();
 
 export const GET = withAuth(async (request: NextRequest, authContext: any) => {
   try {

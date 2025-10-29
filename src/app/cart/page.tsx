@@ -2,7 +2,7 @@
 
 import { useCart } from '@/context/CartContext';
 import { useLanguage } from '@/context/LanguageContext';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { Minus, Plus, X, ShoppingCart as CartIcon } from 'lucide-react';
@@ -10,6 +10,7 @@ import { Minus, Plus, X, ShoppingCart as CartIcon } from 'lucide-react';
 export default function CartPage() {
   const { state: cartState, removeFromCart, updateQuantity } = useCart();
   const { language } = useLanguage();
+  const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [productData, setProductData] = useState<Record<string, any>>({});
 
@@ -22,8 +23,8 @@ export default function CartPage() {
       // Fetch data for each product in the cart
       for (const item of cartState.items) {
         try {
-          // Extract product ID - it might be in the variant or the main productId
-          const productId = item.variant?.slug || item.productId;
+          // Extract product ID - it's in the main productId
+          const productId = item.productId;
           
           // Fetch product data from API
           const response = await fetch(`/api/products/${productId}`);
@@ -33,17 +34,17 @@ export default function CartPage() {
               id: product.id,
               name: product.title?.[language] || product.title?.en || product.name || `Product ${product.id}`,
               price: product.price || 0,
-              image: product.images?.[0] || product.productImages?.[0]?.url || '/images/products/placeholder.jpg',
+              image: product.productImages?.find((img: any) => img.isPrimary)?.url || product.images?.[0] || '/images/products/placeholder.jpg',
               stock: product.stock || 10
             };
           } else {
             // Fallback to variant data if available
             productDataMap[item.productId] = {
               id: item.productId,
-              name: item.variant?.title || `Product ${item.productId}`,
-              price: item.variant?.price || 0,
+              name: item.variant?.size || item.variant?.color || `Product ${item.productId}`,
+              price: 0,
               image: '/images/products/placeholder.jpg',
-              stock: item.variant?.stock || 10
+              stock: 10
             };
           }
         } catch (error) {
@@ -51,10 +52,10 @@ export default function CartPage() {
           // Fallback data
           productDataMap[item.productId] = {
             id: item.productId,
-            name: item.variant?.title || `Product ${item.productId}`,
-            price: item.variant?.price || 0,
+            name: item.variant?.size || item.variant?.color || `Product ${item.productId}`,
+            price: 0,
             image: '/images/products/placeholder.jpg',
-            stock: item.variant?.stock || 10
+            stock: 10
           };
         }
       }
@@ -70,7 +71,7 @@ export default function CartPage() {
   // Calculate totals
   const subtotal = cartState.items.reduce((total, item) => {
     const product = productData[item.productId];
-    const price = product ? product.price : (item.variant?.price || 0);
+    const price = product ? product.price : 0;
     return total + (price * item.quantity);
   }, 0);
   
@@ -81,8 +82,8 @@ export default function CartPage() {
   const handleCheckout = async () => {
     setLoading(true);
     try {
-      // Redirect to checkout page
-      window.location.href = '/checkout';
+      // Redirect to checkout page using router instead of window.location
+      router.push('/checkout');
     } catch (error) {
       console.error('Error proceeding to checkout:', error);
     } finally {
@@ -139,12 +140,12 @@ export default function CartPage() {
           </div>
           <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">{t('cartTitle')}</h1>
           <p className="text-gray-600 dark:text-gray-400 mb-8">{t('cartEmptyMessage')}</p>
-          <Link 
-            href="/products" 
+          <button
+            onClick={() => router.push('/products')}
             className="flipkart-button px-6 py-3 inline-block"
           >
             {t('continueShopping')}
-          </Link>
+          </button>
         </div>
       </div>
     );
@@ -174,7 +175,7 @@ export default function CartPage() {
         {/* Order summary */}
         <div className="lg:col-span-1">
           <div className="flipkart-card p-6 sticky top-24">
-            <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-6">Order Summary</h2>
+            <h2 className="flipkart-section-title mb-6">Order Summary</h2>
             
             <div className="space-y-4 mb-6">
               <div className="flex justify-between">
@@ -216,12 +217,12 @@ export default function CartPage() {
               )}
             </button>
             
-            <Link 
-              href="/products" 
-              className="block text-center mt-4 text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 font-medium"
+            <button
+              onClick={() => router.push('/products')}
+              className="block text-center mt-4 text-[#2874f0] hover:text-[#2569db] font-medium"
             >
               {t('continueShopping')} →
-            </Link>
+            </button>
           </div>
         </div>
       </div>

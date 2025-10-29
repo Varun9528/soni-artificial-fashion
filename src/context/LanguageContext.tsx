@@ -137,18 +137,14 @@ const LanguageContext = React.createContext<LanguageContextType | undefined>(und
       
       // Wishlist page translations
       'wishlist.header': 'Your Saved Favorites',
-      'wishlist.empty': 'Your wishlist is empty. Start exploring to add products you love!',
       
       // Cart page translations
       'cart.header': 'Your Shopping Cart',
-      'cart.empty': 'Your cart is empty. Add products you want to buy here.',
-      'cart.checkout': 'Proceed to Checkout',
       
       // Checkout page translations
       'checkout.header': 'Checkout',
       'checkout.deliveryAddress': 'Delivery Address',
       'checkout.pincode': 'Pincode (6 digits)',
-      'checkout.placeOrder': 'Place Order',
       'checkout.orderConfirmation': '✅ Your order has been successfully placed! Thank you for supporting Lettex.',
       'checkout.orderId': 'Order ID: [auto-generated]',
       'checkout.error.fillAllFields': 'Please fill all fields.',
@@ -179,7 +175,6 @@ const LanguageContext = React.createContext<LanguageContextType | undefined>(und
       // Footer content
       'footer.about': 'About',
       'footer.aboutText': 'Lettex Marketplace brings your neighborhood grocery and dairy shop to your screen — offering refined oils, milk products, fresh groceries, and our own Lettex-branded essentials with unbeatable freshness and quality.',
-      'footer.customerService': 'Customer Service',
       'footer.categories': 'Categories',
       'footer.socialMedia': 'Social Media',
       'footer.legal': 'Legal',
@@ -358,7 +353,6 @@ const LanguageContext = React.createContext<LanguageContextType | undefined>(und
       // Footer content
       'footer.about': 'बारे में',
       'footer.aboutText': 'लेटेक्स मार्केटप्लेस आपके स्क्रीन पर आपकी पड़ोस की किराना और डेयरी की दुकान लाता है — शोधित तेल, दूध के उत्पाद, ताजा किराने की वस्तुएं और हमारे स्वयं के लेटेक्स-ब्रांडेड आवश्यक वस्तुएं प्रदान करता है जिनकी ताजगी और गुणवत्ता अतुलनीय है।',
-      'footer.customerService': 'ग्राहक सेवा',
       'footer.categories': 'श्रेणियाँ',
       'footer.socialMedia': 'सोशल मीडिया',
       'footer.legal': 'कानूनी',

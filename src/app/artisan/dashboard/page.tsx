@@ -53,14 +53,16 @@ export default function ArtisanDashboard() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Get user session
-        const session = await getServerSession();
-        if (!session || session.user.role !== 'artisan') {
+        // Get user session from API route instead of directly importing server session
+        const sessionRes = await fetch('/api/auth/session');
+        const sessionData = await sessionRes.json();
+        
+        if (!sessionData.user || sessionData.user.role !== 'artisan') {
           router.push('/login');
           return;
         }
         
-        setUser(session.user);
+        setUser(sessionData.user);
         
         // Fetch artisan data
         const [statsRes, productsRes, ordersRes] = await Promise.all([

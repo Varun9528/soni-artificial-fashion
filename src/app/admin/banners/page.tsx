@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useAuth } from '@/context/AuthContext';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
@@ -8,7 +9,8 @@ interface Banner {
   id: string;
   title: { en: string; hi: string };
   subtitle: { en: string; hi: string };
-  image: string;
+  image?: string;
+  image_desktop?: string;
   link: string;
   buttonText: { en: string; hi: string };
   type: string;
@@ -19,37 +21,40 @@ interface Banner {
 }
 
 export default function AdminBannersPage() {
+  const { user } = useAuth();
   const router = useRouter();
   const [banners, setBanners] = useState<Banner[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Check admin auth
-    const token = localStorage.getItem('token');
-    const userData = localStorage.getItem('user');
-    
-    if (!token || !userData) {
-      router.push('/login');
-      return;
-    }
-
-    try {
-      const user = JSON.parse(userData);
-      if (user.role !== 'admin' && user.role !== 'super_admin') {
-        router.push('/');
-        return;
-      }
-    } catch (error) {
+    if (!user || (user.role !== 'admin' && user.role !== 'ADMIN' && user.role !== 'super_admin' && user.role !== 'SUPER_ADMIN')) {
       router.push('/login');
       return;
     }
 
     loadBanners();
-  }, [router]);
+  }, [user, router]);
+
+  // Refresh banners when window gains focus
+  useEffect(() => {
+    const handleFocus = () => {
+      // Only refresh if we're not already loading
+      if (!loading) {
+        setLoading(true);
+        loadBanners();
+      }
+    };
+
+    window.addEventListener('focus', handleFocus);
+    
+    return () => {
+      window.removeEventListener('focus', handleFocus);
+    };
+  }, [loading]);
 
   const loadBanners = async () => {
     try {
-      const response = await fetch('/api/banners');
+      const response = await fetch('/api/admin/banners');
       if (response.ok) {
         const data = await response.json();
         setBanners(data.banners || []);
@@ -58,6 +63,60 @@ export default function AdminBannersPage() {
       console.error('Error loading banners:', error);
     }
     setLoading(false);
+  };
+
+  const handleToggleActive = async (id: string, isActive: boolean) => {
+    try {
+      const response = await fetch(`/api/admin/banners/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          isActive
+        }),
+      });
+
+      const data = await response.json();
+      
+      if (data.success) {
+        // Update the banner in the local state
+        setBanners(prev => prev.map(banner => 
+          banner.id === id ? { ...banner, isActive } : banner
+        ));
+        alert('Banner updated successfully!');
+      } else {
+        alert('Failed to update banner: ' + data.error);
+      }
+    } catch (error: any) {
+      console.error('Error updating banner:', error);
+      alert('Failed to update banner: ' + (error.message || 'Unknown error'));
+    }
+  };
+
+  const handleDelete = async (id: string) => {
+    if (!confirm('Are you sure you want to delete this banner?')) {
+      return;
+    }
+
+    try {
+      const response = await fetch(`/api/admin/banners/${id}`, {
+        method: 'DELETE',
+      });
+
+      const data = await response.json();
+      
+      if (data.success) {
+        // Remove the banner from the local state
+        setBanners(prev => prev.filter(banner => banner.id !== id));
+        alert('Banner deleted successfully!');
+      } else {
+        alert('Failed to delete banner: ' + data.error);
+      }
+    } catch (error: any) {
+      console.error('Error deleting banner:', error);
+      alert('Failed to delete banner: ' + (error.message || 'Unknown error'));
+    }
   };
 
   if (loading) {
@@ -85,12 +144,23 @@ export default function AdminBannersPage() {
                 Manage homepage and promotional banners
               </p>
             </div>
-            <Link
-              href="/admin/banners/new"
-              className="px-6 py-3 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition-colors font-medium"
-            >
-              + Add New Banner
-            </Link>
+            <div className="flex gap-2">
+              <button
+                onClick={() => {
+                  setLoading(true);
+                  loadBanners();
+                }}
+                className="px-6 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors font-medium"
+              >
+                Refresh
+              </button>
+              <Link
+                href="/admin/banners/new"
+                className="px-6 py-3 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition-colors font-medium"
+              >
+                + Add New Banner
+              </Link>
+            </div>
           </div>
 
           {/* Banners Grid */}
@@ -101,7 +171,7 @@ export default function AdminBannersPage() {
                   <div className="md:w-1/3">
                     <div className="aspect-video relative">
                       <img
-                        src={banner.image}
+                        src={banner.image_desktop || banner.image || '/images/products/placeholder.jpg'}
                         alt={banner.title.en}
                         className="w-full h-full object-cover"
                         onError={(e: any) => {
@@ -175,10 +245,16 @@ export default function AdminBannersPage() {
                       >
                         Edit
                       </Link>
-                      <button className="px-4 py-2 border border-gray-300 text-gray-700 dark:text-gray-300 rounded hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                      <button 
+                        onClick={() => handleToggleActive(banner.id, !banner.isActive)}
+                        className="px-4 py-2 border border-gray-300 text-gray-700 dark:text-gray-300 rounded hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+                      >
                         {banner.isActive ? 'Deactivate' : 'Activate'}
                       </button>
-                      <button className="px-4 py-2 border border-red-300 text-red-600 rounded hover:bg-red-50 transition-colors">
+                      <button 
+                        onClick={() => handleDelete(banner.id)}
+                        className="px-4 py-2 border border-red-300 text-red-600 rounded hover:bg-red-50 transition-colors"
+                      >
                         Delete
                       </button>
                     </div>

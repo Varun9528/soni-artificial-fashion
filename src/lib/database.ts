@@ -7,7 +7,7 @@ export const dbConfig = {
   user: process.env.DB_USER || 'root',
   password: process.env.DB_PASSWORD || '',
   port: parseInt(process.env.DB_PORT || '3306'),
-  database: process.env.DB_NAME || 'lettex_db',
+  database: process.env.DB_NAME || 'soni_artificial_fashion',
   connectionLimit: parseInt(process.env.DB_CONNECTION_LIMIT || '10'),
   acquireTimeout: parseInt(process.env.DB_ACQUIRE_TIMEOUT || '60000'),
   timeout: parseInt(process.env.DB_TIMEOUT || '60000')
@@ -23,7 +23,7 @@ export async function getConnection() {
       host: process.env.DB_HOST || 'localhost',
       user: process.env.DB_USER || 'root',
       password: process.env.DB_PASSWORD || '',
-      database: process.env.DB_NAME || 'lettex_db',
+      database: process.env.DB_NAME || 'soni_artificial_fashion',
       port: parseInt(process.env.DB_PORT || '3306'),
     });
 

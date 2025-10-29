@@ -228,7 +228,7 @@ export const jwtService = new JWTService(defaultSecurityConfig);
 
 export const generateAccessToken = (user: any) => {
   const payload = {
-    userId: user.id,
+    sub: user.id, // Use 'sub' as per JWT standard
     email: user.email,
     role: user.role,
     iss: 'lettex-marketplace',
@@ -244,7 +244,7 @@ export const generateAccessToken = (user: any) => {
 
 export const generateRefreshToken = (user: any) => {
   const payload = {
-    userId: user.id,
+    sub: user.id, // Use 'sub' as per JWT standard
     email: user.email,
     role: user.role,
     iss: 'lettex-marketplace',
@@ -279,4 +279,3 @@ export const verifyAccessToken = (token: string) => {
     throw new Error('Invalid token');
   }
 };
-

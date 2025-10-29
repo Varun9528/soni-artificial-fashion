@@ -1,69 +1,45 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Enable react production optimizations
   reactStrictMode: true,
-  
-  // Image optimization configuration - Updated to use remotePatterns instead of deprecated domains
+  swcMinify: false, // Disable SWC minification to avoid binary issues
   images: {
+    // Enable image optimization
+    unoptimized: false,
+    // Allow images from these domains
     domains: [
       'localhost',
       '127.0.0.1',
-      'lettex-marketplace.vercel.app',
-      'lettex.example.com',
-      'images.unsplash.com',
-      'res.cloudinary.com'
+      // Add any external domains if needed
     ],
-    remotePatterns: [
-      {
-        protocol: 'http',
-        hostname: 'localhost',
-        port: '',
-        pathname: '/**',
-      },
-      {
-        protocol: 'http',
-        hostname: '127.0.0.1',
-        port: '',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'lettex-marketplace.vercel.app',
-        port: '',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'lettex.example.com',
-        port: '',
-        pathname: '/**',
-      }
-    ],
-    // Allow modern image formats
-    formats: ['image/avif', 'image/webp'],
-    // Disable optimization for SVG images to avoid the error
-    unoptimized: true
+    // Set device sizes for responsive images
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    // Set image sizes for different layouts
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
-  
-  // Enable compression for better performance
+  // Enable compression
   compress: true,
-  
-  // Environment variables handling
-  env: {
-    NEXT_PUBLIC_APP_NAME: 'Lettex Ayurvedic Wellness Marketplace',
-    NEXT_PUBLIC_APP_DESCRIPTION: 'Discover authentic Ayurvedic and organic wellness products from Lettex'
+  // Enable webpack optimizations
+  webpack: (config, { dev, isServer }) => {
+    // Enable tree shaking
+    config.optimization.usedExports = true;
+    
+    // Only in production
+    if (!dev) {
+      // Enable aggressive code splitting
+      config.optimization.splitChunks = {
+        chunks: 'all',
+        cacheGroups: {
+          vendor: {
+            test: /[\\/]node_modules[\\/]/,
+            name: 'vendors',
+            chunks: 'all',
+          },
+        },
+      };
+    }
+    
+    return config;
   },
-  
-  // Disable ESLint during build
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  
-  // Experimental features
-  experimental: {
-    // Disable CSS optimization temporarily to troubleshoot issues
-    optimizeCss: false
-  }
 };
 
 module.exports = nextConfig;

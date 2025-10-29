@@ -96,7 +96,7 @@ const NotificationBell = () => {
                         <h4 className="font-medium text-gray-900">{notification.title}</h4>
                         <p className="text-sm text-gray-600 mt-1">{notification.message}</p>
                         <p className="text-xs text-gray-500 mt-2">
-                          {new Date(notification.timestamp).toLocaleString()}
+                          {new Date(notification.createdAt).toLocaleString()}
                         </p>
                       </div>
                       {!notification.read && (

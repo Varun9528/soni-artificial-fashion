@@ -23,18 +23,10 @@ export async function GET(request: NextRequest) {
     // Get products
     const products = await prisma.product.findMany({
       where: {
-        artisanId: artisanId
-      },
-      include: {
-        productImages: {
-          select: {
-            url: true,
-            isPrimary: true
-          }
-        }
+        artisan_id: artisanId
       },
       orderBy: {
-        createdAt: 'desc'
+        created_at: 'desc'
       },
       take: limit,
       skip: offset

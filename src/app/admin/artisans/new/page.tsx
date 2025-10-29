@@ -1,11 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
 export default function NewArtisanPage() {
   const router = useRouter();
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const [submitting, setSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
@@ -14,11 +15,14 @@ export default function NewArtisanPage() {
     village: '',
     district: '',
     state: '',
+    phone: '',
+    email: '',
     photo: '',
     skills: '',
     experience: '',
-    artStyle: ''
   });
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
+  const [uploading, setUploading] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -28,9 +32,58 @@ export default function NewArtisanPage() {
     }));
   };
 
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    // Show preview
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      if (event.target?.result) {
+        setImagePreview(event.target.result as string);
+      }
+    };
+    reader.readAsDataURL(file);
+
+    // Upload file to server
+    setUploading(true);
+    try {
+      const uploadFormData = new FormData();
+      uploadFormData.append('file', file);
+      
+      const response = await fetch('/api/upload', {
+        method: 'POST',
+        body: uploadFormData,
+      });
+
+      const data = await response.json();
+      
+      if (data.success) {
+        setFormData(prev => ({
+          ...prev,
+          photo: data.url
+        }));
+      } else {
+        alert('Failed to upload image: ' + data.error);
+      }
+    } catch (error: any) {
+      console.error('Error uploading image:', error);
+      alert('Failed to upload image: ' + (error.message || 'Unknown error'));
+    } finally {
+      setUploading(false);
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
+    
+    // Validate required fields
+    if (!formData.name || !formData.bioEn) {
+      alert('Please fill in all required fields');
+      setSubmitting(false);
+      return;
+    }
     
     try {
       const artisanData = {
@@ -39,27 +92,32 @@ export default function NewArtisanPage() {
         village: formData.village,
         district: formData.district,
         state: formData.state,
-        photo: formData.photo,
+        phone: formData.phone,
+        email: formData.email,
+        photo: formData.photo, // This should now be a URL instead of base64 data
         skills: formData.skills.split(',').map(s => s.trim()).filter(s => s),
         experience: parseInt(formData.experience) || 0,
-        artStyle: formData.artStyle
       };
 
-      // In a real implementation, you would call an API to create the artisan
-      console.log('Creating artisan:', artisanData);
+      const response = await fetch('/api/admin/artisans', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(artisanData),
+      });
+
+      const data = await response.json();
       
-      // Show success notification
-      if (typeof window !== 'undefined' && (window as any).showNotification) {
-        (window as any).showNotification(
-          'Artisan added successfully!',
-          'success'
-        );
+      if (data.success) {
+        alert('Artisan added successfully!');
+        router.push('/admin/artisans');
+      } else {
+        alert('Failed to create artisan: ' + data.error);
       }
-      
-      router.push('/admin/artisans');
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error creating artisan:', error);
-      alert('Failed to create artisan');
+      alert('Failed to create artisan: ' + (error.message || 'Unknown error'));
     } finally {
       setSubmitting(false);
     }
@@ -79,8 +137,8 @@ export default function NewArtisanPage() {
 
         <div className="bg-white shadow-sm rounded-lg overflow-hidden">
           <div className="px-6 py-4 border-b border-gray-200">
-            <h1 className="text-2xl font-bold text-gray-900">Add / Edit Artisan</h1>
-            <p className="mt-1 text-sm text-gray-600">Create or update an artisan profile</p>
+            <h1 className="text-2xl font-bold text-gray-900">Add New Artisan</h1>
+            <p className="mt-1 text-sm text-gray-600">Create a new artisan profile</p>
           </div>
 
           <form onSubmit={handleSubmit} className="px-6 py-6">
@@ -178,19 +236,89 @@ export default function NewArtisanPage() {
                 </div>
               </div>
 
-              {/* Photo */}
-              <div className="md:col-span-2">
-                <label htmlFor="photo" className="block text-sm font-medium text-gray-700">
-                  Profile Image URL
+              {/* Contact Information */}
+              <div>
+                <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
+                  Phone
                 </label>
                 <input
-                  type="text"
-                  id="photo"
-                  name="photo"
-                  value={formData.photo}
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  value={formData.phone}
                   onChange={handleChange}
                   className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-amber-500 focus:border-amber-500 sm:text-sm"
                 />
+              </div>
+
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-amber-500 focus:border-amber-500 sm:text-sm"
+                />
+              </div>
+
+              {/* Photo Upload */}
+              <div className="md:col-span-2">
+                <label className="block text-sm font-medium text-gray-700">
+                  Profile Image
+                </label>
+                <div className="mt-1 flex items-center">
+                  <input
+                    type="file"
+                    ref={fileInputRef}
+                    onChange={handleImageUpload}
+                    accept="image/*"
+                    className="hidden"
+                    disabled={uploading}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => fileInputRef.current?.click()}
+                    className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500"
+                    disabled={uploading}
+                  >
+                    {uploading ? (
+                      <>
+                        <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        Uploading...
+                      </>
+                    ) : (
+                      <>
+                        <svg className="-ml-1 mr-2 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                          <path fillRule="evenodd" d="M4 5a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V7a2 2 0 00-2-2h-1.586a1 1 0 01-.707-.293l-1.121-1.121A2 2 0 0011.172 3H8.828a2 2 0 00-1.414.586L6.293 4.707A1 1 0 015.586 5H4zm6 9a3 3 0 100-6 3 3 0 000 6z" clipRule="evenodd" />
+                        </svg>
+                        Upload Image
+                      </>
+                    )}
+                  </button>
+                  {(imagePreview || formData.photo) && (
+                    <div className="ml-4 flex-shrink-0">
+                      <img 
+                        src={imagePreview || formData.photo} 
+                        alt="Preview" 
+                        className="h-16 w-16 rounded-full object-cover"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.src = '/images/artisans/placeholder.jpg';
+                        }}
+                      />
+                    </div>
+                  )}
+                </div>
+                <p className="mt-2 text-sm text-gray-500">
+                  Upload a profile image for the artisan. Any image format is supported.
+                </p>
               </div>
 
               {/* Skills */}
@@ -224,22 +352,6 @@ export default function NewArtisanPage() {
                   className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-amber-500 focus:border-amber-500 sm:text-sm"
                 />
               </div>
-
-              {/* Art Style */}
-              <div className="md:col-span-2">
-                <label htmlFor="artStyle" className="block text-sm font-medium text-gray-700">
-                  Art Style / Specialty *
-                </label>
-                <input
-                  type="text"
-                  id="artStyle"
-                  name="artStyle"
-                  value={formData.artStyle}
-                  onChange={handleChange}
-                  required
-                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-amber-500 focus:border-amber-500 sm:text-sm"
-                />
-              </div>
             </div>
 
             <div className="mt-8 flex justify-end space-x-3">
@@ -251,7 +363,7 @@ export default function NewArtisanPage() {
               </Link>
               <button
                 type="submit"
-                disabled={submitting}
+                disabled={submitting || uploading}
                 className="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-amber-600 hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 disabled:opacity-50"
               >
                 {submitting ? 'Saving...' : 'Add Artisan'}

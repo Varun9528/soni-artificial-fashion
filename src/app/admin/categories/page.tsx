@@ -23,13 +23,30 @@ export default function AdminCategoriesPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!user || (user.role !== 'ADMIN' && user.role !== 'SUPER_ADMIN')) {
+    if (!user || (user.role !== 'admin' && user.role !== 'super_admin')) {
       router.push('/login');
       return;
     }
 
     loadCategories();
   }, [user, router]);
+
+  // Refresh categories when window gains focus
+  useEffect(() => {
+    const handleFocus = () => {
+      // Only refresh if we're not already loading
+      if (!loading) {
+        setLoading(true);
+        loadCategories();
+      }
+    };
+
+    window.addEventListener('focus', handleFocus);
+    
+    return () => {
+      window.removeEventListener('focus', handleFocus);
+    };
+  }, [loading]);
 
   const loadCategories = async () => {
     try {
@@ -44,8 +61,37 @@ export default function AdminCategoriesPage() {
     setLoading(false);
   };
 
+  const handleToggleActive = async (id: string, isActive: boolean) => {
+    try {
+      const response = await fetch(`/api/admin/categories/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          isActive
+        }),
+      });
+
+      const data = await response.json();
+      
+      if (data.success) {
+        // Update the category in the local state
+        setCategories(prev => prev.map(category => 
+          category.id === id ? { ...category, isActive } : category
+        ));
+        alert('Category updated successfully!');
+      } else {
+        alert('Failed to update category: ' + data.error);
+      }
+    } catch (error: any) {
+      console.error('Error updating category:', error);
+      alert('Failed to update category: ' + (error.message || 'Unknown error'));
+    }
+  };
+
   const handleDeleteCategory = async (categoryId: string, categoryName: string) => {
-    if (!confirm(`Are you sure you want to delete the category "${categoryName}"?`)) {
+    if (!confirm(`Are you sure you want to delete the category "${categoryName}"? This action cannot be undone.`)) {
       return;
     }
 
@@ -61,9 +107,9 @@ export default function AdminCategoriesPage() {
       } else {
         alert('Failed to delete category: ' + data.error);
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error deleting category:', error);
-      alert('Failed to delete category');
+      alert('Failed to delete category: ' + (error.message || 'Unknown error'));
     }
   };
 
@@ -92,12 +138,23 @@ export default function AdminCategoriesPage() {
                 Manage product categories
               </p>
             </div>
-            <Link
-              href="/admin/categories/add"
-              className="px-6 py-3 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition-colors font-medium"
-            >
-              + Add New Category
-            </Link>
+            <div className="flex gap-2">
+              <button
+                onClick={() => {
+                  setLoading(true);
+                  loadCategories();
+                }}
+                className="px-6 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors font-medium"
+              >
+                Refresh
+              </button>
+              <Link
+                href="/admin/categories/new"
+                className="px-6 py-3 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition-colors font-medium"
+              >
+                + Add New Category
+              </Link>
+            </div>
           </div>
 
           {/* Categories Grid */}
@@ -106,7 +163,7 @@ export default function AdminCategoriesPage() {
               <div key={category.id} className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-video relative">
                   <img
-                    src={category.image}
+                    src={category.image || '/images/products/placeholder.jpg'}
                     alt={category.name.en}
                     className="w-full h-full object-cover"
                     onError={(e: any) => {
@@ -133,17 +190,23 @@ export default function AdminCategoriesPage() {
                     {category.description.en}
                   </p>
                   <div className="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400 mb-4">
-                    <span>{category.productCount} products</span>
+                    <span>{category.productCount || 0} products</span>
                     <span>Slug: {category.slug}</span>
                   </div>
                   
                   <div className="flex space-x-2">
                     <Link
-                      href={`/admin/categories/edit/${category.id}`}
+                      href={`/admin/categories/${category.id}/edit`}
                       className="flex-1 text-center px-3 py-2 bg-amber-600 text-white rounded hover:bg-amber-700 transition-colors"
                     >
                       Edit
                     </Link>
+                    <button 
+                      onClick={() => handleToggleActive(category.id, !category.isActive)}
+                      className="flex-1 px-3 py-2 border border-gray-300 text-gray-700 dark:text-gray-300 rounded hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+                    >
+                      {category.isActive ? 'Deactivate' : 'Activate'}
+                    </button>
                     <button 
                       onClick={() => handleDeleteCategory(category.id, category.name.en)}
                       className="flex-1 px-3 py-2 border border-red-300 text-red-700 dark:text-red-300 rounded hover:bg-red-50 dark:hover:bg-red-700 transition-colors"

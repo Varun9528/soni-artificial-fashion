@@ -2,16 +2,23 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { categories as staticCategories } from '@/data/categories';
 import Image from 'next/image';
 
 interface Product {
   id: string;
+  slug: string;
   title: { en: string; hi: string };
   price: number;
+  original_price?: number;
+  productImages: { url: string }[];
   images: string[];
-  category: string;
+  category: {
+    id: string;
+    name: { en: string; hi: string };
+    slug: string;
+  };
   inStock: boolean;
+  stock: number;
 }
 
 interface CategoryOption {
@@ -32,61 +39,38 @@ export default function CategoriesPage() {
     const savedLanguage = (localStorage.getItem('language') as 'en' | 'hi') || 'en';
     setLanguage(savedLanguage);
     
-    // Mock products data (in production, fetch from API)
-    const mockProducts: Product[] = [
-      {
-        id: '1',
-        title: { en: 'Turmeric Herbal Powder', hi: 'हल्दी हर्बल पाउडर' },
-        price: 299,
-        images: ['/images/categories/Gheevi_Turmeric_Pouch_Product_Shot.png'],
-        category: 'herbal-powders',
-        inStock: true
-      },
-      {
-        id: '2',
-        title: { en: 'Organic Forest Honey', hi: 'जैविक वन शहद' },
-        price: 899,
-        images: ['/images/categories/Gheevi_Organic_Forest_Honey_Jar.png'],
-        category: 'organic-honey',
-        inStock: true
-      },
-      {
-        id: '3',
-        title: { en: 'Ayurvedic Digestive Blend', hi: 'आयुर्वेदिक पाचन मिश्रण' },
-        price: 399,
-        images: ['/images/categories/Geevi_Ayurvedic_Product_Showcase.png'],
-        category: 'ayurvedic-products',
-        inStock: false
-      },
-      {
-        id: '4',
-        title: { en: 'Lavender Handmade Soap', hi: 'लैवेंडर हस्तनिर्मित साबुन' },
-        price: 150,
-        images: ['/images/categories/Geevi_Soap_Marble_Display.png'],
-        category: 'handmade-soap',
-        inStock: true
-      },
-      {
-        id: '5',
-        title: { en: 'Organic Candy Assortment', hi: 'जैविक कैंडी मिश्रण' },
-        price: 250,
-        images: ['/images/categories/Geevi_Candy_Jar_Product_Shot.png'],
-        category: 'organic-candy',
-        inStock: true
-      },
-      {
-        id: '6',
-        title: { en: 'Triphala Herbal Powder', hi: 'त्रिफला हर्बल पाउडर' },
-        price: 349,
-        images: ['/images/categories/Gheevi_Triphala_Jar_Product_Shot.png'],
-        category: 'herbal-powders',
-        inStock: true
+    // Fetch products from API
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch('/api/products');
+        const data = await response.json();
+        
+        if (data.success) {
+          // Transform API data to match our Product interface
+          const transformedProducts = data.products.map((product: any) => ({
+            id: product.id,
+            slug: product.slug,
+            title: product.title,
+            price: product.price,
+            original_price: product.original_price,
+            productImages: product.productImages || [],
+            images: product.images || [],
+            category: product.category,
+            inStock: product.stock > 0,
+            stock: product.stock || 0
+          }));
+          
+          setProducts(transformedProducts);
+          setFilteredProducts(transformedProducts);
+        }
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      } finally {
+        setLoading(false);
       }
-    ];
+    };
     
-    setProducts(mockProducts);
-    setFilteredProducts(mockProducts);
-    setLoading(false);
+    fetchProducts();
   }, []);
 
   useEffect(() => {
@@ -94,7 +78,7 @@ export default function CategoriesPage() {
     
     // Filter by category
     if (selectedCategory !== 'all') {
-      result = result.filter(product => product.category === selectedCategory);
+      result = result.filter(product => product.category?.id === selectedCategory);
     }
     
     // Filter by price range
@@ -123,17 +107,18 @@ export default function CategoriesPage() {
   const t = (key: string) => {
     const translations: any = {
       en: {
-        title: "Shop by Category",
-        description: "Discover our authentic Ayurvedic and organic wellness products.",
+        title: "Jewelry Categories",
+        description: "Discover our exquisite collection of artificial fashion jewelry.",
         sortBy: "Sort By",
         priceRange: "Price Range",
         category: "Category",
         all: "All Categories",
-        'herbal-powders': "Herbal Powders",
-        'organic-honey': "Organic Honey",
-        'ayurvedic-products': "Ayurvedic Products",
-        'handmade-soap': "Handmade Soap",
-        'organic-candy': "Organic Candy",
+        'necklaces': "Necklaces & Chains",
+        'earrings': "Earrings & Studs",
+        'bracelets': "Bracelets & Bangles",
+        'rings': "Rings & Bands",
+        'jewelry-sets': "Jewelry Sets",
+        'mens-collection': "Men's Collection",
         popularity: "Popularity",
         latest: "Latest",
         priceLowToHigh: "Price (Low to High)",
@@ -143,20 +128,22 @@ export default function CategoriesPage() {
         emptyMessage: "No products found in this category. Please adjust your filters.",
         inStock: "In Stock",
         outOfStock: "Out of Stock",
-        items: "items"
+        items: "items",
+        viewDetails: "View Details"
       },
       hi: {
-        title: "श्रेणी के अनुसार खरीदारी करें",
-        description: "हमारे प्रामाणिक आयुर्वेदिक और जैविक स्वास्थ्य उत्पादों की खोज करें।",
+        title: "आभूषण श्रेणियाँ",
+        description: "हमारे कृत्रिम फैशन आभूषण के शानदार संग्रह की खोज करें।",
         sortBy: "क्रमबद्ध करें",
         priceRange: "मूल्य सीमा",
         category: "श्रेणी",
         all: "सभी श्रेणियाँ",
-        'herbal-powders': "हर्बल पाउडर",
-        'organic-honey': "जैविक शहद",
-        'ayurvedic-products': "आयुर्वेदिक उत्पाद",
-        'handmade-soap': "हस्तनिर्मित साबुन",
-        'organic-candy': "जैविक कैंडी",
+        'necklaces': "हार और चेन",
+        'earrings': "कान के आभूषण",
+        'bracelets': "कंगन और ब्रेसलेट",
+        'rings': "अंगूठियाँ",
+        'jewelry-sets': "आभूषण सेट",
+        'mens-collection': "पुरुष संग्रह",
         popularity: "लोकप्रियता",
         latest: "नवीनतम",
         priceLowToHigh: "मूल्य (कम से अधिक)",
@@ -165,21 +152,24 @@ export default function CategoriesPage() {
         high: "अधिक",
         emptyMessage: "इस श्रेणी में कोई उत्पाद नहीं मिला। कृपया अपने फ़िल्टर समायोजित करें।",
         inStock: "स्टॉक में",
-        outOfStock: "स्टॉक ख़त्म",
-        items: "आइटम"
+        outOfStock: "स्टॉक ख़तम",
+        items: "आइटम",
+        viewDetails: "विवरण देखें"
       }
     };
     
     return translations[language][key] || key;
   };
 
-  // Create categories list from our static categories data
+  // Create categories list from jewelry categories
   const categories: CategoryOption[] = [
     { id: 'all', name: t('all') },
-    ...staticCategories.map(category => ({
-      id: category.id,
-      name: language === 'en' ? category.name.en : category.name.hi
-    }))
+    { id: 'necklaces', name: t('necklaces') },
+    { id: 'earrings', name: t('earrings') },
+    { id: 'bracelets', name: t('bracelets') },
+    { id: 'rings', name: t('rings') },
+    { id: 'jewelry-sets', name: t('jewelry-sets') },
+    { id: 'mens-collection', name: t('mens-collection') }
   ];
 
   const sortOptions = [
@@ -302,7 +292,7 @@ export default function CategoriesPage() {
                     <div key={product.id} className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
                       <div className="relative">
                         <img
-                          src={product.images[0]}
+                          src={product.productImages[0]?.url || product.images[0] || '/images/products/placeholder.jpg'}
                           alt={language === 'en' ? product.title.en : product.title.hi}
                           className="w-full h-48 object-cover"
                           onError={(e: any) => {
@@ -325,17 +315,17 @@ export default function CategoriesPage() {
                           {language === 'en' ? product.title.en : product.title.hi}
                         </h3>
                         <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
-                          {categories.find(cat => cat.id === product.category)?.name || product.category}
+                          {product.category ? (language === 'en' ? product.category.name.en : product.category.name.hi) : ''}
                         </p>
                         <div className="flex items-center justify-between">
                           <span className="text-lg font-semibold text-amber-600">
                             ₹{product.price.toLocaleString()}
                           </span>
                           <Link
-                            href={`/product/${product.id}`}
+                            href={`/product/${product.slug}`}
                             className="px-3 py-1 bg-amber-600 text-white text-sm rounded-lg hover:bg-amber-700 transition-colors"
                           >
-                            View Details
+                            {t('viewDetails')}
                           </Link>
                         </div>
                       </div>

@@ -3,9 +3,25 @@
 import { useLanguage } from '@/context/LanguageContext';
 import Link from 'next/link';
 import { CheckCircle } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function OrderSuccessPage() {
   const { language } = useLanguage();
+  const router = useRouter();
+  const [orderData, setOrderData] = useState<any>(null);
+
+  // Get order data from localStorage (passed from checkout)
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const storedOrderData = localStorage.getItem('orderData');
+      if (storedOrderData) {
+        setOrderData(JSON.parse(storedOrderData));
+        // Clear the data after retrieving it
+        localStorage.removeItem('orderData');
+      }
+    }
+  }, []);
 
   // Translations
   const t = (key: string) => {
@@ -48,28 +64,30 @@ export default function OrderSuccessPage() {
           {t('message')}
         </p>
         
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mb-8 text-left">
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <p className="text-sm text-gray-500 dark:text-gray-400">{t('orderNumber')}</p>
-              <p className="font-medium">#ORD-2024001</p>
-            </div>
-            <div>
-              <p className="text-sm text-gray-500 dark:text-gray-400">{t('orderTotal')}</p>
-              <p className="font-medium">₹2,499</p>
+        {orderData && (
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mb-8 text-left">
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <p className="text-sm text-gray-500 dark:text-gray-400">{t('orderNumber')}</p>
+                <p className="font-medium">#{orderData.orderNumber}</p>
+              </div>
+              <div>
+                <p className="text-sm text-gray-500 dark:text-gray-400">{t('orderTotal')}</p>
+                <p className="font-medium">₹{orderData.totalAmount?.toLocaleString('en-IN') || '0'}</p>
+              </div>
             </div>
           </div>
-        </div>
+        )}
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link 
-            href="/" 
+            href="/products" 
             className="flipkart-button px-6 py-3 inline-block text-center"
           >
             {t('continueShopping')}
           </Link>
           <Link 
-            href="/orders" 
+            href="/profile/orders" 
             className="px-6 py-3 border border-gray-300 dark:border-gray-600 rounded-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 inline-block text-center"
           >
             {t('viewOrders')}

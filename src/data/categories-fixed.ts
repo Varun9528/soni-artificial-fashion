@@ -2,101 +2,73 @@ import { Category } from './types';
 
 export const categories: Category[] = [
   {
-    id: 'grocery-products',
-    slug: 'grocery-products',
+    id: 'jewelry',
+    slug: 'jewelry',
     name: {
-      en: 'Grocery Products',
-      hi: 'किराने की वस्तुएं'
+      en: 'Jewelry',
+      hi: 'आभूषण'
     },
     description: {
-      en: 'Explore fresh staples, grains, pulses, and spices — handpicked for your kitchen.',
-      hi: 'ताजा अनाज, दालें और मसाले खोजें — आपके रसोई के लिए चुने गए'
+      en: 'Beautiful artificial jewelry crafted with precision and elegance.',
+      hi: 'परिशुद्धता और सौंदर्य के साथ निर्मित सुंदर कृत्रिम आभूषण।'
     },
-    image: '/images/categories/Gheevi_Turmeric_Pouch_Product_Shot.png',
-    productCount: 24
+    image: '/images/categories/jewelry.jpg',
+    productCount: 15
   },
   {
-    id: 'refined-oil',
-    slug: 'refined-oil',
+    id: 'necklaces',
+    slug: 'necklaces',
     name: {
-      en: 'Refined Oil',
-      hi: 'शोधित तेल'
+      en: 'Necklaces',
+      hi: 'हार'
     },
     description: {
-      en: 'Healthy, refined oils for cooking, frying, and everyday use — sunflower, mustard, and groundnut oils.',
-      hi: 'पकाने, तलने और दैनिक उपयोग के लिए स्वस्थ, शोधित तेल — सूरजमुखी, सरसों और मूंगफली के तेल।'
+      en: 'Elegant necklaces for every occasion.',
+      hi: 'प्रत्येक अवसर के लिए सुरुचिपूर्ण हार।'
     },
-    image: '/images/categories/Gheevi_Organic_Forest_Honey_Jar.png',
-    productCount: 18
+    image: '/images/categories/necklaces.jpg',
+    productCount: 8
   },
   {
-    id: 'milk-products',
-    slug: 'milk-products',
+    id: 'earrings',
+    slug: 'earrings',
     name: {
-      en: 'Milk Products',
-      hi: 'दूध के उत्पाद'
+      en: 'Earrings',
+      hi: 'कान के आभूषण'
     },
     description: {
-      en: 'Fresh milk, curd, butter, paneer, and ghee — sourced directly from local dairies.',
-      hi: 'ताजा दूध, दही, मक्खन, पनीर और घी — सीधे स्थानीय डेयरी से प्राप्त।'
+      en: 'Stylish earrings to complement your look.',
+      hi: 'आपके स्वरूप को पूरा करने के लिए फैशनेबल कान के आभूषण।'
     },
-    image: '/images/categories/Gheevi_Triphala_Jar_Product_Shot.png',
-    productCount: 32
+    image: '/images/categories/earrings.jpg',
+    productCount: 12
   },
   {
-    id: 'own-products',
-    slug: 'own-products',
+    id: 'bracelets',
+    slug: 'bracelets',
     name: {
-      en: 'Own Products',
-      hi: 'अपने उत्पाद'
+      en: 'Bracelets',
+      hi: 'कंघाइयाँ'
     },
     description: {
-      en: 'Exclusive Lettex-branded items — quality you can rely on, crafted with care.',
-      hi: 'विशेष लेटेक्स-ब्रांडेड वस्तुएं — गुणवत्ता जिस पर आप भरोसा कर सकते हैं, सावधानीपूर्वक बनाई गई।'
+      en: 'Chic bracelets for a fashionable touch.',
+      hi: 'फैशनेबल स्पर्श के लिए चिक कंघाइयाँ।'
     },
-    image: '/images/categories/Artisanal_Lavender_Soap_Product_Shot.png',
-    productCount: 28
+    image: '/images/categories/bracelets.jpg',
+    productCount: 7
   },
   {
-    id: 'beverages',
-    slug: 'beverages',
+    id: 'rings',
+    slug: 'rings',
     name: {
-      en: 'Beverages',
-      hi: 'पेय'
+      en: 'Rings',
+      hi: 'अंगूठियाँ'
     },
     description: {
-      en: 'Juices, tea, coffee, and refreshing drinks from trusted brands.',
-      hi: 'विश्वसनीय ब्रांडों से रस, चाय, कॉफी और ताजगी भरे पेय।'
+      en: 'Beautiful rings to adorn your fingers.',
+      hi: 'आपकी अंगुलियों को सजाने के लिए सुंदर अंगूठियाँ।'
     },
-    image: '/images/categories/Geevi_Organic_Gummies_Pouch_Macro.png',
-    productCount: 21
-  },
-  {
-    id: 'snacks-biscuits',
-    slug: 'snacks-biscuits',
-    name: {
-      en: 'Snacks & Biscuits',
-      hi: 'नाश्ता और बिस्कुट'
-    },
-    description: {
-      en: 'Delicious snacks, chips, and biscuits perfect for every craving.',
-      hi: 'स्वादिष्ट नाश्ता, चिप्स और बिस्कुट प्रत्येक भूख के लिए उपयुक्त।'
-    },
-    image: '/images/categories/Geevi_Candy_Jar_Product_Shot.png',
-    productCount: 25
-  },
-  {
-    id: 'household-essentials',
-    slug: 'household-essentials',
-    name: {
-      en: 'Household Essentials',
-      hi: 'गृह आवश्यक वस्तुएं'
-    },
-    description: {
-      en: 'Detergents, cleaners, and kitchen basics for your daily needs.',
-      hi: 'आपकी दैनिक आवश्यकताओं के लिए डिटर्जेंट, सफाईकर्ता और रसोई की मूल वस्तुएं।'
-    },
-    image: '/images/categories/Geevi_Herbal_Powder_Display_Organic.png',
-    productCount: 30
+    image: '/images/categories/rings.jpg',
+    productCount: 9
   }
 ];

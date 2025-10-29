@@ -19,12 +19,12 @@ export async function authenticateRequest(
   request: NextRequest
 ): Promise<{ success: boolean; user?: any; error?: string }> {
   try {
-    let token = '';
+    let token: string | null = '';
     
     // Get token from Authorization header first
     const authHeader = request.headers.get('Authorization');
     if (authHeader) {
-      token = jwtService.extractTokenFromHeader(authHeader || '');
+      token = jwtService.extractTokenFromHeader(authHeader);
     }
     
     // If no token in header, check cookies

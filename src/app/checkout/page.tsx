@@ -2,7 +2,8 @@
 
 import { useCart } from '@/context/CartContext';
 import { useLanguage } from '@/context/LanguageContext';
-import Link from 'next/link';
+import { useAuth } from '@/context/AuthContext';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { CreditCard, MapPin, Truck, Shield } from 'lucide-react';
@@ -10,6 +11,8 @@ import { CreditCard, MapPin, Truck, Shield } from 'lucide-react';
 export default function CheckoutPage() {
   const { state: cartState, clearCart } = useCart();
   const { language } = useLanguage();
+  const { user, isLoggedIn } = useAuth(); // Get user and isLoggedIn from auth context
+  const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [productData, setProductData] = useState<Record<string, any>>({});
   const [formData, setFormData] = useState({
@@ -21,6 +24,31 @@ export default function CheckoutPage() {
     pincode: '',
     paymentMethod: 'cod'
   });
+  const [isInitialized, setIsInitialized] = useState(false);
+
+  // Redirect to login if user is not authenticated
+  useEffect(() => {
+    // Wait for auth context to be initialized
+    if (isLoggedIn) {
+      setIsInitialized(true);
+    } else if (typeof window !== 'undefined') {
+      // Only redirect if we're sure the user is not logged in
+      // and we're on the client side
+      const token = localStorage.getItem('token');
+      if (!token) {
+        router.push('/login');
+      } else {
+        // Token exists but user context not set, wait a bit
+        setTimeout(() => {
+          if (!isLoggedIn) {
+            router.push('/login');
+          } else {
+            setIsInitialized(true);
+          }
+        }, 100);
+      }
+    }
+  }, [isLoggedIn, router]);
 
   // Fetch product data for items in cart
   useEffect(() => {
@@ -31,10 +59,10 @@ export default function CheckoutPage() {
       // Fetch data for each product in the cart
       for (const item of cartState.items) {
         try {
-          // Extract product ID - it might be in the variant or the main productId
-          const productId = item.variant?.slug || item.productId;
+          // Extract product ID - it's in the main productId
+          const productId = item.productId;
           
-          // Fetch product data from API
+          // Try to fetch product data from API using ID
           const response = await fetch(`/api/products/${productId}`);
           if (response.ok) {
             const product = await response.json();
@@ -42,24 +70,25 @@ export default function CheckoutPage() {
               id: product.id,
               name: product.title?.[language] || product.title?.en || product.name || `Product ${product.id}`,
               price: product.price || 0,
-              image: product.images?.[0] || product.productImages?.[0]?.url || '/images/products/placeholder.jpg'
+              image: product.productImages?.find((img: any) => img.isPrimary)?.url || product.images?.[0] || '/images/products/placeholder.jpg'
             };
           } else {
-            // Fallback to variant data if available
+            // Fallback to cart item data
             productDataMap[item.productId] = {
               id: item.productId,
-              name: item.variant?.title || `Product ${item.productId}`,
-              price: item.variant?.price || 0,
+              name: `Product ${item.productId}`,
+              price: 0,
               image: '/images/products/placeholder.jpg'
             };
           }
+
         } catch (error) {
           console.error('Error fetching product data:', error);
-          // Fallback data
+          // Fallback to cart item data
           productDataMap[item.productId] = {
             id: item.productId,
-            name: item.variant?.title || `Product ${item.productId}`,
-            price: item.variant?.price || 0,
+            name: `Product ${item.productId}`,
+            price: 0,
             image: '/images/products/placeholder.jpg'
           };
         }
@@ -70,13 +99,15 @@ export default function CheckoutPage() {
 
     if (cartState.items.length > 0) {
       fetchProductData();
+    } else {
+      setIsInitialized(true); // Allow rendering even if cart is empty
     }
   }, [cartState.items, language]);
 
   // Calculate totals
   const subtotal = cartState.items.reduce((total, item) => {
     const product = productData[item.productId];
-    const price = product ? product.price : (item.variant?.price || 0);
+    const price = product ? product.price : 0;
     return total + (price * item.quantity);
   }, 0);
   
@@ -119,12 +150,18 @@ export default function CheckoutPage() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          userId: 'mock-user-id', // In a real app, get from session
           items: cartState.items.map(item => ({
             ...item,
             productData: productData[item.productId] // Include product data
           })),
-          shippingAddress: formData,
+          shippingAddress: {
+            fullName: formData.fullName,
+            phone: formData.phone,
+            addressLine1: formData.address,
+            city: formData.city,
+            state: formData.state,
+            pincode: formData.pincode
+          },
           paymentMethod: formData.paymentMethod,
           subtotal,
           shipping,
@@ -136,10 +173,21 @@ export default function CheckoutPage() {
       const data = await response.json();
       
       if (data.success) {
-        // Clear cart
-        clearCart();
+        // Store order data in localStorage to pass to success page
+        if (typeof window !== 'undefined') {
+          localStorage.setItem('orderData', JSON.stringify(data.order));
+        }
+        
+        // Clear cart and wait for it to complete
+        try {
+          await clearCart();
+          console.log('Cart cleared successfully after order');
+        } catch (clearError) {
+          console.error('Error clearing cart after order:', clearError);
+        }
+        
         // Redirect to order success page
-        window.location.href = '/order-success';
+        router.push('/order-success');
       } else {
         alert(language === 'en' ? `Error: ${data.error}` : `त्रुटि: ${data.error}`);
         setLoading(false);
@@ -205,6 +253,21 @@ export default function CheckoutPage() {
     return translations[language][key] || key;
   };
 
+  // Show loading state while initializing
+  if (!isInitialized) {
+    return (
+      <div className="container mx-auto px-4 py-16">
+        <div className="max-w-2xl mx-auto text-center">
+          <div className="animate-pulse">
+            <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">{t('checkoutTitle')}</h1>
+            <p className="text-gray-600 dark:text-gray-400 mb-8">Loading...</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Redirect to cart if no items
   if (cartState.items.length === 0) {
     return (
       <div className="container mx-auto px-4 py-16">
@@ -213,12 +276,12 @@ export default function CheckoutPage() {
           <p className="text-gray-600 dark:text-gray-400 mb-8">
             {language === 'en' ? 'Your cart is empty. Add products to checkout.' : 'आपका कार्ट खाली है। चेकआउट करने के लिए उत्पाद जोड़ें।'}
           </p>
-          <Link 
-            href="/cart" 
+          <button
+            onClick={() => router.push('/products')}
             className="flipkart-button px-6 py-3 inline-block"
           >
             {t('backToCart')}
-          </Link>
+          </button>
         </div>
       </div>
     );
@@ -327,48 +390,58 @@ export default function CheckoutPage() {
               </div>
             </div>
             
-            <div className="flipkart-card p-6">
+            {/* Payment Options Section - Improved visibility */}
+            <div className="flipkart-card p-6 mt-6 overflow-visible">
               <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
-                <CreditCard className="w-5 h-5 mr-2" />
-                {t('paymentMethod')}
+                <CreditCard className="w-5 h-5 mr-2 flex-shrink-0" />
+                <span>{t('paymentMethod')}</span>
               </h2>
               
-              <div className="space-y-3">
-                <label className="flex items-center">
+              <div className="space-y-4">
+                <div className="flex items-center p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer transition-colors duration-200">
                   <input
                     type="radio"
                     name="paymentMethod"
                     value="cod"
                     checked={formData.paymentMethod === 'cod'}
                     onChange={handleInputChange}
-                    className="h-4 w-4 text-primary-600 focus:ring-primary-500"
+                    className="h-5 w-5 text-primary-600 focus:ring-primary-500 cursor-pointer"
+                    id="payment-cod"
                   />
-                  <span className="ml-3 text-gray-700 dark:text-gray-300">{t('cashOnDelivery')}</span>
-                </label>
+                  <label htmlFor="payment-cod" className="ml-4 flex items-center cursor-pointer flex-grow">
+                    <span className="text-gray-700 dark:text-gray-300 font-medium text-base">{t('cashOnDelivery')}</span>
+                  </label>
+                </div>
                 
-                <label className="flex items-center">
+                <div className="flex items-center p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer transition-colors duration-200">
                   <input
                     type="radio"
                     name="paymentMethod"
                     value="card"
                     checked={formData.paymentMethod === 'card'}
                     onChange={handleInputChange}
-                    className="h-4 w-4 text-primary-600 focus:ring-primary-500"
+                    className="h-5 w-5 text-primary-600 focus:ring-primary-500 cursor-pointer"
+                    id="payment-card"
                   />
-                  <span className="ml-3 text-gray-700 dark:text-gray-300">{t('creditDebitCard')}</span>
-                </label>
+                  <label htmlFor="payment-card" className="ml-4 flex items-center cursor-pointer flex-grow">
+                    <span className="text-gray-700 dark:text-gray-300 font-medium text-base">{t('creditDebitCard')}</span>
+                  </label>
+                </div>
                 
-                <label className="flex items-center">
+                <div className="flex items-center p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer transition-colors duration-200">
                   <input
                     type="radio"
                     name="paymentMethod"
                     value="upi"
                     checked={formData.paymentMethod === 'upi'}
                     onChange={handleInputChange}
-                    className="h-4 w-4 text-primary-600 focus:ring-primary-500"
+                    className="h-5 w-5 text-primary-600 focus:ring-primary-500 cursor-pointer"
+                    id="payment-upi"
                   />
-                  <span className="ml-3 text-gray-700 dark:text-gray-300">{t('upi')}</span>
-                </label>
+                  <label htmlFor="payment-upi" className="ml-4 flex items-center cursor-pointer flex-grow">
+                    <span className="text-gray-700 dark:text-gray-300 font-medium text-base">{t('upi')}</span>
+                  </label>
+                </div>
               </div>
             </div>
           </div>
@@ -384,8 +457,8 @@ export default function CheckoutPage() {
               <div className="space-y-4 mb-6">
                 {cartState.items.map((item) => {
                   const product = productData[item.productId] || {
-                    name: item.variant?.title || `Product ${item.productId}`,
-                    price: item.variant?.price || 0,
+                    name: `Product ${item.productId}`,
+                    price: 0,
                     image: '/images/products/placeholder.jpg'
                   };
                   
@@ -393,10 +466,14 @@ export default function CheckoutPage() {
                     <div key={`${item.productId}-${JSON.stringify(item.variant)}`} className="flex items-center">
                       <div className="aspect-square w-16 flex-shrink-0 relative">
                         <Image
-                          src={product.image}
+                          src={product.image || '/images/products/placeholder.jpg'}
                           alt={product.name}
                           fill
                           className="object-cover rounded-sm"
+                          onError={(e: any) => {
+                            const target = e.target as HTMLImageElement;
+                            target.src = '/images/products/placeholder.jpg';
+                          }}
                         />
                       </div>
                       <div className="ml-3 flex-grow">
@@ -407,7 +484,7 @@ export default function CheckoutPage() {
                           Qty: {item.quantity}
                         </p>
                         <p className="text-sm font-medium text-gray-900 dark:text-white">
-                          ₹{(product.price * item.quantity).toLocaleString()}
+                          ₹{(product.price * item.quantity).toLocaleString('en-IN')}
                         </p>
                       </div>
                     </div>
@@ -418,22 +495,22 @@ export default function CheckoutPage() {
               <div className="space-y-4 mb-6 border-t border-gray-200 dark:border-gray-700 pt-4">
                 <div className="flex justify-between">
                   <span className="text-gray-600 dark:text-gray-400">{t('subtotal')}</span>
-                  <span className="font-medium">₹{subtotal.toLocaleString()}</span>
+                  <span className="font-medium">₹{subtotal.toLocaleString('en-IN')}</span>
                 </div>
                 
                 <div className="flex justify-between">
                   <span className="text-gray-600 dark:text-gray-400">{t('shipping')}</span>
-                  <span className="font-medium">{shipping === 0 ? t('free') : `₹${shipping}`}</span>
+                  <span className="font-medium">{shipping === 0 ? t('free') : `₹${shipping.toLocaleString('en-IN')}`}</span>
                 </div>
                 
                 <div className="flex justify-between">
                   <span className="text-gray-600 dark:text-gray-400">{t('tax')}</span>
-                  <span className="font-medium">₹{tax.toLocaleString()}</span>
+                  <span className="font-medium">₹{tax.toLocaleString('en-IN')}</span>
                 </div>
                 
                 <div className="border-t border-gray-200 dark:border-gray-700 pt-4 flex justify-between text-lg font-bold">
                   <span>{t('total')}</span>
-                  <span>₹{total.toLocaleString()}</span>
+                  <span>₹{total.toLocaleString('en-IN')}</span>
                 </div>
               </div>
               
@@ -458,12 +535,12 @@ export default function CheckoutPage() {
                 )}
               </button>
               
-              <Link 
-                href="/cart" 
+              <button
+                onClick={() => router.push('/cart')}
                 className="block text-center mt-4 text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 font-medium"
               >
                 ← {t('backToCart')}
-              </Link>
+              </button>
             </div>
           </div>
         </div>

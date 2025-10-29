@@ -1,8 +1,0 @@
-<svg width="200" height="150" xmlns="http://www.w3.org/2000/svg">
-  <rect width="200" height="150" fill="#F5F5DC"/>
-  <rect x="50" y="40" width="100" height="70" fill="#8B4513" stroke="#654321" stroke-width="2"/>
-  <text x="100" y="80" text-anchor="middle" font-family="Arial" font-size="12" fill="#FFF">Return</text>
-  <text x="100" y="95" text-anchor="middle" font-family="Arial" font-size="10" fill="#FFF">Sample</text>
-  <circle cx="30" cy="30" r="8" fill="#FF6347"/>
-  <text x="30" y="35" text-anchor="middle" font-family="Arial" font-size="10" fill="#FFF">X</text>
-</svg>

@@ -1,24 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getServerSession } from '@/lib/auth/session';
-import { prisma } from '@/lib/prisma';
+import { db, enableRealDatabase } from '@/lib/database/connection';
+import { withAuth } from '@/lib/auth/middleware';
 
-// Get cart item count
-export async function GET(request: NextRequest) {
+// Enable real database for API routes
+enableRealDatabase();
+
+export const GET = withAuth(async (request: NextRequest, authContext: any) => {
   try {
-    const session = await getServerSession(request);
+    const userId = authContext.user.id;
     
-    if (!session) {
-      return NextResponse.json(
-        { success: false, error: 'Unauthorized' },
-        { status: 401 }
-      );
-    }
-
-    const cartItemCount = await prisma.cartItem.count({
-      where: {
-        userId: session.user.id
-      }
-    });
+    // Get cart items using the database abstraction
+    const cartItems = await db.getCartItems(userId);
+    
+    // Calculate total item count
+    const cartItemCount = cartItems.reduce((total, item) => total + item.quantity, 0);
 
     return NextResponse.json({
       success: true,
@@ -32,4 +27,4 @@ export async function GET(request: NextRequest) {
       { status: 500 }
     );
   }
-}
+});

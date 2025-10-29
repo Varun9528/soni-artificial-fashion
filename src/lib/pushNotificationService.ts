@@ -1,4 +1,4 @@
-// Mock push notification service - in production, integrate with Firebase, OneSignal, or similar
+// Enhanced push notification service with better browser notification support
 
 interface PushNotificationOptions {
   title: string;
@@ -47,34 +47,71 @@ export class PushNotificationService {
     // In production, request notification permission from the browser
     console.log('🔔 Requesting notification permission...');
     
-    // Simulate permission request
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        console.log('✅ Notification permission granted');
-        resolve(true);
-      }, 500);
-    });
+    // Check if browser supports notifications
+    if (!('Notification' in window)) {
+      console.log('❌ This browser does not support desktop notification');
+      return false;
+    }
+    
+    // Check if permission has already been granted
+    if (Notification.permission === 'granted') {
+      console.log('✅ Notification permission already granted');
+      return true;
+    }
+    
+    // Request permission
+    if (Notification.permission !== 'denied') {
+      try {
+        const permission = await Notification.requestPermission();
+        if (permission === 'granted') {
+          console.log('✅ Notification permission granted');
+          return true;
+        } else {
+          console.log('❌ Notification permission denied');
+          return false;
+        }
+      } catch (error) {
+        console.error('❌ Error requesting notification permission:', error);
+        return false;
+      }
+    }
+    
+    console.log('❌ Notification permission denied');
+    return false;
   }
 
   async sendNotification(options: PushNotificationOptions): Promise<boolean> {
     try {
-      // In production, send actual push notification
+      // Log the notification for debugging
       console.log('🔔 Sending push notification:', options);
       
-      // Simulate notification delay
-      await new Promise(resolve => setTimeout(resolve, 300));
-      
-      // Show browser notification if supported
+      // Show browser notification if supported and permission is granted
       if ('Notification' in window && Notification.permission === 'granted') {
-        new Notification(options.title, {
+        // Create notification with click handler
+        const notification = new Notification(options.title, {
           body: options.body,
-          icon: options.icon || '/favicon.ico',
+          icon: options.icon || '/images/logo/logo-png.png',
           tag: options.tag,
           data: options.data
         });
+        
+        // Add click handler to redirect to order tracking page
+        notification.onclick = function(event) {
+          event.preventDefault();
+          if (options.data && options.data.orderId) {
+            // In a real implementation, this would navigate to the order tracking page
+            window.open(`/track-order?orderId=${options.data.orderId}`, '_blank');
+          }
+        };
+        
+        console.log('✅ Browser notification sent successfully');
+      } else {
+        // Fallback: Show alert if notifications aren't supported or permission is denied
+        console.log('ℹ️  Browser notification not supported or permission denied, showing alert instead');
+        // In a real implementation, you might want to show a toast notification or similar
+        alert(`${options.title}\n${options.body}`);
       }
       
-      console.log('✅ Push notification sent successfully');
       return true;
     } catch (error) {
       console.error('❌ Failed to send push notification:', error);
@@ -83,7 +120,7 @@ export class PushNotificationService {
   }
 
   async sendOrderShippedNotification(orderId: string): Promise<boolean> {
-    const title = "Order Shipped";
+    const title = this.language === 'hi' ? "ऑर्डर भेज दिया गया" : "Order Shipped";
     const body = this.t('orderShipped').replace('[ID]', orderId);
     
     return this.sendNotification({
@@ -95,7 +132,7 @@ export class PushNotificationService {
   }
 
   async sendOrderOutForDeliveryNotification(orderId: string): Promise<boolean> {
-    const title = "Out for Delivery";
+    const title = this.language === 'hi' ? "डिलीवरी के लिए निकला" : "Out for Delivery";
     const body = this.t('orderOutForDelivery').replace('[ID]', orderId);
     
     return this.sendNotification({
@@ -107,7 +144,7 @@ export class PushNotificationService {
   }
 
   async sendOrderDeliveredNotification(orderId: string): Promise<boolean> {
-    const title = "Order Delivered";
+    const title = this.language === 'hi' ? "ऑर्डर डिलीवर हो गया" : "Order Delivered";
     const body = this.t('orderDelivered').replace('[ID]', orderId);
     
     return this.sendNotification({

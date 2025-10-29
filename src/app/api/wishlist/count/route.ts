@@ -1,24 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getServerSession } from '@/lib/auth/session';
-import { prisma } from '@/lib/prisma';
+import { db, enableRealDatabase } from '@/lib/database/connection';
+import { withAuth } from '@/lib/auth/middleware';
 
-// Get wishlist item count
-export async function GET(request: NextRequest) {
+// Enable real database
+enableRealDatabase();
+
+export const GET = withAuth(async (request: NextRequest, authContext: any) => {
   try {
-    const session = await getServerSession(request);
+    const userId = authContext.user.id;
     
-    if (!session) {
-      return NextResponse.json(
-        { success: false, error: 'Unauthorized' },
-        { status: 401 }
-      );
-    }
-
-    const wishlistItemCount = await prisma.wishlistItem.count({
-      where: {
-        userId: session.user.id
-      }
-    });
+    const wishlistItems = await db.getWishlistItems(userId);
+    const wishlistItemCount = wishlistItems.length;
 
     return NextResponse.json({
       success: true,
@@ -32,4 +24,4 @@ export async function GET(request: NextRequest) {
       { status: 500 }
     );
   }
-}
+});

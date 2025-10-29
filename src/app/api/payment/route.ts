@@ -186,9 +186,9 @@ export async function POST(request: NextRequest) {
         await prisma.order.update({
           where: { id: body.orderId },
           data: {
-            paymentStatus: 'COMPLETED',
-            status: 'CONFIRMED',
-            paymentId: paymentResult.paymentId || paymentResult.transactionId
+            payment_status: 'paid',
+            status: 'confirmed',
+            payment_id: paymentResult.paymentId || paymentResult.transactionId
           }
         });
       }
@@ -275,9 +275,9 @@ export async function PUT(request: NextRequest) {
       await prisma.order.update({
         where: { id: orderId },
         data: {
-          paymentStatus: 'COMPLETED',
-          status: 'CONFIRMED',
-          paymentId: paymentId
+          payment_status: 'paid',
+          status: 'confirmed',
+          payment_id: paymentId
         }
       });
 

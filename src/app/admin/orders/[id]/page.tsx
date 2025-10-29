@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import Link from 'next/link';
 
 interface Order {
   id: string;
@@ -33,6 +32,8 @@ interface Order {
   estimatedDelivery: string;
   createdAt: string;
   updatedAt: string;
+  deliveryAgentName?: string;
+  deliveryAgentPhone?: string;
   items: {
     id: string;
     product: {
@@ -56,155 +57,254 @@ export default function OrderDetailPage({ params }: { params: { id: string } }) 
   const [updating, setUpdating] = useState(false);
 
   useEffect(() => {
-    // In a real implementation, fetch order details from API
-    // For now, we'll use mock data
-    const mockOrder: Order = {
-      id: 'ORD-2024-001',
-      orderNumber: 'ORD-2024-001',
-      user: {
-        name: 'Amit Sharma',
-        email: 'amit.sharma@example.com',
-        phone: '+91 9876543210'
-      },
-      address: {
-        name: 'Amit Sharma',
-        address: '123 Main Street',
-        city: 'Mumbai',
-        state: 'Maharashtra',
-        pincode: '400001',
-        phone: '+91 9876543210'
-      },
-      totalAmount: 4297,
-      subtotal: 3500,
-      shippingFee: 500,
-      tax: 297,
-      discount: 0,
-      paymentStatus: 'COMPLETED',
-      status: 'DELIVERED',
-      paymentMethod: 'Credit Card',
-      trackingNumber: 'TN123456789IN',
-      shippingPartner: 'India Post',
-      estimatedDelivery: '2024-01-20',
-      createdAt: '2024-01-15T10:30:00Z',
-      updatedAt: '2024-01-20T14:15:00Z',
-      items: [
-        {
-          id: '1',
-          product: {
-            title: { en: 'Bamboo Wall Art', hi: 'बांस की दीवार कला' },
-            images: [{ url: '/images/products/prod-bamboo-wall-art.jpg' }]
-          },
-          quantity: 1,
-          price: 1500
-        },
-        {
-          id: '2',
-          product: {
-            title: { en: 'Tribal Jewelry Set', hi: 'जनजातीय आभूषण सेट' },
-            images: [{ url: '/images/products/prod-tribal-jewelry.jpg' }]
-          },
-          quantity: 1,
-          price: 1000
+    const fetchOrderDetails = async () => {
+      try {
+        const response = await fetch(`/api/admin/orders/${params.id}`);
+        if (response.ok) {
+          const data = await response.json();
+          if (data.success && data.order) {
+            // Transform the data to match our interface
+            const transformedOrder: Order = {
+              id: data.order.id,
+              orderNumber: data.order.order_number,
+              user: {
+                name: data.order.user?.name || 'Unknown Customer',
+                email: data.order.user?.email || 'N/A',
+                phone: data.order.user?.phone || 'N/A'
+              },
+              address: {
+                name: data.order.user?.name || 'Unknown Customer',
+                address: data.order.shipping_address || 'N/A',
+                city: 'N/A',
+                state: 'N/A',
+                pincode: 'N/A',
+                phone: data.order.user?.phone || 'N/A'
+              },
+              totalAmount: data.order.total_amount || 0,
+              subtotal: data.order.subtotal || 0,
+              shippingFee: data.order.shipping_cost || 0,
+              tax: data.order.tax_amount || 0,
+              discount: data.order.discount_amount || 0,
+              paymentStatus: data.order.payment_status || 'PENDING',
+              status: data.order.status || 'PENDING',
+              paymentMethod: data.order.payment_method || 'N/A',
+              trackingNumber: data.order.tracking_number || 'N/A',
+              shippingPartner: data.order.shipping_method || 'N/A',
+              estimatedDelivery: data.order.estimated_delivery || 'N/A',
+              deliveryAgentName: data.order.deliveryAgentName || undefined,
+              deliveryAgentPhone: data.order.deliveryAgentPhone || undefined,
+              createdAt: data.order.created_at || new Date().toISOString(),
+              updatedAt: data.order.updated_at || new Date().toISOString(),
+              items: data.order.items?.map((item: any) => ({
+                id: item.id || `item-${Date.now()}-${Math.random()}`,
+                product: {
+                  title: { en: item.product_name || 'Unknown Product', hi: item.product_name || 'अज्ञात उत्पाद' },
+                  images: [{ url: item.product_image || '/images/products/placeholder.jpg' }]
+                },
+                quantity: item.quantity || 1,
+                price: item.price || 0
+              })) || [],
+              statusHistory: [
+                {
+                  status: data.order.status || 'PENDING',
+                  note: 'Order status',
+                  createdAt: data.order.created_at || new Date().toISOString()
+                }
+              ]
+            };
+            setOrder(transformedOrder);
+          }
         }
-      ],
-      statusHistory: [
-        {
-          status: 'PENDING',
-          note: 'Order placed',
-          createdAt: '2024-01-15T10:30:00Z'
-        },
-        {
-          status: 'CONFIRMED',
-          note: 'Order confirmed',
-          createdAt: '2024-01-15T11:00:00Z'
-        },
-        {
-          status: 'PROCESSING',
-          note: 'Order processing',
-          createdAt: '2024-01-15T12:00:00Z'
-        },
-        {
-          status: 'SHIPPED',
-          note: 'Order shipped',
-          createdAt: '2024-01-16T09:00:00Z'
-        },
-        {
-          status: 'OUT_FOR_DELIVERY',
-          note: 'Out for delivery',
-          createdAt: '2024-01-19T08:00:00Z'
-        },
-        {
+      } catch (error) {
+        console.error('Error fetching order details:', error);
+        // Fallback to mock data if API fails
+        const mockOrder: Order = {
+          id: 'ORD-2024-001',
+          orderNumber: 'ORD-2024-001',
+          user: {
+            name: 'Amit Sharma',
+            email: 'amit.sharma@example.com',
+            phone: '+91 9876543210'
+          },
+          address: {
+            name: 'Amit Sharma',
+            address: '123 Main Street',
+            city: 'Mumbai',
+            state: 'Maharashtra',
+            pincode: '400001',
+            phone: '+91 9876543210'
+          },
+          totalAmount: 4297,
+          subtotal: 3500,
+          shippingFee: 500,
+          tax: 297,
+          discount: 0,
+          paymentStatus: 'COMPLETED',
           status: 'DELIVERED',
-          note: 'Order delivered',
-          createdAt: '2024-01-20T14:15:00Z'
-        }
-      ]
+          paymentMethod: 'Credit Card',
+          trackingNumber: 'TN123456789IN',
+          shippingPartner: 'India Post',
+          estimatedDelivery: '2024-01-20',
+          deliveryAgentName: 'John Doe',
+          deliveryAgentPhone: '+91 9876543210',
+          createdAt: '2024-01-15T10:30:00Z',
+          updatedAt: '2024-01-20T14:15:00Z',
+          items: [
+            {
+              id: '1',
+              product: {
+                title: { en: 'Bamboo Wall Art', hi: 'बांस की दीवार कला' },
+                images: [{ url: '/images/products/prod-bamboo-wall-art.jpg' }]
+              },
+              quantity: 1,
+              price: 1500
+            },
+            {
+              id: '2',
+              product: {
+                title: { en: 'Tribal Jewelry Set', hi: 'जनजातीय आभूषण सेट' },
+                images: [{ url: '/images/products/prod-tribal-jewelry.jpg' }]
+              },
+              quantity: 1,
+              price: 1000
+            }
+          ],
+          statusHistory: [
+            {
+              status: 'PENDING',
+              note: 'Order placed',
+              createdAt: '2024-01-15T10:30:00Z'
+            },
+            {
+              status: 'CONFIRMED',
+              note: 'Order confirmed',
+              createdAt: '2024-01-15T11:00:00Z'
+            },
+            {
+              status: 'PROCESSING',
+              note: 'Order processing',
+              createdAt: '2024-01-15T12:00:00Z'
+            },
+            {
+              status: 'SHIPPED',
+              note: 'Order shipped',
+              createdAt: '2024-01-16T09:00:00Z'
+            },
+            {
+              status: 'OUT_FOR_DELIVERY',
+              note: 'Out for delivery',
+              createdAt: '2024-01-19T08:00:00Z'
+            },
+            {
+              status: 'DELIVERED',
+              note: 'Order delivered',
+              createdAt: '2024-01-20T14:15:00Z'
+            }
+          ]
+        };
+        setOrder(mockOrder);
+      } finally {
+        setLoading(false);
+      }
     };
 
-    setOrder(mockOrder);
-    setLoading(false);
+    fetchOrderDetails();
   }, [params.id]);
 
-  const handleUpdateStatus = async (newStatus: string) => {
-    if (!order) return;
-    
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case 'DELIVERED': return 'bg-green-100 text-green-800';
+      case 'SHIPPED': 
+      case 'OUT_FOR_DELIVERY': return 'bg-blue-100 text-blue-800';
+      case 'PROCESSING': 
+      case 'CONFIRMED': return 'bg-yellow-100 text-yellow-800';
+      case 'PENDING': return 'bg-gray-100 text-gray-800';
+      case 'CANCELLED': 
+      case 'RETURNED': return 'bg-red-100 text-red-800';
+      case 'REFUNDED': return 'bg-purple-100 text-purple-800';
+      default: return 'bg-gray-100 text-gray-800';
+    }
+  };
+
+  const handleStatusUpdate = async (newStatus: string) => {
     setUpdating(true);
     try {
-      // In a real implementation, update via API
-      setOrder({
-        ...order,
-        status: newStatus as any,
-        statusHistory: [
-          ...order.statusHistory,
-          {
-            status: newStatus,
-            note: `Status updated to ${newStatus}`,
-            createdAt: new Date().toISOString()
-          }
-        ]
+      const response = await fetch(`/api/admin/orders/${params.id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ status: newStatus }),
       });
-      alert(`Order status updated to ${newStatus}`);
+      
+      if (response.ok) {
+        const data = await response.json();
+        if (data.success) {
+          // Update the order status
+          if (order) {
+            setOrder({
+              ...order,
+              status: newStatus as any,
+              statusHistory: [
+                ...order.statusHistory,
+                {
+                  status: newStatus,
+                  note: 'Status updated manually',
+                  createdAt: new Date().toISOString(),
+                }
+              ]
+            });
+          }
+        }
+      }
     } catch (error) {
       console.error('Error updating order status:', error);
-      alert('Failed to update order status');
     } finally {
       setUpdating(false);
     }
   };
 
-  const handleIssueRefund = async () => {
-    if (!order) return;
-    
-    if (confirm('Are you sure you want to issue a refund for this order?')) {
-      setUpdating(true);
-      try {
-        // In a real implementation, issue refund via API
-        setOrder({
-          ...order,
-          paymentStatus: 'REFUNDED'
-        });
-        alert('Refund issued successfully');
-      } catch (error) {
-        console.error('Error issuing refund:', error);
-        alert('Failed to issue refund');
-      } finally {
-        setUpdating(false);
+  // Handle delivery agent assignment
+  const handleDeliveryAgentUpdate = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setUpdating(true);
+    try {
+      const formData = new FormData(e.target as HTMLFormElement);
+      const deliveryAgentName = formData.get('deliveryAgentName') as string;
+      const deliveryAgentPhone = formData.get('deliveryAgentPhone') as string;
+      
+      const response = await fetch(`/api/admin/orders/${params.id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ 
+          deliveryAgentName: deliveryAgentName || null,
+          deliveryAgentPhone: deliveryAgentPhone || null
+        }),
+      });
+      
+      if (response.ok) {
+        const data = await response.json();
+        if (data.success) {
+          // Update the order with delivery agent info
+          if (order) {
+            setOrder({
+              ...order,
+              deliveryAgentName: deliveryAgentName || order.deliveryAgentName,
+              deliveryAgentPhone: deliveryAgentPhone || order.deliveryAgentPhone
+            });
+          }
+          alert('Delivery agent assigned successfully!');
+        }
+      } else {
+        alert('Failed to assign delivery agent');
       }
-    }
-  };
-
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case 'PENDING': return 'bg-yellow-100 text-yellow-800';
-      case 'CONFIRMED': return 'bg-blue-100 text-blue-800';
-      case 'PROCESSING': return 'bg-indigo-100 text-indigo-800';
-      case 'SHIPPED': return 'bg-purple-100 text-purple-800';
-      case 'OUT_FOR_DELIVERY': return 'bg-orange-100 text-orange-800';
-      case 'DELIVERED': return 'bg-green-100 text-green-800';
-      case 'CANCELLED': return 'bg-red-100 text-red-800';
-      case 'RETURNED': return 'bg-gray-100 text-gray-800';
-      case 'REFUNDED': return 'bg-teal-100 text-teal-800';
-      default: return 'bg-gray-100 text-gray-800';
+    } catch (error) {
+      console.error('Error updating delivery agent:', error);
+      alert('Error assigning delivery agent');
+    } finally {
+      setUpdating(false);
     }
   };
 
@@ -225,9 +325,9 @@ export default function OrderDetailPage({ params }: { params: { id: string } }) 
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900">Order Not Found</h1>
           <p className="mt-2 text-gray-600">The order you're looking for doesn't exist.</p>
-          <Link href="/admin/orders" className="mt-4 inline-block text-amber-600 hover:text-amber-800">
+          <button onClick={() => router.push('/admin/orders')} className="mt-4 inline-block text-amber-600 hover:text-amber-800">
             ← Back to Orders
-          </Link>
+          </button>
         </div>
       </div>
     );
@@ -237,12 +337,12 @@ export default function OrderDetailPage({ params }: { params: { id: string } }) 
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-6">
-          <Link href="/admin/orders" className="text-amber-600 hover:text-amber-800 flex items-center">
+          <button onClick={() => router.push('/admin/orders')} className="text-amber-600 hover:text-amber-800 flex items-center">
             <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
             </svg>
             Back to Orders
-          </Link>
+          </button>
         </div>
 
         <div className="bg-white shadow-sm rounded-lg overflow-hidden">
@@ -267,6 +367,56 @@ export default function OrderDetailPage({ params }: { params: { id: string } }) 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               {/* Order Items */}
               <div className="lg:col-span-2">
+                {/* Delivery Agent Assignment Form */}
+                <div className="mb-8 bg-amber-50 rounded-lg p-4">
+                  <h3 className="text-lg font-medium text-gray-900 mb-4">Assign Delivery Agent</h3>
+                  <form onSubmit={handleDeliveryAgentUpdate} className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div>
+                      <label htmlFor="deliveryAgentName" className="block text-sm font-medium text-gray-700">
+                        Agent Name
+                      </label>
+                      <input
+                        type="text"
+                        name="deliveryAgentName"
+                        id="deliveryAgentName"
+                        defaultValue={order.deliveryAgentName || ''}
+                        className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-amber-500 focus:border-amber-500 sm:text-sm"
+                        placeholder="Enter agent name"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="deliveryAgentPhone" className="block text-sm font-medium text-gray-700">
+                        Agent Phone
+                      </label>
+                      <input
+                        type="tel"
+                        name="deliveryAgentPhone"
+                        id="deliveryAgentPhone"
+                        defaultValue={order.deliveryAgentPhone || ''}
+                        className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-amber-500 focus:border-amber-500 sm:text-sm"
+                        placeholder="Enter agent phone"
+                      />
+                    </div>
+                    <div className="flex items-end">
+                      <button
+                        type="submit"
+                        disabled={updating}
+                        className="w-full md:w-auto px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-amber-600 hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 disabled:opacity-50"
+                      >
+                        {updating ? 'Saving...' : 'Assign Agent'}
+                      </button>
+                    </div>
+                  </form>
+                  {order.deliveryAgentName && (
+                    <div className="mt-4 p-3 bg-white rounded-md border border-gray-200">
+                      <p className="text-sm text-gray-600">
+                        <strong>Assigned Agent:</strong> {order.deliveryAgentName} 
+                        {order.deliveryAgentPhone && ` (${order.deliveryAgentPhone})`}
+                      </p>
+                    </div>
+                  )}
+                </div>
+
                 <div className="mb-8">
                   <h2 className="text-lg font-medium text-gray-900 mb-4">Items</h2>
                   <div className="bg-gray-50 rounded-lg overflow-hidden">
@@ -274,8 +424,8 @@ export default function OrderDetailPage({ params }: { params: { id: string } }) 
                       <div key={item.id} className="flex items-center p-4 border-b border-gray-200 last:border-b-0">
                         <div className="flex-shrink-0 w-16 h-16 rounded-md overflow-hidden">
                           <img
-                            src={item.product.images[0]?.url || '/images/products/placeholder.jpg'}
-                            alt={item.product.title.en}
+                            src={item.product?.images?.[0]?.url || '/images/products/placeholder.jpg'}
+                            alt={item.product?.title?.en || 'Product'}
                             className="w-full h-full object-cover"
                             onError={(e: any) => {
                               const target = e.target as HTMLImageElement;
@@ -331,8 +481,8 @@ export default function OrderDetailPage({ params }: { params: { id: string } }) 
                   <div className="flow-root">
                     <ul className="relative border-l border-gray-200">
                       {order.statusHistory.map((history, index) => (
-                        <li key={index} className="mb-10 ml-6">
-                          <div className="absolute -left-3 mt-1.5">
+                        <li key={`${order.id}-status-${index}`} className="mb-10 ml-6 relative">
+                          <div className="absolute -left-3 top-1.5">
                             <div className="w-6 h-6 rounded-full bg-amber-600 flex items-center justify-center">
                               <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
                                 <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
@@ -418,39 +568,33 @@ export default function OrderDetailPage({ params }: { params: { id: string } }) 
                   </div>
                 </div>
 
-                {/* Actions */}
-                <div className="bg-gray-50 rounded-lg p-4">
-                  <h2 className="text-lg font-medium text-gray-900 mb-4">Actions</h2>
-                  <div className="space-y-3">
-                    <div>
-                      <label htmlFor="status" className="block text-sm font-medium text-gray-700 mb-1">
-                        Update Status
-                      </label>
+                {/* Update Status */}
+                <div>
+                  <h2 className="text-lg font-medium text-gray-900 mb-4">Update Status</h2>
+                  <div className="bg-gray-50 rounded-lg p-4">
+                    <div className="space-y-3">
                       <select
-                        id="status"
-                        value={order.status.toLowerCase()}
-                        onChange={(e) => handleUpdateStatus(e.target.value.toUpperCase())}
+                        value={order.status}
+                        onChange={(e) => handleStatusUpdate(e.target.value)}
                         disabled={updating}
-                        className="block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-amber-500 focus:border-amber-500 sm:text-sm"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-amber-500 focus:border-amber-500"
                       >
-                        <option value="pending">Pending</option>
-                        <option value="confirmed">Confirmed</option>
-                        <option value="processing">Processing</option>
-                        <option value="shipped">Shipped</option>
-                        <option value="out-for-delivery">Out for Delivery</option>
-                        <option value="delivered">Delivered</option>
-                        <option value="cancelled">Cancelled</option>
-                        <option value="returned">Returned</option>
-                        <option value="refunded">Refunded</option>
+                        <option value="PENDING">Pending</option>
+                        <option value="CONFIRMED">Confirmed</option>
+                        <option value="PROCESSING">Processing</option>
+                        <option value="SHIPPED">Shipped</option>
+                        <option value="OUT_FOR_DELIVERY">Out for Delivery</option>
+                        <option value="DELIVERED">Delivered</option>
+                        <option value="CANCELLED">Cancelled</option>
+                        <option value="RETURNED">Returned</option>
+                        <option value="REFUNDED">Refunded</option>
                       </select>
+                      {updating && (
+                        <div className="text-center">
+                          <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-amber-600 mx-auto"></div>
+                        </div>
+                      )}
                     </div>
-                    <button
-                      onClick={handleIssueRefund}
-                      disabled={updating || order.paymentStatus === 'REFUNDED'}
-                      className="w-full px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 disabled:opacity-50"
-                    >
-                      {order.paymentStatus === 'REFUNDED' ? 'Refunded' : 'Issue Refund'}
-                    </button>
                   </div>
                 </div>
               </div>

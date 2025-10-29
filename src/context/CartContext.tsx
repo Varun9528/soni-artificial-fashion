@@ -119,11 +119,14 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     itemCount: 0,
     loaded: false
   });
-  const { user } = useAuth();
+  const { user, isInitialized } = useAuth();
   const [isSyncing, setIsSyncing] = useState(false);
 
   // Load cart from localStorage on mount or from DB if user is logged in
   useEffect(() => {
+    // Only load cart when auth context is initialized
+    if (!isInitialized) return;
+
     const loadCart = async () => {
       if (user) {
         // Load from database
@@ -155,7 +158,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     };
 
     loadCart();
-  }, [user]);
+  }, [user, isInitialized]);
 
   // Save cart to localStorage whenever it changes (for guest users)
   useEffect(() => {
@@ -169,7 +172,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     if (user && state.loaded && !isSyncing) {
       syncCart();
     }
-  }, [user, state.loaded]);
+  }, [user, state.loaded, isInitialized]);
 
   const syncCart = async () => {
     if (isSyncing || !user) return;
@@ -252,23 +255,22 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     if (user) {
       // Remove from database
       try {
-        const response = await fetch('/api/cart', {
+        // Send productId as URL parameter instead of in request body
+        const response = await fetch(`/api/cart?productId=${encodeURIComponent(productId)}`, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            productId,
-            variant
-          })
+          }
         });
-        
+      
         const data = await response.json();
         if (data.success) {
           dispatch({
             type: 'REMOVE_FROM_CART',
             payload: { productId, variant }
           });
+        } else {
+          console.error('Error removing from cart:', data.error);
         }
       } catch (error) {
         console.error('Error removing from cart:', error);

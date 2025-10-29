@@ -1,0 +1,3210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xml:lang="en" xmlns="http://www.w3.org/2005/Atom" xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:s="http://jadedpixel.com/-/spec/shopify">
+  <id>https://www.soni.fashion/collections/all.atom</id>
+  <link rel="alternate" type="text/html" href="https://www.soni.fashion/collections/all"/>
+  <link rel="self" type="application/atom+xml" href="https://www.soni.fashion/collections/ladies-necklace.atom"/>
+  <title>Soni Fashion ®</title>
+  <updated>2025-10-15T16:50:32+05:30</updated>
+  <author>
+    <name>Soni Fashion ®</name>
+  </author>
+  <entry>
+    <id>https://www.soni.fashion/products/8625101209778</id>
+    <published>2025-10-15T16:50:32+05:30</published>
+    <updated>2025-10-15T16:50:32+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/unique-design-gold-plated-chain-for-ladies-style-a692"/>
+    <title>Unique Design Gold Plated Chain for Ladies - Style A692</title>
+    <s:type>Necklace</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/LNK-11A-692.jpg?v=1760527226"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>Necklace<br>
+        <strong>Price: </strong>
+            1190.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>This elegant ladies' chain features a unique heart design with a golden matt finish, crafted from durable brass and plated with high-quality gold. Its shining surface adds a subtle glow, perfect for enhancing any outfit with a touch of sophistication and charm. Ideal for daily wear or special occasions, this stylish necklace blends classic beauty with lasting quality.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Necklace Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Height</strong></td>
+<td>:</td>
+<td style="text-align: left;">56 cm (22.05 inch)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Width</strong></td>
+<td>:</td>
+<td style="text-align: left;">4 mm (0.4 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 mm (0.1 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">10 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;">Fixed</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Lock Type</strong></td>
+<td>:</td>
+<td style="text-align: left;">S Hook</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Brass</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining, Matt</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">9 to 5 Look, Party Wear, Festival, Marriage / Wedding / Engagement, Birthday Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Ladies Chain</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Symbol</strong></td>
+<td>:</td>
+<td style="text-align: left;">Heart</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Women, Teenage, School / Collage Girls</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Necklace</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Golden Necklace</s:tag>
+    <s:tag>Heart</s:tag>
+    <s:tag>Hid_Reg_Plating</s:tag>
+    <s:tag>Ladies Chain</s:tag>
+    <s:tag>Matt</s:tag>
+    <s:tag>Shining</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625101209778</id>
+      <title>Default Title</title>
+      <s:price currency="INR">1190.00</s:price>
+      <s:sku>LNK-11A-692</s:sku>
+      <s:grams>10</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8625101177010</id>
+    <published>2025-10-15T16:50:01+05:30</published>
+    <updated>2025-10-15T16:50:01+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/exclusive-design-gold-plated-chain-for-ladies-style-a691"/>
+    <title>Exclusive Design Gold Plated Chain for Ladies - Style A691</title>
+    <s:type>Necklace</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/LNK-11A-691.jpg?v=1760527202"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>Necklace<br>
+        <strong>Price: </strong>
+            1190.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>This exclusive design ladies' chain features a matt finish and is crafted from durable brass with a high-quality gold plating. Its elegant yet subtle style makes it perfect for everyday wear or special occasions, adding a refined touch to any outfit. Lightweight and comfortable, this necklace combines timeless beauty with lasting shine.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Necklace Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Height</strong></td>
+<td>:</td>
+<td style="text-align: left;">56 cm (22.05 inch)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Width</strong></td>
+<td>:</td>
+<td style="text-align: left;">6 mm (0.6 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">2 mm (0.2 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">13 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;">Fixed</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Lock Type</strong></td>
+<td>:</td>
+<td style="text-align: left;">S Hook</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Brass</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Matt</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Ladies Chain</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Women, Teenage, School / Collage Girls</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Necklace</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Golden Necklace</s:tag>
+    <s:tag>Hid_Reg_Plating</s:tag>
+    <s:tag>Ladies Chain</s:tag>
+    <s:tag>Matt</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625101177010</id>
+      <title>Default Title</title>
+      <s:price currency="INR">1190.00</s:price>
+      <s:sku>LNK-11A-691</s:sku>
+      <s:grams>13</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8625101144242</id>
+    <published>2025-10-15T16:49:32+05:30</published>
+    <updated>2025-10-15T16:49:32+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/beautiful-design-gold-plated-chain-for-ladies-style-a690"/>
+    <title>Beautiful Design Gold Plated Chain for Ladies - Style A690</title>
+    <s:type>Necklace</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/LNK-11A-690.jpg?v=1760527173"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>Necklace<br>
+        <strong>Price: </strong>
+            1190.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>This elegant ladies' chain features a beautiful gold-plated finish on durable brass, combining style with lasting quality. Its matte surface adds a sophisticated touch, making it perfect for everyday wear or special occasions. Lightweight and comfortable, this necklace enhances any outfit with subtle shine and timeless appeal.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Necklace Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Height</strong></td>
+<td>:</td>
+<td style="text-align: left;">54 cm (21.26 inch)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Width</strong></td>
+<td>:</td>
+<td style="text-align: left;">5 mm (0.5 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">2 mm (0.2 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">10 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;">Fixed</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Lock Type</strong></td>
+<td>:</td>
+<td style="text-align: left;">S Hook</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Brass</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Matt</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">9 to 5 Look, Party Wear, Festival, Marriage / Wedding / Engagement, Birthday Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Ladies Chain</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Women, Teenage, School / Collage Girls</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Necklace</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Golden Necklace</s:tag>
+    <s:tag>Hid_Reg_Plating</s:tag>
+    <s:tag>Ladies Chain</s:tag>
+    <s:tag>Matt</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625101144242</id>
+      <title>Default Title</title>
+      <s:price currency="INR">1190.00</s:price>
+      <s:sku>LNK-11A-690</s:sku>
+      <s:grams>10</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8625101111474</id>
+    <published>2025-10-15T16:49:05+05:30</published>
+    <updated>2025-10-15T16:49:05+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/glittering-design-gold-plated-chain-for-ladies-style-a689"/>
+    <title>Glittering Design Gold Plated Chain for Ladies - Style A689</title>
+    <s:type>Necklace</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/LNK-11A-689.jpg?v=1760527146"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>Necklace<br>
+        <strong>Price: </strong>
+            1190.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>This golden necklace features a glittering design that adds a touch of elegance to any outfit. Crafted from durable brass with high-quality gold plating, it offers lasting shine and style. Perfect for daily wear or special occasions, this ladies' chain combines sophistication with comfort, making it a versatile accessory for your jewelry collection.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Necklace Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Height</strong></td>
+<td>:</td>
+<td style="text-align: left;">56 cm (22.05 inch)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Width</strong></td>
+<td>:</td>
+<td style="text-align: left;">5 mm (0.5 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 mm (0.1 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">10 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;">Fixed</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Lock Type</strong></td>
+<td>:</td>
+<td style="text-align: left;">S Hook</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Brass</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">9 to 5 Look, Party Wear, Festival, Marriage / Wedding / Engagement, Birthday Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Ladies Chain</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Women, Teenage, School / Collage Girls</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Necklace</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Golden Necklace</s:tag>
+    <s:tag>Hid_Reg_Plating</s:tag>
+    <s:tag>Ladies Chain</s:tag>
+    <s:tag>Shining</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625101111474</id>
+      <title>Default Title</title>
+      <s:price currency="INR">1190.00</s:price>
+      <s:sku>LNK-11A-689</s:sku>
+      <s:grams>10</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8625101078706</id>
+    <published>2025-10-15T16:48:32+05:30</published>
+    <updated>2025-10-15T16:48:32+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/high-class-design-gold-plated-chain-for-ladies-style-a688"/>
+    <title>High-Class Design Gold Plated Chain for Ladies - Style A688</title>
+    <s:type>Necklace</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/LNK-11A-688.jpg?v=1760527114"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>Necklace<br>
+        <strong>Price: </strong>
+            1190.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>This elegant ladies' chain features a high-class gold plating on durable brass, combining style with long-lasting wear. Its refined design makes it a versatile accessory for both everyday elegance and special occasions. Add a touch of sophistication to any outfit with this beautifully crafted golden necklace.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Necklace Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Height</strong></td>
+<td>:</td>
+<td style="text-align: left;">56 cm (22.05 inch)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Width</strong></td>
+<td>:</td>
+<td style="text-align: left;">5 mm (0.5 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">2 mm (0.2 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">11 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;">Fixed</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Lock Type</strong></td>
+<td>:</td>
+<td style="text-align: left;">S Hook</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Brass</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Matt</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">9 to 5 Look, Party Wear, Festival, Marriage / Wedding / Engagement, Birthday Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Ladies Chain</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Women, Teenage, School / Collage Girls</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Necklace</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Golden Necklace</s:tag>
+    <s:tag>Hid_Reg_Plating</s:tag>
+    <s:tag>Ladies Chain</s:tag>
+    <s:tag>Matt</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625101078706</id>
+      <title>Default Title</title>
+      <s:price currency="INR">1190.00</s:price>
+      <s:sku>LNK-11A-688</s:sku>
+      <s:grams>11</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8625101045938</id>
+    <published>2025-10-15T16:47:56+05:30</published>
+    <updated>2025-10-15T16:47:56+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/exclusive-design-gold-plated-chain-for-ladies-style-a687"/>
+    <title>Exclusive Design Gold Plated Chain for Ladies - Style A687</title>
+    <s:type>Necklace</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/LNK-11A-687_34784470-054f-4f36-9134-ffa159de7891.jpg?v=1760527077"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>Necklace<br>
+        <strong>Price: </strong>
+            1190.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>This exclusive ladies' chain features a beautiful matt finish with a shining golden appearance. Crafted from high-quality brass and coated with hidden regular plating, it ensures durability and lasting shine. Perfect for adding a subtle yet elegant touch to your style, this golden necklace combines classic design with everyday wearability.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Necklace Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Height</strong></td>
+<td>:</td>
+<td style="text-align: left;">57 cm (22.44 inch)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Width</strong></td>
+<td>:</td>
+<td style="text-align: left;">6 mm (0.6 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">3 mm (0.3 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">19 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;">Fixed</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Lock Type</strong></td>
+<td>:</td>
+<td style="text-align: left;">S Hook</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Brass</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining, Matt</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">9 to 5 Look, Party Wear, Festival, Marriage / Wedding / Engagement, Birthday Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Ladies Chain</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Women, Teenage, School / Collage Girls</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Necklace</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Golden Necklace</s:tag>
+    <s:tag>Hid_Reg_Plating</s:tag>
+    <s:tag>Ladies Chain</s:tag>
+    <s:tag>Matt</s:tag>
+    <s:tag>Shining</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625101045938</id>
+      <title>Default Title</title>
+      <s:price currency="INR">1190.00</s:price>
+      <s:sku>LNK-11A-687</s:sku>
+      <s:grams>19</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8625101013170</id>
+    <published>2025-10-15T16:46:57+05:30</published>
+    <updated>2025-10-15T16:46:57+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/opulent-design-gold-plated-chain-for-ladies-style-a686"/>
+    <title>Opulent Design Gold Plated Chain for Ladies - Style A686</title>
+    <s:type>Necklace</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/LNK-11A-686.jpg?v=1760527003"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>Necklace<br>
+        <strong>Price: </strong>
+            1190.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Elevate your elegance with this opulent gold-plated brass chain designed specifically for ladies. Featuring a shining, high-quality regular plating, this necklace combines durability with a luxurious golden finish. Perfect for everyday wear or special occasions, it adds a sophisticated touch to any outfit.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Necklace Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Height</strong></td>
+<td>:</td>
+<td style="text-align: left;">54 cm (21.26 inch)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Width</strong></td>
+<td>:</td>
+<td style="text-align: left;">3 mm (0.3 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">2 mm (0.2 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">10 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;">Fixed</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Lock Type</strong></td>
+<td>:</td>
+<td style="text-align: left;">S Hook</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Brass</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">9 to 5 Look, Party Wear, Festival, Marriage / Wedding / Engagement, Birthday Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Ladies Chain</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Women, Teenage, School / Collage Girls</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Necklace</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Golden Necklace</s:tag>
+    <s:tag>Hid_Reg_Plating</s:tag>
+    <s:tag>Ladies Chain</s:tag>
+    <s:tag>Shining</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625101013170</id>
+      <title>Default Title</title>
+      <s:price currency="INR">1190.00</s:price>
+      <s:sku>LNK-11A-686</s:sku>
+      <s:grams>10</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8625100980402</id>
+    <published>2025-10-15T16:46:21+05:30</published>
+    <updated>2025-10-15T16:46:21+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/beautiful-design-gold-plated-chain-for-ladies-style-a685"/>
+    <title>Beautiful Design Gold Plated Chain for Ladies - Style A685</title>
+    <s:type>Necklace</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/LNK-11A-685.jpg?v=1760526982"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>Necklace<br>
+        <strong>Price: </strong>
+            1190.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>This elegant ladies' chain features a beautiful filigree design, expertly crafted in brass and finished with a high-quality golden plating. Its shining appearance adds a touch of sophistication, making it perfect for both everyday wear and special occasions. Lightweight yet durable, this necklace combines style and comfort effortlessly.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Necklace Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Height</strong></td>
+<td>:</td>
+<td style="text-align: left;">56 cm (22.05 inch)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Width</strong></td>
+<td>:</td>
+<td style="text-align: left;">3 mm (0.3 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">2 mm (0.2 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">11 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;">Fixed</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Lock Type</strong></td>
+<td>:</td>
+<td style="text-align: left;">S Hook</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Brass</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">9 to 5 Look, Party Wear, Festival, Marriage / Wedding / Engagement, Birthday Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Ladies Chain, Filigree Design</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Women</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Necklace</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Filigree Design</s:tag>
+    <s:tag>Golden Necklace</s:tag>
+    <s:tag>Hid_Reg_Plating</s:tag>
+    <s:tag>Ladies Chain</s:tag>
+    <s:tag>Shining</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625100980402</id>
+      <title>Default Title</title>
+      <s:price currency="INR">1190.00</s:price>
+      <s:sku>LNK-11A-685</s:sku>
+      <s:grams>11</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8625100947634</id>
+    <published>2025-10-15T16:45:31+05:30</published>
+    <updated>2025-10-15T16:45:31+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/casual-design-gold-plated-chain-for-ladies-style-a684"/>
+    <title>Casual Design Gold Plated Chain for Ladies - Style A684</title>
+    <s:type>Necklace</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/LNK-11A-684.jpg?v=1760526933"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>Necklace<br>
+        <strong>Price: </strong>
+            1190.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>This elegant ladies' chain features a gold-plated brass design with a delicate heart pendant, perfect for casual wear. The matte finish adds a subtle charm, making it a versatile accessory for everyday style. Durable and lightweight, it offers both comfort and sophistication.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Necklace Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Height</strong></td>
+<td>:</td>
+<td style="text-align: left;">56 cm (22.05 inch)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Width</strong></td>
+<td>:</td>
+<td style="text-align: left;">5 mm (0.5 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">2 mm (0.2 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">12 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;">Fixed</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Shape</strong></td>
+<td>:</td>
+<td style="text-align: left;">Heart</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Lock Type</strong></td>
+<td>:</td>
+<td style="text-align: left;">S Hook</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Brass</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Matt</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">9 to 5 Look, Party Wear, Festival, Marriage / Wedding / Engagement, Birthday Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Ladies Chain</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Symbol</strong></td>
+<td>:</td>
+<td style="text-align: left;">Heart</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Women</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Necklace</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Golden Necklace</s:tag>
+    <s:tag>Heart</s:tag>
+    <s:tag>Hid_Reg_Plating</s:tag>
+    <s:tag>Ladies Chain</s:tag>
+    <s:tag>Matt</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625100947634</id>
+      <title>Default Title</title>
+      <s:price currency="INR">1190.00</s:price>
+      <s:sku>LNK-11A-684</s:sku>
+      <s:grams>12</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8625100914866</id>
+    <published>2025-10-15T16:44:59+05:30</published>
+    <updated>2025-10-15T16:44:59+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/magnificent-design-gold-plated-chain-for-ladies-style-a683"/>
+    <title>Magnificent Design Gold Plated Chain for Ladies - Style A683</title>
+    <s:type>Necklace</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/LNK-11A-683.jpg?v=1760526892"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>Necklace<br>
+        <strong>Price: </strong>
+            1190.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>This elegant ladies' chain features a stunning gold-plated finish over durable brass, combining style and lasting shine. Its magnificent design offers a timeless accessory perfect for enhancing any outfit with subtle sophistication. Ideal for daily wear or special occasions, this chain adds a touch of glamour to your jewelry collection.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Necklace Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Height</strong></td>
+<td>:</td>
+<td style="text-align: left;">56 cm (22.05 inch)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Width</strong></td>
+<td>:</td>
+<td style="text-align: left;">3 mm (0.3 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">2 mm (0.2 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">9 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;">Fixed</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Lock Type</strong></td>
+<td>:</td>
+<td style="text-align: left;">S Hook</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Brass</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">9 to 5 Look, Party Wear, Festival, Marriage / Wedding / Engagement, Birthday Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Ladies Chain</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Women, Teenage, School / Collage Girls</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Necklace</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Golden Necklace</s:tag>
+    <s:tag>Hid_Reg_Plating</s:tag>
+    <s:tag>Ladies Chain</s:tag>
+    <s:tag>Shining</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8625100914866</id>
+      <title>Default Title</title>
+      <s:price currency="INR">1190.00</s:price>
+      <s:sku>LNK-11A-683</s:sku>
+      <s:grams>9</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8623918383282</id>
+    <published>2025-10-13T17:52:31+05:30</published>
+    <updated>2025-10-13T17:52:31+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/1-gram-gold-plated-choker-necklace-set-for-women-style-a963"/>
+    <title>1 Gram Gold Plated Choker Necklace Set for Women - Style A963</title>
+    <s:type>Necklace Set</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/soni-fashion-necklace-set-1-gram-gold-plated-choker-necklace-set-for-women-style-a963_4.jpg?v=1760358152"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>Necklace Set<br>
+        <strong>Price: </strong>
+            4050.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>This 1 gram gold-plated choker necklace set for women showcases a unique filigree design with a shimmering, multicolor finish. Made with high-quality brass and a matt, hid_reg_plating process, this necklace exudes a regal and sophisticated style, perfect for any formal occasion. The shining diamonds add a touch of luxury to this beautiful piece.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Necklace Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">6 mm (0.6 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Earrings Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Height</strong></td>
+<td>:</td>
+<td style="text-align: left;">41 mm (4.1 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Width</strong></td>
+<td>:</td>
+<td style="text-align: left;">19 mm (1.9 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">4 mm (0.4 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">46 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;">Adjustable</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Lock Type</strong></td>
+<td>:</td>
+<td style="text-align: left;">Openable Lock</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden, Multicolor</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Brass, Diamond</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining, Matt</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">9 to 5 Look, Festival, Marriage / Wedding / Engagement, Birthday Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Filigree Design, Royal</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Women, School / Collage Girls</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Necklace + 2 Earrings</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>More Info</strong></td>
+<td>:</td>
+<td style="text-align: left;">This product is gold plated with approx 300 miligram of gold.</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Choker Set</s:tag>
+    <s:tag>Diamond</s:tag>
+    <s:tag>Filigree Design</s:tag>
+    <s:tag>Golden Necklace Set</s:tag>
+    <s:tag>Hid_Reg_Plating</s:tag>
+    <s:tag>Matt</s:tag>
+    <s:tag>Multicolor Necklace Set</s:tag>
+    <s:tag>Royal</s:tag>
+    <s:tag>Shining</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8623918383282</id>
+      <title>Default Title</title>
+      <s:price currency="INR">4050.00</s:price>
+      <s:sku>LNS-45A-963</s:sku>
+      <s:grams>46</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8623871164594</id>
+    <published>2025-10-13T17:43:24+05:30</published>
+    <updated>2025-10-13T17:43:24+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/1-gram-gold-plated-exclusive-design-mala-for-women-style-a576"/>
+    <title>1 Gram Gold Plated Exclusive Design Mala for Women - Style A576</title>
+    <s:type>Necklace</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/soni-fashion-necklace-1-gram-gold-plated-exclusive-design-mala-for-women-style-a576_1.jpg?v=1760357605"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>Necklace<br>
+        <strong>Price: </strong>
+            3050.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Elevate your style with our 1 Gram Gold Plated Exclusive Design Mala for Women. Featuring a shining and intricate filigree design, this gray and golden necklace is made with miligram gold and brass beads. Perfect for adding a touch of elegance to any outfit, this religious piece is a must-have for any fashion-forward woman.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Necklace Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Height</strong></td>
+<td>:</td>
+<td style="text-align: left;">60 cm (23.62 inch)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Width</strong></td>
+<td>:</td>
+<td style="text-align: left;">3 mm (0.3 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">3 mm (0.3 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">7 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;">Fixed</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Lock Type</strong></td>
+<td>:</td>
+<td style="text-align: left;">No Lock</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden, Gray</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Miligram Gold, Brass, Beads</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">9 to 5 Look, Everyday, Festival, Marriage / Wedding / Engagement, Birthday Gift, Photography, Religious/Temple, Any Occasion</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Religious, Filigree Design</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Women</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Necklace</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>More Info</strong></td>
+<td>:</td>
+<td style="text-align: left;">This product is gold plated with approx 200 miligram of gold.</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Beads</s:tag>
+    <s:tag>Brass</s:tag>
+    <s:tag>Filigree Design</s:tag>
+    <s:tag>Golden Necklace</s:tag>
+    <s:tag>Gray Necklace</s:tag>
+    <s:tag>Miligram Gold</s:tag>
+    <s:tag>Religious</s:tag>
+    <s:tag>Shining</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8623871164594</id>
+      <title>Default Title</title>
+      <s:price currency="INR">3050.00</s:price>
+      <s:sku>LNK-33A-576</s:sku>
+      <s:grams>7</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8622659436722</id>
+    <published>2025-10-13T09:56:19+05:30</published>
+    <updated>2025-10-13T09:56:19+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/1-gram-gold-plated-magnificent-design-chain-for-ladies-style-a682"/>
+    <title>1 Gram Gold Plated Magnificent Design Chain for Ladies - Style A682</title>
+    <s:type>Necklace</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/LNK-41A-682.jpg?v=1760329580"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>Necklace<br>
+        <strong>Price: </strong>
+            4190.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>This 1 gram gold-plated chain, crafted from durable brass, features a shining, elegant design perfect for women. Its lightweight construction ensures comfortable daily wear while adding a touch of sophistication to any outfit. Ideal for those seeking a beautiful golden necklace that combines style with affordability.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Necklace Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Height</strong></td>
+<td>:</td>
+<td style="text-align: left;">51 cm (20.08 inch)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Width</strong></td>
+<td>:</td>
+<td style="text-align: left;">3 mm (0.3 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">3 mm (0.3 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">8 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;">Adjustable</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Lock Type</strong></td>
+<td>:</td>
+<td style="text-align: left;">Openable Lock</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Miligram Gold, Brass</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">9 to 5 Look, Party Wear, Everyday, Marriage / Wedding / Engagement, Birthday Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Ladies Chain</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Women, Teenage, School / Collage Girls</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Necklace</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>More Info</strong></td>
+<td>:</td>
+<td style="text-align: left;">This product is gold plated with approx 200 miligram of gold.</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Golden Necklace</s:tag>
+    <s:tag>Ladies Chain</s:tag>
+    <s:tag>Miligram Gold</s:tag>
+    <s:tag>Shining</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8622659436722</id>
+      <title>Default Title</title>
+      <s:price currency="INR">4190.00</s:price>
+      <s:sku>LNK-41A-682</s:sku>
+      <s:grams>8</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8367703064754</id>
+    <published>2025-10-09T10:49:10+05:30</published>
+    <updated>2025-10-09T10:49:10+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/1-gram-gold-plated-hand-crafted-design-necklace-set-for-women-style-a867"/>
+    <title>1 Gram Gold Plated Hand-Crafted Design Necklace Set for Women - Style A867</title>
+    <s:type>Necklace Set</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/1GramGoldPlatedHand-CraftedDesignNecklaceSetforWomen_e8b6c3b5-21ab-49d3-a98f-a6a863e5cfec.jpg?v=1733212691"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>Necklace Set<br>
+        <strong>Price: </strong>
+            3690.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>This 1 gram gold plated necklace set boasts a unique textured design, giving it a shining and elegant appearance. The style is perfect for any occasion, while the use of miligram gold and brass ensures both durability and the latest trend in fashion. Upgrade your accessory game with this beautiful golden necklace set.</p>
+<table style="width: 100%; height: 431.063px;">
+<tbody>
+<tr style="height: 19.5938px;">
+<th colspan="3" style="text-align: left; width: 95.9854%; height: 19.5938px;"><strong>Necklace Dimension</strong></th>
+</tr>
+<tr style="height: 19.5938px;">
+<td style="text-align: right; width: 17.8661%; height: 19.5938px;"><strong>Width</strong></td>
+<td style="width: 0.556%; height: 19.5938px;">:</td>
+<td style="text-align: left; width: 77.5633%; height: 19.5938px;">75 mm (7.5 cm)</td>
+</tr>
+<tr style="height: 19.5938px;">
+<td style="text-align: right; width: 17.8661%; height: 19.5938px;"><strong>Depth</strong></td>
+<td style="width: 0.556%; height: 19.5938px;">:</td>
+<td style="text-align: left; width: 77.5633%; height: 19.5938px;">3 mm (0.3 cm)</td>
+</tr>
+<tr style="height: 19.5938px;">
+<th colspan="3" style="text-align: left; width: 95.9854%; height: 19.5938px;"><strong>Earrings Dimension</strong></th>
+</tr>
+<tr style="height: 19.5938px;">
+<td style="text-align: right; width: 17.8661%; height: 19.5938px;"><strong>Height</strong></td>
+<td style="width: 0.556%; height: 19.5938px;">:</td>
+<td style="text-align: left; width: 77.5633%; height: 19.5938px;">35 mm (3.5 cm)</td>
+</tr>
+<tr style="height: 19.5938px;">
+<td style="text-align: right; width: 17.8661%; height: 19.5938px;"><strong>Width</strong></td>
+<td style="width: 0.556%; height: 19.5938px;">:</td>
+<td style="text-align: left; width: 77.5633%; height: 19.5938px;">17 mm (1.7 cm)</td>
+</tr>
+<tr style="height: 19.5938px;">
+<td style="text-align: right; width: 17.8661%; height: 19.5938px;"><strong>Depth</strong></td>
+<td style="width: 0.556%; height: 19.5938px;">:</td>
+<td style="text-align: left; width: 77.5633%; height: 19.5938px;">3 mm (0.3 cm)</td>
+</tr>
+<tr style="height: 19.5938px;">
+<th colspan="3" style="text-align: left; width: 95.9854%; height: 19.5938px;"><strong>Other Specification</strong></th>
+</tr>
+<tr style="height: 19.5938px;">
+<td style="text-align: right; width: 17.8661%; height: 19.5938px;"><strong>Weight</strong></td>
+<td style="width: 0.556%; height: 19.5938px;">:</td>
+<td style="text-align: left; width: 77.5633%; height: 19.5938px;">48 Gram</td>
+</tr>
+<tr style="height: 19.5938px;">
+<td style="text-align: right; width: 17.8661%; height: 19.5938px;"><strong>Size</strong></td>
+<td style="width: 0.556%; height: 19.5938px;">:</td>
+<td style="text-align: left; width: 77.5633%; height: 19.5938px;">Adjustable</td>
+</tr>
+<tr style="height: 19.5938px;">
+<td style="text-align: right; width: 17.8661%; height: 19.5938px;"><strong>Lock Type</strong></td>
+<td style="width: 0.556%; height: 19.5938px;">:</td>
+<td style="text-align: left; width: 77.5633%; height: 19.5938px;">Openable Lock</td>
+</tr>
+<tr style="height: 19.5938px;">
+<td style="text-align: right; width: 17.8661%; height: 19.5938px;"><strong>Color</strong></td>
+<td style="width: 0.556%; height: 19.5938px;">:</td>
+<td style="text-align: left; width: 77.5633%; height: 19.5938px;">Golden</td>
+</tr>
+<tr style="height: 19.5938px;">
+<td style="text-align: right; width: 17.8661%; height: 19.5938px;"><strong>Material</strong></td>
+<td style="width: 0.556%; height: 19.5938px;">:</td>
+<td style="text-align: left; width: 77.5633%; height: 19.5938px;">Miligram Gold, Brass</td>
+</tr>
+<tr style="height: 19.5938px;">
+<td style="text-align: right; width: 17.8661%; height: 19.5938px;"><strong>Surface Finish</strong></td>
+<td style="width: 0.556%; height: 19.5938px;">:</td>
+<td style="text-align: left; width: 77.5633%; height: 19.5938px;">Shining, Textured</td>
+</tr>
+<tr style="height: 39.1875px;">
+<td style="text-align: right; width: 17.8661%; height: 39.1875px;"><strong>Occasion</strong></td>
+<td style="width: 0.556%; height: 39.1875px;">:</td>
+<td style="text-align: left; width: 77.5633%; height: 39.1875px;">Festival, Marriage / Wedding / Engagement, Birthday Gift, Photography</td>
+</tr>
+<tr style="height: 39.1875px;">
+<td style="text-align: right; width: 17.8661%; height: 39.1875px;"><strong>Style of Jewellery</strong></td>
+<td style="width: 0.556%; height: 39.1875px;">:</td>
+<td style="text-align: left; width: 77.5633%; height: 39.1875px;">Choker Necklace, Short Necklace</td>
+</tr>
+<tr style="height: 19.5938px;">
+<td style="text-align: right; width: 17.8661%; height: 19.5938px;"><strong>Ideal For</strong></td>
+<td style="width: 0.556%; height: 19.5938px;">:</td>
+<td style="text-align: left; width: 77.5633%; height: 19.5938px;">Women</td>
+</tr>
+<tr style="height: 19.5938px;">
+<td style="text-align: right; width: 17.8661%; height: 19.5938px;"><strong>Brand</strong></td>
+<td style="width: 0.556%; height: 19.5938px;">:</td>
+<td style="text-align: left; width: 77.5633%; height: 19.5938px;">Soni Fashion®</td>
+</tr>
+<tr style="height: 19.5938px;">
+<td style="text-align: right; width: 17.8661%; height: 19.5938px;"><strong>Sales Package</strong></td>
+<td style="width: 0.556%; height: 19.5938px;">:</td>
+<td style="text-align: left; width: 77.5633%; height: 19.5938px;">1 Necklace + 2 Earrings</td>
+</tr>
+<tr style="height: 19.5938px;">
+<td style="text-align: right; width: 17.8661%; height: 19.5938px;"><strong>More Info</strong></td>
+<td style="width: 0.556%; height: 19.5938px;">:</td>
+<td style="text-align: left; width: 77.5633%; height: 19.5938px;">This product is gold plated with approx 300 miligram of gold.</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Golden Necklace Set</s:tag>
+    <s:tag>Latest Trend</s:tag>
+    <s:tag>Miligram Gold</s:tag>
+    <s:tag>Shining</s:tag>
+    <s:tag>Short Necklace</s:tag>
+    <s:tag>Textured</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8367703064754</id>
+      <title>Default Title</title>
+      <s:price currency="INR">3690.00</s:price>
+      <s:sku>LNS-39A-867</s:sku>
+      <s:grams>48</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8618748903602</id>
+    <published>2025-10-06T15:27:56+05:30</published>
+    <updated>2025-10-06T15:27:56+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/finely-detailed-gold-plated-chain-for-ladies-style-a678"/>
+    <title>Finely Detailed Gold Plated Chain for Ladies - Style A678</title>
+    <s:type>Necklace</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/LNK-13A-678.jpg?v=1759744677"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>Necklace<br>
+        <strong>Price: </strong>
+            1300.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Elevate your style with this finely detailed gold-plated ladies' chain crafted from durable brass. Featuring a shimmering finish and intricate design, this necklace adds a touch of elegance to any outfit. Its high-quality plating ensures long-lasting shine and resistance to tarnish, making it perfect for everyday wear or special occasions.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Necklace Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Height</strong></td>
+<td>:</td>
+<td style="text-align: left;">54 cm (21.26 inch)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Width</strong></td>
+<td>:</td>
+<td style="text-align: left;">4 mm (0.4 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 mm (0.1 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">10 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;">Fixed</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Lock Type</strong></td>
+<td>:</td>
+<td style="text-align: left;">S Hook</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Brass</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">9 to 5 Look, Party Wear, Festival, Marriage / Wedding / Engagement, Birthday Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Ladies Chain</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Women, Teenage, School / Collage Girls</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Necklace</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Golden Necklace</s:tag>
+    <s:tag>Hid_Reg_Plating</s:tag>
+    <s:tag>Ladies Chain</s:tag>
+    <s:tag>Shining</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8618748903602</id>
+      <title>Default Title</title>
+      <s:price currency="INR">1300.00</s:price>
+      <s:sku>LNK-13A-678</s:sku>
+      <s:grams>10</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8618749034674</id>
+    <published>2025-10-06T15:26:26+05:30</published>
+    <updated>2025-10-06T15:26:26+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/gorgeous-design-gold-plated-chain-for-ladies-style-a681"/>
+    <title>Gorgeous Design Gold Plated Chain for Ladies - Style A681</title>
+    <s:type>Necklace</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/LNK-7A-681.jpg?v=1759744587"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>Necklace<br>
+        <strong>Price: </strong>
+            700.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Elevate your style with this gorgeous gold-plated chain designed specifically for ladies. Crafted from durable brass with high-quality plating, it offers a shining finish that complements the latest trends. Perfect for adding a touch of elegance to any outfit, this necklace combines classic charm with modern style.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Necklace Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Height</strong></td>
+<td>:</td>
+<td style="text-align: left;">51 cm (20.08 inch)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Width</strong></td>
+<td>:</td>
+<td style="text-align: left;">3 mm (0.3 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">3 mm (0.3 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">7 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;">Fixed</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Lock Type</strong></td>
+<td>:</td>
+<td style="text-align: left;">Openable Lock</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Brass</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">9 to 5 Look, Everyday, Festival, Marriage / Wedding / Engagement, Birthday Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Ladies Chain, Latest Trend</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Women, Teenage, School / Collage Girls</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Necklace</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Golden Necklace</s:tag>
+    <s:tag>Hid_Reg_Plating</s:tag>
+    <s:tag>Ladies Chain</s:tag>
+    <s:tag>Latest Trend</s:tag>
+    <s:tag>Shining</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8618749034674</id>
+      <title>Default Title</title>
+      <s:price currency="INR">700.00</s:price>
+      <s:sku>LNK-7A-681</s:sku>
+      <s:grams>7</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8618749001906</id>
+    <published>2025-10-06T15:26:03+05:30</published>
+    <updated>2025-10-06T15:26:03+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/opulent-design-gold-plated-chain-for-ladies-style-a680"/>
+    <title>Opulent Design Gold Plated Chain for Ladies - Style A680</title>
+    <s:type>Necklace</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/LNK-7A-680_a0544684-ba18-4cbf-9c14-40a4413bea09.jpg?v=1759744552"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>Necklace<br>
+        <strong>Price: </strong>
+            700.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>This gold-plated brass chain features a shining finish, reflecting the latest trends in women's jewelry. Designed for ladies who appreciate stylish accessories, its durable plating ensures lasting elegance. Perfect to complement any outfit, this necklace adds a touch of sophistication and charm.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Necklace Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Height</strong></td>
+<td>:</td>
+<td style="text-align: left;">49 cm (19.29 inch)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Width</strong></td>
+<td>:</td>
+<td style="text-align: left;">3 mm (0.3 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">3 mm (0.3 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">5 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;">Fixed</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Lock Type</strong></td>
+<td>:</td>
+<td style="text-align: left;">Openable Lock</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Brass</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">9 to 5 Look, Party Wear, Festival, Marriage / Wedding / Engagement, Birthday Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Ladies Chain, Latest Trend</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Women, Teenage, School / Collage Girls</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Necklace</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Golden Necklace</s:tag>
+    <s:tag>Hid_Reg_Plating</s:tag>
+    <s:tag>Ladies Chain</s:tag>
+    <s:tag>Latest Trend</s:tag>
+    <s:tag>Shining</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8618749001906</id>
+      <title>Default Title</title>
+      <s:price currency="INR">700.00</s:price>
+      <s:sku>LNK-7A-680</s:sku>
+      <s:grams>5</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8618748936370</id>
+    <published>2025-10-06T15:24:03+05:30</published>
+    <updated>2025-10-06T15:24:03+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/new-style-gold-plated-chain-for-ladies-style-a679"/>
+    <title>New Style Gold Plated Chain for Ladies - Style A679</title>
+    <s:type>Necklace</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/LNK-6A-679.jpg?v=1759744437"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>Necklace<br>
+        <strong>Price: </strong>
+            650.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Elevate your look with this new style gold-plated chain for ladies. Crafted from durable brass with high-quality plating, it offers a shiny finish that complements any outfit. Designed to follow the latest trends, this stylish chain adds a touch of elegance and sophistication to your jewelry collection. Perfect for everyday wear or special occasions.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Necklace Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Height</strong></td>
+<td>:</td>
+<td style="text-align: left;">52 cm (20.47 inch)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Width</strong></td>
+<td>:</td>
+<td style="text-align: left;">4 mm (0.4 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">4 mm (0.4 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">4 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;">Fixed</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Lock Type</strong></td>
+<td>:</td>
+<td style="text-align: left;">Openable Lock</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Brass</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">9 to 5 Look, Party Wear, Festival, Marriage / Wedding / Engagement, Birthday Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Ladies Chain, Latest Trend</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Women, Teenage, School / Collage Girls</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Necklace</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Golden Necklace</s:tag>
+    <s:tag>Hid_Reg_Plating</s:tag>
+    <s:tag>Ladies Chain</s:tag>
+    <s:tag>Latest Trend</s:tag>
+    <s:tag>Shining</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8618748936370</id>
+      <title>Default Title</title>
+      <s:price currency="INR">650.00</s:price>
+      <s:sku>LNK-6A-679</s:sku>
+      <s:grams>4</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8618244636850</id>
+    <published>2025-10-04T19:20:35+05:30</published>
+    <updated>2025-10-04T19:20:35+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/1-gram-gold-plated-brilliant-design-necklace-set-for-women-style-b262"/>
+    <title>1 Gram Gold Plated Brilliant Design Necklace Set for Women - Style B262</title>
+    <s:type>Necklace Set</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/1GramGoldPlatedBrilliantDesignNecklaceSetforWomen_e97272c9-4a24-4eb4-9e7e-22a21cd3e1f6.jpg?v=1759585827"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>Necklace Set<br>
+        <strong>Price: </strong>
+            3370.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>This 1 Gram Gold Plated Necklace Set features a brilliant design with a matt finish, crafted from durable brass. The golden choker style adds elegance and charm, perfect for enhancing any outfit with a subtle yet striking accessory. Ideal for women seeking a stylish and lightweight jewelry piece.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Necklace Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Width</strong></td>
+<td>:</td>
+<td style="text-align: left;">54 mm (5.4 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">6 mm (0.6 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Earrings Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Height</strong></td>
+<td>:</td>
+<td style="text-align: left;">53 mm (5.3 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Width</strong></td>
+<td>:</td>
+<td style="text-align: left;">16 mm (1.6 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">4 mm (0.4 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">36 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;">Adjustable</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Lock Type</strong></td>
+<td>:</td>
+<td style="text-align: left;">Openable Lock</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Miligram Gold, Brass</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Matt</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">Festival, Marriage / Wedding / Engagement, Birthday Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Short Necklace, Choker Set</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Women</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Necklace + 2 Earrings</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>More Info</strong></td>
+<td>:</td>
+<td style="text-align: left;">This product is gold plated with approx 100 miligram of gold.</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Choker Set</s:tag>
+    <s:tag>Golden Necklace Set</s:tag>
+    <s:tag>Matt</s:tag>
+    <s:tag>Miligram Gold</s:tag>
+    <s:tag>Short Necklace</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8618244636850</id>
+      <title>Default Title</title>
+      <s:price currency="INR">3370.00</s:price>
+      <s:sku>LNS-33B-262</s:sku>
+      <s:grams>36</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8618244473010</id>
+    <published>2025-10-04T19:19:49+05:30</published>
+    <updated>2025-10-04T19:19:49+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/1-gram-gold-plated-stunning-design-necklace-set-for-women-style-b260"/>
+    <title>1 Gram Gold Plated Stunning Design Necklace Set for Women - Style B260</title>
+    <s:type>Necklace Set</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/LNS-41B-260.jpg?v=1759585790"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>Necklace Set<br>
+        <strong>Price: </strong>
+            4150.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Elevate your elegance with this 1 Gram Gold Plated Stunning Design Necklace Set for Women. Featuring a shining rani haar style crafted from miligram gold-plated brass with a subtle matt finish, this long golden necklace set beautifully complements traditional and modern attire. Perfect for special occasions, its lightweight design ensures comfortable wear while adding a timeless charm to your look.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Necklace Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Width</strong></td>
+<td>:</td>
+<td style="text-align: left;">47 mm (4.7 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">7 mm (0.7 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Earrings Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Height</strong></td>
+<td>:</td>
+<td style="text-align: left;">51 mm (5.1 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Width</strong></td>
+<td>:</td>
+<td style="text-align: left;">19 mm (1.9 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">4 mm (0.4 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">43 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;">Adjustable</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Lock Type</strong></td>
+<td>:</td>
+<td style="text-align: left;">Openable Lock</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Miligram Gold, Brass</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining, Matt</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">Festival, Marriage / Wedding / Engagement, Birthday Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Long Necklace, Rani Haar</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Women</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Necklace + 2 Earrings</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>More Info</strong></td>
+<td>:</td>
+<td style="text-align: left;">This product is gold plated with approx 150 miligram of gold.</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Golden Necklace Set</s:tag>
+    <s:tag>Long Necklace</s:tag>
+    <s:tag>Matt</s:tag>
+    <s:tag>Miligram Gold</s:tag>
+    <s:tag>Rani Haar</s:tag>
+    <s:tag>Shining</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8618244473010</id>
+      <title>Default Title</title>
+      <s:price currency="INR">4150.00</s:price>
+      <s:sku>LNS-41B-260</s:sku>
+      <s:grams>43</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8618244341938</id>
+    <published>2025-10-04T19:19:32+05:30</published>
+    <updated>2025-10-04T19:19:32+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/1-gram-gold-plated-superior-quality-necklace-set-for-women-style-b259"/>
+    <title>1 Gram Gold Plated Superior Quality Necklace Set for Women - Style B259</title>
+    <s:type>Necklace Set</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/LNS-47B-259.jpg?v=1759585774"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>Necklace Set<br>
+        <strong>Price: </strong>
+            4790.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>This elegant Rani Haar necklace set features a long, matt-finish design plated with 1 gram of high-quality gold. Crafted from durable brass, it offers a shining golden look that complements any outfit. Perfect for adding a touch of traditional style with a modern appeal, this necklace set enhances your wardrobe with its superior craftsmanship and timeless charm.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Necklace Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Width</strong></td>
+<td>:</td>
+<td style="text-align: left;">49 mm (4.9 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">5 mm (0.5 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Earrings Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Height</strong></td>
+<td>:</td>
+<td style="text-align: left;">58 mm (5.8 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Width</strong></td>
+<td>:</td>
+<td style="text-align: left;">18 mm (1.8 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">6 mm (0.6 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">49 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;">Adjustable</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Lock Type</strong></td>
+<td>:</td>
+<td style="text-align: left;">Openable Lock</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Miligram Gold, Brass</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Shining, Matt</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">Festival, Marriage / Wedding / Engagement, Birthday Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Long Necklace, Rani Haar</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Women</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Necklace + 2 Earrings</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>More Info</strong></td>
+<td>:</td>
+<td style="text-align: left;">This product is gold plated with approx 150 miligram of gold.</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Golden Necklace Set</s:tag>
+    <s:tag>Long Necklace</s:tag>
+    <s:tag>Matt</s:tag>
+    <s:tag>Miligram Gold</s:tag>
+    <s:tag>Rani Haar</s:tag>
+    <s:tag>Shining</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8618244341938</id>
+      <title>Default Title</title>
+      <s:price currency="INR">4790.00</s:price>
+      <s:sku>LNS-47B-259</s:sku>
+      <s:grams>49</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8617237643442</id>
+    <published>2025-10-02T19:18:19+05:30</published>
+    <updated>2025-10-02T19:18:19+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/eye-catching-design-gold-plated-necklace-set-for-women-style-b257"/>
+    <title>Eye-Catching Design Gold Plated Necklace Set for Women - Style B257</title>
+    <s:type>Necklace Set</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/LNS-20B-257.jpg?v=1759412820"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>Necklace Set<br>
+        <strong>Price: </strong>
+            2050.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>This elegant gold-plated necklace set features a striking long design inspired by the traditional Rani Haar, crafted with brass and adorned with diamond-like accents for a subtle sparkle. Its matte pink and golden tones add a refined touch, making it perfect for enhancing any outfit with timeless beauty and style.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Necklace Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Width</strong></td>
+<td>:</td>
+<td style="text-align: left;">31 mm (3.1 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">5 mm (0.5 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Earrings Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Height</strong></td>
+<td>:</td>
+<td style="text-align: left;">47 mm (4.7 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Width</strong></td>
+<td>:</td>
+<td style="text-align: left;">18 mm (1.8 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">5 mm (0.5 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">35 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;">Adjustable</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Lock Type</strong></td>
+<td>:</td>
+<td style="text-align: left;">Openable Lock</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden, Pink</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Brass, Diamond</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Matt</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">Festival, Marriage / Wedding / Engagement, Birthday Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Long Necklace, Rani Haar</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Women</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Necklace + 2 Earrings</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Diamond</s:tag>
+    <s:tag>Golden Necklace Set</s:tag>
+    <s:tag>Hid_Reg_Plating</s:tag>
+    <s:tag>Long Necklace</s:tag>
+    <s:tag>Matt</s:tag>
+    <s:tag>Pink Necklace Set</s:tag>
+    <s:tag>Rani Haar</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8617237643442</id>
+      <title>Default Title</title>
+      <s:price currency="INR">2050.00</s:price>
+      <s:sku>LNS-20B-257</s:sku>
+      <s:grams>35</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8617237708978</id>
+    <published>2025-10-02T19:17:32+05:30</published>
+    <updated>2025-10-02T19:17:32+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/casual-design-gold-plated-necklace-set-for-women-style-b258"/>
+    <title>Casual Design Gold Plated Necklace Set for Women - Style B258</title>
+    <s:type>Necklace Set</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/LNS-20B-258.jpg?v=1759412854"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>Necklace Set<br>
+        <strong>Price: </strong>
+            2050.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>This Casual Design Gold Plated Necklace Set combines elegance and everyday wearability. Featuring a long pink matt necklace with diamond-like accents on brass, it offers a delicate yet eye-catching look. The set is gold plated with a hidden regular plating technique, ensuring durability and lasting shine. Perfect to complement casual and traditional outfits alike, this necklace set adds a subtle touch of color and sophistication to your style.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Necklace Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Width</strong></td>
+<td>:</td>
+<td style="text-align: left;">33 mm (3.3 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">8 mm (0.8 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Earrings Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Height</strong></td>
+<td>:</td>
+<td style="text-align: left;">45 mm (4.5 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Width</strong></td>
+<td>:</td>
+<td style="text-align: left;">16 mm (1.6 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">6 mm (0.6 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">35 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;">Adjustable</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Lock Type</strong></td>
+<td>:</td>
+<td style="text-align: left;">Openable Lock</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden, Pink</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Brass, Diamond</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Matt</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">Festival, Marriage / Wedding / Engagement, Birthday Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Long Necklace, Rani Haar</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Women</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Necklace + 2 Earrings</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Diamond</s:tag>
+    <s:tag>Golden Necklace Set</s:tag>
+    <s:tag>Hid_Reg_Plating</s:tag>
+    <s:tag>Long Necklace</s:tag>
+    <s:tag>Matt</s:tag>
+    <s:tag>Pink Necklace Set</s:tag>
+    <s:tag>Rani Haar</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8617237708978</id>
+      <title>Default Title</title>
+      <s:price currency="INR">2050.00</s:price>
+      <s:sku>LNS-20B-258</s:sku>
+      <s:grams>35</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8617237577906</id>
+    <published>2025-10-02T19:16:00+05:30</published>
+    <updated>2025-10-02T19:16:00+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/latest-design-gold-plated-necklace-set-for-women-style-b256"/>
+    <title>Latest Design Gold Plated Necklace Set for Women - Style B256</title>
+    <s:type>Necklace Set</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/LNS-20B-256.jpg?v=1759412761"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>Necklace Set<br>
+        <strong>Price: </strong>
+            2050.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Elevate your style with this latest design gold-plated necklace set, featuring a beautiful pink matt finish and diamond accents. Crafted from durable brass with high-quality regular plating, this long rani haar necklace offers both elegance and lasting wear. Perfect for special occasions or adding a touch of sophistication to everyday outfits.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Necklace Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Width</strong></td>
+<td>:</td>
+<td style="text-align: left;">31 mm (3.1 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">8 mm (0.8 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Earrings Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Height</strong></td>
+<td>:</td>
+<td style="text-align: left;">47 mm (4.7 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Width</strong></td>
+<td>:</td>
+<td style="text-align: left;">18 mm (1.8 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">6 mm (0.6 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">34 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;">Adjustable</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Lock Type</strong></td>
+<td>:</td>
+<td style="text-align: left;">Openable Lock</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden, Pink</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Brass, Diamond</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Matt</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">Festival, Marriage / Wedding / Engagement, Birthday Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Long Necklace, Rani Haar</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Women</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Necklace + 2 Earrings</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Diamond</s:tag>
+    <s:tag>Golden Necklace Set</s:tag>
+    <s:tag>Hid_Reg_Plating</s:tag>
+    <s:tag>Long Necklace</s:tag>
+    <s:tag>Matt</s:tag>
+    <s:tag>Pink Necklace Set</s:tag>
+    <s:tag>Rani Haar</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8617237577906</id>
+      <title>Default Title</title>
+      <s:price currency="INR">2050.00</s:price>
+      <s:sku>LNS-20B-256</s:sku>
+      <s:grams>34</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.soni.fashion/products/8617237512370</id>
+    <published>2025-10-02T19:15:28+05:30</published>
+    <updated>2025-10-02T19:15:28+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://www.soni.fashion/products/gorgeous-design-gold-plated-necklace-set-for-women-style-b255"/>
+    <title>Gorgeous Design Gold Plated Necklace Set for Women - Style B255</title>
+    <s:type>Necklace Set</s:type>
+    <s:vendor>Soni Fashion®</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0416/8417/2955/files/LNS-20B-255_935e7cca-8a5b-414b-a2f0-e28ddd4112a6.jpg?v=1759412970"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Soni Fashion®<br>
+        <strong>Type: </strong>Necklace Set<br>
+        <strong>Price: </strong>
+            2050.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Elevate your style with this gorgeous gold-plated necklace set featuring a long, matt-finish design. Crafted from brass and adorned with diamond-like details, this pink and golden Rani Haar-inspired necklace set adds a touch of elegance to any outfit. Perfect for special occasions or everyday wear, it combines traditional charm with modern durability.</p>
+<table>
+<tbody>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Necklace Dimension</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Width</strong></td>
+<td>:</td>
+<td style="text-align: left;">32 mm (3.2 cm)</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Depth</strong></td>
+<td>:</td>
+<td style="text-align: left;">8 mm (0.8 cm)</td>
+</tr>
+<tr>
+<th colspan="3" style="text-align: left;"><strong>Other Specification</strong></th>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Weight</strong></td>
+<td>:</td>
+<td style="text-align: left;">37 Gram</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Size</strong></td>
+<td>:</td>
+<td style="text-align: left;">Adjustable</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Lock Type</strong></td>
+<td>:</td>
+<td style="text-align: left;">Openable Lock</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Color</strong></td>
+<td>:</td>
+<td style="text-align: left;">Golden, Pink</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Material</strong></td>
+<td>:</td>
+<td style="text-align: left;">Brass, Diamond</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Surface Finish</strong></td>
+<td>:</td>
+<td style="text-align: left;">Matt</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Occasion</strong></td>
+<td>:</td>
+<td style="text-align: left;">Festival, Marriage / Wedding / Engagement, Birthday Gift, Photography</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Style of Jewellery</strong></td>
+<td>:</td>
+<td style="text-align: left;">Long Necklace, Rani Haar</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Ideal For</strong></td>
+<td>:</td>
+<td style="text-align: left;">Women</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Brand</strong></td>
+<td>:</td>
+<td style="text-align: left;">Soni Fashion®</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Sales Package</strong></td>
+<td>:</td>
+<td style="text-align: left;">1 Necklace + 2 Earrings</td>
+</tr>
+</tbody>
+</table></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Brass</s:tag>
+    <s:tag>Diamond</s:tag>
+    <s:tag>Golden Necklace Set</s:tag>
+    <s:tag>Hid_Reg_Plating</s:tag>
+    <s:tag>Long Necklace</s:tag>
+    <s:tag>Matt</s:tag>
+    <s:tag>Pink Necklace Set</s:tag>
+    <s:tag>Rani Haar</s:tag>
+    <s:variant>
+      <id>https://www.soni.fashion/products/8617237512370</id>
+      <title>Default Title</title>
+      <s:price currency="INR">2050.00</s:price>
+      <s:sku>LNS-20B-255</s:sku>
+      <s:grams>37</s:grams>
+    </s:variant>
+  </entry>
+</feed>

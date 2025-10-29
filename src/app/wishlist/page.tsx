@@ -1,16 +1,19 @@
 'use client';
 
 import { useWishlist } from '@/context/WishlistContext';
+import { useCart } from '@/context/CartContext';
 import { useLanguage } from '@/context/LanguageContext';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState } from 'react';
-import { Heart, X } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Heart, X, ShoppingCart, Star } from 'lucide-react';
 
 export default function WishlistPage() {
   const { state: wishlistState, removeFromWishlist } = useWishlist();
+  const { addToCart } = useCart();
   const { language } = useLanguage();
   const [loading, setLoading] = useState(false);
+  const [products, setProducts] = useState<any[]>([]);
 
   // Translations
   const t = (key: string) => {
@@ -22,7 +25,10 @@ export default function WishlistPage() {
         moveToCart: 'Move to Cart',
         removeFromWishlist: 'Remove from wishlist',
         wishlistEmptyMessage: 'Your wishlist is empty. Start exploring to add products you love!',
-        items: 'items'
+        items: 'items',
+        loading: 'Loading...',
+        inStock: 'In Stock',
+        outOfStock: 'Out of Stock'
       },
       hi: {
         wishlistTitle: 'इच्छा-सूची',
@@ -31,19 +37,50 @@ export default function WishlistPage() {
         moveToCart: 'कार्ट में ले जाएँ',
         removeFromWishlist: 'इच्छा-सूची से हटाएं',
         wishlistEmptyMessage: 'आपकी इच्छा-सूची खाली है। जो उत्पाद आप पसंद करते हैं उन्हें जोड़ना शुरू करें!',
-        items: 'आइटम'
+        items: 'आइटम',
+        loading: 'लोड हो रहा है...',
+        inStock: 'स्टॉक में',
+        outOfStock: 'स्टॉक समाप्त'
       }
     };
     
     return translations[language][key] || key;
   };
 
+  // Fetch product details for wishlist items
+  useEffect(() => {
+    const fetchWishlistProducts = async () => {
+      if (wishlistState.items.length > 0) {
+        try {
+          // Fetch all products
+          const response = await fetch('/api/products');
+          const data = await response.json();
+          
+          if (data.success) {
+            // Filter products that are in the wishlist
+            const wishlistProductIds = wishlistState.items.map(item => item.productId);
+            const wishlistProducts = data.products.filter((product: any) => 
+              wishlistProductIds.includes(product.id)
+            );
+            setProducts(wishlistProducts);
+          }
+        } catch (error) {
+          console.error('Error fetching wishlist products:', error);
+        }
+      } else {
+        setProducts([]);
+      }
+    };
+
+    fetchWishlistProducts();
+  }, [wishlistState.items]);
+
   if (wishlistState.items.length === 0) {
     return (
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-2xl mx-auto text-center">
           <div className="bg-gray-100 dark:bg-gray-800 rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-6">
-            <Heart className="w-12 h-12 text-gray-400" />
+            <Heart className="w-12 h-24 text-gray-400" />
           </div>
           <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">{t('wishlistTitle')}</h1>
           <p className="text-gray-600 dark:text-gray-400 mb-8">{t('wishlistEmptyMessage')}</p>
@@ -63,12 +100,14 @@ export default function WishlistPage() {
       <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">{t('wishlistTitle')}</h1>
       
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {wishlistState.items.map((item) => (
+        {products.map((product) => (
           <WishlistItem 
-            key={item.productId} 
-            item={item} 
+            key={product.id} 
+            product={product} 
             onRemove={removeFromWishlist}
+            onMoveToCart={addToCart}
             language={language}
+            t={t} // Pass the t function as a prop
           />
         ))}
       </div>
@@ -76,39 +115,32 @@ export default function WishlistPage() {
   );
 }
 
-function WishlistItem({ item, onRemove, language }: { 
-  item: any; 
+function WishlistItem({ product, onRemove, onMoveToCart, language, t }: { 
+  product: any; 
   onRemove: (productId: string) => void;
+  onMoveToCart: (productId: string, quantity?: number) => Promise<void>;
   language: string;
+  t: (key: string) => string; // Add t function type
 }) {
   const [imageError, setImageError] = useState(false);
   const [loading, setLoading] = useState(false);
   
-  // Placeholder product data - in a real app, you would fetch this from your API
-  const product = {
-    id: item.productId,
-    name: `Product ${item.productId}`,
-    price: 1000,
-    originalPrice: 1200,
-    image: '/images/products/placeholder.jpg',
-    rating: 4.5,
-    reviewCount: 25
-  };
-  
-  const discountPercentage = product.originalPrice && product.originalPrice > product.price
-    ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)
+  const discountPercentage = product.original_price && product.original_price > product.price
+    ? Math.round(((product.original_price - product.price) / product.original_price) * 100)
     : 0;
   
   const handleRemove = () => {
-    onRemove(item.productId);
+    onRemove(product.id);
   };
   
   const handleMoveToCart = async () => {
     setLoading(true);
     try {
-      // In a real app, you would add to cart here
-      // For now, we'll just remove from wishlist
-      onRemove(item.productId);
+      // Add to cart using the CartContext function
+      await onMoveToCart(product.id, 1);
+      
+      // Then remove from wishlist
+      onRemove(product.id);
       
       // Show notification
       if (typeof window !== 'undefined' && (window as any).showNotification) {
@@ -129,15 +161,17 @@ function WishlistItem({ item, onRemove, language }: {
       <div className="relative aspect-square overflow-hidden">
         {!imageError ? (
           <Image
-            src={product.image}
-            alt={product.name}
+            src={product.productImages?.find((img: any) => img.isPrimary)?.url || product.images?.[0] || '/images/products/placeholder.jpg'}
+            alt={product.title?.[language] || product.title?.en || product.name || 'Product'}
             fill
             className="object-cover group-hover:scale-105 transition-transform duration-300"
             onError={() => setImageError(true)}
           />
         ) : (
           <div className="w-full h-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
-            <span className="text-gray-500 dark:text-gray-400 text-sm">No image</span>
+            <span className="text-gray-500 dark:text-gray-400 text-sm">
+              {language === 'en' ? 'No image' : 'कोई छवि नहीं'}
+            </span>
           </div>
         )}
         
@@ -147,6 +181,17 @@ function WishlistItem({ item, onRemove, language }: {
             {discountPercentage}% {language === 'en' ? 'OFF' : 'छूट'}
           </div>
         )}
+        
+        {/* Stock status */}
+        <div className="absolute top-2 right-2">
+          <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${
+            product.stock > 0 
+              ? 'bg-green-100 text-green-800' 
+              : 'bg-red-100 text-red-800'
+          }`}>
+            {product.stock > 0 ? t('inStock') : t('outOfStock')}
+          </span>
+        </div>
         
         {/* Remove button */}
         <button 
@@ -160,35 +205,31 @@ function WishlistItem({ item, onRemove, language }: {
 
       <div className="p-4">
         <h3 className="flipkart-product-title line-clamp-2">
-          {product.name}
+          {product.title?.[language] || product.title?.en || product.name || 'Product'}
         </h3>
         
         {/* Rating */}
         <div className="flex items-center mt-2">
           <div className="flex text-yellow-400">
             {[...Array(5)].map((_, i) => (
-              <svg
+              <Star
                 key={i}
-                className={`w-4 h-4 ${i < Math.floor(product.rating) ? 'fill-current' : 'fill-none stroke-current'}`}
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
-                />
-              </svg>
+                className={`w-4 h-4 ${i < Math.floor(product.rating || 0) ? 'fill-current' : 'fill-none stroke-current'}`}
+              />
             ))}
           </div>
-          <span className="text-sm text-gray-500 dark:text-gray-400 ml-1">({product.reviewCount})</span>
+          <span className="text-sm text-gray-500 dark:text-gray-400 ml-1">
+            ({product.review_count || product.reviewCount || 0})
+          </span>
         </div>
         
         {/* Price */}
         <div className="flex items-center mt-2">
-          <span className="flipkart-product-price">₹{product.price.toLocaleString()}</span>
-          {product.originalPrice && product.originalPrice > product.price && (
-            <span className="text-sm text-gray-500 dark:text-gray-400 line-through ml-2">₹{product.originalPrice.toLocaleString()}</span>
+          <span className="flipkart-product-price">₹{product.price?.toLocaleString() || 0}</span>
+          {product.original_price && product.original_price > product.price && (
+            <span className="text-sm text-gray-500 dark:text-gray-400 line-through ml-2">
+              ₹{product.original_price?.toLocaleString() || 0}
+            </span>
           )}
         </div>
         
@@ -208,7 +249,10 @@ function WishlistItem({ item, onRemove, language }: {
                 {language === 'en' ? 'Adding...' : 'जोड़ा जा रहा है...'}
               </span>
             ) : (
-              language === 'en' ? 'Move to Cart' : 'कार्ट में ले जाएँ'
+              <>
+                <ShoppingCart className="w-4 h-4 mr-1 inline" />
+                {language === 'en' ? t('moveToCart') : 'कार्ट में ले जाएँ'}
+              </>
             )}
           </button>
         </div>

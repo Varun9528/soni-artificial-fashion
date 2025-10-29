@@ -5,7 +5,6 @@ import { useParams, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import ProductCard from '@/components/product/ProductCard';
-import { db } from '@/lib/database/connection';
 import { useLanguage } from '@/context/LanguageContext';
 
 interface FilterState {
@@ -41,10 +40,12 @@ export default function CategoryPage() {
       try {
         const slug = params.slug as string;
         
-        // Fetch category - find by slug since categories have slug field
-        const categories = await db.getAllCategories();
-        // Find category by matching slug with category slug
-        const foundCategory = categories.find((c: any) => c.slug === slug);
+        // Fetch category from API
+        const categoryResponse = await fetch(`/api/categories`);
+        const categoryData = await categoryResponse.json();
+        
+        // Find category by matching slug with category id
+        const foundCategory = categoryData.categories.find((c: any) => c.id === slug);
         
         if (!foundCategory) {
           router.push('/404');
@@ -53,14 +54,12 @@ export default function CategoryPage() {
 
         setCategory(foundCategory);
         
-        // Fetch products for this category
-        const searchResult = await db.searchProducts({
-          category: foundCategory.id, // Use category ID for filtering products
-          limit: 100
-        });
+        // Fetch products for this category from API
+        const productsResponse = await fetch(`/api/products?category=${foundCategory.id}`);
+        const productsData = await productsResponse.json();
         
-        setProducts(searchResult.products || []);
-        setFilteredProducts(searchResult.products || []);
+        setProducts(productsData.products || []);
+        setFilteredProducts(productsData.products || []);
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {
@@ -201,7 +200,7 @@ export default function CategoryPage() {
           <div className="mb-8">
             <div className="relative h-48 rounded-lg overflow-hidden mb-6">
               <Image
-                src={category.image || `/images/categories/${category.slug}.png`}
+                src={category.image || `/uploads/categories/${category.slug || category.id}.png`}
                 alt={category.name?.[language] || category.name?.en || category.name}
                 fill
                 className="object-cover"
