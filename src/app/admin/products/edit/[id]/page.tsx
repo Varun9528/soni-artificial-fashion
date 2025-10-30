@@ -1,21 +1,22 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { useRouter, useParams } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { X, Upload } from 'lucide-react';
 
-export default function EditProduct() {
+export default function EditProductPage() {
   const { user } = useAuth();
   const router = useRouter();
   const { id } = useParams();
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const [categories, setCategories] = useState([]);
   const [artisans, setArtisans] = useState([]);
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [product, setProduct] = useState(null);
-  const fileInputRef = useRef<HTMLInputElement>(null);
   
   const [formData, setFormData] = useState({
     title: { en: '', hi: '' },
@@ -669,9 +670,11 @@ export default function EditProduct() {
                       {existingImages.map((url, index) => (
                         <div key={index} className="relative">
                           <div className="w-24 h-24 border rounded-lg overflow-hidden">
-                            <img 
-                              src={url} 
+                            <Image 
+                              src={url || '/images/products/placeholder.jpg'} 
                               alt={`Product image ${index + 1}`} 
+                              width={96}
+                              height={96}
                               className="w-full h-full object-cover"
                               onError={(e) => {
                                 const target = e.target as HTMLImageElement;

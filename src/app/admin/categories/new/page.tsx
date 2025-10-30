@@ -1,11 +1,15 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { useAuth } from '@/context/AuthContext';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function NewCategoryPage() {
+  const { user } = useAuth();
   const router = useRouter();
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const [submitting, setSubmitting] = useState(false);
   const [uploading, setUploading] = useState(false);
   const [formData, setFormData] = useState({
@@ -201,9 +205,11 @@ export default function NewCategoryPage() {
                   </div>
                   {formData.image && (
                     <div className="flex-shrink-0">
-                      <img 
-                        src={formData.image} 
+                      <Image 
+                        src={formData.image || '/images/products/placeholder.jpg'} 
                         alt="Preview" 
+                        width={64}
+                        height={64}
                         className="w-16 h-16 object-cover rounded-md border border-gray-300"
                         onError={(e) => {
                           const target = e.target as HTMLImageElement;

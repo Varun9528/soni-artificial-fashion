@@ -4,22 +4,12 @@ import { useState, useEffect } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 
-interface Category {
-  id: string;
-  name: { en: string; hi: string };
-  slug: string;
-  description: { en: string; hi: string };
-  image: string;
-  productCount: number;
-  isActive: boolean;
-  featured: boolean;
-}
-
-export default function AdminCategoriesPage() {
+export default function CategoriesPage() {
   const { user } = useAuth();
   const router = useRouter();
-  const [categories, setCategories] = useState<Category[]>([]);
+  const [categories, setCategories] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -162,9 +152,11 @@ export default function AdminCategoriesPage() {
             {categories.map((category) => (
               <div key={category.id} className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-video relative">
-                  <img
+                  <Image
                     src={category.image || '/images/products/placeholder.jpg'}
                     alt={category.name.en}
+                    width={400}
+                    height={225}
                     className="w-full h-full object-cover"
                     onError={(e: any) => {
                       e.target.src = '/images/products/placeholder.jpg';

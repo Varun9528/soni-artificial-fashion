@@ -1,11 +1,12 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 
-export default function AdminProducts() {
+export default function ProductsPage() {
   const { user } = useAuth();
   const router = useRouter();
   const [products, setProducts] = useState([]);
@@ -89,11 +90,13 @@ export default function AdminProducts() {
     }
   };
 
-  const filteredProducts = products.filter((product: any) =>
-    product.title?.en?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    product.category?.name?.en?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    product.artisan?.name?.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const filteredProducts = useMemo(() => {
+    return products.filter((product: any) =>
+      product.title?.en?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      product.category?.name?.en?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      product.artisan?.name?.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  }, [products, searchQuery]);
 
   if (!user) {
     return (
@@ -219,10 +222,12 @@ export default function AdminProducts() {
                         <div className="flex items-center">
                           <div className="flex-shrink-0 h-10 w-10">
                             {product.productImages?.[0] ? (
-                              <img
+                              <Image
                                 className="h-10 w-10 rounded-md object-cover"
                                 src={product.productImages[0].url}
                                 alt={product.title?.en}
+                                width={40}
+                                height={40}
                               />
                             ) : (
                               <div className="h-10 w-10 bg-gray-200 rounded-md flex items-center justify-center">

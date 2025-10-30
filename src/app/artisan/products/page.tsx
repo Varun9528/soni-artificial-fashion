@@ -1,7 +1,10 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
+import { useAuth } from '@/context/AuthContext';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface Product {
   id: string;
@@ -15,11 +18,12 @@ interface Product {
 }
 
 export default function ArtisanProductsPage() {
+  const { user } = useAuth();
+  const router = useRouter();
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [filterStatus, setFilterStatus] = useState('all');
-  const [language, setLanguage] = useState('en');
 
   useEffect(() => {
     // In a real implementation, fetch data from API
@@ -79,63 +83,16 @@ export default function ArtisanProductsPage() {
     }
   };
 
-  const filteredProducts = products.filter(product => {
-    const matchesSearch = product.title.en.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                          product.title.hi.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                          product.description.en.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                          product.description.hi.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesStatus = filterStatus === 'all' || product.status === filterStatus;
-    return matchesSearch && matchesStatus;
-  });
-
-  const t = (key: string) => {
-    const translations: any = {
-      en: {
-        title: "My Products",
-        addNewProduct: "Add New Product",
-        searchPlaceholder: "Search products...",
-        filterByStatus: "Filter by Status",
-        all: "All",
-        active: "Active",
-        inactive: "Inactive",
-        productImage: "Product Image",
-        productName: "Product Name",
-        price: "Price",
-        stock: "Stock",
-        status: "Status",
-        date: "Date Added",
-        actions: "Actions",
-        edit: "Edit",
-        delete: "Delete",
-        view: "View",
-        noProducts: "No products found matching your criteria.",
-        logout: "Logout"
-      },
-      hi: {
-        title: "मेरे उत्पाद",
-        addNewProduct: "नया उत्पाद जोड़ें",
-        searchPlaceholder: "उत्पाद खोजें...",
-        filterByStatus: "स्थिति के अनुसार फ़िल्टर करें",
-        all: "सभी",
-        active: "सक्रिय",
-        inactive: "निष्क्रिय",
-        productImage: "उत्पाद छवि",
-        productName: "उत्पाद का नाम",
-        price: "मूल्य",
-        stock: "स्टॉक",
-        status: "स्थिति",
-        date: "तारीख जोड़ी गई",
-        actions: "कार्रवाई",
-        edit: "संपादित करें",
-        delete: "हटाएं",
-        view: "देखें",
-        noProducts: "आपके मापदंडों से मेल खाने वाला कोई उत्पाद नहीं मिला।",
-        logout: "लॉगआउट"
-      }
-    };
-    
-    return translations[language][key] || key;
-  };
+  const filteredProducts = useMemo(() => {
+    return products.filter(product => {
+      const matchesSearch = product.title.en.toLowerCase().includes(searchTerm.toLowerCase()) || 
+                            product.title.hi.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                            product.description.en.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                            product.description.hi.toLowerCase().includes(searchTerm.toLowerCase());
+      const matchesStatus = filterStatus === 'all' || product.status === filterStatus;
+      return matchesSearch && matchesStatus;
+    });
+  }, [products, searchTerm, filterStatus]);
 
   if (loading) {
     return (
@@ -154,7 +111,7 @@ export default function ArtisanProductsPage() {
         <div className="mb-8">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between">
             <div>
-              <h1 className="text-2xl font-bold text-gray-900">{t('title')}</h1>
+              <h1 className="text-2xl font-bold text-gray-900">Products</h1>
               <p className="mt-1 text-sm text-gray-600">
                 Manage your products in the marketplace
               </p>
@@ -167,7 +124,7 @@ export default function ArtisanProductsPage() {
                 <svg className="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clipRule="evenodd" />
                 </svg>
-                {t('addNewProduct')}
+                Add New Product
               </Link>
             </div>
           </div>
@@ -179,7 +136,7 @@ export default function ArtisanProductsPage() {
             <div>
               <input
                 type="text"
-                placeholder={t('searchPlaceholder')}
+                placeholder="Search products..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-amber-500 focus:border-amber-500"
@@ -191,18 +148,10 @@ export default function ArtisanProductsPage() {
                 onChange={(e) => setFilterStatus(e.target.value)}
                 className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-amber-500 focus:border-amber-500"
               >
-                <option value="all">{t('all')}</option>
-                <option value="active">{t('active')}</option>
-                <option value="inactive">{t('inactive')}</option>
+                <option value="all">All</option>
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
               </select>
-            </div>
-            <div className="flex justify-end">
-              <button
-                onClick={() => setLanguage(language === 'en' ? 'hi' : 'en')}
-                className="px-3 py-2 text-sm border border-gray-300 rounded-md hover:bg-gray-50"
-              >
-                {language === 'en' ? 'हिंदी' : 'English'}
-              </button>
             </div>
           </div>
         </div>
@@ -214,25 +163,25 @@ export default function ArtisanProductsPage() {
               <thead className="bg-gray-50">
                 <tr>
                   <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    {t('productImage')}
+                    Product Image
                   </th>
                   <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    {t('productName')}
+                    Product Name
                   </th>
                   <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    {t('price')}
+                    Price
                   </th>
                   <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    {t('stock')}
+                    Stock
                   </th>
                   <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    {t('status')}
+                    Status
                   </th>
                   <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    {t('date')}
+                    Date
                   </th>
                   <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    {t('actions')}
+                    Actions
                   </th>
                 </tr>
               </thead>
@@ -242,10 +191,12 @@ export default function ArtisanProductsPage() {
                     <tr key={product.id} className="hover:bg-gray-50">
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex-shrink-0 h-10 w-10">
-                          <img
+                          <Image
                             className="h-10 w-10 rounded-md object-cover"
                             src={product.images[0] || '/images/products/placeholder.jpg'}
                             alt={product.title.en}
+                            width={40}
+                            height={40}
                             onError={(e: any) => {
                               const target = e.target as HTMLImageElement;
                               target.src = '/images/products/placeholder.jpg';
@@ -277,10 +228,10 @@ export default function ArtisanProductsPage() {
                             href={`/artisan/products/${product.id}/edit`}
                             className="text-amber-600 hover:text-amber-900"
                           >
-                            {t('edit')}
+                            Edit
                           </Link>
                           <button className="text-red-600 hover:text-red-900">
-                            {t('delete')}
+                            Delete
                           </button>
                         </div>
                       </td>
@@ -289,7 +240,7 @@ export default function ArtisanProductsPage() {
                 ) : (
                   <tr>
                     <td colSpan={7} className="px-6 py-4 text-center text-sm text-gray-500">
-                      {t('noProducts')}
+                      No products found
                     </td>
                   </tr>
                 )}

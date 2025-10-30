@@ -1,15 +1,17 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useLanguage } from '@/context/LanguageContext';
 import { useAuth } from '@/context/AuthContext';
 import { useRouter, useParams } from 'next/navigation';
+import Link from 'next/link';
+import Image from 'next/image';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function OrderDetailsPage() {
-  const { language } = useLanguage();
   const { user: authUser } = useAuth();
   const router = useRouter();
   const params = useParams();
+  const { language, t } = useLanguage();
   const [order, setOrder] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
@@ -50,70 +52,6 @@ export default function OrderDetailsPage() {
 
     fetchOrderDetails();
   }, [authUser, router, fetchOrderDetails]);
-
-  // Translations
-  const t = (key: string) => {
-    const translations: any = {
-      en: {
-        orderDetails: 'Order Details',
-        orderId: 'Order ID',
-        orderDate: 'Order Date',
-        paymentStatus: 'Payment Status',
-        deliveryStatus: 'Delivery Status',
-        shippingAddress: 'Shipping Address',
-        billingAddress: 'Billing Address',
-        items: 'Items',
-        quantity: 'Quantity',
-        price: 'Price',
-        total: 'Total',
-        subtotal: 'Subtotal',
-        shipping: 'Shipping',
-        tax: 'Tax',
-        discount: 'Discount',
-        orderTotal: 'Order Total',
-        pending: 'Pending',
-        confirmed: 'Confirmed',
-        processing: 'Processing',
-        shipped: 'Shipped',
-        outForDelivery: 'Out for Delivery',
-        delivered: 'Delivered',
-        cancelled: 'Cancelled',
-        returned: 'Returned',
-        refunded: 'Refunded',
-        backToOrders: 'Back to Orders'
-      },
-      hi: {
-        orderDetails: 'आदेश विवरण',
-        orderId: 'आदेश आईडी',
-        orderDate: 'आदेश तारीख',
-        paymentStatus: 'भुगतान की स्थिति',
-        deliveryStatus: 'डिलीवरी की स्थिति',
-        shippingAddress: 'शिपिंग पता',
-        billingAddress: 'बिलिंग पता',
-        items: 'आइटम',
-        quantity: 'मात्रा',
-        price: 'कीमत',
-        total: 'कुल',
-        subtotal: 'उप-योग',
-        shipping: 'शिपिंग',
-        tax: 'कर',
-        discount: 'छूट',
-        orderTotal: 'आदेश कुल',
-        pending: 'लंबित',
-        confirmed: 'पुष्टि की गई',
-        processing: 'प्रसंस्करण',
-        shipped: 'भेज दिया गया',
-        outForDelivery: 'डिलीवरी के लिए निकला',
-        delivered: 'डिलीवर किया गया',
-        cancelled: 'रद्द किया गया',
-        returned: 'वापस किया गया',
-        refunded: 'धनवापसी की गई',
-        backToOrders: 'आदेशों पर वापस जाएं'
-      }
-    };
-    
-    return translations[language][key] || key;
-  };
 
   const getStatusText = (status: string) => {
     const statusMap: any = {
@@ -320,9 +258,11 @@ export default function OrderDetailsPage() {
               <div key={index} className="flex items-center border-b border-gray-200 dark:border-gray-700 pb-4 last:border-0 last:pb-0">
                 <div className="flex-shrink-0 w-16 h-16 bg-gray-200 dark:bg-gray-700 rounded-md flex items-center justify-center">
                   {item.product_image ? (
-                    <img 
+                    <Image 
                       src={item.product_image} 
                       alt={item.product_name || 'Product Image'} 
+                      width={64}
+                      height={64}
                       className="w-full h-full object-cover rounded-md"
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;

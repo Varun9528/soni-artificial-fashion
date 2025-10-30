@@ -1,14 +1,16 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { useRouter, useParams } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 
-export default function EditCategory() {
+export default function EditCategoryPage() {
   const { user } = useAuth();
   const router = useRouter();
   const { id } = useParams();
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [uploading, setUploading] = useState(false);
@@ -289,9 +291,11 @@ export default function EditCategory() {
                   </div>
                   {formData.image && (
                     <div className="flex-shrink-0">
-                      <img 
-                        src={formData.image} 
+                      <Image 
+                        src={formData.image || '/images/products/placeholder.jpg'} 
                         alt="Preview" 
+                        width={64}
+                        height={64}
                         className="w-16 h-16 object-cover rounded-md border border-gray-300"
                         onError={(e) => {
                           const target = e.target as HTMLImageElement;

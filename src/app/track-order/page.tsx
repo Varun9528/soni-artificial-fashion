@@ -2,81 +2,16 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Search, ArrowLeft, Phone, Truck } from 'lucide-react';
+import { Search, Truck, Phone, ArrowLeft } from 'lucide-react';
+import Image from 'next/image';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function TrackOrderPage() {
   const router = useRouter();
+  const { language, t } = useLanguage();
   const [orderId, setOrderId] = useState('');
-  const [language, setLanguage] = useState('en');
   const [orderData, setOrderData] = useState<any>(null);
   const [loading, setLoading] = useState(false);
-
-  const t = (key: string) => {
-    const translations: any = {
-      en: {
-        title: "Track Your Order",
-        description: "Enter your order ID to track the status of your shipment",
-        orderIdLabel: "Order ID",
-        orderIdPlaceholder: "Enter your order ID (e.g. ORD-123456789)",
-        trackButton: "Track Order",
-        orderDetails: "Order Details",
-        orderStatus: "Order Status",
-        placedOn: "Placed On",
-        estimatedDelivery: "Estimated Delivery",
-        shippingAddress: "Shipping Address",
-        paymentMethod: "Payment Method",
-        orderItems: "Order Items",
-        deliveryAgent: "Delivery Agent",
-        deliveryAgentName: "Agent Name",
-        deliveryAgentPhone: "Agent Phone",
-        trackingNumber: "Tracking Number",
-        backToHome: "Back to Home",
-        status: {
-          pending: "Order Placed",
-          confirmed: "Order Confirmed",
-          processing: "Processing",
-          shipped: "Shipped",
-          out_for_delivery: "Out for Delivery",
-          outForDelivery: "Out for Delivery",
-          delivered: "Delivered",
-          cancelled: "Cancelled",
-          returned: "Returned"
-        }
-      },
-      hi: {
-        title: "अपने ऑर्डर को ट्रैक करें",
-        description: "अपने शिपमेंट की स्थिति को ट्रैक करने के लिए अपना ऑर्डर आईडी दर्ज करें",
-        orderIdLabel: "ऑर्डर आईडी",
-        orderIdPlaceholder: "अपना ऑर्डर आईडी दर्ज करें (उदा. ORD-123456789)",
-        trackButton: "ऑर्डर ट्रैक करें",
-        orderDetails: "ऑर्डर विवरण",
-        orderStatus: "ऑर्डर की स्थिति",
-        placedOn: "पर रखा गया",
-        estimatedDelivery: "अनुमानित डिलीवरी",
-        shippingAddress: "शिपिंग पता",
-        paymentMethod: "भुगतान विधि",
-        orderItems: "ऑर्डर आइटम",
-        deliveryAgent: "डिलीवरी एजेंट",
-        deliveryAgentName: "एजेंट का नाम",
-        deliveryAgentPhone: "एजेंट फोन",
-        trackingNumber: "ट्रैकिंग नंबर",
-        backToHome: "होम पर वापस जाएं",
-        status: {
-          pending: "ऑर्डर रखा गया",
-          confirmed: "ऑर्डर की पुष्टि हुई",
-          processing: "प्रसंस्करण",
-          shipped: "भेज दिया गया",
-          out_for_delivery: "डिलीवरी के लिए निकला",
-          outForDelivery: "डिलीवरी के लिए निकला",
-          delivered: "डिलीवर किया गया",
-          cancelled: "रद्द कर दिया गया",
-          returned: "वापस कर दिया गया"
-        }
-      }
-    };
-    
-    return translations[language][key] || key;
-  };
 
   const handleTrackOrder = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -315,9 +250,11 @@ export default function TrackOrderPage() {
                     <div key={index} className="flex justify-between items-center border-b border-gray-200 dark:border-gray-700 pb-4">
                       <div className="flex items-center">
                         <div className="flex-shrink-0 w-12 h-12 rounded-md overflow-hidden mr-3">
-                          <img
+                          <Image
                             src={item.image}
                             alt={item.name}
+                            width={48}
+                            height={48}
                             className="w-full h-full object-cover"
                             onError={(e: any) => {
                               const target = e.target as HTMLImageElement;

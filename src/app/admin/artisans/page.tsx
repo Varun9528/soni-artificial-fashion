@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface Artisan {
   id: string;
@@ -21,7 +22,7 @@ interface Artisan {
   isActive: boolean;
 }
 
-export default function AdminArtisansPage() {
+export default function ArtisansPage() {
   const { user } = useAuth();
   const router = useRouter();
   const [artisans, setArtisans] = useState<Artisan[]>([]);
@@ -169,9 +170,11 @@ export default function AdminArtisansPage() {
             {artisans.map((artisan) => (
               <div key={artisan.id} className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-200">
                 <div className="aspect-square relative">
-                  <img
-                    src={artisan.photo}
+                  <Image
+                    src={artisan.photo || '/images/products/placeholder.jpg'}
                     alt={artisan.name}
+                    width={200}
+                    height={200}
                     className="w-full h-full object-cover"
                     onError={(e: any) => {
                       e.target.src = '/images/products/placeholder.jpg';

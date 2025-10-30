@@ -1,7 +1,10 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useAuth } from '@/context/AuthContext';
+import { useRouter, useParams } from 'next/navigation';
+import Link from 'next/link';
+import Image from 'next/image';
 
 interface Order {
   id: string;
@@ -50,8 +53,10 @@ interface Order {
   }[];
 }
 
-export default function OrderDetailPage({ params }: { params: { id: string } }) {
+export default function OrderDetailsPage() {
+  const { user } = useAuth();
   const router = useRouter();
+  const { id } = useParams();
   const [order, setOrder] = useState<Order | null>(null);
   const [loading, setLoading] = useState(true);
   const [updating, setUpdating] = useState(false);
@@ -59,7 +64,7 @@ export default function OrderDetailPage({ params }: { params: { id: string } }) 
   useEffect(() => {
     const fetchOrderDetails = async () => {
       try {
-        const response = await fetch(`/api/admin/orders/${params.id}`);
+        const response = await fetch(`/api/admin/orders/${id}`);
         if (response.ok) {
           const data = await response.json();
           if (data.success && data.order) {
@@ -209,7 +214,7 @@ export default function OrderDetailPage({ params }: { params: { id: string } }) 
     };
 
     fetchOrderDetails();
-  }, [params.id]);
+  }, [id]);
 
   const getStatusColor = (status: string) => {
     switch (status) {
@@ -229,7 +234,7 @@ export default function OrderDetailPage({ params }: { params: { id: string } }) 
   const handleStatusUpdate = async (newStatus: string) => {
     setUpdating(true);
     try {
-      const response = await fetch(`/api/admin/orders/${params.id}`, {
+      const response = await fetch(`/api/admin/orders/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -273,7 +278,7 @@ export default function OrderDetailPage({ params }: { params: { id: string } }) 
       const deliveryAgentName = formData.get('deliveryAgentName') as string;
       const deliveryAgentPhone = formData.get('deliveryAgentPhone') as string;
       
-      const response = await fetch(`/api/admin/orders/${params.id}`, {
+      const response = await fetch(`/api/admin/orders/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -423,9 +428,11 @@ export default function OrderDetailPage({ params }: { params: { id: string } }) 
                     {order.items.map((item) => (
                       <div key={item.id} className="flex items-center p-4 border-b border-gray-200 last:border-b-0">
                         <div className="flex-shrink-0 w-16 h-16 rounded-md overflow-hidden">
-                          <img
+                          <Image
                             src={item.product?.images?.[0]?.url || '/images/products/placeholder.jpg'}
                             alt={item.product?.title?.en || 'Product'}
+                            width={64}
+                            height={64}
                             className="w-full h-full object-cover"
                             onError={(e: any) => {
                               const target = e.target as HTMLImageElement;

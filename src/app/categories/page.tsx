@@ -1,8 +1,11 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
+import { useAuth } from '@/context/AuthContext';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useLanguage } from '@/context/LanguageContext';
 
 interface Product {
   id: string;
@@ -27,10 +30,12 @@ interface CategoryOption {
 }
 
 export default function CategoriesPage() {
+  const { user } = useAuth();
+  const router = useRouter();
+  const { language, setLanguage } = useLanguage();
   const [products, setProducts] = useState<Product[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
-  const [language, setLanguage] = useState<'en' | 'hi'>('en');
   const [sortBy, setSortBy] = useState('popularity');
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 5000]);
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -103,80 +108,22 @@ export default function CategoriesPage() {
     setFilteredProducts(result);
   }, [products, selectedCategory, priceRange, sortBy]);
 
-  // Mock localization function
-  const t = (key: string) => {
-    const translations: any = {
-      en: {
-        title: "Jewelry Categories",
-        description: "Discover our exquisite collection of artificial fashion jewelry.",
-        sortBy: "Sort By",
-        priceRange: "Price Range",
-        category: "Category",
-        all: "All Categories",
-        'necklaces': "Necklaces & Chains",
-        'earrings': "Earrings & Studs",
-        'bracelets': "Bracelets & Bangles",
-        'rings': "Rings & Bands",
-        'jewelry-sets': "Jewelry Sets",
-        'mens-collection': "Men's Collection",
-        popularity: "Popularity",
-        latest: "Latest",
-        priceLowToHigh: "Price (Low to High)",
-        priceHighToLow: "Price (High to Low)",
-        low: "Low",
-        high: "High",
-        emptyMessage: "No products found in this category. Please adjust your filters.",
-        inStock: "In Stock",
-        outOfStock: "Out of Stock",
-        items: "items",
-        viewDetails: "View Details"
-      },
-      hi: {
-        title: "आभूषण श्रेणियाँ",
-        description: "हमारे कृत्रिम फैशन आभूषण के शानदार संग्रह की खोज करें।",
-        sortBy: "क्रमबद्ध करें",
-        priceRange: "मूल्य सीमा",
-        category: "श्रेणी",
-        all: "सभी श्रेणियाँ",
-        'necklaces': "हार और चेन",
-        'earrings': "कान के आभूषण",
-        'bracelets': "कंगन और ब्रेसलेट",
-        'rings': "अंगूठियाँ",
-        'jewelry-sets': "आभूषण सेट",
-        'mens-collection': "पुरुष संग्रह",
-        popularity: "लोकप्रियता",
-        latest: "नवीनतम",
-        priceLowToHigh: "मूल्य (कम से अधिक)",
-        priceHighToLow: "मूल्य (अधिक से कम)",
-        low: "कम",
-        high: "अधिक",
-        emptyMessage: "इस श्रेणी में कोई उत्पाद नहीं मिला। कृपया अपने फ़िल्टर समायोजित करें।",
-        inStock: "स्टॉक में",
-        outOfStock: "स्टॉक ख़तम",
-        items: "आइटम",
-        viewDetails: "विवरण देखें"
-      }
-    };
-    
-    return translations[language][key] || key;
-  };
-
   // Create categories list from jewelry categories
-  const categories: CategoryOption[] = [
-    { id: 'all', name: t('all') },
-    { id: 'necklaces', name: t('necklaces') },
-    { id: 'earrings', name: t('earrings') },
-    { id: 'bracelets', name: t('bracelets') },
-    { id: 'rings', name: t('rings') },
-    { id: 'jewelry-sets', name: t('jewelry-sets') },
-    { id: 'mens-collection', name: t('mens-collection') }
+  const categories = [
+    { id: 'all', name: 'All Categories' },
+    { id: 'necklaces', name: 'Necklaces' },
+    { id: 'earrings', name: 'Earrings' },
+    { id: 'bracelets', name: 'Bracelets' },
+    { id: 'rings', name: 'Rings' },
+    { id: 'jewelry-sets', name: 'Jewelry Sets' },
+    { id: 'mens-collection', name: 'Men\'s Collection' }
   ];
 
   const sortOptions = [
-    { id: 'popularity', name: t('popularity') },
-    { id: 'latest', name: t('latest') },
-    { id: 'price-low', name: t('priceLowToHigh') },
-    { id: 'price-high', name: t('priceHighToLow') }
+    { id: 'popularity', name: 'Popularity' },
+    { id: 'latest', name: 'Latest' },
+    { id: 'price-low', name: 'Price: Low to High' },
+    { id: 'price-high', name: 'Price: High to Low' }
   ];
 
   if (loading) {
@@ -191,109 +138,106 @@ export default function CategoriesPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8">
-      <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="mb-8">
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
-              {t('title')}
-            </h1>
-            <p className="text-gray-600 dark:text-gray-400">
-              {t('description')}
-            </p>
-          </div>
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl">
+            Shop Our Collection
+          </h1>
+          <p className="mt-4 text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+            Discover our beautiful collection of handcrafted artificial jewelry
+          </p>
+        </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-            {/* Filters */}
-            <div className="lg:col-span-1">
-              <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 sticky top-8">
-                <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-                  Filters
-                </h2>
-
-                {/* Sort By */}
-                <div className="mb-6">
-                  <h3 className="text-sm font-medium text-gray-900 dark:text-white mb-2">
-                    {t('sortBy')}
-                  </h3>
-                  <select
-                    value={sortBy}
-                    onChange={(e) => setSortBy(e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 dark:bg-gray-700 dark:text-white"
-                  >
-                    {sortOptions.map(option => (
-                      <option key={option.id} value={option.id}>
+        <div className="flex flex-col lg:flex-row gap-8">
+          {/* Filters Sidebar */}
+          <div className="lg:w-1/4">
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 sticky top-8">
+              {/* Sort By */}
+              <div className="mb-6">
+                <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">Sort By</h3>
+                <div className="space-y-3">
+                  {sortOptions.map(option => (
+                    <div key={option.id} className="flex items-center">
+                      <input
+                        id={`sort-${option.id}`}
+                        name="sort"
+                        type="radio"
+                        checked={sortBy === option.id}
+                        onChange={() => setSortBy(option.id)}
+                        className="h-4 w-4 text-amber-600 focus:ring-amber-500 border-gray-300"
+                      />
+                      <label htmlFor={`sort-${option.id}`} className="ml-3 block text-sm text-gray-700 dark:text-gray-300">
                         {option.name}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                {/* Price Range */}
-                <div className="mb-6">
-                  <h3 className="text-sm font-medium text-gray-900 dark:text-white mb-2">
-                    {t('priceRange')}
-                  </h3>
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm text-gray-600 dark:text-gray-400">{t('low')}: ₹{priceRange[0]}</span>
-                    <span className="text-sm text-gray-600 dark:text-gray-400">{t('high')}: ₹{priceRange[1]}</span>
-                  </div>
-                  <div className="space-y-2">
-                    <input
-                      type="range"
-                      min="0"
-                      max="5000"
-                      value={priceRange[0]}
-                      onChange={(e) => setPriceRange([parseInt(e.target.value), priceRange[1]])}
-                      className="w-full"
-                    />
-                    <input
-                      type="range"
-                      min="0"
-                      max="5000"
-                      value={priceRange[1]}
-                      onChange={(e) => setPriceRange([priceRange[0], parseInt(e.target.value)])}
-                      className="w-full"
-                    />
-                  </div>
-                </div>
-
-                {/* Category */}
-                <div>
-                  <h3 className="text-sm font-medium text-gray-900 dark:text-white mb-2">
-                    {t('category')}
-                  </h3>
-                  <div className="space-y-2">
-                    {categories.map(category => (
-                      <label key={category.id} className="flex items-center">
-                        <input
-                          type="radio"
-                          name="category"
-                          value={category.id}
-                          checked={selectedCategory === category.id}
-                          onChange={() => setSelectedCategory(category.id)}
-                          className="text-amber-600 focus:ring-amber-500"
-                        />
-                        <span className="ml-2 text-gray-700 dark:text-gray-300">
-                          {category.name}
-                        </span>
                       </label>
-                    ))}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Price Range */}
+              <div className="mb-6">
+                <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">Price Range</h3>
+                <div className="px-2">
+                  <input
+                    type="range"
+                    min="0"
+                    max="10000"
+                    value={priceRange[1]}
+                    onChange={(e) => setPriceRange([priceRange[0], parseInt(e.target.value)])}
+                    className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+                  />
+                  <div className="flex justify-between mt-2">
+                    <span className="text-sm text-gray-600 dark:text-gray-400">Low: ₹{priceRange[0]}</span>
+                    <span className="text-sm text-gray-600 dark:text-gray-400">High: ₹{priceRange[1]}</span>
                   </div>
                 </div>
               </div>
+
+              {/* Categories */}
+              <div>
+                <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">Category</h3>
+                <div className="space-y-3">
+                  {categories.map(category => (
+                    <div key={category.id} className="flex items-center">
+                      <input
+                        id={`category-${category.id}`}
+                        name="category"
+                        type="radio"
+                        checked={selectedCategory === category.id}
+                        onChange={() => setSelectedCategory(category.id)}
+                        className="h-4 w-4 text-amber-600 focus:ring-amber-500 border-gray-300"
+                      />
+                      <label htmlFor={`category-${category.id}`} className="ml-3 block text-sm text-gray-700 dark:text-gray-300">
+                        {category.name}
+                      </label>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Products Grid */}
+          <div className="lg:w-3/4">
+            <div className="flex items-center justify-between mb-6">
+              <div className="text-lg font-medium text-gray-900 dark:text-white">
+                Showing {filteredProducts.length} products
+              </div>
             </div>
 
-            {/* Products */}
-            <div className="lg:col-span-3">
+            <div>
               {filteredProducts.length > 0 ? (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                   {filteredProducts.map(product => (
                     <div key={product.id} className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
                       <div className="relative">
-                        <img
+                        <Image
                           src={product.productImages[0]?.url || product.images[0] || '/images/products/placeholder.jpg'}
                           alt={language === 'en' ? product.title.en : product.title.hi}
+                          width={400}
+                          height={192}
                           className="w-full h-48 object-cover"
                           onError={(e: any) => {
                             const target = e.target as HTMLImageElement;
@@ -306,7 +250,7 @@ export default function CategoriesPage() {
                               ? 'bg-green-100 text-green-800' 
                               : 'bg-red-100 text-red-800'
                           }`}>
-                            {product.inStock ? t('inStock') : t('outOfStock')}
+                            {product.inStock ? 'In Stock' : 'Out of Stock'}
                           </span>
                         </div>
                       </div>
@@ -325,7 +269,7 @@ export default function CategoriesPage() {
                             href={`/product/${product.slug}`}
                             className="px-3 py-1 bg-amber-600 text-white text-sm rounded-lg hover:bg-amber-700 transition-colors"
                           >
-                            {t('viewDetails')}
+                            View Details
                           </Link>
                         </div>
                       </div>
@@ -338,7 +282,7 @@ export default function CategoriesPage() {
                     <span className="text-6xl">🔍</span>
                   </div>
                   <p className="text-gray-500 dark:text-gray-400">
-                    {t('emptyMessage')}
+                    No products found matching your criteria
                   </p>
                 </div>
               )}
