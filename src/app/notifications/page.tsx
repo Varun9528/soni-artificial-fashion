@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { Bell, Check, Trash2, X } from 'lucide-react';
+import { useState, useEffect, useCallback } from 'react';
+import { Bell, Check, X, Trash2, Eye, EyeOff, Filter } from 'lucide-react';
 import Link from 'next/link';
 
 interface Notification {
@@ -11,8 +11,8 @@ interface Notification {
   type: 'info' | 'success' | 'warning' | 'error';
   read: boolean;
   createdAt: string;
-  referenceId?: string;
-  referenceType?: string;
+  relatedId?: string;
+  relatedType?: string;
 }
 
 export default function NotificationsPage() {
@@ -23,7 +23,7 @@ export default function NotificationsPage() {
   const [hasMore, setHasMore] = useState(false);
   const [total, setTotal] = useState(0);
 
-  const fetchNotifications = async () => {
+  const fetchNotifications = useCallback(async () => {
     try {
       setLoading(true);
       const response = await fetch(`/api/notifications?limit=20&offset=${(page - 1) * 20}&unreadOnly=${filter === 'unread'}`);
@@ -39,7 +39,7 @@ export default function NotificationsPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [filter, page]);
 
   useEffect(() => {
     fetchNotifications();
@@ -308,10 +308,10 @@ export default function NotificationsPage() {
                       <div className="mt-2 text-gray-600">
                         {notification.message}
                       </div>
-                      {notification.referenceId && (
+                      {notification.relatedId && (
                         <div className="mt-3">
                           <Link
-                            href={`/${notification.referenceType}/${notification.referenceId}`}
+                            href={`/${notification.relatedType}/${notification.relatedId}`}
                             className="text-sm text-amber-600 hover:text-amber-800"
                           >
                             View details
@@ -326,7 +326,7 @@ export default function NotificationsPage() {
                           className="text-gray-400 hover:text-gray-600"
                           title="Mark as unread"
                         >
-                          <Bell className="h-5 w-5" />
+                          <EyeOff className="h-5 w-5" />
                         </button>
                       ) : (
                         <button
@@ -334,7 +334,7 @@ export default function NotificationsPage() {
                           className="text-gray-400 hover:text-gray-600"
                           title="Mark as read"
                         >
-                          <Check className="h-5 w-5" />
+                          <Eye className="h-5 w-5" />
                         </button>
                       )}
                       <button

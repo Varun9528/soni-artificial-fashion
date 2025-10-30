@@ -396,9 +396,11 @@ export default function EditBannerPage() {
                       Current Image
                     </label>
                     <div className="aspect-video w-full max-w-2xl bg-gray-100 rounded-lg overflow-hidden border border-gray-200">
-                      <img
+                      <Image
                         src={existingImage}
                         alt="Current banner"
+                        width={800}
+                        height={450}
                         className="w-full h-full object-cover"
                       />
                     </div>
@@ -424,9 +426,11 @@ export default function EditBannerPage() {
                 {uploadedImage && (
                   <div className="mt-2">
                     <div className="aspect-video w-full max-w-2xl bg-gray-100 rounded-lg overflow-hidden border border-gray-200">
-                      <img
+                      <Image
                         src={URL.createObjectURL(uploadedImage)}
                         alt="Preview"
+                        width={800}
+                        height={450}
                         className="w-full h-full object-cover"
                       />
                     </div>

@@ -76,7 +76,7 @@ export default function CategoriesPage() {
     };
     
     fetchProducts();
-  }, []);
+  }, [setLanguage]);
 
   useEffect(() => {
     let result = [...products];
