@@ -6,19 +6,21 @@ enableRealDatabase();
 
 export async function GET(request: NextRequest) {
   try {
-    // Test database connection by fetching banners
+    // Test database connection by getting dashboard stats
+    const stats = await db.getDashboardStats();
+    
+    // Also test getting banners
     const banners = await db.getAllBanners();
     
-    // Also test fetching products to verify database connectivity
-    const products = await db.getProducts({ limit: 5 });
+    // Test getting products
+    const products = await db.getProducts({ limit: 3 });
     
     return NextResponse.json({ 
       success: true, 
-      message: 'Database connection successful',
+      stats,
       banners: banners.length,
       products: products.length,
-      bannerData: banners.slice(0, 2), // Show first 2 banners
-      productData: products.slice(0, 2) // Show first 2 products
+      message: 'Database connection and data access working correctly'
     });
   } catch (error: any) {
     console.error('Database connection error:', error);
