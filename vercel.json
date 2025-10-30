@@ -30,4 +30,4 @@
       "dest": "/$1"
     }
   ]
-}"// Force redeploy"  
+}  
