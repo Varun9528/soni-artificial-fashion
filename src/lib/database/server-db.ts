@@ -674,7 +674,7 @@ export const serverDb = {
         link_url: banner.link_url,
         link_text: { en: banner.link_text_en, hi: banner.link_text_hi },
         display_order: banner.display_order,
-        is_active: banner.is_active,
+        is_active: Number(banner.is_active), // Ensure it's a number
         created_at: banner.created_at
       }));
     } catch (error) {
