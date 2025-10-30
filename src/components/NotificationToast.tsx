@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { X, CheckCircle, AlertCircle, Info, AlertTriangle } from 'lucide-react';
 
 interface Notification {
@@ -15,7 +15,7 @@ export default function NotificationToast() {
   const [notifications, setNotifications] = useState<Notification[]>([]);
 
   // Function to show notification
-  const showNotification = (message: string, type: 'success' | 'error' | 'info' | 'warning' = 'info', title?: string, duration: number = 5000) => {
+  const showNotification = useCallback((message: string, type: 'success' | 'error' | 'info' | 'warning' = 'info', title?: string, duration: number = 5000) => {
     const id = Date.now().toString() + Math.random().toString(36).substr(2, 9);
     const newNotification: Notification = { id, message, type, title, duration };
     
@@ -25,7 +25,7 @@ export default function NotificationToast() {
     setTimeout(() => {
       removeNotification(id);
     }, duration);
-  };
+  }, []);
 
   const removeNotification = (id: string) => {
     setNotifications(prev => prev.filter(notification => notification.id !== id));
@@ -38,7 +38,7 @@ export default function NotificationToast() {
     return () => {
       delete (window as any).showNotification;
     };
-  }, []);
+  }, [showNotification]);
 
   if (notifications.length === 0) return null;
 

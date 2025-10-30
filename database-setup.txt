@@ -1,0 +1,39 @@
+DATABASE SETUP INSTRUCTIONS
+==========================
+
+Your Hostinger Database Details:
+- Host: auth-db1555.hstgr.io
+- Port: 3306
+- User: u632940212_fas
+- Password: Soni@2k25$$
+- Database: u632940212_son
+
+Run these commands in order:
+
+1. cd c:\xampp\htdocs\pachmarhi\soni-artificial-fashion
+
+2. vercel env add DB_HOST
+   When prompted, enter: auth-db1555.hstgr.io
+
+3. vercel env add DB_USER
+   When prompted, enter: u632940212_fas
+
+4. vercel env add DB_PASSWORD
+   When prompted, enter: Soni@2k25$$
+
+5. vercel env add DB_NAME
+   When prompted, enter: u632940212_son
+
+6. vercel env add DB_PORT
+   When prompted, enter: 3306
+
+After setting these environment variables, run:
+
+7. npx prisma db push
+   (This will create the database schema)
+
+8. npx prisma db seed
+   (This will populate your database with initial data)
+
+9. vercel --prod --yes
+   (This will redeploy your application with the database connection)

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useReducer, useEffect, useState } from 'react';
+import React, { createContext, useContext, useReducer, useEffect, useState, useCallback } from 'react';
 import { WishlistItem } from '@/data/types';
 import { useAuth } from './AuthContext';
 
@@ -21,7 +21,7 @@ interface WishlistContextType {
 const WishlistContext = createContext<WishlistContextType | undefined>(undefined);
 
 type WishlistAction =
-  | { type: 'ADD_TO_WISHLIST'; payload: string }
+  | { type: 'ADD_TO_WISHLIST'; payload: WishlistItem }
   | { type: 'REMOVE_FROM_WISHLIST'; payload: string }
   | { type: 'CLEAR_WISHLIST' }
   | { type: 'LOAD_WISHLIST'; payload: WishlistItem[] }
@@ -29,16 +29,15 @@ type WishlistAction =
 
 const wishlistReducer = (state: WishlistState, action: WishlistAction): WishlistState => {
   switch (action.type) {
-    case 'ADD_TO_WISHLIST': {
-      const isAlreadyInWishlist = state.items.some(item => item.productId === action.payload);
-      if (isAlreadyInWishlist) {
+    case 'ADD_TO_WISHLIST':
+      // Check if item already exists
+      if (state.items.some(item => item.productId === action.payload.productId)) {
         return state;
       }
       return {
         ...state,
-        items: [...state.items, { productId: action.payload, addedAt: new Date().toISOString() }]
+        items: [...state.items, action.payload]
       };
-    }
 
     case 'REMOVE_FROM_WISHLIST':
       return {
@@ -47,13 +46,14 @@ const wishlistReducer = (state: WishlistState, action: WishlistAction): Wishlist
       };
 
     case 'CLEAR_WISHLIST':
-      return { 
+      return {
         items: [],
         loaded: state.loaded
       };
 
     case 'LOAD_WISHLIST':
-      return { 
+      return {
+        ...state,
         items: action.payload,
         loaded: true
       };
@@ -69,65 +69,15 @@ const wishlistReducer = (state: WishlistState, action: WishlistAction): Wishlist
   }
 };
 
-interface WishlistProviderProps {
-  children: React.ReactNode;
-}
-
-export const WishlistProvider: React.FC<WishlistProviderProps> = ({ children }) => {
-  const [state, dispatch] = useReducer(wishlistReducer, { items: [], loaded: false });
-  const { user } = useAuth();
+export const WishlistProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [state, dispatch] = useReducer(wishlistReducer, {
+    items: [],
+    loaded: false
+  });
+  const { user, isInitialized } = useAuth();
   const [isSyncing, setIsSyncing] = useState(false);
 
-  // Load wishlist from localStorage on mount or from DB if user is logged in
-  useEffect(() => {
-    const loadWishlist = async () => {
-      if (user) {
-        // Load from database
-        try {
-          const response = await fetch('/api/wishlist');
-          const data = await response.json();
-          if (data.success) {
-            dispatch({ type: 'LOAD_WISHLIST', payload: data.items });
-          } else {
-            dispatch({ type: 'SET_LOADED' });
-          }
-        } catch (error) {
-          console.error('Error loading wishlist from database:', error);
-          dispatch({ type: 'SET_LOADED' });
-        }
-      } else {
-        // Load from localStorage
-        const savedWishlist = localStorage.getItem('wishlist');
-        if (savedWishlist) {
-          try {
-            const wishlistItems = JSON.parse(savedWishlist);
-            dispatch({ type: 'LOAD_WISHLIST', payload: wishlistItems });
-          } catch (error) {
-            console.error('Error loading wishlist from localStorage:', error);
-          }
-        }
-        dispatch({ type: 'SET_LOADED' });
-      }
-    };
-
-    loadWishlist();
-  }, [user]);
-
-  // Save wishlist to localStorage whenever it changes (for guest users)
-  useEffect(() => {
-    if (!user && state.loaded) {
-      localStorage.setItem('wishlist', JSON.stringify(state.items));
-    }
-  }, [state.items, user, state.loaded]);
-
-  // Sync wishlist with database when user logs in
-  useEffect(() => {
-    if (user && state.loaded && !isSyncing) {
-      syncWishlist();
-    }
-  }, [user, state.loaded]);
-
-  const syncWishlist = async () => {
+  const syncWishlist = useCallback(async () => {
     if (isSyncing || !user) return;
     
     setIsSyncing(true);
@@ -165,7 +115,60 @@ export const WishlistProvider: React.FC<WishlistProviderProps> = ({ children }) 
     } finally {
       setIsSyncing(false);
     }
-  };
+  }, [isSyncing, user]);
+
+  // Load wishlist from localStorage on mount or from DB if user is logged in
+  useEffect(() => {
+    // Only load wishlist when auth context is initialized
+    if (!isInitialized) return;
+
+    const loadWishlist = async () => {
+      if (user) {
+        // Load from database
+        try {
+          const response = await fetch('/api/wishlist');
+          const data = await response.json();
+          if (data.success) {
+            dispatch({ type: 'LOAD_WISHLIST', payload: data.items });
+          } else {
+            dispatch({ type: 'SET_LOADED' });
+          }
+        } catch (error) {
+          console.error('Error loading wishlist from database:', error);
+          dispatch({ type: 'SET_LOADED' });
+        }
+      } else {
+        // Load from localStorage
+        const savedWishlist = localStorage.getItem('wishlist');
+        if (savedWishlist) {
+          try {
+            const wishlistItems = JSON.parse(savedWishlist);
+            dispatch({ type: 'LOAD_WISHLIST', payload: wishlistItems.map((id: string) => ({ productId: id, addedAt: new Date().toISOString() })) });
+          } catch (error) {
+            console.error('Error loading wishlist from localStorage:', error);
+          }
+        }
+        dispatch({ type: 'SET_LOADED' });
+      }
+    };
+
+    loadWishlist();
+  }, [user, isInitialized]);
+
+  // Save wishlist to localStorage whenever it changes (for guest users)
+  useEffect(() => {
+    if (!user && state.loaded) {
+      const productIds = state.items.map(item => item.productId);
+      localStorage.setItem('wishlist', JSON.stringify(productIds));
+    }
+  }, [state.items, user, state.loaded]);
+
+  // Sync wishlist with database when user logs in
+  useEffect(() => {
+    if (user && state.loaded && !isSyncing) {
+      syncWishlist();
+    }
+  }, [user, state.loaded, isInitialized, isSyncing, syncWishlist]);
 
   const addToWishlist = async (productId: string) => {
     if (user) {
@@ -181,14 +184,14 @@ export const WishlistProvider: React.FC<WishlistProviderProps> = ({ children }) 
         
         const data = await response.json();
         if (data.success) {
-          dispatch({ type: 'ADD_TO_WISHLIST', payload: productId });
+          dispatch({ type: 'ADD_TO_WISHLIST', payload: { productId, addedAt: new Date().toISOString() } });
         }
       } catch (error) {
         console.error('Error adding to wishlist:', error);
       }
     } else {
       // Add to localStorage
-      dispatch({ type: 'ADD_TO_WISHLIST', payload: productId });
+      dispatch({ type: 'ADD_TO_WISHLIST', payload: { productId, addedAt: new Date().toISOString() } });
     }
   };
 

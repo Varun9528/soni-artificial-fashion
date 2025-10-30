@@ -1,0 +1,62 @@
+IMMEDIATE DATABASE SETUP FOR VERCEL DEPLOYMENT
+==============================================
+
+YOUR WEBSITE: https://www.soniartificalfashion.store
+CURRENT ISSUE: No database connection, so products/banners don't show
+
+QUICK SOLUTION (Do this immediately):
+
+1. CREATE A FREE PLANETSCALE DATABASE:
+   a. Go to https://planetscale.com/
+   b. Sign up with GitHub or email (FREE)
+   c. Create database named: soni-artificial-fashion
+   d. Click "Connect" button
+   e. Select "MySQL" connection method
+   f. Save these details:
+      - Host: [copy from connection page]
+      - Username: [copy from connection page]
+      - Password: [copy from connection page]
+      - Database: soni-artificial-fashion
+
+2. SET ENVIRONMENT VARIABLES IN VERCEL:
+   Open a new terminal/command prompt and run EACH command:
+   
+   cd c:\xampp\htdocs\pachmarhi\soni-artificial-fashion
+   
+   vercel env add DB_HOST
+   # When prompted, paste the Host from step 1f
+   
+   vercel env add DB_USER
+   # When prompted, paste the Username from step 1f
+   
+   vercel env add DB_PASSWORD
+   # When prompted, paste the Password from step 1f (will be hidden)
+   
+   vercel env add DB_NAME
+   # When prompted, type: soni-artificial-fashion
+   
+   vercel env add DB_PORT
+   # When prompted, type: 3306
+
+3. VERIFY ENVIRONMENT VARIABLES:
+   Run: vercel env list
+   You should see 5 environment variables listed
+
+4. SEED THE DATABASE (CRITICAL STEP):
+   This makes your products appear:
+   
+   npx prisma db push
+   npx prisma db seed
+
+5. REDeploy YOUR APPLICATION:
+   vercel --prod --yes
+
+ADMIN CREDENTIALS (Important - Don't lose these):
+- Email: admin@soniartificialfashion.com
+- Password: admin123
+
+TROUBLESHOOTING:
+If products still don't show:
+1. Check: vercel env list (should show 5 variables)
+2. Run the database check: node check-db-connection.js
+3. Make sure you ran the seeding commands in step 4

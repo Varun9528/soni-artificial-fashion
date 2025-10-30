@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { useAuth } from '@/context/AuthContext';
 
 interface Notification {
@@ -35,7 +35,7 @@ export function NotificationProvider({ children }: { children: React.ReactNode }
   const [unreadCount, setUnreadCount] = useState(0);
 
   // Fetch notifications from API
-  const fetchNotifications = async () => {
+  const fetchNotifications = useCallback(async () => {
     if (!isLoggedIn) return;
     
     try {
@@ -52,10 +52,10 @@ export function NotificationProvider({ children }: { children: React.ReactNode }
     } finally {
       setLoading(false);
     }
-  };
+  }, [isLoggedIn]);
 
   // Mark a notification as read
-  const markAsRead = async (id: string) => {
+  const markAsRead = useCallback(async (id: string) => {
     try {
       const response = await fetch('/api/notifications', {
         method: 'PUT',
@@ -81,10 +81,10 @@ export function NotificationProvider({ children }: { children: React.ReactNode }
     } catch (error) {
       console.error('Error marking notification as read:', error);
     }
-  };
+  }, []);
 
   // Mark a notification as unread
-  const markAsUnread = async (id: string) => {
+  const markAsUnread = useCallback(async (id: string) => {
     try {
       const response = await fetch('/api/notifications', {
         method: 'PUT',
@@ -110,10 +110,10 @@ export function NotificationProvider({ children }: { children: React.ReactNode }
     } catch (error) {
       console.error('Error marking notification as unread:', error);
     }
-  };
+  }, []);
 
   // Mark all notifications as read
-  const markAllAsRead = async () => {
+  const markAllAsRead = useCallback(async () => {
     try {
       const response = await fetch('/api/notifications/mark-all-read', {
         method: 'POST',
@@ -133,10 +133,10 @@ export function NotificationProvider({ children }: { children: React.ReactNode }
     } catch (error) {
       console.error('Error marking all notifications as read:', error);
     }
-  };
+  }, []);
 
   // Delete a notification
-  const deleteNotification = async (id: string) => {
+  const deleteNotification = useCallback(async (id: string) => {
     try {
       const response = await fetch('/api/notifications', {
         method: 'DELETE',
@@ -163,10 +163,10 @@ export function NotificationProvider({ children }: { children: React.ReactNode }
     } catch (error) {
       console.error('Error deleting notification:', error);
     }
-  };
+  }, [notifications]);
 
   // Add a notification (for client-side notifications)
-  const addNotification = (notification: Omit<Notification, 'id' | 'createdAt' | 'read'>) => {
+  const addNotification = useCallback((notification: Omit<Notification, 'id' | 'createdAt' | 'read'>) => {
     const newNotification: Notification = {
       ...notification,
       id: `client-${Date.now()}-${Math.random()}`,
@@ -176,7 +176,7 @@ export function NotificationProvider({ children }: { children: React.ReactNode }
     
     setNotifications(prev => [newNotification, ...prev]);
     setUnreadCount(prev => prev + 1);
-  };
+  }, []);
 
   // Fetch notifications when user logs in
   useEffect(() => {
@@ -186,7 +186,7 @@ export function NotificationProvider({ children }: { children: React.ReactNode }
       setNotifications([]);
       setUnreadCount(0);
     }
-  }, [isLoggedIn, user?.id]);
+  }, [isLoggedIn, user?.id, fetchNotifications]);
 
   // Poll for new notifications every 30 seconds
   useEffect(() => {
@@ -197,7 +197,7 @@ export function NotificationProvider({ children }: { children: React.ReactNode }
     }, 30000); // 30 seconds
     
     return () => clearInterval(interval);
-  }, [isLoggedIn]);
+  }, [isLoggedIn, fetchNotifications]);
 
   return (
     <NotificationContext.Provider value={{

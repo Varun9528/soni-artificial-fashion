@@ -6,29 +6,42 @@ async function main() {
   console.log('Starting database cleanup and seeding with jewelry products...');
 
   // Delete all existing data in correct order to avoid foreign key constraints
-  await prisma.productImage.deleteMany({});
-  await prisma.product.deleteMany({});
-  await prisma.category.deleteMany({});
-  await prisma.artisan.deleteMany({});
-  await prisma.banner.deleteMany({});
-  await prisma.user.deleteMany({});
+  try {
+    await prisma.productImage.deleteMany({});
+    await prisma.product_reviews.deleteMany({});
+    await prisma.product_variants.deleteMany({});
+    await prisma.orderItem.deleteMany({});
+    await prisma.carts.deleteMany({});
+    await prisma.wishlists.deleteMany({});
+    await prisma.product.deleteMany({});
+    await prisma.category.deleteMany({});
+    await prisma.artisan.deleteMany({});
+    await prisma.banner.deleteMany({});
+    await prisma.user.deleteMany({});
+  } catch (error) {
+    console.log('Some tables might be empty, continuing...');
+  }
   
   console.log('Deleted all existing data');
 
   // Create admin user for Soni Fashion
-  const adminUser = await prisma.user.create({
-    data: {
-      id: 'admin-001',
-      email: 'admin@soniartificialfashion.com',
-      password_hash: '$2a$12$TVb7ROjbz2CJFo3K71MBGunOtW7G7NUJhIk0p6aWK4aVQJ0CaCYsO', // admin123
-      name: 'Admin User',
-      role: 'super_admin',
-      email_verified: true,
-      created_at: new Date(),
-      updated_at: new Date()
-    }
-  });
-  console.log('Created admin user:', adminUser.email);
+  try {
+    const adminUser = await prisma.user.create({
+      data: {
+        id: 'admin-001',
+        email: 'admin@soniartificialfashion.com',
+        password_hash: '$2a$12$TVb7ROjbz2CJFo3K71MBGunOtW7G7NUJhIk0p6aWK4aVQJ0CaCYsO', // admin123
+        name: 'Admin User',
+        role: 'super_admin',
+        email_verified: true,
+        created_at: new Date(),
+        updated_at: new Date()
+      }
+    });
+    console.log('Created admin user:', adminUser.email);
+  } catch (error: any) {
+    console.log('Admin user might already exist, continuing...');
+  }
 
   // Create jewelry categories
   const categories = [
@@ -119,10 +132,23 @@ async function main() {
   ];
 
   for (const categoryData of categories) {
-    const category = await prisma.category.create({
-      data: categoryData
-    });
-    console.log('Created category:', category.name_en);
+    try {
+      // Check if category already exists
+      const existingCategory = await prisma.category.findUnique({
+        where: { id: categoryData.id }
+      });
+      
+      if (!existingCategory) {
+        const category = await prisma.category.create({
+          data: categoryData
+        });
+        console.log('Created category:', category.name_en);
+      } else {
+        console.log('Category already exists:', categoryData.name_en);
+      }
+    } catch (error: any) {
+      console.log(`Error creating category ${categoryData.name_en}:`, error.message);
+    }
   }
 
   // Create artisans
@@ -156,10 +182,23 @@ async function main() {
   ];
 
   for (const artisanData of artisans) {
-    const artisan = await prisma.artisan.create({
-      data: artisanData
-    });
-    console.log('Created artisan:', artisan.name);
+    try {
+      // Check if artisan already exists
+      const existingArtisan = await prisma.artisan.findUnique({
+        where: { id: artisanData.id }
+      });
+      
+      if (!existingArtisan) {
+        const artisan = await prisma.artisan.create({
+          data: artisanData
+        });
+        console.log('Created artisan:', artisan.name);
+      } else {
+        console.log('Artisan already exists:', artisanData.name);
+      }
+    } catch (error: any) {
+      console.log(`Error creating artisan ${artisanData.name}:`, error.message);
+    }
   }
 
   // Create jewelry products
@@ -248,37 +287,46 @@ async function main() {
 
   for (const productData of jewelryProducts) {
     try {
-      const product = await prisma.product.create({
-        data: {
-          id: productData.id,
-          slug: productData.slug,
-          title_en: productData.name,
-          title_hi: productData.name,
-          description_en: productData.description_en,
-          description_hi: productData.description_hi,
-          price: productData.price,
-          original_price: productData.original_price,
-          stock: productData.stock,
-          category_id: productData.category_id,
-          artisan_id: productData.artisan_id,
-          created_at: new Date(),
-          updated_at: new Date()
-        }
+      // Check if product already exists
+      const existingProduct = await prisma.product.findUnique({
+        where: { id: productData.id }
       });
+      
+      if (!existingProduct) {
+        const product = await prisma.product.create({
+          data: {
+            id: productData.id,
+            slug: productData.slug,
+            title_en: productData.name,
+            title_hi: productData.name,
+            description_en: productData.description_en,
+            description_hi: productData.description_hi,
+            price: productData.price,
+            original_price: productData.original_price,
+            stock: productData.stock,
+            category_id: productData.category_id,
+            artisan_id: productData.artisan_id,
+            created_at: new Date(),
+            updated_at: new Date()
+          }
+        });
 
-      // Create product image
-      await prisma.productImage.create({
-        data: {
-          id: `img-${productData.id.substring(5)}`,
-          product_id: product.id,
-          image_url: productData.image_path,
-          alt_text: productData.name,
-          is_primary: true,
-          created_at: new Date()
-        }
-      });
+        // Create product image
+        await prisma.productImage.create({
+          data: {
+            id: `img-${productData.id.substring(5)}`,
+            product_id: product.id,
+            image_url: productData.image_path,
+            alt_text: productData.name,
+            is_primary: true,
+            created_at: new Date()
+          }
+        });
 
-      console.log(`Created product: ${product.title_en} (${product.id})`);
+        console.log(`Created product: ${product.title_en} (${product.id})`);
+      } else {
+        console.log(`Product already exists: ${productData.name} (${productData.id})`);
+      }
     } catch (error: any) {
       console.error(`Error creating product ${productData.name}:`, error.message);
     }
@@ -331,10 +379,23 @@ async function main() {
   ];
 
   for (const bannerData of banners) {
-    const banner = await prisma.banner.create({
-      data: bannerData
-    });
-    console.log('Created banner:', banner.title_en);
+    try {
+      // Check if banner already exists
+      const existingBanner = await prisma.banner.findUnique({
+        where: { id: bannerData.id }
+      });
+      
+      if (!existingBanner) {
+        const banner = await prisma.banner.create({
+          data: bannerData
+        });
+        console.log('Created banner:', banner.title_en);
+      } else {
+        console.log('Banner already exists:', bannerData.title_en);
+      }
+    } catch (error: any) {
+      console.log(`Error creating banner ${bannerData.title_en}:`, error.message);
+    }
   }
 
   console.log('Seeding completed successfully with jewelry products!');

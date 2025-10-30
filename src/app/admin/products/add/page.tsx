@@ -167,13 +167,13 @@ export default function AddProduct() {
     }));
   };
 
-  const uploadImages = async () => {
-    if (uploadedImages.length === 0) return [];
+  const uploadImages = async (): Promise<{ urls: string[]; filenames: string[] }> => {
+    if (uploadedImages.length === 0) return { urls: [], filenames: [] };
 
     setUploading(true);
     setUploadErrors([]);
-    const uploadedUrls = [];
-    const uploadedFilenames = [];
+    const uploadedUrls: string[] = [];
+    const uploadedFilenames: string[] = [];
 
     try {
       for (const file of uploadedImages) {
@@ -217,7 +217,7 @@ export default function AddProduct() {
 
     try {
       // Upload images first
-      let imageResult = { urls: [], filenames: [] };
+      let imageResult: { urls: string[]; filenames: string[] } = { urls: [], filenames: [] };
       if (uploadedImages.length > 0) {
         imageResult = await uploadImages();
       }

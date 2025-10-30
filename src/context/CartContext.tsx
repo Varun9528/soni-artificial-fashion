@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useReducer, useEffect, useState } from 'react';
+import React, { createContext, useContext, useReducer, useEffect, useState, useCallback } from 'react';
 import { CartItem } from '@/data/types';
 import { useAuth } from './AuthContext';
 
@@ -122,6 +122,48 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const { user, isInitialized } = useAuth();
   const [isSyncing, setIsSyncing] = useState(false);
 
+  const syncCart = useCallback(async () => {
+    if (isSyncing || !user) return;
+    
+    setIsSyncing(true);
+    try {
+      // Get guest cart from localStorage
+      const savedCart = localStorage.getItem('cart');
+      if (savedCart) {
+        const guestCartItems = JSON.parse(savedCart);
+        
+        // Add guest cart items to database
+        for (const item of guestCartItems) {
+          await fetch('/api/cart', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              productId: item.productId,
+              quantity: item.quantity,
+              variant: item.variant
+            })
+          });
+        }
+        
+        // Clear localStorage
+        localStorage.removeItem('cart');
+        
+        // Reload cart from database
+        const response = await fetch('/api/cart');
+        const data = await response.json();
+        if (data.success) {
+          dispatch({ type: 'LOAD_CART', payload: data.items });
+        }
+      }
+    } catch (error) {
+      console.error('Error syncing cart:', error);
+    } finally {
+      setIsSyncing(false);
+    }
+  }, [isSyncing, user]);
+
   // Load cart from localStorage on mount or from DB if user is logged in
   useEffect(() => {
     // Only load cart when auth context is initialized
@@ -172,49 +214,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     if (user && state.loaded && !isSyncing) {
       syncCart();
     }
-  }, [user, state.loaded, isInitialized]);
-
-  const syncCart = async () => {
-    if (isSyncing || !user) return;
-    
-    setIsSyncing(true);
-    try {
-      // Get guest cart from localStorage
-      const savedCart = localStorage.getItem('cart');
-      if (savedCart) {
-        const guestCartItems = JSON.parse(savedCart);
-        
-        // Add guest cart items to database
-        for (const item of guestCartItems) {
-          await fetch('/api/cart', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              productId: item.productId,
-              quantity: item.quantity,
-              variant: item.variant
-            })
-          });
-        }
-        
-        // Clear localStorage
-        localStorage.removeItem('cart');
-        
-        // Reload cart from database
-        const response = await fetch('/api/cart');
-        const data = await response.json();
-        if (data.success) {
-          dispatch({ type: 'LOAD_CART', payload: data.items });
-        }
-      }
-    } catch (error) {
-      console.error('Error syncing cart:', error);
-    } finally {
-      setIsSyncing(false);
-    }
-  };
+  }, [user, state.loaded, isInitialized, isSyncing, syncCart]);
 
   const addToCart = async (productId: string, quantity = 1, variant?: any) => {
     if (user) {
