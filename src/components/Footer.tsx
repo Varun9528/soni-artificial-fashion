@@ -217,6 +217,16 @@ export default function Footer() {
               <button onClick={() => navigateTo('/refund-policy')} className="text-amber-200 hover:text-white transition-colors">
                 {t('refundPolicy')}
               </button>
+              <button 
+                onClick={() => {
+                  // For demo purposes, we'll show an alert
+                  // In a real app, this would link to your app store
+                  alert(language === 'en' ? 'App download link will be available soon!' : 'ऐप डाउनलोड लिंक जल्द उपलब्ध होगा!');
+                }}
+                className="text-amber-200 hover:text-white transition-colors"
+              >
+                {language === 'en' ? 'Download App' : 'ऐप डाउनलोड करें'}
+              </button>
             </div>
           </div>
         </div>

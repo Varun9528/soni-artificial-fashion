@@ -211,7 +211,7 @@ export const defaultSecurityConfig: SecurityConfig = {
       maxRequests: 3,
     },
   ],
-  mfaIssuer: 'Pachmarhi Tribal Art',
+  mfaIssuer: 'Soni Artificial Fashion',
   emailVerificationTTL: 24 * 60 * 60, // 24 hours
   passwordResetTTL: 60 * 60, // 1 hour
   maxFailedAttempts: 5,

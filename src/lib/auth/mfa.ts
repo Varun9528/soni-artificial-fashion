@@ -10,7 +10,7 @@ export class MFAService {
   }
 
   // Generate a TOTP URI for QR code generation (mock implementation)
-  generateTotpUri(secret: string, email: string, issuer: string = 'Pachmarhi Tribal Art'): string {
+  generateTotpUri(secret: string, email: string, issuer: string = 'Soni Artificial Fashion'): string {
     return `otpauth://totp/${issuer}:${email}?secret=${secret}&issuer=${issuer}`;
   }
 

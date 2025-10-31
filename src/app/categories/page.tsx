@@ -111,12 +111,12 @@ export default function CategoriesPage() {
   // Create categories list from jewelry categories
   const categories = [
     { id: 'all', name: 'All Categories' },
-    { id: 'necklaces', name: 'Necklaces' },
-    { id: 'earrings', name: 'Earrings' },
-    { id: 'bracelets', name: 'Bracelets' },
-    { id: 'rings', name: 'Rings' },
-    { id: 'jewelry-sets', name: 'Jewelry Sets' },
-    { id: 'mens-collection', name: 'Men\'s Collection' }
+    { id: 'cat-002', name: 'Necklaces' },
+    { id: 'cat-003', name: 'Earrings' },
+    { id: 'cat-004', name: 'Bracelets' },
+    { id: 'cat-005', name: 'Rings' },
+    { id: 'cat-007', name: 'Women\'s Collection' },
+    { id: 'cat-006', name: 'Men\'s Collection' }
   ];
 
   const sortOptions = [

@@ -4,7 +4,7 @@ export const adminNotificationTemplate = {
     body: `
       <h2>Hello Admin,</h2>
       
-      <p>A new order has been placed on Pachmarhi Marketplace.</p>
+      <p>A new order has been placed on Soni Fashion Marketplace.</p>
       
       <h3>Order Details:</h3>
       
@@ -29,7 +29,7 @@ export const adminNotificationTemplate = {
       <p>Please process this order from the Admin Dashboard.</p>
       
       <p>Best regards,<br>
-      Pachmarhi Marketplace System</p>
+      Soni Fashion Marketplace System</p>
     `
   },
   hi: {
@@ -37,7 +37,7 @@ export const adminNotificationTemplate = {
     body: `
       <h2>नमस्ते प्रशासक,</h2>
       
-      <p>पचमढ़ी बाजार पर एक नया ऑर्डर दिया गया है।</p>
+      <p>सोनी फैशन बाजार पर एक नया ऑर्डर दिया गया है।</p>
       
       <h3>आदेश विवरण:</h3>
       
@@ -62,7 +62,7 @@ export const adminNotificationTemplate = {
       <p>कृपया प्रशासक डैशबोर्ड से इस आदेश की प्रक्रिया करें।</p>
       
       <p>सादर,<br>
-      पचमढ़ी बाजार प्रणाली</p>
+      सोनी फैशन बाजार प्रणाली</p>
     `
   }
 };

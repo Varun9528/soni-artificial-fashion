@@ -2,16 +2,17 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(request: NextRequest) {
   try {
-    // Clear token cookie
+    // Clear token cookie - ensure consistency with login
     const response = NextResponse.json(
       { message: 'Logged out successfully' },
       { status: 200 }
     );
 
+    // Set cookie with same parameters as login to ensure proper clearing
     response.cookies.set('token', '', {
       httpOnly: true,
-      secure: true,
-      sameSite: 'strict',
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
       maxAge: 0,
       path: '/',
     });

@@ -38,7 +38,7 @@ export default function RefundPolicyPage() {
           {
             title: 'How to Initiate a Return',
             content: `
-              Contact our customer support team at support@pachmarhi.com with your order number and reason for return.
+              Contact our customer support team at support@sonifashion.com with your order number and reason for return.
               
               Our team will provide you with a Return Authorization Number (RAN) and return instructions.
               
@@ -100,7 +100,7 @@ export default function RefundPolicyPage() {
           {
             title: 'वापसी कैसे शुरू करें',
             content: `
-              अपने आदेश संख्या और वापसी के कारण के साथ हमारी ग्राहक समर्थन टीम से support@pachmarhi.com पर संपर्क करें।
+              समर्थन@सोनीफैशन.कॉम पर हमारी ग्राहक समर्थन टीम से अपना ऑर्डर नंबर और वापसी का कारण बताएं।
               
               हमारी टीम आपको एक वापसी प्राधिकरण संख्या (RAN) और वापसी निर्देश प्रदान करेगी।
               

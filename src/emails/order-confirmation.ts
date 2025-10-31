@@ -1,10 +1,10 @@
 export const orderConfirmationTemplate = {
   en: {
-    subject: 'Your Pachmarhi Order #{{orderId}} has been confirmed!',
+    subject: 'Your Soni Fashion Order #{{orderId}} has been confirmed!',
     body: `
       <h2>Dear {{customerName}},</h2>
       
-      <p>Thank you for shopping with Pachmarhi Tribal Art Marketplace!</p>
+      <p>Thank you for shopping with Soni Artificial Fashion Marketplace!</p>
       
       <p>Your order has been successfully placed.</p>
       
@@ -31,18 +31,18 @@ export const orderConfirmationTemplate = {
       
       <p>We'll notify you when your order is shipped.</p>
       
-      <p>Thank you for supporting our tribal artisans!</p>
+      <p>Thank you for supporting our artisans!</p>
       
       <p>Best regards,<br>
-      The Pachmarhi Team</p>
+      The Soni Fashion Team</p>
     `
   },
   hi: {
-    subject: 'आपका पचमढ़ी ऑर्डर #{{orderId}} पुष्टि कर दिया गया है!',
+    subject: 'आपका सोनी फैशन ऑर्डर #{{orderId}} पुष्टि कर दिया गया है!',
     body: `
       <h2>प्रिय {{customerName}},</h2>
       
-      <p>पचमढ़ी जनजातीय कला बाजार के साथ खरीदारी करने के लिए धन्यवाद!</p>
+      <p>सोनी कृत्रिम फैशन मार्केटप्लेस के साथ खरीदारी करने के लिए धन्यवाद!</p>
       
       <p>आपका ऑर्डर सफलतापूर्वक दर्ज कर लिया गया है।</p>
       
@@ -69,10 +69,10 @@ export const orderConfirmationTemplate = {
       
       <p>जब आपका ऑर्डर भेजा जाएगा तो हम आपको सूचित करेंगे।</p>
       
-      <p>हमारे जनजातीय कारीगरों का समर्थन करने के लिए धन्यवाद!</p>
+      <p>हमारे कारीगरों का समर्थन करने के लिए धन्यवाद!</p>
       
       <p>सादर,<br>
-      पचमढ़ी टीम</p>
+      सोनी फैशन टीम</p>
     `
   }
 };

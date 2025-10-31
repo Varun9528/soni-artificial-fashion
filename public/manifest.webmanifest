@@ -1,7 +1,7 @@
 {
-  "name": "Pachmarhi Tribal Art Marketplace",
-  "short_name": "Pachmarhi Art",
-  "description": "Authentic tribal art and handicrafts from Pachmarhi artisans",
+  "name": "Soni Artificial Fashion Marketplace",
+  "short_name": "Soni Fashion",
+  "description": "Authentic artificial fashion jewelry from Soni artisans",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
@@ -121,7 +121,7 @@
   "related_applications": [
     {
       "platform": "webapp",
-      "url": "https://pachmarhi.com/manifest.webmanifest"
+      "url": "https://www.soniartificalfashion.store/manifest.webmanifest"
     }
   ],
   "prefer_related_applications": false,

@@ -95,8 +95,8 @@ export default function ProductionReadinessPage() {
                     <h3 className="font-semibold text-blue-900 mb-2">Setup Required:</h3>
                     <ol className="list-decimal list-inside text-blue-800 space-y-1">
                       <li>Install MySQL: <code className="bg-blue-100 px-2 py-1 rounded">mysql -u root -p</code></li>
-                      <li>Create database: <code className="bg-blue-100 px-2 py-1 rounded">CREATE DATABASE pachmarhi_db;</code></li>
-                      <li>Run schema: <code className="bg-blue-100 px-2 py-1 rounded">mysql -u root -p pachmarhi_db &lt; database/schema.sql</code></li>
+                      <li>Create database: <code className="bg-blue-100 px-2 py-1 rounded">CREATE DATABASE soni_artificial_fashion;</code></li>
+                      <li>Run schema: <code className="bg-blue-100 px-2 py-1 rounded">mysql -u root -p soni_artificial_fashion &lt; database/schema.sql</code></li>
                       <li>Configure .env: Set DATABASE_URL or DB_* variables</li>
                     </ol>
                   </div>

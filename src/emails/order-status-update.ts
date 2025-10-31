@@ -2,7 +2,7 @@ export const orderStatusUpdateTemplate = {
   // Order Shipped Template
   shipped: {
     en: {
-      subject: 'Your Pachmarhi Order #{{orderId}} has been Shipped!',
+      subject: 'Your Soni Fashion Order #{{orderId}} has been Shipped!',
       body: `
         <h2>Dear {{customerName}},</h2>
         
@@ -21,14 +21,14 @@ export const orderStatusUpdateTemplate = {
         
         <p>Estimated Delivery Date: {{estimatedDeliveryDate}}</p>
         
-        <p>Thank you for shopping with Pachmarhi Tribal Art Marketplace!</p>
+        <p>Thank you for shopping with Soni Artificial Fashion Marketplace!</p>
         
         <p>Best regards,<br>
-        The Pachmarhi Team</p>
+        The Soni Fashion Team</p>
       `
     },
     hi: {
-      subject: 'आपका पचमढ़ी ऑर्डर #{{orderId}} भेज दिया गया है!',
+      subject: 'आपका सोनी फैशन ऑर्डर #{{orderId}} भेज दिया गया है!',
       body: `
         <h2>प्रिय {{customerName}},</h2>
         
@@ -47,10 +47,10 @@ export const orderStatusUpdateTemplate = {
         
         <p>अनुमानित डिलीवरी तिथि: {{estimatedDeliveryDate}}</p>
         
-        <p>पचमढ़ी जनजातीय कला बाजार के साथ खरीदारी करने के लिए धन्यवाद!</p>
+        <p>सोनी कृत्रिम फैशन मार्केटप्लेस के साथ खरीदारी करने के लिए धन्यवाद!</p>
         
         <p>सादर,<br>
-        पचमढ़ी टीम</p>
+        सोनी फैशन टीम</p>
       `
     }
   },
@@ -58,7 +58,7 @@ export const orderStatusUpdateTemplate = {
   // Order Out for Delivery Template
   outForDelivery: {
     en: {
-      subject: 'Your Pachmarhi Order #{{orderId}} is Out for Delivery!',
+      subject: 'Your Soni Fashion Order #{{orderId}} is Out for Delivery!',
       body: `
         <h2>Dear {{customerName}},</h2>
         
@@ -77,14 +77,14 @@ export const orderStatusUpdateTemplate = {
         
         <p>Expected Delivery Time: {{expectedDeliveryTime}}</p>
         
-        <p>Thank you for shopping with Pachmarhi Tribal Art Marketplace!</p>
+        <p>Thank you for shopping with Soni Artificial Fashion Marketplace!</p>
         
         <p>Best regards,<br>
-        The Pachmarhi Team</p>
+        The Soni Fashion Team</p>
       `
     },
     hi: {
-      subject: 'आपका पचमढ़ी ऑर्डर #{{orderId}} डिलीवरी के लिए निकला है!',
+      subject: 'आपका सोनी फैशन ऑर्डर #{{orderId}} डिलीवरी के लिए निकला है!',
       body: `
         <h2>प्रिय {{customerName}},</h2>
         
@@ -103,10 +103,10 @@ export const orderStatusUpdateTemplate = {
         
         <p>अपेक्षित डिलीवरी समय: {{expectedDeliveryTime}}</p>
         
-        <p>पचमढ़ी जनजातीय कला बाजार के साथ खरीदारी करने के लिए धन्यवाद!</p>
+        <p>सोनी कृत्रिम फैशन मार्केटप्लेस के साथ खरीदारी करने के लिए धन्यवाद!</p>
         
         <p>सादर,<br>
-        पचमढ़ी टीम</p>
+        सोनी फैशन टीम</p>
       `
     }
   },
@@ -114,7 +114,7 @@ export const orderStatusUpdateTemplate = {
   // Order Delivered Template
   delivered: {
     en: {
-      subject: 'Your Pachmarhi Order #{{orderId}} has been Delivered!',
+      subject: 'Your Soni Fashion Order #{{orderId}} has been Delivered!',
       body: `
         <h2>Dear {{customerName}},</h2>
         
@@ -128,16 +128,16 @@ export const orderStatusUpdateTemplate = {
           <li><strong>Total Amount:</strong> ₹{{totalAmount}}</li>
         </ul>
         
-        <p>We hope you love your tribal art products. If you have any feedback or need assistance, please feel free to contact us.</p>
+        <p>We hope you love your artificial fashion products. If you have any feedback or need assistance, please feel free to contact us.</p>
         
-        <p>Thank you for supporting our tribal artisans!</p>
+        <p>Thank you for supporting our artisans!</p>
         
         <p>Best regards,<br>
-        The Pachmarhi Team</p>
+        The Soni Fashion Team</p>
       `
     },
     hi: {
-      subject: 'आपका पचमढ़ी ऑर्डर #{{orderId}} डिलीवर हो गया है!',
+      subject: 'आपका सोनी फैशन ऑर्डर #{{orderId}} डिलीवर हो गया है!',
       body: `
         <h2>प्रिय {{customerName}},</h2>
         
@@ -151,12 +151,12 @@ export const orderStatusUpdateTemplate = {
           <li><strong>कुल राशि:</strong> ₹{{totalAmount}}</li>
         </ul>
         
-        <p>हम आशा करते हैं कि आपको हमारे जनजातीय कला उत्पाद पसंद आएंगे। यदि आपके कोई प्रतिक्रिया है या सहायता की आवश्यकता है, तो कृपया हमसे संपर्क करें।</p>
+        <p>हम आशा करते हैं कि आपको हमारे कृत्रिम फैशन उत्पाद पसंद आएंगे। यदि आपके कोई प्रतिक्रिया है या सहायता की आवश्यकता है, तो कृपया हमसे संपर्क करें।</p>
         
-        <p>हमारे जनजातीय कारीगरों का समर्थन करने के लिए धन्यवाद!</p>
+        <p>हमारे कारीगरों का समर्थन करने के लिए धन्यवाद!</p>
         
         <p>सादर,<br>
-        पचमढ़ी टीम</p>
+        सोनी फैशन टीम</p>
       `
     }
   }

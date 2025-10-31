@@ -8,11 +8,11 @@ export default function TermsConditionsPage() {
     const translations: any = {
       en: {
         title: "Terms & Conditions",
-        introduction: "Welcome to Pachmarhi Tribal Art Marketplace. By using our platform, you agree to comply with the following terms.",
+        introduction: "Welcome to Soni Artificial Fashion Marketplace. By using our platform, you agree to comply with the following terms.",
         userResponsibilities: "User Responsibilities",
         userResponsibilitiesContent: "You are responsible for maintaining the confidentiality of your account and password. You agree to accept responsibility for all activities that occur under your account.",
         intellectualProperty: "Intellectual Property Rights",
-        intellectualPropertyContent: "All content, logos, trademarks, and other intellectual property on this platform are owned by Pachmarhi Tribal Art Marketplace or its licensors.",
+        intellectualPropertyContent: "All content, logos, trademarks, and other intellectual property on this platform are owned by Soni Artificial Fashion Marketplace or its licensors.",
         prohibitedActivities: "Prohibited Activities",
         prohibitedActivitiesContent: "You may not use the platform for any illegal or unauthorized purpose. You may not, in the use of the service, violate any laws in your jurisdiction.",
         orderAcceptance: "Order Acceptance & Pricing",

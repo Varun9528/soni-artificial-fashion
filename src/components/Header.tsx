@@ -64,6 +64,16 @@ export default function Header() {
             >
               {language === 'en' ? 'हिंदी' : 'English'}
             </button>
+            <button 
+              onClick={() => {
+                // For demo purposes, we'll show an alert
+                // In a real app, this would link to your app store
+                alert(language === 'en' ? 'App download link will be available soon!' : 'ऐप डाउनलोड लिंक जल्द उपलब्ध होगा!');
+              }}
+              className="hover:underline font-medium hidden md:inline"
+            >
+              {language === 'en' ? 'Download App' : 'ऐप डाउनलोड करें'}
+            </button>
           </div>
           <div className="flex items-center space-x-4">
             <button onClick={() => navigateTo('/support')} className="hover:underline hidden md:inline">
@@ -243,6 +253,16 @@ export default function Header() {
               </button>
               <button onClick={() => navigateTo('/sell')} className="py-3 hover:text-amber-700 dark:hover:text-amber-400 font-medium border-b border-gray-100 dark:border-gray-700 text-left">
                 {language === 'en' ? 'Sell on Soni Fashion' : 'सोनी फैशन पर बेचें'}
+              </button>
+              <button 
+                onClick={() => {
+                  // For demo purposes, we'll show an alert
+                  // In a real app, this would link to your app store
+                  alert(language === 'en' ? 'App download link will be available soon!' : 'ऐप डाउनलोड लिंक जल्द उपलब्ध होगा!');
+                }}
+                className="py-3 hover:text-amber-700 dark:hover:text-amber-400 font-medium border-b border-gray-100 dark:border-gray-700 text-left"
+              >
+                {language === 'en' ? 'Download App' : 'ऐप डाउनलोड करें'}
               </button>
               {user && (
                 <>

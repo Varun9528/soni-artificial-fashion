@@ -56,7 +56,7 @@ export const getOrderConfirmationEmail = (orderData: {
     };
   } else {
     return {
-      subject: "Order Confirmation – Pachmarhi Tribal Art Marketplace",
+      subject: "Order Confirmation – Soni Artificial Fashion Marketplace",
       text: `Hello ${customerName},
 Thank you for your order #${orderId}. Your tribal art product(s) will be shipped soon.
 Track your order here: ${trackingLink}`,
@@ -65,7 +65,7 @@ Track your order here: ${trackingLink}`,
           <h2 style="color: #d97706;">Hello ${customerName},</h2>
           <p>Thank you for your order <strong>#${orderId}</strong>. Your tribal art product(s) will be shipped soon.</p>
           <p><a href="${trackingLink}" style="background-color: #d97706; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Track your order here</a></p>
-          <p>Thank you,<br/>Pachmarhi Tribal Art Marketplace Team</p>
+          <p>Thank you,<br/>Soni Artificial Fashion Marketplace Team</p>
         </div>
       `
     };
@@ -131,7 +131,7 @@ export const getOrderShippedEmail = (orderData: {
     };
   } else {
     return {
-      subject: `Your Pachmarhi Order #${orderId} has been Shipped!`,
+      subject: `Your Soni Fashion Order #${orderId} has been Shipped!`,
       text: `Hello ${customerName},
 
 Great news! Your order #${orderId} has been shipped and is on its way to you.
@@ -146,10 +146,10 @@ You can track your order using the tracking number provided above.
 
 Estimated Delivery Date: ${estimatedDeliveryDate}
 
-Thank you for shopping with Pachmarhi Tribal Art Marketplace!
+Thank you for shopping with Soni Artificial Fashion Marketplace!
 
 Best regards,
-The Pachmarhi Team`,
+The Soni Fashion Team`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #d97706;">Hello ${customerName},</h2>
@@ -168,9 +168,9 @@ The Pachmarhi Team`,
           
           <p><strong>Estimated Delivery Date:</strong> ${estimatedDeliveryDate}</p>
           
-          <p>Thank you for shopping with Pachmarhi Tribal Art Marketplace!</p>
+          <p>Thank you for shopping with Soni Artificial Fashion Marketplace!</p>
           
-          <p>Best regards,<br/>The Pachmarhi Team</p>
+          <p>Best regards,<br/>The Soni Fashion Team</p>
         </div>
       `
     };
@@ -237,7 +237,7 @@ export const getOrderOutForDeliveryEmail = (orderData: {
     };
   } else {
     return {
-      subject: `Your Pachmarhi Order #${orderId} is Out for Delivery!`,
+      subject: `Your Soni Fashion Order #${orderId} is Out for Delivery!`,
       text: `Hello ${customerName},
 
 Your order #${orderId} is out for delivery and will reach you soon!
@@ -252,10 +252,10 @@ Please keep ₹${totalAmount} ready for cash on delivery.
 
 Expected Delivery Time: ${expectedDeliveryTime}
 
-Thank you for shopping with Pachmarhi Tribal Art Marketplace!
+Thank you for shopping with Soni Artificial Fashion Marketplace!
 
 Best regards,
-The Pachmarhi Team`,
+The Soni Fashion Team`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #d97706;">Hello ${customerName},</h2>
@@ -274,9 +274,9 @@ The Pachmarhi Team`,
           
           <p><strong>Expected Delivery Time:</strong> ${expectedDeliveryTime}</p>
           
-          <p>Thank you for shopping with Pachmarhi Tribal Art Marketplace!</p>
+          <p>Thank you for shopping with Soni Artificial Fashion Marketplace!</p>
           
-          <p>Best regards,<br/>The Pachmarhi Team</p>
+          <p>Best regards,<br/>The Soni Fashion Team</p>
         </div>
       `
     };
@@ -334,7 +334,7 @@ export const getOrderDeliveredEmail = (orderData: {
     };
   } else {
     return {
-      subject: `Your Pachmarhi Order #${orderId} has been Delivered!`,
+      subject: `Your Soni Fashion Order #${orderId} has been Delivered!`,
       text: `Hello ${customerName},
 
 We're happy to inform you that your order #${orderId} has been successfully delivered!
@@ -349,7 +349,7 @@ We hope you love your tribal art products. If you have any feedback or need assi
 Thank you for supporting our tribal artisans!
 
 Best regards,
-The Pachmarhi Team`,
+The Soni Fashion Team`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #d97706;">Hello ${customerName},</h2>
@@ -367,7 +367,7 @@ The Pachmarhi Team`,
           
           <p>Thank you for supporting our tribal artisans!</p>
           
-          <p>Best regards,<br/>The Pachmarhi Team</p>
+          <p>Best regards,<br/>The Soni Fashion Team</p>
         </div>
       `
     };

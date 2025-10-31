@@ -1,10 +1,10 @@
 export const passwordResetTemplate = {
   en: {
-    subject: 'Reset Your Pachmarhi Account Password',
+    subject: 'Reset Your Soni Fashion Account Password',
     body: `
       <h2>Dear {{customerName}},</h2>
       
-      <p>We received a request to reset your password for your Pachmarhi account.</p>
+      <p>We received a request to reset your password for your Soni Fashion account.</p>
       
       <p>If you made this request, please click the button below to set a new password:</p>
       
@@ -21,15 +21,15 @@ export const passwordResetTemplate = {
       <p>This link will expire in 1 hour for security reasons.</p>
       
       <p>Best regards,<br>
-      The Pachmarhi Team</p>
+      The Soni Fashion Team</p>
     `
   },
   hi: {
-    subject: 'अपना पचमढ़ी खाता पासवर्ड रीसेट करें',
+    subject: 'अपना सोनी फैशन खाता पासवर्ड रीसेट करें',
     body: `
       <h2>प्रिय {{customerName}},</h2>
       
-      <p>हमें आपके पचमढ़ी खाते के पासवर्ड को रीसेट करने का अनुरोध प्राप्त हुआ है।</p>
+      <p>हमें आपके सोनी फैशन खाते के पासवर्ड को रीसेट करने का अनुरोध प्राप्त हुआ है।</p>
       
       <p>यदि आपने यह अनुरोध किया है, तो कृपया नया पासवर्ड सेट करने के लिए नीचे दिए गए बटन पर क्लिक करें:</p>
       
@@ -46,7 +46,7 @@ export const passwordResetTemplate = {
       <p>सुरक्षा कारणों से यह लिंक 1 घंटे में समाप्त हो जाएगा।</p>
       
       <p>सादर,<br>
-      पचमढ़ी टीम</p>
+      सोनी फैशन टीम</p>
     `
   }
 };

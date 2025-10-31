@@ -67,6 +67,8 @@ export async function GET(request: NextRequest) {
         productImages: product.productImages,
         featured: product.featured,
         best_seller: product.bestSeller,
+        new_arrival: product.newArrival, // Fix: Use correct property name
+        trending: product.trending,
         is_active: product.isActive,
         created_at: product.createdAt
       };

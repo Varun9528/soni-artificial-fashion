@@ -142,9 +142,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         localStorage.setItem('token', data.token);
         localStorage.setItem('user', JSON.stringify(data.user));
         
-        // Also set cookie for server-side access
+        // Also set cookie for server-side access with consistent parameters
         if (typeof document !== 'undefined') {
-          document.cookie = `token=${data.token}; path=/; max-age=86400; SameSite=Lax`;
+          document.cookie = `token=${data.token}; path=/; max-age=${24 * 60 * 60}; SameSite=Lax${process.env.NODE_ENV === 'production' ? '; Secure' : ''}`;
         }
         
         return {
@@ -172,6 +172,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     localStorage.removeItem('user');
     deleteCookie('token');
     
+    // Clear cookie with consistent parameters
+    if (typeof document !== 'undefined') {
+      document.cookie = `token=; path=/; max-age=0; SameSite=Lax${process.env.NODE_ENV === 'production' ? '; Secure' : ''}`;
+    }
+    
     // Immediately redirect to login page
     if (typeof window !== 'undefined') {
       router.push('/login');
@@ -185,7 +190,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     // Also update cookie for server-side access
     const token = localStorage.getItem('token');
     if (token && typeof document !== 'undefined') {
-      document.cookie = `token=${token}; path=/; max-age=86400; SameSite=Lax`;
+      document.cookie = `token=${token}; path=/; max-age=${24 * 60 * 60}; SameSite=Lax${process.env.NODE_ENV === 'production' ? '; Secure' : ''}`;
     }
   };
 

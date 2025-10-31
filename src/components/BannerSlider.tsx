@@ -30,8 +30,9 @@ export default function BannerSlider() {
           const data = await response.json();
           if (data.success) {
             // Filter active banners and sort by display order
+            // Fix: Ensure is_active is properly checked as a number
             const activeBanners = data.banners
-              .filter((banner: Banner) => banner.is_active === 1)
+              .filter((banner: Banner) => Number(banner.is_active) === 1)
               .sort((a: Banner, b: Banner) => a.display_order - b.display_order);
             setBanners(activeBanners);
           }
