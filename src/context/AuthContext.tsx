@@ -147,6 +147,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           document.cookie = `token=${data.token}; path=/; max-age=${24 * 60 * 60}; SameSite=Lax${process.env.NODE_ENV === 'production' ? '; Secure' : ''}`;
         }
         
+        // Redirect to admin dashboard if admin
+        if (data.user.role === 'admin' || data.user.role === 'super_admin') {
+          setTimeout(() => {
+            router.push('/admin');
+          }, 100);
+        }
+        
         return {
           success: true,
           message: t('loginSuccess', language).replace('{name}', data.user.name)

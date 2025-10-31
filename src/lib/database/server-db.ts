@@ -42,6 +42,7 @@ const pool = mysql.createPool(dbConfig);
 
 // Server-side database operations
 export const serverDb = {
+export const serverDb = {
   // Product operations
   async getProductBySlug(slug: string): Promise<any | null> {
     try {
@@ -112,7 +113,7 @@ export const serverDb = {
         FROM products p
         LEFT JOIN categories c ON p.category_id = c.id
         LEFT JOIN artisans a ON p.artisan_id = a.id
-        WHERE 1=1
+        WHERE p.is_active = 1
       `;
       
       const params: any[] = [];
@@ -203,87 +204,50 @@ export const serverDb = {
         FROM products p
         LEFT JOIN categories c ON p.category_id = c.id
         LEFT JOIN artisans a ON p.artisan_id = a.id
-        WHERE 1=1
+        WHERE p.is_active = 1
       `;
       
       const params: any[] = [];
+      const page = parseInt(searchParams.page) || 1;
+      const limit = parseInt(searchParams.limit) || 12;
+      const offset = (page - 1) * limit;
       
-      // Apply search filter
-      if (searchParams.query) {
-        query += ' AND (p.title_en LIKE ? OR p.title_hi LIKE ? OR p.description_en LIKE ? OR p.description_hi LIKE ?)';
-        params.push(`%${searchParams.query}%`, `%${searchParams.query}%`, `%${searchParams.query}%`, `%${searchParams.query}%`);
-      }
-      
-      // Apply category filter
-      if (searchParams.category && searchParams.category !== 'all') {
+      // Apply search filters
+      if (searchParams.category) {
         query += ' AND p.category_id = ?';
         params.push(searchParams.category);
       }
       
-      // Apply price filters
-      if (searchParams.minPrice) {
-        query += ' AND p.price >= ?';
-        params.push(searchParams.minPrice);
+      if (searchParams.featured === true || searchParams.featured === 'true') {
+        query += ' AND p.featured = 1';
       }
       
-      if (searchParams.maxPrice) {
-        query += ' AND p.price <= ?';
-        params.push(searchParams.maxPrice);
+      if (searchParams.bestSeller === true || searchParams.bestSeller === 'true') {
+        query += ' AND p.best_seller = 1';
       }
       
-      // Apply sorting
-      switch (searchParams.sortBy) {
-        case 'price_low_high':
-          query += ' ORDER BY p.price ASC';
-          break;
-        case 'price_high_low':
-          query += ' ORDER BY p.price DESC';
-          break;
-        case 'rating':
-          query += ' ORDER BY p.rating DESC';
-          break;
-        case 'newest':
-          query += ' ORDER BY p.created_at DESC';
-          break;
-        case 'name':
-          query += ' ORDER BY p.title_en ASC';
-          break;
-        default:
-          query += ' ORDER BY p.created_at DESC';
+      if (searchParams.newArrival === true || searchParams.newArrival === 'true') {
+        query += ' AND p.new_arrival = 1';
+      }
+      
+      if (searchParams.trending === true || searchParams.trending === 'true') {
+        query += ' AND p.trending = 1';
+      }
+      
+      // Add search term filter if provided
+      if (searchParams.search) {
+        query += ' AND (p.title_en LIKE ? OR p.title_hi LIKE ? OR p.description_en LIKE ? OR p.description_hi LIKE ?)';
+        const searchTerm = `%${searchParams.search}%`;
+        params.push(searchTerm, searchTerm, searchTerm, searchTerm);
       }
       
       // Get total count for pagination
-      const countQuery = `SELECT COUNT(*) as count FROM products p WHERE 1=1 ${
-        searchParams.query ? 'AND (p.title_en LIKE ? OR p.title_hi LIKE ? OR p.description_en LIKE ? OR p.description_hi LIKE ?)' : ''
-      } ${
-        searchParams.category && searchParams.category !== 'all' ? 'AND p.category_id = ?' : ''
-      } ${
-        searchParams.minPrice ? 'AND p.price >= ?' : ''
-      } ${
-        searchParams.maxPrice ? 'AND p.price <= ?' : ''
-      }`;
+      const countQuery = `SELECT COUNT(*) as total FROM products p WHERE p.is_active = 1` + query.substring(query.indexOf(' AND'));
+      const [countResult] = await pool.execute(countQuery, params);
+      const totalProducts = (countResult as any[])[0].total;
       
-      const countParams: any[] = [];
-      if (searchParams.query) {
-        countParams.push(`%${searchParams.query}%`, `%${searchParams.query}%`, `%${searchParams.query}%`, `%${searchParams.query}%`);
-      }
-      if (searchParams.category && searchParams.category !== 'all') {
-        countParams.push(searchParams.category);
-      }
-      if (searchParams.minPrice) {
-        countParams.push(searchParams.minPrice);
-      }
-      if (searchParams.maxPrice) {
-        countParams.push(searchParams.maxPrice);
-      }
-      
-      const [countResult] = await pool.execute(countQuery, countParams);
-      const totalCount = (countResult as any[])[0].count;
-      
-      // Apply pagination
-      const limit = searchParams.limit || 10;
-      const offset = (searchParams.page - 1) * limit;
-      query += ' LIMIT ? OFFSET ?';
+      // Add ordering and pagination
+      query += ' ORDER BY p.created_at DESC LIMIT ? OFFSET ?';
       params.push(limit, offset);
       
       const [rows] = await pool.execute(query, params);
@@ -304,13 +268,14 @@ export const serverDb = {
           price: product.price,
           originalPrice: product.original_price,
           stock: product.stock,
-          inStock: product.stock > 0,
+          rating: product.rating,
+          reviewCount: product.review_count,
+          categoryId: product.category_id,
+          artisanId: product.artisan_id,
           featured: product.featured,
           bestSeller: product.best_seller,
           newArrival: product.new_arrival,
           trending: product.trending,
-          rating: product.rating,
-          reviewCount: product.review_count,
           isActive: product.is_active,
           createdAt: product.created_at,
           updatedAt: product.updated_at,
@@ -334,119 +299,165 @@ export const serverDb = {
       return {
         products,
         pagination: {
-          currentPage: searchParams.page || 1,
-          totalPages: Math.ceil(totalCount / limit),
-          totalProducts: totalCount,
-          hasNextPage: (searchParams.page || 1) < Math.ceil(totalCount / limit),
-          hasPrevPage: (searchParams.page || 1) > 1
+          currentPage: page,
+          totalPages: Math.ceil(totalProducts / limit),
+          totalProducts,
+          hasNextPage: page < Math.ceil(totalProducts / limit),
+          hasPrevPage: page > 1
         }
       };
     } catch (error) {
       console.error('Database error:', error);
-      return { products: [], pagination: { currentPage: 1, totalPages: 0, totalProducts: 0, hasNextPage: false, hasPrevPage: false } };
+      return {
+        products: [],
+        pagination: {
+          currentPage: 1,
+          totalPages: 0,
+          totalProducts: 0,
+          hasNextPage: false,
+          hasPrevPage: false
+        }
+      };
     }
   },
 
-  async createProduct(productData: any): Promise<any> {
+  async getAllProducts(): Promise<any[]> {
     try {
-      // Generate a unique ID for the product if not provided
-      const productId = productData.id || `prod-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+      const [rows] = await pool.execute(
+        `SELECT p.*, c.name_en as category_name_en, c.name_hi as category_name_hi, 
+         c.id as category_id, a.name as artisan_name, a.id as artisan_id
+         FROM products p
+         LEFT JOIN categories c ON p.category_id = c.id
+         LEFT JOIN artisans a ON p.artisan_id = a.id
+         WHERE p.is_active = 1
+         ORDER BY p.created_at DESC`
+      );
       
-      // Convert arrays to comma-separated strings for material and color fields
-      const materialString = Array.isArray(productData.materials) 
-        ? productData.materials.join(', ') 
-        : productData.materials || '';
+      // Enhance products with images
+      const products = await Promise.all((rows as any[]).map(async (product) => {
+        // Get product images
+        const [images] = await pool.execute(
+          'SELECT * FROM product_images WHERE product_id = ? ORDER BY display_order',
+          [product.id]
+        );
+        
+        return {
+          id: product.id,
+          slug: product.slug,
+          title: { en: product.title_en, hi: product.title_hi },
+          description: { en: product.description_en, hi: product.description_hi },
+          price: product.price,
+          originalPrice: product.original_price,
+          stock: product.stock,
+          rating: product.rating,
+          reviewCount: product.review_count,
+          categoryId: product.category_id,
+          artisanId: product.artisan_id,
+          featured: product.featured,
+          bestSeller: product.best_seller,
+          newArrival: product.new_arrival,
+          trending: product.trending,
+          isActive: product.is_active,
+          createdAt: product.created_at,
+          updatedAt: product.updated_at,
+          category: product.category_id ? {
+            id: product.category_id,
+            name: { en: product.category_name_en, hi: product.category_name_hi }
+          } : null,
+          artisan: product.artisan_id ? {
+            id: product.artisan_id,
+            name: product.artisan_name
+          } : null,
+          productImages: (images as any[]).map(img => ({
+            id: img.id,
+            url: img.image_url,
+            isPrimary: img.is_primary,
+            displayOrder: img.display_order
+          }))
+        };
+      }));
       
-      const colorString = Array.isArray(productData.colors) 
-        ? productData.colors.join(', ') 
-        : productData.colors || '';
+      return products;
+    } catch (error) {
+      console.error('Database error:', error);
+      return [];
+    }
+  },
+
+  // User operations
+  async findUserByEmail(email: string): Promise<any | null> {
+    try {
+      const [rows] = await pool.execute(
+        'SELECT * FROM users WHERE email = ?',
+        [email]
+      );
       
-      // Convert tags array to JSON string
-      const tagsString = Array.isArray(productData.tags) 
-        ? JSON.stringify(productData.tags) 
-        : productData.tags || '[]';
-      
+      const user = (rows as any[])[0];
+      return user || null;
+    } catch (error) {
+      console.error('Database error:', error);
+      return null;
+    }
+  },
+
+  async createUser(userData: any): Promise<any | null> {
+    try {
       const [result] = await pool.execute(
-        `INSERT INTO products (id, slug, title_en, title_hi, description_en, description_hi, price, original_price, stock, category_id, artisan_id, rating, review_count, featured, best_seller, new_arrival, trending, is_active, material, color, tags, created_at, updated_at) 
-         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW())`,
+        `INSERT INTO users (name, email, password_hash, phone, role, email_verified, created_at, updated_at) 
+         VALUES (?, ?, ?, ?, ?, ?, NOW(), NOW())`,
         [
-          productId,
-          productData.slug || null,
-          productData.title?.en || null,
-          productData.title?.hi || null,
-          productData.description?.en || null,
-          productData.description?.hi || null,
-          productData.price || null,
-          productData.originalPrice || null,
-          productData.stock || 0,
-          productData.categoryId || null,
-          productData.artisanId || null,
-          productData.rating || 0,
-          productData.reviewCount || 0,
-          productData.featured ? 1 : 0,
-          productData.bestSeller ? 1 : 0,
-          productData.newArrival ? 1 : 0,
-          productData.trending ? 1 : 0,
-          productData.isActive ? 1 : 0,
-          materialString || null,
-          colorString || null,
-          tagsString || null
+          userData.name,
+          userData.email,
+          userData.password_hash,
+          userData.phone || null,
+          userData.role || 'customer',
+          userData.email_verified || false
         ]
       );
       
-      // Insert product images
-      if (productData.images && productData.images.length > 0) {
-        for (let i = 0; i < productData.images.length; i++) {
-          const imageUrl = productData.images[i];
-          
-          await pool.execute(
-            `INSERT INTO product_images (id, product_id, image_url, is_primary, display_order, created_at) 
-             VALUES (REPLACE(UUID(), '-', ''), ?, ?, ?, ?, NOW())`,
-            [
-              productId,
-              imageUrl || null,
-              i === 0 ? 1 : 0,
-              i
-            ]
-          );
-        }
-      }
+      const userId = (result as any).insertId;
       
-      return { ...productData, id: productId };
-    } catch (error) {
-      console.error('Database error:', error);
-      throw error;
-    }
-  },
-
-  // Cart operations
-  async getCartItems(userId: string): Promise<any[]> {
-    try {
+      // Fetch the created user
       const [rows] = await pool.execute(
-        `SELECT c.*, p.title_en, p.title_hi, p.price, p.original_price, p.stock,
-         (SELECT image_url FROM product_images WHERE product_id = p.id ORDER BY is_primary DESC, display_order ASC LIMIT 1) as image_url
-         FROM carts c
-         LEFT JOIN products p ON c.product_id = p.id
-         WHERE c.user_id = ?
-         ORDER BY c.created_at DESC`,
+        'SELECT * FROM users WHERE id = ?',
         [userId]
       );
       
-      return (rows as any[]).map(item => ({
-        id: item.id,
-        user_id: item.user_id,
-        productId: item.product_id, // Fix: Use productId instead of product_id
-        quantity: item.quantity,
-        created_at: item.created_at,
-        updated_at: item.updated_at,
-        product: {
-          id: item.product_id,
-          title: { en: item.title_en, hi: item.title_hi },
-          price: item.price,
-          originalPrice: item.original_price,
-          stock: item.stock,
-          image: item.image_url // Include product image in cart item
-        }
+      return (rows as any[])[0] || null;
+    } catch (error) {
+      console.error('Database error:', error);
+      return null;
+    }
+  },
+
+  // Banner operations
+  async getAllBanners(): Promise<any[]> {
+    try {
+      const [rows] = await pool.execute('SELECT * FROM banners WHERE is_active = 1 ORDER BY display_order');
+      return (rows as any[]).map(banner => ({
+        id: banner.id,
+        title: { en: banner.title_en, hi: banner.title_hi },
+        subtitle: { en: banner.subtitle_en, hi: banner.subtitle_hi },
+        description: { en: banner.description_en, hi: banner.description_hi },
+        image_desktop: banner.image_desktop,
+        image_mobile: banner.image_mobile,
+        link_url: banner.link_url,
+        link_text: { en: banner.link_text_en, hi: banner.link_text_hi },
+        display_order: banner.display_order,
+        is_active: Number(banner.is_active), // Ensure it's a number
+        created_at: banner.created_at
+      }));
+    } catch (error) {
+      console.error('Database error:', error);
+      return [];
+    }
+  }
+};
+
+// Export the serverDb object
+export { serverDb as db };
+
+        created_at: category.created_at
       }));
     } catch (error) {
       console.error('Database error:', error);
@@ -454,23 +465,26 @@ export const serverDb = {
     }
   },
 
-  async addToCart(userId: string, productId: string, quantity: number): Promise<any> {
+  async addToCart(userId: string, productId: string, quantity: number = 1): Promise<any> {
     try {
+      console.log('Adding to cart:', { userId, productId, quantity });
+      
       // Check if item already exists in cart
-      const [existingRows] = await pool.execute(
+      const [existing] = await pool.execute(
         'SELECT * FROM carts WHERE user_id = ? AND product_id = ?',
         [userId, productId]
       );
       
-      if ((existingRows as any[]).length > 0) {
-        // Update existing cart item
+      if ((existing as any[]).length > 0) {
+        // Update quantity if item exists
+        const newQuantity = (existing as any[])[0].quantity + quantity;
         const [result] = await pool.execute(
-          'UPDATE carts SET quantity = quantity + ?, updated_at = NOW() WHERE user_id = ? AND product_id = ?',
-          [quantity, userId, productId]
+          'UPDATE carts SET quantity = ?, updated_at = NOW() WHERE user_id = ? AND product_id = ?',
+          [newQuantity, userId, productId]
         );
-        return { id: (existingRows as any[])[0].id, user_id: userId, product_id: productId, quantity: (existingRows as any[])[0].quantity + quantity };
+        return { id: (existing as any[])[0].id, user_id: userId, product_id: productId, quantity: newQuantity };
       } else {
-        // Create new cart item
+        // Add new item to cart
         const cartId = `cart-${Date.now()}`;
         const [result] = await pool.execute(
           'INSERT INTO carts (id, user_id, product_id, quantity, created_at, updated_at) VALUES (?, ?, ?, ?, NOW(), NOW())',
@@ -663,7 +677,7 @@ export const serverDb = {
   
   async getAllBanners(): Promise<any[]> {
     try {
-      const [rows] = await pool.execute('SELECT * FROM banners ORDER BY display_order');
+      const [rows] = await pool.execute('SELECT * FROM banners WHERE is_active = 1 ORDER BY display_order');
       return (rows as any[]).map(banner => ({
         id: banner.id,
         title: { en: banner.title_en, hi: banner.title_hi },

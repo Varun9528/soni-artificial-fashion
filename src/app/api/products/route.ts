@@ -22,28 +22,17 @@ export async function GET(request: NextRequest) {
     if (newArrival === 'true') filters.newArrival = true;
     if (limit) filters.limit = parseInt(limit);
     
-    // If any filters are applied, use searchProducts to get pagination data, otherwise use getAllProducts
-    let result;
-    if (Object.keys(filters).length > 0) {
-      // Convert filters to searchParams format for searchProducts
-      const searchParams: any = {
-        category: filters.category,
-        featured: filters.featured,
-        bestSeller: filters.bestSeller,
-        newArrival: filters.newArrival,
-        limit: filters.limit,
-        page: 1 // Add default page parameter
-      };
-      result = await db.searchProducts(searchParams);
-    } else {
-      const products = await db.getAllProducts();
-      result = {
-        products: products,
-        pagination: {
-          totalProducts: products.length
-        }
-      };
-    }
+    // Always use searchProducts to ensure consistent data structure
+    const productSearchParams: any = {
+      category: filters.category,
+      featured: filters.featured,
+      bestSeller: filters.bestSeller,
+      newArrival: filters.newArrival,
+      limit: filters.limit,
+      page: 1
+    };
+    
+    const result = await db.searchProducts(productSearchParams);
     
     // Format products for frontend
     const formattedProducts = result.products.map((product: any) => {

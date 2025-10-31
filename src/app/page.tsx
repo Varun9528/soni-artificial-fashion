@@ -13,7 +13,8 @@ import { useWishlist } from '@/context/WishlistContext';
 
 export default function Home() {
   const { language, t } = useLanguage();
-  const [products, setProducts] = useState<any[]>([]);
+  const [featuredProducts, setFeaturedProducts] = useState<any[]>([]);
+  const [newArrivalProducts, setNewArrivalProducts] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const { addToCart } = useCart();
   const { state: wishlistState, addToWishlist, removeFromWishlist } = useWishlist();
@@ -22,13 +23,20 @@ export default function Home() {
     const fetchHomePageData = async () => {
       try {
         // Fetch featured products
-        const productResponse = await fetch('/api/products?featured=true&limit=8');
-        const productData = await productResponse.json();
-        // Extract products array from the response
-        setProducts(Array.isArray(productData) ? productData : productData.products || []);
+        const featuredResponse = await fetch('/api/products?featured=true&limit=8');
+        const featuredData = await featuredResponse.json();
+        
+        // Fetch new arrival products
+        const newArrivalResponse = await fetch('/api/products?newArrival=true&limit=8');
+        const newArrivalData = await newArrivalResponse.json();
+        
+        // Extract products array from the responses
+        setFeaturedProducts(Array.isArray(featuredData) ? featuredData : featuredData.products || []);
+        setNewArrivalProducts(Array.isArray(newArrivalData) ? newArrivalData : newArrivalData.products || []);
       } catch (error) {
         console.error('Error fetching home page data:', error);
-        setProducts([]); // Set empty array on error
+        setFeaturedProducts([]);
+        setNewArrivalProducts([]);
       } finally {
         setLoading(false);
       }
@@ -59,7 +67,24 @@ export default function Home() {
             {t('featuredProducts')}
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {products.map((product) => (
+            {featuredProducts.map((product) => (
+              <ProductCard
+                key={product.id}
+                product={product}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* New Arrivals */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-12">
+            {t('newArrivals')}
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {newArrivalProducts.map((product) => (
               <ProductCard
                 key={product.id}
                 product={product}
@@ -70,7 +95,7 @@ export default function Home() {
       </section>
 
       {/* Collections */}
-      <section className="py-16 bg-gray-50 px-4 sm:px-6 lg:px-8">
+      <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl font-bold text-center mb-12">
             {t('shopByCategory')}
