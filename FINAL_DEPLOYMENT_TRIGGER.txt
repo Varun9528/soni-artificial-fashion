@@ -1,1 +1,0 @@
-"FINAL_DEPLOYMENT_TRIGGER_$(date)"  
