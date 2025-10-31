@@ -57,14 +57,29 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const initializeAuth = async () => {
       console.log('Initializing auth...');
       
-      const token = localStorage.getItem('token') || getCookie('token');
-      const userData = localStorage.getItem('user');
-      const savedLanguage = localStorage.getItem('language') || 'en';
+      // Try to get token from localStorage first, then from cookie
+      let token = localStorage.getItem('token');
+      let userData = localStorage.getItem('user');
+      
+      if (!token) {
+        token = getCookie('token');
+        if (token) {
+          // If we found token in cookie, also check for user data in cookie
+          const cookieUserData = getCookie('user');
+          if (cookieUserData) {
+            try {
+              userData = decodeURIComponent(cookieUserData);
+            } catch (e) {
+              console.error('Error decoding user data from cookie:', e);
+            }
+          }
+        }
+      }
       
       console.log('Token from storage:', token);
       console.log('User data from storage:', userData);
       
-      setLanguage(savedLanguage);
+      setLanguage(localStorage.getItem('language') || 'en');
       
       if (token && userData) {
         try {
@@ -88,12 +103,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             localStorage.removeItem('token');
             localStorage.removeItem('user');
             deleteCookie('token');
+            deleteCookie('user');
           }
         } catch (error) {
           console.error('Error parsing user data or invalid token:', error);
           localStorage.removeItem('token');
           localStorage.removeItem('user');
           deleteCookie('token');
+          deleteCookie('user');
         }
       } else {
         console.log('No token or user data found');
@@ -132,6 +149,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ email, password }),
+        credentials: 'include' // Important: include credentials for cookie handling
       });
 
       const data = await response.json();
@@ -145,13 +163,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         // Also set cookie for server-side access with consistent parameters
         if (typeof document !== 'undefined') {
           document.cookie = `token=${data.token}; path=/; max-age=${24 * 60 * 60}; SameSite=Lax${process.env.NODE_ENV === 'production' ? '; Secure' : ''}`;
+          document.cookie = `user=${encodeURIComponent(JSON.stringify(data.user))}; path=/; max-age=${24 * 60 * 60}; SameSite=Lax${process.env.NODE_ENV === 'production' ? '; Secure' : ''}`;
         }
         
         // Redirect to admin dashboard if admin
         if (data.user.role === 'admin' || data.user.role === 'super_admin') {
-          setTimeout(() => {
-            router.push('/admin');
-          }, 100);
+          // Use router.push instead of setTimeout for immediate redirect
+          router.push('/admin');
         }
         
         return {
@@ -178,10 +196,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     deleteCookie('token');
+    deleteCookie('user');
     
     // Clear cookie with consistent parameters
     if (typeof document !== 'undefined') {
       document.cookie = `token=; path=/; max-age=0; SameSite=Lax${process.env.NODE_ENV === 'production' ? '; Secure' : ''}`;
+      document.cookie = `user=; path=/; max-age=0; SameSite=Lax${process.env.NODE_ENV === 'production' ? '; Secure' : ''}`;
     }
     
     // Immediately redirect to login page
@@ -198,6 +218,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const token = localStorage.getItem('token');
     if (token && typeof document !== 'undefined') {
       document.cookie = `token=${token}; path=/; max-age=${24 * 60 * 60}; SameSite=Lax${process.env.NODE_ENV === 'production' ? '; Secure' : ''}`;
+      document.cookie = `user=${encodeURIComponent(JSON.stringify(updatedUser))}; path=/; max-age=${24 * 60 * 60}; SameSite=Lax${process.env.NODE_ENV === 'production' ? '; Secure' : ''}`;
     }
   };
 

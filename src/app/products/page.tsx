@@ -37,14 +37,24 @@ export default function ProductsPage() {
       try {
         setLoading(true);
         
-        // Fetch products from API instead of using mock data
-        const response = await fetch('/api/products');
+        // Build query parameters
+        const queryParams = new URLSearchParams();
+        if (filters.category) queryParams.append('category', filters.category);
+        if (filters.minPrice) queryParams.append('minPrice', filters.minPrice);
+        if (filters.maxPrice) queryParams.append('maxPrice', filters.maxPrice);
+        
+        // Fetch products from API
+        const url = `/api/products${queryParams.toString() ? `?${queryParams.toString()}` : ''}`;
+        console.log('Fetching products from:', url); // Debug log
+        const response = await fetch(url);
         const data = await response.json();
+        console.log('Products data:', data); // Debug log
         
         if (data.success) {
           setProducts(data.products);
         } else {
           // Fallback to mock data if API fails
+          console.error('API failed, using mock data:', data.error);
           const mockProducts = [
             {
               id: '1',
@@ -179,6 +189,138 @@ export default function ProductsPage() {
         }
       } catch (error) {
         console.error('Error fetching products:', error);
+        // Fallback to mock data on error
+        const mockProducts = [
+          {
+            id: '1',
+            slug: 'bamboo-wall-art',
+            title: {
+              en: 'Bamboo Wall Art',
+              hi: 'बांस की दीवार कला'
+            },
+            price: 2499,
+            originalPrice: 3499,
+            discount: 29,
+            rating: 4.5,
+            reviewCount: 23,
+            images: ['/images/products/bamboo-wall-art/img1.jpg'],
+            category: {
+              id: 'home-decor',
+              name: {
+                en: 'Home Decor',
+                hi: 'घर की सजावट'
+              }
+            },
+            artisan: {
+              id: 'sarla-bai',
+              name: 'Sarla Bai',
+              village: 'Madhya Pradesh',
+              photo: '/images/artisans/arti-sarla.jpg',
+              rating: 4.8
+            },
+            featured: true,
+            bestSeller: false,
+            newArrival: false,
+            trending: true
+          },
+          {
+            id: '2',
+            slug: 'handloom-sari',
+            title: {
+              en: 'Handloom Sari',
+              hi: 'हैंडलूम साड़ी'
+            },
+            price: 4999,
+            originalPrice: 6999,
+            discount: 29,
+            rating: 4.8,
+            reviewCount: 45,
+            images: ['/images/products/handloom-sari/img1.jpg'],
+            category: {
+              id: 'handloom-textiles',
+              name: {
+                en: 'Handloom Textiles',
+                hi: 'हैंडलूम वस्त्र'
+              }
+            },
+            artisan: {
+              id: 'meera-gond',
+              name: 'Meera Gond',
+              village: 'Madhya Pradesh',
+              photo: '/images/artisans/arti-meera.jpg',
+              rating: 4.9
+            },
+            featured: true,
+            bestSeller: true,
+            newArrival: false,
+            trending: false
+          },
+          {
+            id: '3',
+            slug: 'terracotta-necklace',
+            title: {
+              en: 'Terracotta Necklace',
+              hi: 'टेराकोटा हार'
+            },
+            price: 899,
+            originalPrice: 1299,
+            discount: 31,
+            rating: 4.3,
+            reviewCount: 18,
+            images: ['/images/products/terracotta-necklace/img1.jpg'],
+            category: {
+              id: 'jewelry',
+              name: {
+                en: 'Jewelry',
+                hi: 'आभूषण'
+              }
+            },
+            artisan: {
+              id: 'ramesh-uikey',
+              name: 'Ramesh Uikey',
+              village: 'Madhya Pradesh',
+              photo: '/images/artisans/arti-ramesh.jpg',
+              rating: 4.7
+            },
+            featured: false,
+            bestSeller: true,
+            newArrival: false,
+            trending: true
+          },
+          {
+            id: '4',
+            slug: 'dokra-figurine',
+            title: {
+              en: 'Dokra Figurine',
+              hi: 'डोकरा मूर्ति'
+            },
+            price: 1899,
+            originalPrice: 2499,
+            discount: 24,
+            rating: 4.6,
+            reviewCount: 31,
+            images: ['/images/products/dokra-figurine/img1.jpg'],
+            category: {
+              id: 'home-decor',
+              name: {
+                en: 'Home Decor',
+                hi: 'घर की सजावट'
+              }
+            },
+            artisan: {
+              id: 'ramesh-uikey',
+              name: 'Ramesh Uikey',
+              village: 'Madhya Pradesh',
+              photo: '/images/artisans/arti-ramesh.jpg',
+              rating: 4.7
+            },
+            featured: false,
+            bestSeller: false,
+            newArrival: true,
+            trending: true
+          }
+        ];
+        setProducts(mockProducts);
       } finally {
         setLoading(false);
       }

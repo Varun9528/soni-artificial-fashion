@@ -89,6 +89,9 @@ export default function ArtisansPage() {
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {artisans.map((artisan) => {
+          // Ensure we have a proper slug or use id as fallback
+          const artisanSlug = artisan.slug || artisan.id;
+          
           return (
             <div key={artisan.id} className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
               <div className="relative h-64">
@@ -131,13 +134,13 @@ export default function ArtisansPage() {
                 
                 <div className="flex space-x-2">
                   <Link
-                    href={`/artisan/${artisan.slug || artisan.id}`}
+                    href={`/artisan/${artisanSlug}`}
                     className="flex-1 bg-amber-600 text-white px-4 py-2 rounded text-center text-sm hover:bg-amber-700 transition-colors"
                   >
                     View Profile
                   </Link>
                   <Link
-                    href={`/products?artisan=${artisan.slug || artisan.id}`}
+                    href={`/products?artisan=${artisanSlug}`}
                     className="flex-1 border border-amber-600 text-amber-600 px-4 py-2 rounded text-center text-sm hover:bg-amber-50 transition-colors"
                   >
                     View Products

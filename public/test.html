@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wishlist & Cart Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold mb-6">Wishlist & Cart Test</h1>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl font-semibold mb-4">Wishlist</h2>
+                <div id="wishlist-items" class="mt-2">
+                    <p class="text-gray-500">No items in wishlist</p>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl font-semibold mb-4">Cart</h2>
+                <div id="cart-items" class="mt-2">
+                    <p class="text-gray-500">No items in cart</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h2 class="text-xl font-semibold mb-4">Test Controls</h2>
+            <div class="flex flex-wrap gap-4">
+                <button id="add-to-wishlist" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    Add to Wishlist
+                </button>
+                <button id="move-to-cart" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                    Move to Cart
+                </button>
+                <button id="clear-all" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                    Clear All
+                </button>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-xl font-semibold mb-4">Test Results</h2>
+            <div id="test-results" class="whitespace-pre-wrap bg-gray-100 p-4 rounded">
+                Click buttons above to test functionality
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Test functions
+        async function addToWishlist() {
+            try {
+                const response = await fetch('/api/wishlist', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        productId: 'prod-001'
+                    })
+                });
+                
+                const data = await response.json();
+                updateTestResults(`✓ Added to wishlist\n`);
+                updateWishlist(data.items);
+                return data;
+            } catch (error) {
+                updateTestResults(`❌ Error adding to wishlist: ${error.message}\n`);
+                throw error;
+            }
+        }
+        
+        async function moveToCart() {
+            try {
+                // Add to cart
+                const cartResponse = await fetch('/api/cart', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        productId: 'prod-001',
+                        quantity: 1
+                    })
+                });
+                
+                const cartData = await cartResponse.json();
+                updateTestResults(`✓ Added to cart\n`);
+                updateCart(cartData.items);
+                
+                // Remove from wishlist
+                const wishlistResponse = await fetch('/api/wishlist', {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        productId: 'prod-001'
+                    })
+                });
+                
+                const wishlistData = await wishlistResponse.json();
+                updateTestResults(`✓ Removed from wishlist\n`);
+                updateWishlist(wishlistData.items);
+                
+                return { cart: cartData, wishlist: wishlistData };
+            } catch (error) {
+                updateTestResults(`❌ Error moving to cart: ${error.message}\n`);
+                throw error;
+            }
+        }
+        
+        async function clearAll() {
+            try {
+                // Clear wishlist
+                await fetch('/api/wishlist/clear', {
+                    method: 'POST'
+                });
+                
+                // Clear cart
+                await fetch('/api/cart/clear', {
+                    method: 'POST'
+                });
+                
+                updateTestResults(`✓ Cleared all items\n`);
+                updateWishlist([]);
+                updateCart([]);
+            } catch (error) {
+                updateTestResults(`❌ Error clearing items: ${error.message}\n`);
+                throw error;
+            }
+        }
+        
+        function updateWishlist(items) {
+            const wishlistElement = document.getElementById('wishlist-items');
+            if (items.length === 0) {
+                wishlistElement.innerHTML = '<p class="text-gray-500">No items in wishlist</p>';
+            } else {
+                wishlistElement.innerHTML = items.map(item => 
+                    `<div class="border-b py-2">${item.productId}</div>`
+                ).join('');
+            }
+        }
+        
+        function updateCart(items) {
+            const cartElement = document.getElementById('cart-items');
+            if (items.length === 0) {
+                cartElement.innerHTML = '<p class="text-gray-500">No items in cart</p>';
+            } else {
+                cartElement.innerHTML = items.map(item => 
+                    `<div class="border-b py-2">${item.productId} (Qty: ${item.quantity})</div>`
+                ).join('');
+            }
+        }
+        
+        function updateTestResults(message) {
+            const resultsElement = document.getElementById('test-results');
+            resultsElement.textContent += message;
+            resultsElement.scrollTop = resultsElement.scrollHeight;
+        }
+        
+        // Event listeners
+        document.getElementById('add-to-wishlist').addEventListener('click', async () => {
+            try {
+                await addToWishlist();
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        });
+        
+        document.getElementById('move-to-cart').addEventListener('click', async () => {
+            try {
+                await moveToCart();
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        });
+        
+        document.getElementById('clear-all').addEventListener('click', async () => {
+            try {
+                await clearAll();
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        });
+        
+        // Initialize
+        updateTestResults('Ready to test wishlist and cart functionality\n');
+    </script>
+</body>
+</html>

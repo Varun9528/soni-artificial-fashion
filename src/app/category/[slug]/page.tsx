@@ -44,8 +44,21 @@ export default function CategoryPage() {
         const categoryResponse = await fetch(`/api/categories`);
         const categoryData = await categoryResponse.json();
         
-        // Find category by matching slug with category id
-        const foundCategory = categoryData.categories.find((c: any) => c.id === slug);
+        // Find category by matching slug with category id or slug field if it exists
+        const foundCategory = categoryData.categories.find((c: any) => {
+          // Direct match with ID
+          if (c.id === slug) return true;
+          
+          // Match with slug field if it exists
+          if (c.slug === slug) return true;
+          
+          // Generate slug from name and match
+          const nameSlug = c.name?.en?.toLowerCase().replace(/[^a-z0-9]+/g, '-') || 
+                          c.name?.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+          if (nameSlug === slug) return true;
+          
+          return false;
+        });
         
         if (!foundCategory) {
           router.push('/404');

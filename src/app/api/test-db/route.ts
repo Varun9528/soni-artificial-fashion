@@ -1,28 +1,42 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { db, enableRealDatabase } from '@/lib/database/connection';
 
-// Enable real database for API routes
+// Enable real database
 enableRealDatabase();
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
-    // Test database connection by getting dashboard stats
-    const stats = await db.getDashboardStats();
+    // Test getting all products
+    const products = await db.getAllProducts();
+    console.log('Products:', products);
     
-    // Also test getting banners
+    // Test getting all categories
+    const categories = await db.getAllCategories();
+    console.log('Categories:', categories);
+    
+    // Test getting all artisans
+    const artisans = await db.getAllArtisans();
+    console.log('Artisans:', artisans);
+    
+    // Test getting all banners
     const banners = await db.getAllBanners();
+    console.log('Banners:', banners);
     
-    return NextResponse.json({ 
-      success: true, 
-      stats,
-      banners,
-      bannerCount: banners.length
+    return NextResponse.json({
+      success: true,
+      message: 'Database connection and queries successful',
+      data: {
+        products: products.length,
+        categories: categories.length,
+        artisans: artisans.length,
+        banners: banners.length
+      }
     });
   } catch (error: any) {
-    console.error('Database connection error:', error);
-    return NextResponse.json(
-      { success: false, error: error.message || 'Database connection failed' },
-      { status: 500 }
-    );
+    console.error('Database test error:', error);
+    return NextResponse.json({
+      success: false,
+      error: error.message
+    }, { status: 500 });
   }
 }

@@ -84,6 +84,7 @@ export async function POST(request: NextRequest) {
     // Return user info (without password) and token
     const { password_hash, ...userWithoutPassword } = user;
     
+    // Create response with proper cookie settings
     const response = NextResponse.json({
       success: true,
       token: accessToken,

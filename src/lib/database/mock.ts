@@ -719,6 +719,9 @@ let mockWishlistItems: any[] = [];
 // Mock orders
 let mockOrders: any[] = [];
 
+// Mock order items
+let mockOrderItems: any[] = [];
+
 // Mock addresses
 let mockAddresses: any[] = [];
 
@@ -1099,6 +1102,65 @@ export const mockDb = {
     };
   },
 
+  async getOrderById(orderId: string): Promise<any | null> {
+    const order = mockOrders.find(o => o.id === orderId);
+    if (!order) return null;
+    
+    // Get order items (mock implementation)
+    const orderItems = mockOrderItems.filter((item: any) => item.orderId === orderId);
+    
+    // Get user info
+    const user = mockUsers.find(u => u.id === order.userId);
+    
+    // Get address info
+    const address = mockAddresses.find(a => a.id === order.addressId);
+    
+    return {
+      ...order,
+      user: user ? {
+        id: user.id,
+      } : null,
+      address: address ? {
+        id: address.id,
+        name: address.name,
+        phone: address.phone,
+        address: address.address,
+        city: address.city,
+        state: address.state,
+        pincode: address.pincode
+      } : null,
+      items: orderItems
+    };
+  },
+
+  async getOrdersByUserId(userId: string): Promise<any[]> {
+    const userOrders = mockOrders.filter(order => order.userId === userId);
+    
+    // Enhance orders with user and address info
+    return userOrders.map(order => {
+      const user = mockUsers.find(u => u.id === order.userId);
+      const address = mockAddresses.find(a => a.id === order.addressId);
+      const orderItems = mockOrderItems.filter((item: any) => item.orderId === order.id);
+      
+      return {
+        ...order,
+        user: user ? {
+          id: user.id,
+        } : null,
+        address: address ? {
+          id: address.id,
+          name: address.name,
+          phone: address.phone,
+          address: address.address,
+          city: address.city,
+          state: address.state,
+          pincode: address.pincode
+        } : null,
+        items: orderItems
+      };
+    });
+  },
+
   // Wishlist operations
   async getWishlistItems(userId: string): Promise<WishlistItem[]> {
     return mockWishlistItems.filter(item => item.user_id === userId);
@@ -1129,6 +1191,12 @@ export const mockDb = {
     mockWishlistItems = mockWishlistItems.filter(
       item => !(item.user_id === userId && item.product_id === productId)
     );
+    return mockWishlistItems.length < initialLength;
+  },
+  
+  async clearWishlist(userId: string): Promise<boolean> {
+    const initialLength = mockWishlistItems.length;
+    mockWishlistItems = mockWishlistItems.filter(item => item.user_id !== userId);
     return mockWishlistItems.length < initialLength;
   },
   

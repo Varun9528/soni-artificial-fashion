@@ -334,8 +334,39 @@ export const serverDb = {
       }
       
       // Get total count for pagination
-      const countQuery = `SELECT COUNT(*) as total FROM products p WHERE p.is_active = 1` + query.substring(query.indexOf(' AND'));
-      const [countResult] = await pool.execute(countQuery, params);
+      let countQuery = `SELECT COUNT(*) as total FROM products p WHERE p.is_active = 1`;
+      const countParams: any[] = [];
+      
+      // Apply the same filters to the count query
+      if (searchParams.category) {
+        countQuery += ' AND p.category_id = ?';
+        countParams.push(searchParams.category);
+      }
+      
+      if (searchParams.featured === true || searchParams.featured === 'true') {
+        countQuery += ' AND p.featured = 1';
+      }
+      
+      if (searchParams.bestSeller === true || searchParams.bestSeller === 'true') {
+        countQuery += ' AND p.best_seller = 1';
+      }
+      
+      if (searchParams.newArrival === true || searchParams.newArrival === 'true') {
+        countQuery += ' AND p.new_arrival = 1';
+      }
+      
+      if (searchParams.trending === true || searchParams.trending === 'true') {
+        countQuery += ' AND p.trending = 1';
+      }
+      
+      // Add search term filter if provided
+      if (searchParams.search) {
+        countQuery += ' AND (p.title_en LIKE ? OR p.title_hi LIKE ? OR p.description_en LIKE ? OR p.description_hi LIKE ?)';
+        const searchTerm = `%${searchParams.search}%`;
+        countParams.push(searchTerm, searchTerm, searchTerm, searchTerm);
+      }
+      
+      const [countResult] = await pool.execute(countQuery, countParams);
       const totalProducts = (countResult as any[])[0].total;
       
       // Add ordering and pagination
@@ -640,18 +671,272 @@ export const serverDb = {
           paymentStatus: orderData.paymentStatus || 'pending',
           shippingAddress: orderData.shippingAddress,
           billingAddress: orderData.billingAddress,
-          items: orderData.items,
-          createdAt: new Date()
+          createdAt: new Date(),
+          updatedAt: new Date()
         };
       } catch (error) {
-        // Rollback transaction on error
+        // Rollback transaction in case of error
         await connection.rollback();
         connection.release();
         throw error;
       }
     } catch (error) {
       console.error('Database error:', error);
+      throw error;
+    }
+  },
+
+  async getOrderById(orderId: string): Promise<any | null> {
+    try {
+      const [rows] = await pool.execute(
+        `SELECT * FROM orders WHERE id = ?`,
+        [orderId]
+      );
+      
+      const order = (rows as any[])[0];
+      if (!order) return null;
+      
+      // Get order items
+      const [items] = await pool.execute(
+        `SELECT oi.*, p.title_en, p.title_hi, p.price, p.original_price, p.stock, pi.image_url as primary_image
+         FROM order_items oi
+         JOIN products p ON oi.product_id = p.id
+         LEFT JOIN product_images pi ON p.id = pi.product_id AND pi.is_primary = 1
+         WHERE oi.order_id = ?`,
+        [orderId]
+      );
+      
+      return {
+        id: order.id,
+        userId: order.user_id,
+        totalAmount: order.total_amount,
+        status: order.status,
+        paymentMethod: order.payment_method,
+        paymentStatus: order.payment_status,
+        shippingAddress: JSON.parse(order.shipping_address),
+        billingAddress: JSON.parse(order.billing_address),
+        createdAt: order.created_at,
+        updatedAt: order.updated_at,
+        items: (items as any[]).map(item => ({
+          id: item.id,
+          orderId: item.order_id,
+          productId: item.product_id,
+          quantity: item.quantity,
+          price: item.price,
+          product: {
+            id: item.product_id,
+            title: { en: item.title_en, hi: item.title_hi },
+            price: item.price,
+            originalPrice: item.original_price,
+            stock: item.stock,
+            primaryImage: item.primary_image
+          }
+        }))
+      };
+    } catch (error) {
+      console.error('Database error:', error);
       return null;
+    }
+  },
+
+  async getOrdersByUserId(userId: string): Promise<any[]> {
+    try {
+      const [rows] = await pool.execute(
+        `SELECT * FROM orders WHERE user_id = ?`,
+        [userId]
+      );
+      
+      // Enhance orders with items
+      const orders = await Promise.all((rows as any[]).map(async (order) => {
+        // Get order items
+        const [items] = await pool.execute(
+          `SELECT oi.*, p.title_en, p.title_hi, p.price, p.original_price, p.stock, pi.image_url as primary_image
+           FROM order_items oi
+           JOIN products p ON oi.product_id = p.id
+           LEFT JOIN product_images pi ON p.id = pi.product_id AND pi.is_primary = 1
+           WHERE oi.order_id = ?`,
+          [order.id]
+        );
+        
+        return {
+          id: order.id,
+          userId: order.user_id,
+          totalAmount: order.total_amount,
+          status: order.status,
+          paymentMethod: order.payment_method,
+          paymentStatus: order.payment_status,
+          shippingAddress: JSON.parse(order.shipping_address),
+          billingAddress: JSON.parse(order.billing_address),
+          createdAt: order.created_at,
+          updatedAt: order.updated_at,
+          items: (items as any[]).map(item => ({
+            id: item.id,
+            orderId: item.order_id,
+            productId: item.product_id,
+            quantity: item.quantity,
+            price: item.price,
+            product: {
+              id: item.product_id,
+              title: { en: item.title_en, hi: item.title_hi },
+              price: item.price,
+              originalPrice: item.original_price,
+              stock: item.stock,
+              primaryImage: item.primary_image
+            }
+          }))
+        };
+      }));
+      
+      return orders;
+    } catch (error) {
+      console.error('Database error:', error);
+      return [];
+    }
+  },
+
+  async updateOrderStatus(orderId: string, status: string): Promise<boolean> {
+    try {
+      const [result] = await pool.execute(
+        'UPDATE orders SET status = ?, updated_at = NOW() WHERE id = ?',
+        [status, orderId]
+      );
+      return (result as any).affectedRows > 0;
+    } catch (error) {
+      console.error('Database error:', error);
+      return false;
+    }
+  },
+
+  async updateOrderPaymentStatus(orderId: string, paymentStatus: string): Promise<boolean> {
+    try {
+      const [result] = await pool.execute(
+        'UPDATE orders SET payment_status = ?, updated_at = NOW() WHERE id = ?',
+        [paymentStatus, orderId]
+      );
+      return (result as any).affectedRows > 0;
+    } catch (error) {
+      console.error('Database error:', error);
+      return false;
+    }
+  },
+
+  async calculateRefund(orderId: string): Promise<{ returnPercentage: number, refundAmount: number }> {
+    try {
+      const [rows] = await pool.execute(
+        `SELECT total_amount, status FROM orders WHERE id = ?`,
+        [orderId]
+      );
+      
+      const order = (rows as any[])[0];
+      if (!order) return {
+        returnPercentage: 0,
+        refundAmount: 0
+      };
+      
+      // Calculate refund percentage based on order status
+      let returnPercentage = 0;
+      if (order.status === 'cancelled') {
+        returnPercentage = 100;
+      } else if (order.status === 'returned') {
+        returnPercentage = 50;
+      }
+      
+      const refundAmount = (order.total_amount * returnPercentage) / 100;
+      return {
+        returnPercentage,
+        refundAmount
+      };
+    } catch (error) {
+      console.error('Database error:', error);
+      return {
+        returnPercentage: 0,
+        refundAmount: 0
+      };
+    }
+  },
+
+  // Wishlist operations
+  async getWishlistItems(userId: string): Promise<any[]> {
+    try {
+      const [rows] = await pool.execute(
+        `SELECT w.*, p.title_en, p.title_hi, p.price, p.original_price, p.stock, pi.image_url as primary_image
+         FROM wishlists w
+         JOIN products p ON w.product_id = p.id
+         LEFT JOIN product_images pi ON p.id = pi.product_id AND pi.is_primary = 1
+         WHERE w.user_id = ?`,
+        [userId]
+      );
+      
+      return (rows as any[]).map(item => ({
+        id: item.id,
+        userId: item.user_id,
+        productId: item.product_id,
+        createdAt: item.created_at,
+        product: {
+          id: item.product_id,
+          title: { en: item.title_en, hi: item.title_hi },
+          price: item.price,
+          originalPrice: item.original_price,
+          stock: item.stock,
+          primaryImage: item.primary_image
+        }
+      }));
+    } catch (error) {
+      console.error('Database error:', error);
+      return [];
+    }
+  },
+
+  async addToWishlist(userId: string, productId: string): Promise<any> {
+    try {
+      // Check if item already exists in wishlist
+      const [existing] = await pool.execute(
+        'SELECT * FROM wishlists WHERE user_id = ? AND product_id = ?',
+        [userId, productId]
+      );
+      
+      if ((existing as any[]).length > 0) {
+        // Return existing item if it exists
+        return { id: (existing as any[])[0].id, user_id: userId, product_id: productId };
+      } else {
+        // Add new item to wishlist
+        const wishlistId = `wishlist-${Date.now()}`;
+        const [result] = await pool.execute(
+          'INSERT INTO wishlists (id, user_id, product_id, created_at) VALUES (?, ?, ?, NOW())',
+          [wishlistId, userId, productId]
+        );
+        return { id: wishlistId, user_id: userId, product_id: productId };
+      }
+    } catch (error) {
+      console.error('Database error:', error);
+      throw error;
+    }
+  },
+
+  async removeFromWishlist(userId: string, productId: string): Promise<boolean> {
+    try {
+      const [result] = await pool.execute(
+        'DELETE FROM wishlists WHERE user_id = ? AND product_id = ?',
+        [userId, productId]
+      );
+      return (result as any).affectedRows > 0;
+    } catch (error) {
+      console.error('Database error:', error);
+      return false;
+    }
+  },
+
+  // Add clearWishlist method
+  async clearWishlist(userId: string): Promise<boolean> {
+    try {
+      const [result] = await pool.execute(
+        'DELETE FROM wishlists WHERE user_id = ?',
+        [userId]
+      );
+      return true;
+    } catch (error) {
+      console.error('Database error:', error);
+      return false;
     }
   },
 
@@ -754,10 +1039,16 @@ export const serverDb = {
           state = locationParts[2] || '';
         }
         
+        // Generate slug from name (simple implementation)
+        const slug = artisan.name
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, '-')
+          .replace(/^-+|-+$/g, '') || artisan.id.toString();
+        
         return {
           id: artisan.id,
           name: artisan.name,
-          slug: artisan.id,
+          slug: slug,
           bio: { en: artisan.bio_en, hi: artisan.bio_hi },
           village: village,
           district: district,
@@ -904,109 +1195,6 @@ export const serverDb = {
     }
   },
   
-  async getOrdersByUserId(userId: string): Promise<any[]> {
-    try {
-      const [rows] = await pool.execute(
-        `SELECT o.*, u.name as customer_name, u.email as customer_email
-         FROM orders o
-         JOIN users u ON o.user_id = u.id
-         WHERE o.user_id = ?
-         ORDER BY o.created_at DESC`,
-        [userId]
-      );
-      
-      return (rows as any[]).map(order => ({
-        id: order.id,
-        customer: {
-          id: order.user_id,
-          name: order.customer_name,
-          email: order.customer_email
-        },
-        totalAmount: order.total_amount,
-        status: order.status,
-        paymentMethod: order.payment_method,
-        paymentStatus: order.payment_status,
-        createdAt: order.created_at
-      }));
-    } catch (error) {
-      console.error('Database error:', error);
-      return [];
-    }
-  },
-  
-  async getOrderById(orderId: string): Promise<any | null> {
-    try {
-      const [rows] = await pool.execute(
-        `SELECT o.*, u.name as customer_name, u.email as customer_email
-         FROM orders o
-         JOIN users u ON o.user_id = u.id
-         WHERE o.id = ?`,
-        [orderId]
-      );
-      
-      const order = (rows as any[])[0];
-      if (!order) return null;
-      
-      // Get order items
-      const [items] = await pool.execute(
-        `SELECT oi.*, p.title_en, p.title_hi
-         FROM order_items oi
-         JOIN products p ON oi.product_id = p.id
-         WHERE oi.order_id = ?`,
-        [orderId]
-      );
-      
-      return {
-        id: order.id,
-        customer: {
-          id: order.user_id,
-          name: order.customer_name,
-          email: order.customer_email
-        },
-        totalAmount: order.total_amount,
-        status: order.status,
-        paymentMethod: order.payment_method,
-        paymentStatus: order.payment_status,
-        shippingAddress: JSON.parse(order.shipping_address),
-        billingAddress: JSON.parse(order.billing_address),
-        items: (items as any[]).map(item => ({
-          id: item.id,
-          productId: item.product_id,
-          productName: { en: item.title_en, hi: item.title_hi },
-          quantity: item.quantity,
-          price: item.price
-        })),
-        createdAt: order.created_at
-      };
-    } catch (error) {
-      console.error('Database error:', error);
-      return null;
-    }
-  },
-  
-  async updateOrder(orderId: string, updateData: any): Promise<any | null> {
-    try {
-      const [result] = await pool.execute(
-        `UPDATE orders SET status = ?, payment_status = ?, updated_at = NOW() 
-         WHERE id = ?`,
-        [
-          updateData.status,
-          updateData.paymentStatus,
-          orderId
-        ]
-      );
-      
-      if ((result as any).affectedRows > 0) {
-        return await this.getOrderById(orderId);
-      }
-      
-      return null;
-    } catch (error) {
-      console.error('Database error:', error);
-      return null;
-    }
-  },
-  
   async getUserAddresses(userId: string): Promise<any[]> {
     try {
       const [rows] = await pool.execute(
@@ -1031,7 +1219,8 @@ export const serverDb = {
       return [];
     }
   },
-  
+
+
   async createUserAddress(userId: string, addressData: any): Promise<any> {
     try {
       const [result] = await pool.execute(
@@ -1185,10 +1374,19 @@ export const serverDb = {
   
   async getArtisanById(id: string): Promise<any | null> {
     try {
-      const [rows] = await pool.execute(
+      // First try to find by ID
+      let [rows] = await pool.execute(
         'SELECT * FROM artisans WHERE id = ?',
         [id]
       );
+      
+      // If not found by ID, try to find by name (for slug-based lookups)
+      if ((rows as any[]).length === 0) {
+        [rows] = await pool.execute(
+          'SELECT * FROM artisans WHERE name = ?',
+          [id]
+        );
+      }
       
       const artisan = (rows as any[])[0];
       if (!artisan) return null;
@@ -1205,10 +1403,16 @@ export const serverDb = {
         state = locationParts[2] || '';
       }
       
+      // Generate slug from name (simple implementation)
+      const slug = artisan.name
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '') || artisan.id.toString();
+      
       return {
         id: artisan.id,
         name: artisan.name,
-        slug: artisan.id,
+        slug: slug,
         bio: { en: artisan.bio_en, hi: artisan.bio_hi },
         village: village,
         district: district,
@@ -1871,8 +2075,8 @@ export const serverDb = {
       const returningCustomers = (returningCustomersResult as any[]).length || 0;
       
       // Calculate growth rate (simplified)
-      const totalCustomersResult = await pool.execute('SELECT COUNT(*) as total FROM users');
-      const totalCustomers = (totalCustomersResult[0] as any[])[0].total || 1;
+      const [totalCustomersResult] = await pool.execute('SELECT COUNT(*) as total FROM users');
+      const totalCustomers = (totalCustomersResult as any[])[0].total || 1;
       const growthRate = (newCustomers / totalCustomers) * 100;
       
       return {

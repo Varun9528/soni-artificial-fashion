@@ -15,8 +15,15 @@ export default function ArtisanPage() {
   useEffect(() => {
     const fetchArtisan = async () => {
       try {
-        const response = await fetch(`/api/artisans/${slug}`);
-        const data = await response.json();
+        // Try fetching with the slug first
+        let response = await fetch(`/api/artisans/${slug}`);
+        let data = await response.json();
+        
+        // If not found and slug looks like an ID, try with ID
+        if (!data.success && !isNaN(Number(slug))) {
+          response = await fetch(`/api/artisans/${slug}`);
+          data = await response.json();
+        }
         
         if (data.success) {
           setArtisan(data.artisan);
@@ -109,7 +116,7 @@ export default function ArtisanPage() {
           <div>
             <h3 className="text-xl font-semibold text-gray-900 mb-3">About</h3>
             <p className="text-gray-600 text-sm">
-              {artisan.bio || 'No bio available'}
+              {artisan.bio?.en || artisan.bio || 'No bio available'}
             </p>
           </div>
           
@@ -118,7 +125,7 @@ export default function ArtisanPage() {
               href={`/products?artisan=${artisan.slug || artisan.id}`}
               className="bg-amber-600 text-white px-6 py-3 rounded-lg hover:bg-amber-700 inline-block"
             >
-              View {artisan.name}&#39;s Products
+              View {artisan.name}'s Products
             </Link>
           </div>
         </div>

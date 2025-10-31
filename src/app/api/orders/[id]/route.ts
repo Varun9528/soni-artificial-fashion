@@ -1,24 +1,23 @@
 import { NextRequest, NextResponse } from 'next/server';
-import prisma from '@/lib/prisma';
+import { db, enableRealDatabase } from '@/lib/database/connection';
 
-// GET /api/orders/[id] - Get a single order by order number (public access for tracking)
-export const GET = async (request: NextRequest) => {
+// Enable real database for API routes
+enableRealDatabase();
+
+// GET /api/orders/[id] - Get a single order by ID (public access for tracking)
+export const GET = async (request: NextRequest, { params }: { params: { id: string } }) => {
   try {
-    const url = new URL(request.url);
-    const pathname = url.pathname;
-    const orderNumber = pathname.split('/').pop(); // Extract order number from path
+    const orderId = params.id;
     
-    if (!orderNumber) {
+    if (!orderId) {
       return NextResponse.json({
         success: false,
-        error: 'Order number is required'
+        error: 'Order ID is required'
       }, { status: 400 });
     }
     
-    // Search by order_number instead of id
-    const order = await prisma.order.findUnique({
-      where: { order_number: orderNumber }
-    });
+    // Get order by ID directly from database
+    const order = await db.getOrderById(orderId);
     
     if (!order) {
       return NextResponse.json({
@@ -27,21 +26,9 @@ export const GET = async (request: NextRequest) => {
       }, { status: 404 });
     }
     
-    // Get order items
-    const items = await prisma.orderItem.findMany({
-      where: {
-        order_id: order.id
-      }
-    });
-    
-    const orderWithItems = {
-      ...order,
-      items
-    };
-    
     return NextResponse.json({
       success: true,
-      order: orderWithItems
+      order
     });
 
   } catch (error) {
