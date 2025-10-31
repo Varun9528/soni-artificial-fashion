@@ -759,7 +759,9 @@ export async function translateToHindiAsync(text: string): Promise<string> {
   return translateToHindi(text);
 }
 
-export default {
+const translationService = {
   translateToHindi,
   translateToHindiAsync
 };
+
+export default translationService;

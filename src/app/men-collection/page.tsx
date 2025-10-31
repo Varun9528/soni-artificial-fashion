@@ -151,7 +151,7 @@ export default function MenCollectionPage() {
               </div>
               <p className="text-gray-500 dark:text-gray-400">
                 {language === 'en' 
-                  ? 'No products found in men\'s collection' 
+                  ? 'No products found in men&#39;s collection' 
                   : 'पुरुष संग्रह में कोई उत्पाद नहीं मिला'}
               </p>
             </div>
