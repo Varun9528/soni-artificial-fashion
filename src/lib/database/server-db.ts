@@ -201,19 +201,19 @@ export const serverDb = {
   async getProducts(filters: any): Promise<any[]> {
     try {
       let query = `
-        SELECT p.*, c.name_en as category_name_en, c.name_hi as category_name_hi, 
+        SELECT p.*, c.name as category_name, 
         c.id as category_id, a.name as artisan_name, a.id as artisan_id
         FROM products p
-        LEFT JOIN categories c ON p.category_id = c.id
-        LEFT JOIN artisans a ON p.artisan_id = a.id
-        WHERE p.is_active = 1
+        LEFT JOIN categories c ON p.categoryId = c.id
+        LEFT JOIN artisans a ON p.artisanId = a.id
+        WHERE p.isActive = 1
       `;
       
       const params: any[] = [];
       
       // Apply filters
       if (filters.category) {
-        query += ' AND p.category_id = ?';
+        query += ' AND p.categoryId = ?';
         params.push(filters.category);
       }
       
@@ -222,14 +222,14 @@ export const serverDb = {
       }
       
       if (filters.bestSeller === true) {
-        query += ' AND p.best_seller = 1';
+        query += ' AND p.bestSeller = 1';
       }
       
       if (filters.newArrival === true) {
-        query += ' AND p.new_arrival = 1';
+        query += ' AND p.newArrival = 1';
       }
       
-      query += ' ORDER BY p.created_at DESC';
+      query += ' ORDER BY p.createdAt DESC';
       
       if (filters.limit) {
         query += ' LIMIT ?';
@@ -242,32 +242,37 @@ export const serverDb = {
       const products = await Promise.all((rows as any[]).map(async (product) => {
         // Get product images
         const [images] = await pool.execute(
-          'SELECT * FROM product_images WHERE product_id = ? ORDER BY display_order',
+          'SELECT * FROM product_images WHERE productId = ? ORDER BY sortOrder',
           [product.id]
         );
+        
+        // Parse JSON fields
+        const title = typeof product.title === 'string' ? JSON.parse(product.title) : product.title;
+        const description = typeof product.description === 'string' ? JSON.parse(product.description) : product.description;
+        const categoryName = typeof product.category_name === 'string' ? JSON.parse(product.category_name) : product.category_name;
         
         return {
           id: product.id,
           slug: product.slug,
-          title: { en: product.title_en, hi: product.title_hi },
-          description: { en: product.description_en, hi: product.description_hi },
+          title: title,
+          description: description,
           price: product.price,
-          originalPrice: product.original_price,
+          originalPrice: product.originalPrice,
           stock: product.stock,
           rating: product.rating,
-          reviewCount: product.review_count,
-          categoryId: product.category_id,
-          artisanId: product.artisan_id,
+          reviewCount: product.reviewCount,
+          categoryId: product.categoryId,
+          artisanId: product.artisanId,
           featured: product.featured,
-          bestSeller: product.best_seller,
-          newArrival: product.new_arrival,
+          bestSeller: product.bestSeller,
+          newArrival: product.newArrival,
           trending: product.trending,
-          isActive: product.is_active,
-          createdAt: product.created_at,
-          updatedAt: product.updated_at,
+          isActive: product.isActive,
+          createdAt: product.createdAt,
+          updatedAt: product.updatedAt,
           category: product.category_id ? {
             id: product.category_id,
-            name: { en: product.category_name_en, hi: product.category_name_hi }
+            name: categoryName
           } : null,
           artisan: product.artisan_id ? {
             id: product.artisan_id,
@@ -275,9 +280,9 @@ export const serverDb = {
           } : null,
           productImages: (images as any[]).map(img => ({
             id: img.id,
-            url: img.image_url,
-            isPrimary: img.is_primary,
-            displayOrder: img.display_order
+            url: img.url,
+            isPrimary: img.isPrimary,
+            sortOrder: img.sortOrder
           }))
         };
       }));
@@ -292,12 +297,12 @@ export const serverDb = {
   async searchProducts(searchParams: any): Promise<any> {
     try {
       let query = `
-        SELECT p.*, c.name_en as category_name_en, c.name_hi as category_name_hi, 
+        SELECT p.*, c.name as category_name, 
         c.id as category_id, a.name as artisan_name, a.id as artisan_id
         FROM products p
-        LEFT JOIN categories c ON p.category_id = c.id
-        LEFT JOIN artisans a ON p.artisan_id = a.id
-        WHERE p.is_active = 1
+        LEFT JOIN categories c ON p.categoryId = c.id
+        LEFT JOIN artisans a ON p.artisanId = a.id
+        WHERE p.isActive = 1
       `;
       
       const params: any[] = [];
@@ -307,7 +312,7 @@ export const serverDb = {
       
       // Apply search filters
       if (searchParams.category) {
-        query += ' AND p.category_id = ?';
+        query += ' AND p.categoryId = ?';
         params.push(searchParams.category);
       }
       
@@ -316,11 +321,11 @@ export const serverDb = {
       }
       
       if (searchParams.bestSeller === true || searchParams.bestSeller === 'true') {
-        query += ' AND p.best_seller = 1';
+        query += ' AND p.bestSeller = 1';
       }
       
       if (searchParams.newArrival === true || searchParams.newArrival === 'true') {
-        query += ' AND p.new_arrival = 1';
+        query += ' AND p.newArrival = 1';
       }
       
       if (searchParams.trending === true || searchParams.trending === 'true') {
@@ -329,18 +334,18 @@ export const serverDb = {
       
       // Add search term filter if provided
       if (searchParams.search) {
-        query += ' AND (p.title_en LIKE ? OR p.title_hi LIKE ? OR p.description_en LIKE ? OR p.description_hi LIKE ?)';
+        query += ' AND (p.title LIKE ? OR p.description LIKE ?)';
         const searchTerm = `%${searchParams.search}%`;
-        params.push(searchTerm, searchTerm, searchTerm, searchTerm);
+        params.push(searchTerm, searchTerm);
       }
       
       // Get total count for pagination
-      let countQuery = `SELECT COUNT(*) as total FROM products p WHERE p.is_active = 1`;
+      let countQuery = `SELECT COUNT(*) as total FROM products p WHERE p.isActive = 1`;
       const countParams: any[] = [];
       
       // Apply the same filters to the count query
       if (searchParams.category) {
-        countQuery += ' AND p.category_id = ?';
+        countQuery += ' AND p.categoryId = ?';
         countParams.push(searchParams.category);
       }
       
@@ -349,11 +354,11 @@ export const serverDb = {
       }
       
       if (searchParams.bestSeller === true || searchParams.bestSeller === 'true') {
-        countQuery += ' AND p.best_seller = 1';
+        countQuery += ' AND p.bestSeller = 1';
       }
       
       if (searchParams.newArrival === true || searchParams.newArrival === 'true') {
-        countQuery += ' AND p.new_arrival = 1';
+        countQuery += ' AND p.newArrival = 1';
       }
       
       if (searchParams.trending === true || searchParams.trending === 'true') {
@@ -362,16 +367,16 @@ export const serverDb = {
       
       // Add search term filter if provided
       if (searchParams.search) {
-        countQuery += ' AND (p.title_en LIKE ? OR p.title_hi LIKE ? OR p.description_en LIKE ? OR p.description_hi LIKE ?)';
+        countQuery += ' AND (p.title LIKE ? OR p.description LIKE ?)';
         const searchTerm = `%${searchParams.search}%`;
-        countParams.push(searchTerm, searchTerm, searchTerm, searchTerm);
+        countParams.push(searchTerm, searchTerm);
       }
       
       const [countResult] = await pool.execute(countQuery, countParams);
       const totalProducts = (countResult as any[])[0].total;
       
       // Add ordering and pagination
-      query += ' ORDER BY p.created_at DESC LIMIT ? OFFSET ?';
+      query += ' ORDER BY p.createdAt DESC LIMIT ? OFFSET ?';
       params.push(limit, offset);
       
       const [rows] = await pool.execute(query, params);
@@ -380,32 +385,37 @@ export const serverDb = {
       const products = await Promise.all((rows as any[]).map(async (product) => {
         // Get product images
         const [images] = await pool.execute(
-          'SELECT * FROM product_images WHERE product_id = ? ORDER BY display_order',
+          'SELECT * FROM product_images WHERE productId = ? ORDER BY sortOrder',
           [product.id]
         );
+        
+        // Parse JSON fields
+        const title = typeof product.title === 'string' ? JSON.parse(product.title) : product.title;
+        const description = typeof product.description === 'string' ? JSON.parse(product.description) : product.description;
+        const categoryName = typeof product.category_name === 'string' ? JSON.parse(product.category_name) : product.category_name;
         
         return {
           id: product.id,
           slug: product.slug,
-          title: { en: product.title_en, hi: product.title_hi },
-          description: { en: product.description_en, hi: product.description_hi },
+          title: title,
+          description: description,
           price: product.price,
-          originalPrice: product.original_price,
+          originalPrice: product.originalPrice,
           stock: product.stock,
           rating: product.rating,
-          reviewCount: product.review_count,
-          categoryId: product.category_id,
-          artisanId: product.artisan_id,
+          reviewCount: product.reviewCount,
+          categoryId: product.categoryId,
+          artisanId: product.artisanId,
           featured: product.featured,
-          bestSeller: product.best_seller,
-          newArrival: product.new_arrival,
+          bestSeller: product.bestSeller,
+          newArrival: product.newArrival,
           trending: product.trending,
-          isActive: product.is_active,
-          createdAt: product.created_at,
-          updatedAt: product.updated_at,
+          isActive: product.isActive,
+          createdAt: product.createdAt,
+          updatedAt: product.updatedAt,
           category: product.category_id ? {
             id: product.category_id,
-            name: { en: product.category_name_en, hi: product.category_name_hi }
+            name: categoryName
           } : null,
           artisan: product.artisan_id ? {
             id: product.artisan_id,
@@ -413,9 +423,9 @@ export const serverDb = {
           } : null,
           productImages: (images as any[]).map(img => ({
             id: img.id,
-            url: img.image_url,
-            isPrimary: img.is_primary,
-            displayOrder: img.display_order
+            url: img.url,
+            isPrimary: img.isPrimary,
+            sortOrder: img.sortOrder
           }))
         };
       }));
@@ -445,23 +455,26 @@ export const serverDb = {
     }
   },
 
+
   async createProduct(productData: any): Promise<any> {
     try {
       // Generate a unique product ID
       const productId = `prod-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
       
+      // Convert title and description to JSON strings
+      const titleJson = JSON.stringify(productData.title);
+      const descriptionJson = JSON.stringify(productData.description);
+      
       const [result] = await pool.execute(
-        `INSERT INTO products (id, slug, title_en, title_hi, description_en, description_hi, price, original_price, 
-         stock, rating, review_count, category_id, artisan_id, featured, best_seller, new_arrival, trending, 
-         is_active, created_at, updated_at) 
-         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW())`,
+        `INSERT INTO products (id, slug, title, description, price, originalPrice, 
+         stock, rating, reviewCount, categoryId, artisanId, featured, bestSeller, newArrival, trending, 
+         isActive, createdAt, updatedAt) 
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW())`,
         [
           productId,
           productData.slug,
-          productData.title.en,
-          productData.title.hi,
-          productData.description.en,
-          productData.description.hi,
+          titleJson,
+          descriptionJson,
           productData.price,
           productData.originalPrice,
           productData.stock,
@@ -486,7 +499,7 @@ export const serverDb = {
             const imageId = `img-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
             
             await pool.execute(
-              `INSERT INTO product_images (id, product_id, image_url, alt_text, is_primary, display_order, created_at) 
+              `INSERT INTO product_images (id, productId, url, altText, isPrimary, sortOrder, createdAt) 
                VALUES (?, ?, ?, ?, ?, ?, NOW())`,
               [
                 imageId,
@@ -513,26 +526,26 @@ export const serverDb = {
   async getCartItems(userId: string): Promise<any[]> {
     try {
       const [rows] = await pool.execute(
-        `SELECT c.*, p.title_en, p.title_hi, p.price, p.original_price, p.stock, pi.image_url as primary_image
+        `SELECT c.*, p.title, p.price, p.originalPrice, p.stock, pi.url as primary_image
          FROM carts c
-         JOIN products p ON c.product_id = p.id
-         LEFT JOIN product_images pi ON p.id = pi.product_id AND pi.is_primary = 1
-         WHERE c.user_id = ?`,
+         JOIN products p ON c.productId = p.id
+         LEFT JOIN product_images pi ON p.id = pi.productId AND pi.isPrimary = 1
+         WHERE c.userId = ?`,
         [userId]
       );
       
       return (rows as any[]).map(item => ({
         id: item.id,
-        userId: item.user_id,
-        productId: item.product_id,
+        userId: item.userId,
+        productId: item.productId,
         quantity: item.quantity,
-        createdAt: item.created_at,
-        updatedAt: item.updated_at,
+        createdAt: item.createdAt,
+        updatedAt: item.updatedAt,
         product: {
-          id: item.product_id,
-          title: { en: item.title_en, hi: item.title_hi },
+          id: item.productId,
+          title: typeof item.title === 'string' ? JSON.parse(item.title) : item.title,
           price: item.price,
-          originalPrice: item.original_price,
+          originalPrice: item.originalPrice,
           stock: item.stock,
           primaryImage: item.primary_image
         }
@@ -580,9 +593,9 @@ export const serverDb = {
     try {
       console.log('Removing from cart:', { userId, productId, variant });
       // If variant is provided, we need to handle it properly
-      // For now, we'll remove by product_id only since the current schema doesn't fully support variants
+      // For now, we'll remove by productId only since the current schema doesn't fully support variants
       const [result] = await pool.execute(
-        'DELETE FROM carts WHERE user_id = ? AND product_id = ?',
+        'DELETE FROM carts WHERE userId = ? AND productId = ?',
         [userId, productId]
       );
       console.log('Delete result:', result);
@@ -598,7 +611,7 @@ export const serverDb = {
   async updateCartItemQuantity(userId: string, productId: string, quantity: number): Promise<boolean> {
     try {
       const [result] = await pool.execute(
-        'UPDATE carts SET quantity = ?, updated_at = NOW() WHERE user_id = ? AND product_id = ?',
+        'UPDATE carts SET quantity = ?, updatedAt = NOW() WHERE userId = ? AND productId = ?',
         [quantity, userId, productId]
       );
       return (result as any).affectedRows > 0;
@@ -611,7 +624,7 @@ export const serverDb = {
   async clearCart(userId: string): Promise<boolean> {
     try {
       const [result] = await pool.execute(
-        'DELETE FROM carts WHERE user_id = ?',
+        'DELETE FROM carts WHERE userId = ?',
         [userId]
       );
       return true;
