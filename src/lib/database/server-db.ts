@@ -562,7 +562,7 @@ export const serverDb = {
       
       // Check if item already exists in cart
       const [existing] = await pool.execute(
-        'SELECT * FROM carts WHERE user_id = ? AND product_id = ?',
+        'SELECT * FROM cart_items WHERE userId = ? AND productId = ?',
         [userId, productId]
       );
       
@@ -570,18 +570,18 @@ export const serverDb = {
         // Update quantity if item exists
         const newQuantity = (existing as any[])[0].quantity + quantity;
         const [result] = await pool.execute(
-          'UPDATE carts SET quantity = ?, updated_at = NOW() WHERE user_id = ? AND product_id = ?',
+          'UPDATE cart_items SET quantity = ?, updatedAt = NOW() WHERE userId = ? AND productId = ?',
           [newQuantity, userId, productId]
         );
-        return { id: (existing as any[])[0].id, user_id: userId, product_id: productId, quantity: newQuantity };
+        return { id: (existing as any[])[0].id, userId: userId, productId: productId, quantity: newQuantity };
       } else {
         // Add new item to cart
         const cartId = `cart-${Date.now()}`;
         const [result] = await pool.execute(
-          'INSERT INTO carts (id, user_id, product_id, quantity, created_at, updated_at) VALUES (?, ?, ?, ?, NOW(), NOW())',
+          'INSERT INTO cart_items (id, userId, productId, quantity, createdAt, updatedAt) VALUES (?, ?, ?, ?, NOW(), NOW())',
           [cartId, userId, productId, quantity]
         );
-        return { id: cartId, user_id: userId, product_id: productId, quantity: quantity };
+        return { id: cartId, userId: userId, productId: productId, quantity: quantity };
       }
     } catch (error) {
       console.error('Database error:', error);
@@ -721,36 +721,36 @@ export const serverDb = {
       
       // Get order items
       const [items] = await pool.execute(
-        `SELECT oi.*, p.title_en, p.title_hi, p.price, p.original_price, p.stock, pi.image_url as primary_image
+        `SELECT oi.*, p.title, p.price, p.originalPrice, p.stock, pi.url as primary_image
          FROM order_items oi
-         JOIN products p ON oi.product_id = p.id
-         LEFT JOIN product_images pi ON p.id = pi.product_id AND pi.is_primary = 1
-         WHERE oi.order_id = ?`,
+         JOIN products p ON oi.productId = p.id
+         LEFT JOIN product_images pi ON p.id = pi.productId AND pi.isPrimary = 1
+         WHERE oi.orderId = ?`,
         [orderId]
       );
       
       return {
         id: order.id,
-        userId: order.user_id,
-        totalAmount: order.total_amount,
+        userId: order.userId,
+        totalAmount: order.totalAmount,
         status: order.status,
-        paymentMethod: order.payment_method,
-        paymentStatus: order.payment_status,
-        shippingAddress: JSON.parse(order.shipping_address),
-        billingAddress: JSON.parse(order.billing_address),
-        createdAt: order.created_at,
-        updatedAt: order.updated_at,
+        paymentMethod: order.paymentMethod,
+        paymentStatus: order.paymentStatus,
+        shippingAddress: order.addressId ? { /* fetch address details */ } : null,
+        billingAddress: order.addressId ? { /* fetch address details */ } : null,
+        createdAt: order.createdAt,
+        updatedAt: order.updatedAt,
         items: (items as any[]).map(item => ({
           id: item.id,
-          orderId: item.order_id,
-          productId: item.product_id,
+          orderId: item.orderId,
+          productId: item.productId,
           quantity: item.quantity,
           price: item.price,
           product: {
-            id: item.product_id,
-            title: { en: item.title_en, hi: item.title_hi },
+            id: item.productId,
+            title: typeof item.title === 'string' ? JSON.parse(item.title) : item.title,
             price: item.price,
-            originalPrice: item.original_price,
+            originalPrice: item.originalPrice,
             stock: item.stock,
             primaryImage: item.primary_image
           }
@@ -773,36 +773,36 @@ export const serverDb = {
       const orders = await Promise.all((rows as any[]).map(async (order) => {
         // Get order items
         const [items] = await pool.execute(
-          `SELECT oi.*, p.title_en, p.title_hi, p.price, p.original_price, p.stock, pi.image_url as primary_image
+          `SELECT oi.*, p.title, p.price, p.originalPrice, p.stock, pi.url as primary_image
            FROM order_items oi
-           JOIN products p ON oi.product_id = p.id
-           LEFT JOIN product_images pi ON p.id = pi.product_id AND pi.is_primary = 1
-           WHERE oi.order_id = ?`,
+           JOIN products p ON oi.productId = p.id
+           LEFT JOIN product_images pi ON p.id = pi.productId AND pi.isPrimary = 1
+           WHERE oi.orderId = ?`,
           [order.id]
         );
         
         return {
           id: order.id,
-          userId: order.user_id,
-          totalAmount: order.total_amount,
+          userId: order.userId,
+          totalAmount: order.totalAmount,
           status: order.status,
-          paymentMethod: order.payment_method,
-          paymentStatus: order.payment_status,
-          shippingAddress: JSON.parse(order.shipping_address),
-          billingAddress: JSON.parse(order.billing_address),
-          createdAt: order.created_at,
-          updatedAt: order.updated_at,
+          paymentMethod: order.paymentMethod,
+          paymentStatus: order.paymentStatus,
+          shippingAddress: order.addressId ? { /* fetch address details */ } : null,
+          billingAddress: order.addressId ? { /* fetch address details */ } : null,
+          createdAt: order.createdAt,
+          updatedAt: order.updatedAt,
           items: (items as any[]).map(item => ({
             id: item.id,
-            orderId: item.order_id,
-            productId: item.product_id,
+            orderId: item.orderId,
+            productId: item.productId,
             quantity: item.quantity,
             price: item.price,
             product: {
-              id: item.product_id,
-              title: { en: item.title_en, hi: item.title_hi },
+              id: item.productId,
+              title: typeof item.title === 'string' ? JSON.parse(item.title) : item.title,
               price: item.price,
-              originalPrice: item.original_price,
+              originalPrice: item.originalPrice,
               stock: item.stock,
               primaryImage: item.primary_image
             }
@@ -882,24 +882,24 @@ export const serverDb = {
   async getWishlistItems(userId: string): Promise<any[]> {
     try {
       const [rows] = await pool.execute(
-        `SELECT w.*, p.title_en, p.title_hi, p.price, p.original_price, p.stock, pi.image_url as primary_image
-         FROM wishlists w
-         JOIN products p ON w.product_id = p.id
-         LEFT JOIN product_images pi ON p.id = pi.product_id AND pi.is_primary = 1
-         WHERE w.user_id = ?`,
+        `SELECT w.*, p.title, p.price, p.originalPrice, p.stock, pi.url as primary_image
+         FROM wishlist_items w
+         JOIN products p ON w.productId = p.id
+         LEFT JOIN product_images pi ON p.id = pi.productId AND pi.isPrimary = 1
+         WHERE w.userId = ?`,
         [userId]
       );
       
       return (rows as any[]).map(item => ({
         id: item.id,
-        userId: item.user_id,
-        productId: item.product_id,
-        createdAt: item.created_at,
+        userId: item.userId,
+        productId: item.productId,
+        createdAt: item.createdAt,
         product: {
-          id: item.product_id,
-          title: { en: item.title_en, hi: item.title_hi },
+          id: item.productId,
+          title: typeof item.title === 'string' ? JSON.parse(item.title) : item.title,
           price: item.price,
-          originalPrice: item.original_price,
+          originalPrice: item.originalPrice,
           stock: item.stock,
           primaryImage: item.primary_image
         }
@@ -1095,20 +1095,26 @@ export const serverDb = {
   
   async getAllBanners(): Promise<any[]> {
     try {
-      const [rows] = await pool.execute('SELECT * FROM banners WHERE is_active = 1 ORDER BY display_order');
-      return (rows as any[]).map(banner => ({
-        id: banner.id,
-        title: { en: banner.title_en, hi: banner.title_hi },
-        subtitle: { en: banner.subtitle_en, hi: banner.subtitle_hi },
-        description: { en: banner.description_en, hi: banner.description_hi },
-        image_desktop: banner.image_desktop,
-        image_mobile: banner.image_mobile,
-        link_url: banner.link_url,
-        link_text: { en: banner.link_text_en, hi: banner.link_text_hi },
-        display_order: banner.display_order,
-        is_active: Number(banner.is_active), // Ensure it's a number
-        created_at: banner.created_at
-      }));
+      const [rows] = await pool.execute('SELECT * FROM banners WHERE isActive = 1 ORDER BY sortOrder');
+      return (rows as any[]).map(banner => {
+        // Parse JSON fields
+        const title = typeof banner.title === 'string' ? JSON.parse(banner.title) : banner.title;
+        const subtitle = typeof banner.subtitle === 'string' ? JSON.parse(banner.subtitle) : banner.subtitle;
+        const buttonText = typeof banner.buttonText === 'string' ? JSON.parse(banner.buttonText) : banner.buttonText;
+        
+        return {
+          id: banner.id,
+          title: title,
+          subtitle: subtitle,
+          image_desktop: banner.image,
+          image_mobile: banner.image,
+          link_url: banner.link,
+          link_text: buttonText,
+          display_order: banner.sortOrder,
+          is_active: Number(banner.isActive), // Ensure it's a number
+          created_at: banner.createdAt
+        };
+      });
     } catch (error) {
       console.error('Database error:', error);
       return [];
