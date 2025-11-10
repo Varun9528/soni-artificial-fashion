@@ -5,6 +5,7 @@ import { withAdminAuth } from '@/lib/auth/middleware';
 // Enable real database
 enableRealDatabase();
 
+// GET all products
 export const GET = withAdminAuth(async (request: NextRequest, authContext: any) => {
   try {
     // Use mock database instead of Prisma
@@ -46,7 +47,8 @@ export const POST = withAdminAuth(async (request: NextRequest, authContext: any)
       newArrival,
       trending,
       categoryId,
-      artisanId
+      artisanId,
+      isActive
     } = body;
 
     // Validate required fields
@@ -83,6 +85,7 @@ export const POST = withAdminAuth(async (request: NextRequest, authContext: any)
       trending: Boolean(trending),
       categoryId,
       artisanId,
+      isActive: Boolean(isActive),
       images: images || [],
       imageFilenames: imageFilenames || [], // Pass filenames to database
       materials: Array.isArray(materials) ? materials : (materials || '').split(',').map((m: string) => m.trim()).filter((m: string) => m),

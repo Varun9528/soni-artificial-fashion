@@ -1,42 +1,54 @@
-import { NextResponse } from 'next/server';
-import { db, enableRealDatabase } from '@/lib/database/connection';
+import { NextRequest, NextResponse } from 'next/server';
+import { PrismaClient } from '@prisma/client';
 
-// Enable real database
-enableRealDatabase();
+const prisma = new PrismaClient();
 
 export async function GET() {
   try {
-    // Test getting all products
-    const products = await db.getAllProducts();
-    console.log('Products:', products);
+    // Test database connection by fetching some data
+    const products = await prisma.product.findMany({
+      take: 3,
+      select: {
+        id: true,
+        title_en: true,
+        price: true
+      }
+    });
     
-    // Test getting all categories
-    const categories = await db.getAllCategories();
-    console.log('Categories:', categories);
+    const categories = await prisma.category.findMany({
+      take: 3,
+      select: {
+        id: true,
+        name_en: true,
+        name_hi: true
+      }
+    });
     
-    // Test getting all artisans
-    const artisans = await db.getAllArtisans();
-    console.log('Artisans:', artisans);
-    
-    // Test getting all banners
-    const banners = await db.getAllBanners();
-    console.log('Banners:', banners);
+    const users = await prisma.user.findMany({
+      take: 1,
+      select: {
+        id: true,
+        email: true,
+        name: true,
+        role: true
+      }
+    });
     
     return NextResponse.json({
       success: true,
-      message: 'Database connection and queries successful',
       data: {
-        products: products.length,
-        categories: categories.length,
-        artisans: artisans.length,
-        banners: banners.length
+        products,
+        categories,
+        users
       }
     });
-  } catch (error: any) {
+  } catch (error) {
     console.error('Database test error:', error);
     return NextResponse.json({
       success: false,
-      error: error.message
+      error: error instanceof Error ? error.message : 'Unknown error'
     }, { status: 500 });
+  } finally {
+    await prisma.$disconnect();
   }
 }

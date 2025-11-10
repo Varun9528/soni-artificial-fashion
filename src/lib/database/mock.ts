@@ -1,6 +1,16 @@
 // Mock database implementation for development
-import { User, CartItem, WishlistItem, Address } from '@/data/types';
-import bcrypt from 'bcryptjs';
+import { User, Address } from '@/data/types';
+import * as bcrypt from 'bcryptjs';
+
+// Import CartItem interface from types
+import { CartItem } from '@/data/types';
+
+interface WishlistItem {
+  id: string;
+  user_id: string;
+  product_id: string;
+  created_at: string;
+}
 
 // Hash passwords for mock users
 const adminPasswordHash = bcrypt.hashSync('admin123', 12);
@@ -673,7 +683,7 @@ const mockCategories: any[] = [
 ];
 
 // Mock artisans data
-const mockArtisans: any[] = [
+let mockArtisans: any[] = [
   {
     id: 'soni-designer',
     name: 'Soni Designer',
@@ -955,35 +965,14 @@ export const mockDb = {
 
   // Cart operations
   async getCartItems(userId: string): Promise<CartItem[]> {
-    // Enhance cart items with product information including images
-    const enhancedCartItems = mockCartItems
+    // Return cart items that match the CartItem interface from types.ts
+    return mockCartItems
       .filter(item => item.user_id === userId)
-      .map(cartItem => {
-        const product = mockProducts.find(p => p.id === cartItem.product_id);
-        if (product) {
-          return {
-            productId: cartItem.product_id, // Fix: map product_id to productId
-            quantity: cartItem.quantity,
-            variant: cartItem.variant,
-            product: {
-              id: product.id,
-              title: product.title,
-              price: product.price,
-              originalPrice: product.originalPrice,
-              stock: product.stock,
-              image: product.images && product.images.length > 0 ? product.images[0] : '/images/products/placeholder.jpg' // Include image
-            }
-          };
-        }
-        // If product not found, still return the cart item with correct structure
-        return {
-          productId: cartItem.product_id, // Fix: map product_id to productId
-          quantity: cartItem.quantity,
-          variant: cartItem.variant
-        };
-      });
-    
-    return enhancedCartItems;
+      .map(cartItem => ({
+        productId: cartItem.product_id,
+        quantity: cartItem.quantity,
+        variant: cartItem.variant
+      }));
   },
 
   async addToCart(userId: string, productId: string, quantity: number): Promise<CartItem> {
@@ -995,7 +984,7 @@ export const mockDb = {
       // Update existing item
       mockCartItems[existingItemIndex].quantity += quantity;
       return {
-        productId: mockCartItems[existingItemIndex].product_id, // Fix: map product_id to productId
+        productId: mockCartItems[existingItemIndex].product_id,
         quantity: mockCartItems[existingItemIndex].quantity,
         variant: mockCartItems[existingItemIndex].variant
       };
@@ -1010,7 +999,7 @@ export const mockDb = {
       };
       mockCartItems.push(cartItem);
       return {
-        productId: cartItem.product_id, // Fix: map product_id to productId
+        productId: cartItem.product_id,
         quantity: cartItem.quantity,
         variant: cartItem.variant
       };
@@ -1307,7 +1296,302 @@ export const mockDb = {
   },
   
   async getTotalRevenue(): Promise<number> {
-    // Calculate total revenue from mock orders
     return mockOrders.reduce((total, order) => total + (order.totalAmount || 0), 0);
+  },
+  
+  async getCustomerGrowth(): Promise<any> {
+    // Mock implementation - return dummy data for customer growth
+    // In a real implementation, this would calculate customer growth over time
+    return {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+      data: [120, 190, 150, 220, 180, 250]
+    };
+  },
+  
+  async getRecentOrders(limit: number = 5): Promise<any[]> {
+    // Mock implementation - return recent orders from mock data
+    // Sort by created_at and return the most recent ones
+    return mockOrders
+      .sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())
+      .slice(0, limit)
+      .map(order => {
+        const user = mockUsers.find(u => u.id === order.userId);
+        return {
+          ...order,
+          user: user ? { id: user.id, name: user.name } : null
+        };
+      });
+  },
+  
+  async getReturnsReport(): Promise<any> {
+    // Mock implementation - return dummy data for returns report
+    // In a real implementation, this would calculate returns data
+    return {
+      totalReturns: 12,
+      returnRate: 2.4,
+      refundAmount: 24500,
+      topReturnReasons: [
+        { reason: 'Damaged Product', count: 5 },
+        { reason: 'Wrong Item', count: 3 },
+        { reason: 'Not as Expected', count: 4 }
+      ]
+    };
+  },
+  
+  async getSalesOverview(): Promise<any> {
+    // Mock implementation - return dummy data for sales overview
+    // In a real implementation, this would calculate sales data
+    return {
+      totalSales: 1250000,
+      totalOrders: 245,
+      averageOrderValue: 5102,
+      salesByCategory: [
+        { category: 'Necklaces', sales: 420000 },
+        { category: 'Earrings', sales: 310000 },
+        { category: 'Bracelets', sales: 280000 },
+        { category: 'Rings', sales: 240000 }
+      ]
+    };
+  },
+  
+  async getTopCategories(): Promise<any[]> {
+    // Mock implementation - return top categories from mock data
+    return mockCategories.map(category => {
+      // Count products in this category
+      const productCount = mockProducts.filter(p => p.categoryId === category.id).length;
+      return {
+        ...category,
+        productCount
+      };
+    }).sort((a, b) => b.productCount - a.productCount).slice(0, 5);
+  },
+  
+  async getTopProducts(): Promise<any[]> {
+    // Mock implementation - return top products from mock data
+    // Sort by rating and return top 5
+    return mockProducts
+      .sort((a, b) => (b.rating || 0) - (a.rating || 0))
+      .slice(0, 5)
+      .map(product => {
+        const category = mockCategories.find(c => c.id === product.categoryId);
+        const artisan = mockArtisans.find(a => a.id === product.artisanId);
+        return {
+          ...product,
+          category: category ? { name: category.name } : null,
+          artisan: artisan ? { name: artisan.name } : null
+        };
+      });
+  },
+  
+  async updateArtisan(id: string, artisanData: any): Promise<any> {
+    // Mock implementation - update artisan in mock data
+    const artisanIndex = mockArtisans.findIndex(a => a.id === id);
+    if (artisanIndex === -1) return null;
+    
+    mockArtisans[artisanIndex] = {
+      ...mockArtisans[artisanIndex],
+      ...artisanData,
+      updated_at: new Date().toISOString()
+    };
+    
+    return mockArtisans[artisanIndex];
+  },
+  
+  async deleteArtisan(id: string): Promise<boolean> {
+    // Mock implementation - delete artisan from mock data
+    const initialLength = mockArtisans.length;
+    // Filter out the artisan with the given ID
+    const newArtisans = mockArtisans.filter(a => a.id !== id);
+    // If the length changed, the artisan was found and removed
+    if (newArtisans.length < initialLength) {
+      // We can't reassign mockArtisans since it's const, so we'll clear and repopulate
+      mockArtisans.splice(0, mockArtisans.length, ...newArtisans);
+      return true;
+    }
+    return false;
+  },
+  
+  async createArtisan(artisanData: any): Promise<any> {
+    // Mock implementation - create artisan in mock data
+    const newArtisan = {
+      id: `artisan-${Date.now()}`,
+      ...artisanData,
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
+    };
+    
+    mockArtisans.push(newArtisan);
+    return newArtisan;
+  },
+  
+  async getAllAdminUsers(): Promise<any[]> {
+    // Mock implementation - return admin users from mock data
+    return mockUsers.filter(user => user.role === 'admin' || user.role === 'super_admin');
+  },
+  
+  async updateOrder(orderId: string, updateData: any): Promise<any | null> {
+    // Mock implementation - update order in mock data
+    const orderIndex = mockOrders.findIndex(order => order.id === orderId);
+    if (orderIndex === -1) return null;
+    
+    mockOrders[orderIndex] = {
+      ...mockOrders[orderIndex],
+      ...updateData,
+      updated_at: new Date().toISOString()
+    };
+    
+    // Return the updated order with user and address info
+    const order = mockOrders[orderIndex];
+    const user = mockUsers.find(u => u.id === order.userId);
+    const address = mockAddresses.find(a => a.id === order.addressId);
+    
+    return {
+      ...order,
+      user: user ? { id: user.id, name: user.name } : null,
+      address: address ? { 
+        id: address.id,
+        name: address.name,
+        phone: address.phone,
+        address: address.address,
+        city: address.city,
+        state: address.state,
+        pincode: address.pincode
+      } : null
+    };
+  },
+
+  async updateOrderStatus(orderId: string, status: string): Promise<boolean> {
+    // Mock implementation - update order status in mock data
+    const orderIndex = mockOrders.findIndex(order => order.id === orderId);
+    if (orderIndex === -1) return false;
+    
+    mockOrders[orderIndex] = {
+      ...mockOrders[orderIndex],
+      status,
+      updated_at: new Date().toISOString()
+    };
+    
+    return true;
+  },
+  
+  // Add missing banner functions
+  async createBanner(bannerData: any): Promise<any> {
+    // Mock implementation - create banner in mock data
+    const newBanner = {
+      id: `banner-${Date.now()}`,
+      ...bannerData,
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
+    };
+    
+    // For mock purposes, we'll just return the created banner
+    // In a real implementation, you would store it in a mockBanners array
+    return newBanner;
+  },
+  
+  async updateBanner(id: string, bannerData: any): Promise<any> {
+    // Mock implementation - update banner in mock data
+    // For mock purposes, we'll just return the updated banner data
+    return {
+      id,
+      ...bannerData,
+      updated_at: new Date().toISOString()
+    };
+  },
+  
+  async deleteBanner(id: string): Promise<boolean> {
+    // Mock implementation - delete banner
+    // For mock purposes, we'll just return true
+    return true;
+  },
+  
+  // Add missing product functions
+  async updateProduct(id: string, productData: any): Promise<any> {
+    // Mock implementation - update product in mock data
+    const productIndex = mockProducts.findIndex(p => p.id === id);
+    if (productIndex === -1) return null;
+    
+    mockProducts[productIndex] = {
+      ...mockProducts[productIndex],
+      ...productData,
+      updated_at: new Date().toISOString()
+    };
+    
+    // Return the updated product with enhanced data
+    const category = mockCategories.find((c: any) => c.id === mockProducts[productIndex].categoryId);
+    const artisan = mockArtisans.find((a: any) => a.id === mockProducts[productIndex].artisanId);
+    
+    return {
+      ...mockProducts[productIndex],
+      category: category ? {
+        id: category.id,
+        name: category.name,
+        slug: category.slug
+      } : null,
+      artisan: artisan ? {
+        id: artisan.id,
+        name: artisan.name,
+        village: artisan.village
+      } : null,
+      productImages: mockProducts[productIndex].images.map((url: string, index: number) => ({
+        url,
+        filename: mockProducts[productIndex].imageFilenames[index] || '', // Include filename
+        isPrimary: index === 0
+      }))
+    };
+  },
+  
+  async deleteProduct(id: string): Promise<boolean> {
+    // Mock implementation - delete product from mock data
+    const initialLength = mockProducts.length;
+    // Filter out the product with the given ID
+    const newProducts = mockProducts.filter(p => p.id !== id);
+    // If the length changed, the product was found and removed
+    if (newProducts.length < initialLength) {
+      // We can't reassign mockProducts since it's const, so we'll clear and repopulate
+      mockProducts.splice(0, mockProducts.length, ...newProducts);
+      return true;
+    }
+    return false;
+  },
+  
+  // Add missing category functions
+  async createCategory(categoryData: any): Promise<any> {
+    // Mock implementation - create category in mock data
+    const newCategory = {
+      id: `cat-${Date.now()}`,
+      ...categoryData,
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
+    };
+    
+    // For mock purposes, we'll just return the created category
+    // In a real implementation, you would store it in a mockCategories array
+    return newCategory;
+  },
+  
+  async updateCategory(id: string, categoryData: any): Promise<any> {
+    // Mock implementation - update category in mock data
+    // For mock purposes, we'll just return the updated category data
+    return {
+      id,
+      ...categoryData,
+      updated_at: new Date().toISOString()
+    };
+  },
+  
+  async deleteCategory(id: string): Promise<boolean> {
+    // Mock implementation - delete category
+    // For mock purposes, we'll just return true
+    return true;
+  },
+  
+  async getCategoryById(id: string): Promise<any | null> {
+    // Mock implementation - get category by ID
+    // For mock purposes, we'll just return null
+    return null;
   }
+
 };
+
+export default mockDb;

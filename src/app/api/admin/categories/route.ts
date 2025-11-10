@@ -1,9 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { db } from '@/lib/database/connection';
+import { db, enableRealDatabase } from '@/lib/database/connection';
 import { withAdminAuth } from '@/lib/auth/middleware';
 
 // Enable real database for API routes
-import { enableRealDatabase } from '@/lib/database/connection';
 enableRealDatabase();
 
 // GET all categories
@@ -58,11 +57,8 @@ export const POST = withAdminAuth(async (request: NextRequest, authContext: any)
       displayOrder: 0
     };
 
-    // Since we don't have specific methods in the db abstraction layer for category creation,
-    // we'll use the serverDb directly
-    const { serverDb } = await import('@/lib/database/server-db');
-    
-    const category = await serverDb.createCategory(categoryData);
+    // Create the category using the database abstraction layer
+    const category = await db.createCategory(categoryData);
 
     return NextResponse.json({
       success: true,

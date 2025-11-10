@@ -1,6 +1,7 @@
 // Server-side database operations using mysql2
 // This file should only be imported in server-side code
-import mysql from 'mysql2/promise';
+import * as mysql from 'mysql2/promise';
+
 
 // Log all environment variables for debugging
 console.log('All env vars:', {
@@ -446,12 +447,16 @@ export const serverDb = {
 
   async createProduct(productData: any): Promise<any> {
     try {
+      // Generate a unique product ID
+      const productId = `prod-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+      
       const [result] = await pool.execute(
-        `INSERT INTO products (slug, title_en, title_hi, description_en, description_hi, price, original_price, 
+        `INSERT INTO products (id, slug, title_en, title_hi, description_en, description_hi, price, original_price, 
          stock, rating, review_count, category_id, artisan_id, featured, best_seller, new_arrival, trending, 
          is_active, created_at, updated_at) 
-         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW())`,
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW())`,
         [
+          productId,
           productData.slug,
           productData.title.en,
           productData.title.hi,
@@ -472,22 +477,27 @@ export const serverDb = {
         ]
       );
       
-      const productId = (result as any).insertId;
-      
       // Insert product images if provided
-      if (productData.productImages && productData.productImages.length > 0) {
-        for (const image of productData.productImages) {
-          await pool.execute(
-            `INSERT INTO product_images (product_id, image_url, alt_text, is_primary, display_order, created_at, updated_at) 
-             VALUES (?, ?, ?, ?, ?, NOW(), NOW())`,
-            [
-              productId,
-              image.url,
-              image.alt || '',
-              image.isPrimary ? 1 : 0,
-              image.displayOrder || 0
-            ]
-          );
+      if (productData.images && productData.images.length > 0) {
+        for (let i = 0; i < productData.images.length; i++) {
+          const imageUrl = productData.images[i];
+          if (imageUrl) {
+            // Generate a unique image ID
+            const imageId = `img-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+            
+            await pool.execute(
+              `INSERT INTO product_images (id, product_id, image_url, alt_text, is_primary, display_order, created_at) 
+               VALUES (?, ?, ?, ?, ?, ?, NOW())`,
+              [
+                imageId,
+                productId,
+                imageUrl,
+                productData.title.en || `Product Image ${i + 1}`,
+                i === 0 ? 1 : 0, // First image is primary
+                i
+              ]
+            );
+          }
         }
       }
       
@@ -1728,26 +1738,36 @@ export const serverDb = {
       
       if ((result as any).affectedRows > 0) {
         // Update product images if provided
-        if (productData.productImages) {
+        if (productData.images || productData.productImages) {
           // First delete existing images
           await pool.execute(
             'DELETE FROM product_images WHERE product_id = ?',
             [id]
           );
           
+          // Get images from either images or productImages property
+          const images = productData.images || productData.productImages;
+          
           // Then insert new images
-          for (const image of productData.productImages) {
-            await pool.execute(
-              `INSERT INTO product_images (product_id, image_url, alt_text, is_primary, display_order, created_at, updated_at) 
-               VALUES (?, ?, ?, ?, ?, NOW(), NOW())`,
-              [
-                id,
-                image.url,
-                image.alt || '',
-                image.isPrimary ? 1 : 0,
-                image.displayOrder || 0
-              ]
-            );
+          if (Array.isArray(images)) {
+            for (let i = 0; i < images.length; i++) {
+              const image = images[i];
+              const imageUrl = typeof image === 'string' ? image : image.url;
+              
+              if (imageUrl) {
+                await pool.execute(
+                  `INSERT INTO product_images (product_id, image_url, alt_text, is_primary, display_order, created_at) 
+                   VALUES (?, ?, ?, ?, ?, NOW())`,
+                  [
+                    id,
+                    imageUrl,
+                    productData.title?.en || `Product Image ${i + 1}`,
+                    i === 0 ? 1 : 0, // First image is primary
+                    i
+                  ]
+                );
+              }
+            }
           }
         }
         
@@ -1764,24 +1784,23 @@ export const serverDb = {
   async getProductById(id: string): Promise<any | null> {
     try {
       const [rows] = await pool.execute(
-        `SELECT p.*, c.name_en as category_name_en, c.name_hi as category_name_hi, 
-         c.id as category_id, a.name as artisan_name, a.id as artisan_id
+        `SELECT p.id, p.slug, p.title_en, p.title_hi, p.description_en, p.description_hi, p.price, p.original_price, p.stock, p.rating, p.review_count, p.category_id, p.artisan_id, p.featured, p.best_seller, p.new_arrival, p.trending, p.is_active, p.created_at, p.updated_at, c.id AS category_id, c.name_en AS category_name_en, c.name_hi AS category_name_hi, a.id AS artisan_id, a.name AS artisan_name, pi.id AS image_id, pi.image_url, pi.alt_text, pi.is_primary, pi.display_order
          FROM products p
          LEFT JOIN categories c ON p.category_id = c.id
          LEFT JOIN artisans a ON p.artisan_id = a.id
+         LEFT JOIN product_images pi ON p.id = pi.product_id
          WHERE p.id = ?`,
         [id]
       );
-      
-      const product = (rows as any[])[0];
-      if (!product) return null;
-      
-      // Get product images
-      const [images] = await pool.execute(
-        'SELECT * FROM product_images WHERE product_id = ? ORDER BY display_order',
-        [product.id]
-      );
-      
+
+      const productRows = rows as any[];
+      if (productRows.length === 0) {
+        return null;
+      }
+
+      const product = productRows[0];
+      const images = productRows.filter(row => row.image_id);
+
       return {
         id: product.id,
         slug: product.slug,
@@ -1792,8 +1811,6 @@ export const serverDb = {
         stock: product.stock,
         rating: product.rating,
         reviewCount: product.review_count,
-        categoryId: product.category_id,
-        artisanId: product.artisan_id,
         featured: product.featured,
         bestSeller: product.best_seller,
         newArrival: product.new_arrival,
@@ -2121,6 +2138,26 @@ export const serverDb = {
         returnPercentage: 0,
         refundAmount: 0
       };
+    }
+  },
+
+  async getTotalOrders(): Promise<number> {
+    try {
+      const [result] = await pool.execute('SELECT COUNT(*) as total FROM orders');
+      return (result as any[])[0].total || 0;
+    } catch (error) {
+      console.error('Database error:', error);
+      return 0;
+    }
+  },
+
+  async getTotalUsers(): Promise<number> {
+    try {
+      const [result] = await pool.execute('SELECT COUNT(*) as total FROM users');
+      return (result as any[])[0].total || 0;
+    } catch (error) {
+      console.error('Database error:', error);
+      return 0;
     }
   }
 };

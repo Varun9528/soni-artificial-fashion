@@ -77,7 +77,7 @@ export const POST = withAuth(async (request: NextRequest, authContext: any) => {
     }
 
     // Insert into the database
-    const newAddress = await db.createUserAddress({
+    const newAddress = await db.createUserAddress(userId, {
       user_id: userId,
       full_name,
       phone,

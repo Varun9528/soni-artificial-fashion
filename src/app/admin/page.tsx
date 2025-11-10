@@ -222,7 +222,7 @@ export default function AdminDashboard() {
             <div className="p-6">
               <div className="grid grid-cols-2 gap-4">
                 <Link
-                  href="/admin/products/new"
+                  href="/admin/products/add"
                   className="flex flex-col items-center justify-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors duration-200"
                 >
                   <span className="text-2xl mb-2">➕</span>

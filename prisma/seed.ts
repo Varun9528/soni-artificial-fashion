@@ -280,6 +280,86 @@ async function main() {
       category_id: 'cat-007',
       artisan_id: 'art-002',
       image_path: '/images/products/Mangalsutra_Soni_Fashion_Ecommerce_a822.png'
+    },
+    // Additional men's products
+    {
+      id: 'prod-007',
+      name: 'Gold Bracelet for Men',
+      slug: 'gold-bracelet-men',
+      description_en: 'Stylish gold-plated bracelet for men',
+      description_hi: 'पुरुषों के लिए फैशनेबल सोने की प्लेटेड कंघाई',
+      price: new Prisma.Decimal(1599),
+      original_price: new Prisma.Decimal(2199),
+      stock: 15,
+      category_id: 'cat-006',
+      artisan_id: 'art-001',
+      image_path: '/images/mens product/Gold_Bracelets_Marble_Macro_Luxury (2).png'
+    },
+    {
+      id: 'prod-008',
+      name: 'Luxury Gold Watch',
+      slug: 'luxury-gold-watch-men',
+      description_en: 'Premium luxury gold-plated watch for men',
+      description_hi: 'पुरुषों के लिए प्रीमियम लक्ज़री सोने की प्लेटेड घड़ी',
+      price: new Prisma.Decimal(4999),
+      original_price: new Prisma.Decimal(6999),
+      stock: 7,
+      category_id: 'cat-006',
+      artisan_id: 'art-001',
+      image_path: '/images/mens product/Luxury_Gold_Watch_Marble_Macro.png'
+    },
+    {
+      id: 'prod-009',
+      name: 'Gold Pendant for Men',
+      slug: 'gold-pendant-men',
+      description_en: 'Elegant gold-plated pendant for men',
+      description_hi: 'पुरुषों के लिए सुरुचिपूर्ण सोने की प्लेटेड पेंडेंट',
+      price: new Prisma.Decimal(2299),
+      original_price: new Prisma.Decimal(3299),
+      stock: 10,
+      category_id: 'cat-006',
+      artisan_id: 'art-002',
+      image_path: '/images/mens product/Gold_Pendant_Marble_Luxury_Macro.png'
+    },
+    // Additional women's products
+    {
+      id: 'prod-010',
+      name: 'Golden Bangles Set',
+      slug: 'golden-bangles-set',
+      description_en: 'Beautiful set of golden bangles for women',
+      description_hi: 'महिलाओं के लिए सुंदर सोने की प्लेटेड बांगड़ों का सेट',
+      price: new Prisma.Decimal(1799),
+      original_price: new Prisma.Decimal(2499),
+      stock: 18,
+      category_id: 'cat-007',
+      artisan_id: 'art-002',
+      image_path: '/images/women collection/Golden_Bangles_Radiant_Arm_Macro.png'
+    },
+    {
+      id: 'prod-011',
+      name: 'Elegant Gold Ring',
+      slug: 'elegant-gold-ring-women',
+      description_en: 'Beautiful gold-plated ring for women',
+      description_hi: 'महिलाओं के लिए सुंदर सोने की प्लेटेड अंगूठी',
+      price: new Prisma.Decimal(1299),
+      original_price: new Prisma.Decimal(1899),
+      stock: 22,
+      category_id: 'cat-007',
+      artisan_id: 'art-002',
+      image_path: '/images/women collection/Golden_Ring_South_Asian_Hand.png'
+    },
+    {
+      id: 'prod-012',
+      name: 'Gold Necklace for Women',
+      slug: 'gold-necklace-women',
+      description_en: 'Exquisite gold-plated necklace for women',
+      description_hi: 'महिलाओं के लिए शानदार सोने की प्लेटेड हार',
+      price: new Prisma.Decimal(2799),
+      original_price: new Prisma.Decimal(3799),
+      stock: 12,
+      category_id: 'cat-007',
+      artisan_id: 'art-001',
+      image_path: '/images/women collection/Golden_Radiance_Portrait.png'
     }
   ];
 

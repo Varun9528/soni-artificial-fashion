@@ -5,6 +5,7 @@ import { useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { useAuth } from '@/context/AuthContext';
 import NotificationBell from '@/components/admin/NotificationBell';
+import Image from 'next/image';
 
 interface AdminLayoutProps {
   children: React.ReactNode;
@@ -81,12 +82,19 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
               </button>
             </div>
             <div className="flex-1 h-0 pt-5 pb-4 overflow-y-auto">
-              <div className="flex-shrink-0 flex items-center px-4">
-                <div className="flex items-center space-x-2">
-                  <div className="w-8 h-8 bg-amber-600 rounded-lg flex items-center justify-center">
-                    <span className="text-white font-bold text-sm">SA</span>
-                  </div>
-                  <h1 className="text-xl font-bold text-gray-900">Soni Admin</h1>
+              <div className="flex-shrink-0 flex items-center px-4 justify-center">
+                <div className="bg-white rounded-full p-2">
+                  <Image 
+                    src="/images/logo/logo-svg.svg" 
+                    alt="Soni Fashion Logo" 
+                    width={96} 
+                    height={96} 
+                    className="rounded-full"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = '/images/logo/logo-png.png';
+                    }}
+                  />
                 </div>
               </div>
               <nav className="mt-5 px-2 space-y-1">
@@ -127,12 +135,19 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
       <div className="hidden lg:flex lg:w-64 lg:flex-col lg:fixed lg:inset-y-0">
         <div className="flex-1 flex flex-col min-h-0 border-r border-gray-200 bg-white">
           <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
-            <div className="flex items-center flex-shrink-0 px-4">
-              <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-amber-600 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">SA</span>
-                </div>
-                <h1 className="text-xl font-bold text-gray-900">Soni Admin</h1>
+            <div className="flex items-center flex-shrink-0 px-4 justify-center">
+              <div className="bg-white rounded-full p-2">
+                <Image 
+                  src="/images/logo/logo-svg.svg" 
+                  alt="Soni Fashion Logo" 
+                  width={96} 
+                  height={96} 
+                  className="rounded-full"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.src = '/images/logo/logo-png.png';
+                  }}
+                />
               </div>
             </div>
             <nav className="mt-5 flex-1 px-2 bg-white space-y-1">

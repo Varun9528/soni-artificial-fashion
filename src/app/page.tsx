@@ -16,6 +16,10 @@ export default function Home() {
   const [featuredProducts, setFeaturedProducts] = useState<any[]>([]);
   const [newArrivalProducts, setNewArrivalProducts] = useState<any[]>([]);
   const [artisans, setArtisans] = useState<any[]>([]);
+  const [menProducts, setMenProducts] = useState<any[]>([]);
+  const [womenProducts, setWomenProducts] = useState<any[]>([]);
+  const [menCollectionImages, setMenCollectionImages] = useState<string[]>([]);
+  const [womenCollectionImages, setWomenCollectionImages] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
   const { addToCart } = useCart();
   const { state: wishlistState, addToWishlist, removeFromWishlist } = useWishlist();
@@ -24,26 +28,58 @@ export default function Home() {
     const fetchHomePageData = async () => {
       try {
         // Fetch featured products
-        const featuredResponse = await fetch('/api/products?featured=true&limit=8');
+        const featuredResponse = await fetch('/api/products?featured=true&limit=12');
         const featuredData = await featuredResponse.json();
         
         // Fetch new arrival products
-        const newArrivalResponse = await fetch('/api/products?newArrival=true&limit=8');
+        const newArrivalResponse = await fetch('/api/products?newArrival=true&limit=12');
         const newArrivalData = await newArrivalResponse.json();
         
         // Fetch artisans
         const artisansResponse = await fetch('/api/artisans');
         const artisansData = await artisansResponse.json();
         
+        // Fetch men's products
+        const menResponse = await fetch('/api/products?category=cat-006&limit=12');
+        const menData = await menResponse.json();
+        
+        // Fetch women's products
+        const womenResponse = await fetch('/api/products?category=cat-007&limit=12');
+        const womenData = await womenResponse.json();
+        
         // Extract products array from the responses
         setFeaturedProducts(Array.isArray(featuredData) ? featuredData : featuredData.products || []);
         setNewArrivalProducts(Array.isArray(newArrivalData) ? newArrivalData : newArrivalData.products || []);
         setArtisans(Array.isArray(artisansData) ? artisansData : artisansData.artisans || []);
+        setMenProducts(Array.isArray(menData) ? menData : menData.products || []);
+        setWomenProducts(Array.isArray(womenData) ? womenData : womenData.products || []);
+        
+        // Set collection images
+        setMenCollectionImages([
+          '/images/men collection/Gold_Figaro_Bracelet_Studio_Shot.png',
+          '/images/men collection/Indian_Man_Gold_Chain.png',
+          '/images/men collection/Indian_Man_Gold_Jewelry_Portrait.png',
+          '/images/men collection/Indian_Man_Gold_Pendant_Portrait.png',
+          '/images/men collection/Indian_Man_Ring_Macro.png'
+        ]);
+        
+        setWomenCollectionImages([
+          '/images/women collection/Golden_Bangles_Radiant_Arm_Macro.png',
+          '/images/women collection/Golden_Glamour_Wrist.png',
+          '/images/women collection/Golden_Radiance_Portrait.png',
+          '/images/women collection/Golden_Ring_South_Asian_Hand.png',
+          '/images/women collection/Radiant_South_Asian_Elegance.png',
+          '/images/women collection/South_Asian_Luxury_Bracelet_Close-up.png'
+        ]);
       } catch (error) {
         console.error('Error fetching home page data:', error);
         setFeaturedProducts([]);
         setNewArrivalProducts([]);
         setArtisans([]);
+        setMenProducts([]);
+        setWomenProducts([]);
+        setMenCollectionImages([]);
+        setWomenCollectionImages([]);
       } finally {
         setLoading(false);
       }
@@ -62,7 +98,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
-      {/* Hero Carousel */}
+      {/* Hero Carousel - moved down with margin */}
       <section className="relative">
         <BannerSlider />
       </section>
@@ -73,14 +109,182 @@ export default function Home() {
           <h2 className="text-3xl font-bold text-center mb-12">
             {t('featuredProducts')}
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {featuredProducts.map((product) => (
-              <ProductCard
-                key={product.id}
-                product={product}
-              />
-            ))}
+          {featuredProducts.length > 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              {featuredProducts.map((product) => (
+                <ProductCard
+                  key={product.id}
+                  product={product}
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-12">
+              <p className="text-gray-500">
+                {language === 'en' ? 'No featured products available' : 'कोई विशेष उत्पाद उपलब्ध नहीं है'}
+              </p>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Men's Collection Images */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex justify-between items-center mb-12">
+            <h2 className="text-3xl font-bold">
+              {language === 'en' ? "Men's Collection" : "पुरुष संग्रह"}
+            </h2>
+            <Link 
+              href="/men-collection" 
+              className="text-amber-600 hover:text-amber-700 font-medium flex items-center"
+            >
+              {language === 'en' ? 'View All' : 'सभी देखें'}
+              <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
           </div>
+          {menCollectionImages.length > 0 ? (
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+              {menCollectionImages.map((image, index) => (
+                <Link 
+                  key={index} 
+                  href="/men-collection"
+                  className="relative h-48 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow cursor-pointer"
+                >
+                  <Image
+                    src={image}
+                    alt={`${language === 'en' ? "Men's Collection" : "पुरुष संग्रह"} ${index + 1}`}
+                    fill
+                    className="object-cover"
+                  />
+                </Link>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-12">
+              <p className="text-gray-500">
+                {language === 'en' ? 'No collection images available' : 'कोई संग्रह चित्र उपलब्ध नहीं है'}
+              </p>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Men's Products */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex justify-between items-center mb-12">
+            <h2 className="text-3xl font-bold">
+              {language === 'en' ? "Men's Products" : "पुरुष उत्पाद"}
+            </h2>
+            <Link 
+              href="/men-collection" 
+              className="text-amber-600 hover:text-amber-700 font-medium flex items-center"
+            >
+              {language === 'en' ? 'View All' : 'सभी देखें'}
+              <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
+          </div>
+          {menProducts.length > 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              {menProducts.map((product) => (
+                <ProductCard
+                  key={product.id}
+                  product={product}
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-12">
+              <p className="text-gray-500">
+                {language === 'en' ? 'No products available in Men\'s Collection' : 'पुरुष संग्रह में कोई उत्पाद उपलब्ध नहीं है'}
+              </p>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Women's Collection Images */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex justify-between items-center mb-12">
+            <h2 className="text-3xl font-bold">
+              {language === 'en' ? "Women's Collection" : "महिला संग्रह"}
+            </h2>
+            <Link 
+              href="/women-collection" 
+              className="text-amber-600 hover:text-amber-700 font-medium flex items-center"
+            >
+              {language === 'en' ? 'View All' : 'सभी देखें'}
+              <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
+          </div>
+          {womenCollectionImages.length > 0 ? (
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
+              {womenCollectionImages.map((image, index) => (
+                <Link 
+                  key={index} 
+                  href="/women-collection"
+                  className="relative h-48 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow cursor-pointer"
+                >
+                  <Image
+                    src={image}
+                    alt={`${language === 'en' ? "Women's Collection" : "महिला संग्रह"} ${index + 1}`}
+                    fill
+                    className="object-cover"
+                  />
+                </Link>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-12">
+              <p className="text-gray-500">
+                {language === 'en' ? 'No collection images available' : 'कोई संग्रह चित्र उपलब्ध नहीं है'}
+              </p>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Women's Products */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex justify-between items-center mb-12">
+            <h2 className="text-3xl font-bold">
+              {language === 'en' ? "Women's Products" : "महिला उत्पाद"}
+            </h2>
+            <Link 
+              href="/women-collection" 
+              className="text-amber-600 hover:text-amber-700 font-medium flex items-center"
+            >
+              {language === 'en' ? 'View All' : 'सभी देखें'}
+              <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
+          </div>
+          {womenProducts.length > 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              {womenProducts.map((product) => (
+                <ProductCard
+                  key={product.id}
+                  product={product}
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-12">
+              <p className="text-gray-500">
+                {language === 'en' ? 'No products available in Women\'s Collection' : 'महिला संग्रह में कोई उत्पाद उपलब्ध नहीं है'}
+              </p>
+            </div>
+          )}
         </div>
       </section>
 
@@ -90,14 +294,22 @@ export default function Home() {
           <h2 className="text-3xl font-bold text-center mb-12">
             {t('newArrivals')}
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {newArrivalProducts.map((product) => (
-              <ProductCard
-                key={product.id}
-                product={product}
-              />
-            ))}
-          </div>
+          {newArrivalProducts.length > 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              {newArrivalProducts.map((product) => (
+                <ProductCard
+                  key={product.id}
+                  product={product}
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-12">
+              <p className="text-gray-500">
+                {language === 'en' ? 'No new arrivals available' : 'कोई नई वस्तुएं उपलब्ध नहीं हैं'}
+              </p>
+            </div>
+          )}
         </div>
       </section>
 

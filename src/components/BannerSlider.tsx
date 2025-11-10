@@ -104,7 +104,7 @@ export default function BannerSlider() {
   
   if (loading) {
     return (
-      <div className="relative w-full h-[60vh] overflow-hidden rounded-b-3xl shadow-2xl bg-gray-200 animate-pulse">
+      <div className="relative w-full h-96 overflow-hidden bg-gray-200 animate-pulse">
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center">
             <div className="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-amber-600"></div>
@@ -115,7 +115,7 @@ export default function BannerSlider() {
   }
   
   return (
-    <div className="relative w-full h-[60vh] overflow-hidden rounded-b-3xl shadow-2xl">
+    <div className="relative w-full h-96 overflow-hidden">
       {banners.map((banner, i) => (
         <div key={banner.id} className="absolute inset-0">
           <Image

@@ -4,9 +4,8 @@ import { useState, useEffect, useRef } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { X, Upload } from 'lucide-react';
 
-export default function AddProduct() {
+export default function AddProductPage() {
   const { user } = useAuth();
   const router = useRouter();
   const [categories, setCategories] = useState<any[]>([]);
@@ -252,6 +251,14 @@ export default function AddProduct() {
       setSubmitting(false);
     }
   };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-amber-600"></div>
+      </div>
+    );
+  }
 
   if (!user) {
     return (
@@ -605,7 +612,9 @@ export default function AddProduct() {
                     <div key={index} className="relative">
                       <div className="w-24 h-24 border rounded-lg overflow-hidden">
                         <div className="w-full h-full bg-gray-200 flex items-center justify-center">
-                          <Upload className="w-6 h-6 text-gray-400" />
+                          <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                          </svg>
                         </div>
                       </div>
                       <button
@@ -613,7 +622,9 @@ export default function AddProduct() {
                         onClick={() => removeImage(index)}
                         className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full p-1"
                       >
-                        <X className="w-3 h-3" />
+                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                        </svg>
                       </button>
                       <p className="text-xs text-gray-500 mt-1 truncate w-24">
                         {file.name} ({(file.size / 1024).toFixed(1)}KB)
@@ -639,6 +650,83 @@ export default function AddProduct() {
                   >
                     {uploading ? 'Uploading...' : 'Select Images'}
                   </button>
+                </div>
+              </div>
+              
+              {/* Product Categories */}
+              <div>
+                <h3 className="text-md font-medium text-gray-900 mb-4">Product Categories</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                  <div className="flex items-center">
+                    <input
+                      id="featured"
+                      name="featured"
+                      type="checkbox"
+                      checked={formData.featured}
+                      onChange={handleChange}
+                      className="h-4 w-4 text-amber-600 focus:ring-amber-500 border-gray-300 rounded"
+                    />
+                    <label htmlFor="featured" className="ml-2 block text-sm text-gray-900">
+                      Featured Product
+                    </label>
+                  </div>
+                  <div className="flex items-center">
+                    <input
+                      id="bestSeller"
+                      name="bestSeller"
+                      type="checkbox"
+                      checked={formData.bestSeller}
+                      onChange={handleChange}
+                      className="h-4 w-4 text-amber-600 focus:ring-amber-500 border-gray-300 rounded"
+                    />
+                    <label htmlFor="bestSeller" className="ml-2 block text-sm text-gray-900">
+                      Best Seller
+                    </label>
+                  </div>
+                  <div className="flex items-center">
+                    <input
+                      id="newArrival"
+                      name="newArrival"
+                      type="checkbox"
+                      checked={formData.newArrival}
+                      onChange={handleChange}
+                      className="h-4 w-4 text-amber-600 focus:ring-amber-500 border-gray-300 rounded"
+                    />
+                    <label htmlFor="newArrival" className="ml-2 block text-sm text-gray-900">
+                      New Arrival
+                    </label>
+                  </div>
+                  <div className="flex items-center">
+                    <input
+                      id="trending"
+                      name="trending"
+                      type="checkbox"
+                      checked={formData.trending}
+                      onChange={handleChange}
+                      className="h-4 w-4 text-amber-600 focus:ring-amber-500 border-gray-300 rounded"
+                    />
+                    <label htmlFor="trending" className="ml-2 block text-sm text-gray-900">
+                      Trending
+                    </label>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Status */}
+              <div>
+                <h3 className="text-md font-medium text-gray-900 mb-4">Status</h3>
+                <div className="flex items-center">
+                  <input
+                    id="isActive"
+                    name="isActive"
+                    type="checkbox"
+                    checked={formData.isActive}
+                    onChange={handleChange}
+                    className="h-4 w-4 text-amber-600 focus:ring-amber-500 border-gray-300 rounded"
+                  />
+                  <label htmlFor="isActive" className="ml-2 block text-sm text-gray-900">
+                    Active
+                  </label>
                 </div>
               </div>
               

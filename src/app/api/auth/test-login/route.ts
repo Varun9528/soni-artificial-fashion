@@ -42,19 +42,16 @@ export async function POST(request: NextRequest) {
     const JWT_SECRET = process.env.JWT_SECRET || 'your-super-secret-jwt-key-change-in-production';
 
     const tokenPayload = {
-      userId: user.id,
+      sub: user.id,
       email: user.email,
       role: user.role,
-      name: user.name,
-      iss: 'lettex-marketplace',
-      aud: 'lettex-users'
+      name: user.name
+      // Removed iss and aud to avoid conflicts
     };
 
     // Generate access token (15 minutes)
     const accessToken = jwt.sign(tokenPayload, JWT_SECRET, {
-      expiresIn: '15m',
-      issuer: 'lettex-marketplace',
-      audience: 'lettex-users'
+      expiresIn: '15m'
     });
 
     // Return user info (without password) and token

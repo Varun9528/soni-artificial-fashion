@@ -53,7 +53,7 @@ export default function Header() {
   };
 
   return (
-    <header className={`bg-gradient-to-r from-amber-600 via-yellow-500 to-amber-600 text-white transition-all duration-300 ${isScrolled ? 'shadow-2xl' : 'shadow-lg'}`}>
+    <header className={`bg-gradient-to-r from-amber-600 via-yellow-500 to-amber-600 text-white transition-all duration-300 ${isScrolled ? 'shadow-2xl' : 'shadow-lg'} sticky top-0 z-50`}>
       {/* Top bar with language and theme toggle */}
       <div className="bg-gradient-to-r from-amber-700 to-amber-800 text-white py-2 px-4">
         <div className="container mx-auto flex justify-between items-center text-sm">

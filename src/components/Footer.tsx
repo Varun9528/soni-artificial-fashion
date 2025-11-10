@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Facebook, Instagram, Youtube, Twitter } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 export default function Footer() {
   const [email, setEmail] = useState('');
@@ -92,19 +93,22 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Brand Section */}
           <div className="lg:col-span-1">
-            <div className="flex items-center space-x-3 mb-4">
-              <div className="w-12 h-12 bg-gradient-to-r from-yellow-400 to-amber-500 rounded-full flex items-center justify-center shadow-lg">
-                <span className="text-amber-900 font-bold text-xl">S</span>
-              </div>
-              <div>
-                <h3 className="text-2xl font-bold">Soni Fashion</h3>
-                <p className="text-amber-200 text-sm">Artificial Jewelry & Fashion</p>
+            <div className="flex items-center justify-center mb-4">
+              <div className="bg-white rounded-full p-2">
+                <Image 
+                  src="/images/logo/logo-svg.svg" 
+                  alt="Soni Fashion Logo" 
+                  width={120} 
+                  height={120} 
+                  className="rounded-full"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.src = '/images/logo/logo-png.png';
+                  }}
+                />
               </div>
             </div>
-            <p className="text-amber-100 text-sm mb-4">
-              {t('brandDescription')}
-            </p>
-            <div className="flex space-x-4">
+            <div className="flex space-x-4 justify-center">
               <a href="#" className="text-amber-200 hover:text-white transition-colors" title="Facebook">
                 <Facebook className="w-6 h-6" />
               </a>

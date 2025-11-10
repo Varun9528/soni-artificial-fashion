@@ -213,13 +213,18 @@ export default function CategoryPage() {
           <div className="mb-8">
             <div className="relative h-48 rounded-lg overflow-hidden mb-6">
               <Image
-                src={category.image || `/uploads/categories/${category.slug || category.id}.png`}
+                src={category.image || `/images/categories/${category.slug || category.id}.jpg`}
                 alt={category.name?.[language] || category.name?.en || category.name}
                 fill
                 className="object-cover"
                 onError={(e: any) => {
                   const target = e.target as HTMLImageElement;
-                  target.src = '/images/products/placeholder.jpg';
+                  // Try the fallback path if the specific image doesn't exist
+                  target.src = `/images/categories/${category.slug || category.id}.jpg`;
+                  // If that also fails, use placeholder
+                  target.onerror = () => {
+                    target.src = '/images/products/placeholder.jpg';
+                  };
                 }}
               />
               <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">

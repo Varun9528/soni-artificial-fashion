@@ -198,8 +198,13 @@ export const ROUTE_PERMISSIONS: Record<string, Permission[]> = {
   // System routes
   'POST /api/system/backup': ['system:backup'],
   'GET /api/system/config': ['system:config'],
-  'PUT /api/system/config': ['system:config'],
   'GET /api/system/audit': ['system:audit'],
+  
+  // Admin product routes
+  'GET /api/admin/products': ['admin:read'],
+  'POST /api/admin/products': ['admin:write'],
+  'PUT /api/admin/products': ['admin:write'],
+  'DELETE /api/admin/products': ['admin:delete'],
 };
 
 // Get required permissions for a route
