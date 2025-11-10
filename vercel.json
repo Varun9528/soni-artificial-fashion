@@ -1,4 +1,16 @@
 {
+  "env": {
+    "DB_HOST": "auth-db1555.hstgr.io",
+    "DB_USER": "u632940212_u632940212_fas",
+    "DB_PASSWORD": "Soni@2k25$$",
+    "DB_NAME": "u632940212_u632940212_son",
+    "DB_PORT": "3306"
+  },
+  "build": {
+    "env": {
+      "DATABASE_URL": "mysql://u632940212_u632940212_fas:Soni@2k25$$@auth-db1555.hstgr.io:3306/u632940212_u632940212_son"
+    }
+  },
   "github": {
     "silent": true
   },
